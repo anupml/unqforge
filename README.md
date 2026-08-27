@@ -1,12 +1,12 @@
 <div align="center">
 
-# ⚒️ unqforge
+# ⚒️ shortcutforge
 
 **Build iOS Shortcuts from Python — from evidence, not guesswork.**
 
 [![python](https://img.shields.io/badge/python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![license](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)](LICENSE)
-[![actions covered](https://img.shields.io/badge/actions-86%2F402-8b5cf6?style=flat-square)](docs/actions.md)
+[![actions covered](https://img.shields.io/badge/actions-153%2F402-8b5cf6?style=flat-square)](docs/actions.md)
 [![round trip](https://img.shields.io/badge/round--trip-1290%2F1290-06b6d4?style=flat-square)](tools/roundtrip.py)
 
 [Guide](docs/guide.md) · [Action reference](docs/actions.md) · [Examples](examples/)
@@ -16,7 +16,7 @@
 ---
 
 ```python
-from unqforge import *
+from shortcutforge import *
 
 A = "is.workflow.actions."
 s = SC()
@@ -38,8 +38,8 @@ Import the result into the Shortcuts app and it runs.
 **1. Install**
 
 ```bash
-git clone https://github.com/anupml/unqforge
-cd unqforge
+git clone https://github.com/anupml/shortcutforge
+cd shortcutforge
 pip install -e .
 ```
 
@@ -50,16 +50,16 @@ Python 3.8+, standard library only, no dependencies.
 `git` or working `pip`, so grab the zip instead:
 
 ```bash
-curl -L -o sf.zip https://github.com/anupml/unqforge/archive/refs/heads/main.zip
+curl -L -o sf.zip https://github.com/anupml/shortcutforge/archive/refs/heads/main.zip
 python3 -c "import zipfile; zipfile.ZipFile('sf.zip').extractall('.')"
-cd unqforge-main
+cd shortcutforge-main
 ```
 
 Run your scripts from inside that folder and start them with:
 
 ```python
 import sys; sys.path.insert(0, ".")
-from unqforge import *
+from shortcutforge import *
 ```
 
 The full test suite runs there too — `python3 tools/roundtrip.py shortcuts/*`
@@ -69,7 +69,7 @@ rebuilds 1246 actions on-device, UNQ MUSIC included.
 
 ```python
 # hello.py
-from unqforge import *
+from shortcutforge import *
 
 A = "is.workflow.actions."
 s = SC()
@@ -87,7 +87,7 @@ python3 hello.py
 **3. Get it onto your phone**
 
 The output is a plain `.plist`. To turn it into an installable shortcut,
-use [Shortcut Source Tool](https://routinehub.co/shortcut/9026/) by
+use [Shortcut Source Tool](https://routinehub.co/shortcut/5256/) by
 gluebyte — it converts both ways, plist to shortcut and back.
 
 AirDrop `hello.plist` to your phone, open Shortcut Source Tool, pick the
@@ -152,7 +152,7 @@ The corpus knows it.
 
 | | |
 | --- | --- |
-| Built-in actions covered | **86 / 402** |
+| Built-in actions covered | **153 / 402** |
 | Round-trip suite | **1290 / 1290** actions across 13 shortcuts |
 | Dependencies | none |
 
@@ -207,11 +207,45 @@ List renders with photos.
 | [`model2.py`](examples/model2.py) | Linear regression by gradient descent, in Shortcuts actions | no |
 | [`apidemo.py`](examples/apidemo.py) | Minimal ask → HTTP → clipboard | no |
 
+## Harvesting your whole library at once
+
+**macOS only.** The Shortcuts app keeps its library in a Core Data store
+at `~/Library/Shortcuts/Shortcuts.sqlite`, with each shortcut's actions
+stored as a blob. So instead of exporting shortcuts one at a time, the
+whole library can be read in a single pass:
+
+```bash
+python3 tools/harvestdb.py --list                            # see what's there
+python3 tools/harvestdb.py --json constructs/library.native.json
+python3 tools/gendocs.py
+```
+
+That database is protected by macOS, so Terminal needs permission first:
+
+> **System Settings → Privacy & Security → Full Disk Access** → add
+> Terminal (or iTerm) → toggle it on → **quit Terminal completely and
+> reopen it.** The permission does not apply until you restart it.
+
+Without that you get `authorization denied` when it tries to open the
+database.
+
+The database is opened **read-only**, so this never modifies your
+library. Expect a few shortcuts to be skipped — signed imports can be
+encrypted, and very old Workflow-era ones use a different layout.
+
+Running this on my own library took coverage from 86 actions to 153:
+296 of 306 shortcuts, 27,765 actions, 161 distinct types, one command.
+
+There is no equivalent on iOS — the library there isn't reachable from
+a-Shell — so on iPhone you still harvest by exporting individual
+shortcuts and running `decompile.py`.
+
 ## Tools
 
 | | |
 | --- | --- |
 | `tools/decompile.py` | plist → constructs database + readable listing |
+| `tools/harvestdb.py` | harvest every shortcut in your library at once (macOS) |
 | `tools/topython.py` | plist → runnable Python |
 | `tools/roundtrip.py` | plist → Python → plist, compared; the test suite |
 | `tools/coverage.py` | what is covered, and what to harvest next |
@@ -238,7 +272,7 @@ Useful for shortcuts too large to comfortably edit on a phone.
 <summary><b>Project layout</b></summary>
 
 ```
-unqforge/       the package: sclib.py plus bundled constructs
+shortcutforge/       the package: sclib.py plus bundled constructs
 tools/         command-line tools
 docs/          guide.md (API) and actions.md (generated reference)
 examples/      runnable shortcut generators
@@ -247,12 +281,12 @@ shortcuts/     test corpus for the round-trip suite
 spec/          action_ids.txt and enum vocabulary (not committed)
 ```
 
-`constructs/` exists twice on purpose. `unqforge/constructs/` is what ships
+`constructs/` exists twice on purpose. `shortcutforge/constructs/` is what ships
 to people who install the package; the top-level one is your working copy.
 Sync before releasing:
 
 ```bash
-cp constructs/*.json unqforge/constructs/
+cp constructs/*.json shortcutforge/constructs/
 ```
 
 At runtime the library loads its bundled constructs first, then anything
@@ -307,7 +341,7 @@ On a Mac:
 cd /System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/
 cat dyld_shared_cache_arm64e* 2>/dev/null | strings -n 8 \
   | grep -oE 'is\.workflow\.actions\.[a-z0-9.]+' | sort -u \
-  > /path/to/unqforge/spec/action_ids.txt
+  > /path/to/shortcutforge/spec/action_ids.txt
 ```
 
 A few minutes; the cache is tens of GB.
