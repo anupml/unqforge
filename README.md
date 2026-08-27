@@ -43,8 +43,27 @@ cd shortcutforge
 pip install -e .
 ```
 
-Python 3.8+, standard library only, no dependencies. Works on macOS,
-Linux, Windows, and on iOS itself through a-Shell.
+Python 3.8+, standard library only, no dependencies.
+
+**On iPhone or iPad** — no Mac needed. Install
+[a-Shell](https://apps.apple.com/app/a-shell/id1473805438), which has no
+`git` or working `pip`, so grab the zip instead:
+
+```bash
+curl -L -o sf.zip https://github.com/anupml/shortcutforge/archive/refs/heads/main.zip
+python3 -c "import zipfile; zipfile.ZipFile('sf.zip').extractall('.')"
+cd shortcutforge-main
+```
+
+Run your scripts from inside that folder and start them with:
+
+```python
+import sys; sys.path.insert(0, ".")
+from shortcutforge import *
+```
+
+The full test suite runs there too — `python3 tools/roundtrip.py shortcuts/*`
+rebuilds 1246 actions on-device, UNQ MUSIC included.
 
 **2. Write it**
 
@@ -68,7 +87,7 @@ python3 hello.py
 **3. Get it onto your phone**
 
 The output is a plain `.plist`. To turn it into an installable shortcut,
-use [Shortcut Source Tool](https://routinehub.co/shortcut/5256/) by
+use [Shortcut Source Tool](https://routinehub.co/shortcut/9026/) by
 gluebyte — it converts both ways, plist to shortcut and back.
 
 AirDrop `hello.plist` to your phone, open Shortcut Source Tool, pick the
