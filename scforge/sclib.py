@@ -212,7 +212,21 @@ def ts(*parts):
         if isinstance(p, str):
             s += p
             u16 += u16_len(p)
+        elif isinstance(p, dict) and \
+                p.get("WFSerializationType") == "WFTextTokenString":
+            # Already a token string. Splice its text in and shift its
+            # attachment offsets, so ts() composes instead of nesting a
+            # serialization dict where a token belongs.
+            v = p.get("Value", {})
+            inner = v.get("string", "")
+            for rng, tok in v.get("attachmentsByRange", {}).items():
+                at["{%d, 1}" % (u16 + int(rng.strip("{}").split(",")[0]))] = tok
+            s += inner
+            u16 += u16_len(inner)
         else:
+            if isinstance(p, dict) and \
+                    p.get("WFSerializationType") == "WFTextTokenAttachment":
+                p = p["Value"]          # unwrap a content-slot token
             at["{%d, 1}" % u16] = p
             s += OBJ
             u16 += 1
