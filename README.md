@@ -1,6 +1,20 @@
-# scforge
+<div align="center">
 
-Generate iOS Shortcuts from Python — from evidence, not guesswork.
+# ⚒️ scforge
+
+**Build iOS Shortcuts from Python — from evidence, not guesswork.**
+
+[![tests](https://github.com/anupml/scforge/actions/workflows/tests.yml/badge.svg)](https://github.com/anupml/scforge/actions/workflows/tests.yml)
+[![python](https://img.shields.io/badge/python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![license](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)](LICENSE)
+[![actions covered](https://img.shields.io/badge/actions-86%2F402-8b5cf6?style=flat-square)](docs/actions.md)
+[![round trip](https://img.shields.io/badge/round--trip-1290%2F1290-06b6d4?style=flat-square)](tools/roundtrip.py)
+
+[Guide](docs/guide.md) · [Action reference](docs/actions.md) · [Examples](examples/)
+
+</div>
+
+---
 
 ```python
 from scforge import *
@@ -49,15 +63,16 @@ Unverified: is.workflow.actions.count: parameter 'WFInput'
 Count really does take `Input`, not `WFInput`. Nobody would guess that.
 The corpus knows it.
 
-**Adding support for an action means decompiling a shortcut that uses
-it.** No code change, no pull request.
+> **Adding support for an action means decompiling a shortcut that uses
+> it.** No code change, no pull request.
 
 ## Status
 
-```
-built-in actions covered    86 / 402
-round-trip suite            1290 / 1290 actions across 13 shortcuts
-```
+| | |
+| --- | --- |
+| Built-in actions covered | **86 / 402** |
+| Round-trip suite | **1290 / 1290** actions across 13 shortcuts |
+| Dependencies | none |
 
 402 is every `is.workflow.actions.*` identifier found in the Shortcuts
 binary, so coverage is measured rather than claimed. Around 80 of those
@@ -68,13 +83,20 @@ The round-trip suite takes each shortcut to Python and back and compares,
 including two 500-action production shortcuts with nested menus, HTTP
 calls and embedded AppleScript.
 
-Covered: text, dictionaries, lists, control flow, HTTP, files, clipboard,
-prompts, menus, contacts, base64, images, dates, device details, and
-`askllm` (Apple Intelligence).
+<details>
+<summary><b>What's covered</b></summary>
+
+Text · dictionaries · lists · control flow · HTTP · files · clipboard ·
+prompts · menus · contacts · base64 · images · dates · device details ·
+`askllm` (Apple Intelligence)
+
+Full list with parameters and shapes: **[docs/actions.md](docs/actions.md)**
+
+</details>
 
 ## A real example
 
-A movie search with poster thumbnails (`examples/tmdb_picker.py`):
+A movie search with poster thumbnails — [`examples/tmdb_picker.py`](examples/tmdb_picker.py):
 
 ```python
 chosen = s.vcard_picker(
@@ -96,29 +118,42 @@ result with the artwork base64'd into the PHOTO field, names the blob
 `.vcf`, and runs it through Get Contacts from Input — which Choose from
 List renders with photos.
 
-`examples/weather.py` needs no API key: it fetches an Open-Meteo forecast
-and reduces the hourly series to min/max/mean on device.
-`examples/model2.py` trains a multi-feature linear regression by gradient
-descent, entirely in Shortcuts actions.
+| Example | What it does | Needs a key |
+| --- | --- | --- |
+| [`weather.py`](examples/weather.py) | Open-Meteo forecast, min/max/mean computed on device | no |
+| [`tmdb_picker.py`](examples/tmdb_picker.py) | Movie search with poster thumbnails | TMDB |
+| [`model2.py`](examples/model2.py) | Linear regression by gradient descent, in Shortcuts actions | no |
+| [`apidemo.py`](examples/apidemo.py) | Minimal ask → HTTP → clipboard | no |
 
 ## Tools
 
-```
-tools/decompile.py    plist -> constructs database + readable listing
-tools/topython.py     plist -> runnable Python
-tools/roundtrip.py    plist -> Python -> plist, compared; the test suite
-tools/coverage.py     what is covered, and what to harvest next
-tools/gendocs.py      regenerate docs/actions.md from constructs/
-tools/scanspec.py     scan Apple's .intentdefinition files for enums
-tools/joinspec.py     complete sampled enums using that scan
-```
+| | |
+| --- | --- |
+| `tools/decompile.py` | plist → constructs database + readable listing |
+| `tools/topython.py` | plist → runnable Python |
+| `tools/roundtrip.py` | plist → Python → plist, compared; the test suite |
+| `tools/coverage.py` | what is covered, and what to harvest next |
+| `tools/gendocs.py` | regenerate `docs/actions.md` from `constructs/` |
+| `tools/scanspec.py` | scan Apple's `.intentdefinition` files for enums |
+| `tools/joinspec.py` | complete sampled enums using that scan |
 
 ```bash
 python3 tools/roundtrip.py shortcuts/*
 python3 tools/coverage.py --rank
 ```
 
-## Layout
+## Reading and editing an existing shortcut
+
+```bash
+python3 tools/decompile.py downloaded.plist            # what does this do?
+python3 tools/topython.py downloaded.plist -o edit.py  # editable Python
+python3 edit.py rebuilt.plist
+```
+
+Useful for shortcuts too large to comfortably edit on a phone.
+
+<details>
+<summary><b>Project layout</b></summary>
 
 ```
 scforge/       the package: sclib.py plus bundled constructs
@@ -143,19 +178,10 @@ in a local `constructs/` directory on top — so an installed copy works out
 of the box, and decompiling a shortcut in your own project extends it
 without reinstalling.
 
-## Reading and editing an existing shortcut
+</details>
 
-```bash
-python3 tools/decompile.py downloaded.plist            # what does this do?
-python3 tools/topython.py downloaded.plist -o edit.py  # editable Python
-python3 edit.py rebuilt.plist
-```
-
-Useful for shortcuts too large to comfortably edit on a phone.
-
-## Notes on the format
-
-Things that cost real debugging time:
+<details>
+<summary><b>Notes on the plist format</b> — things that cost real debugging time</summary>
 
 * Attachment offsets are **UTF-16 code units**, not Python string
   indices. Emoji and mathematical alphanumerics take two units each.
@@ -174,7 +200,10 @@ Things that cost real debugging time:
   `operation` and `OnValue`, no `WF` prefix, despite an
   `is.workflow.actions.*` identifier.
 
-## Limitations
+</details>
+
+<details>
+<summary><b>Limitations</b></summary>
 
 * Decompiled Python uses flat `raw()` calls; control flow keeps its
   grouping identifiers but does not become `with` blocks.
@@ -186,7 +215,10 @@ Things that cost real debugging time:
 * Generated shortcuts are unsigned, so importing them needs "Allow
   Untrusted Shortcuts" enabled. That applies to every tool in this space.
 
-## Extracting the identifier list
+</details>
+
+<details>
+<summary><b>Extracting the identifier list</b></summary>
 
 `spec/action_ids.txt` is the coverage denominator, and is not committed.
 On a Mac:
@@ -200,7 +232,14 @@ cat dyld_shared_cache_arm64e* 2>/dev/null | strings -n 8 \
 
 A few minutes; the cache is tens of GB.
 
+</details>
+
 ## Licence
 
 MIT. The evidence in `constructs/` was extracted from shortcuts built in
 the Shortcuts app; no Apple resources are redistributed here.
+
+Built with help from Claude.
+
+
+🐈 *no cats were harmed in the reverse-engineering of this plist format*
