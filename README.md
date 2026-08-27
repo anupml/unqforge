@@ -74,10 +74,6 @@ gluebyte — it converts both ways, plist to shortcut and back.
 AirDrop `hello.plist` to your phone, open Shortcut Source Tool, pick the
 file, and it hands you a shortcut you can add.
 
-> Shortcuts made outside the app are unsigned, so you need
-> **Settings → Shortcuts → Allow Untrusted Shortcuts** turned on. Every
-> tool in this space has the same requirement.
-
 **4. Build something real**
 
 Every action's parameters are in [docs/actions.md](docs/actions.md), with
@@ -279,8 +275,6 @@ without reinstalling.
   `joinspec.py` completed from Apple's own definitions.
 * `WFCondition` integers 8, 9, 99, 101 and 999 are inferred from usage
   rather than labelled. 100 ("has any value") is confirmed behaviourally.
-* Generated shortcuts are unsigned, so importing them needs "Allow
-  Untrusted Shortcuts" enabled. That applies to every tool in this space.
 
 </details>
 
