@@ -11,7 +11,7 @@ the helper is worth.
 import os
 import sys
 
-from shortcutforge import *                                            # noqa: E402
+from unqforge import *                                            # noqa: E402
 
 A = "is.workflow.actions."
 KEY = os.environ.get("TMDB_KEY", "<API KEY>")

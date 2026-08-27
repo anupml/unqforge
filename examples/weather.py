@@ -10,7 +10,7 @@ API. Uses only actions harvested from real shortcuts.
 """
 import sys
 
-from shortcutforge import *                                            # noqa: E402
+from unqforge import *                                            # noqa: E402
 
 A = "is.workflow.actions."
 API = "https://api.open-meteo.com/v1/forecast"

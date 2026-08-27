@@ -1,10 +1,10 @@
-"""shortcutforge -- generate iOS Shortcuts from Python.
+"""unqforge -- generate iOS Shortcuts from Python.
 
 Every action, parameter key and serialization shape this library can
 emit was observed in a real shortcut on a real device. Anything else
 raises Unverified rather than producing a file that silently misbehaves.
 
-    from shortcutforge import *
+    from unqforge import *
 
     s = SC()
     q = s.action("is.workflow.actions.ask", WFAskActionPrompt="Search?")

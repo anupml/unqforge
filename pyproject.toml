@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "shortcutforge"
+name = "unqforge"
 version = "0.1.0"
 description = "Generate iOS Shortcuts from Python, from evidence rather than guesswork"
 readme = "README.md"
@@ -18,11 +18,11 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/anupml/shortcutforge"
-Documentation = "https://github.com/anupml/shortcutforge/blob/main/docs/guide.md"
+Homepage = "https://github.com/anupml/unqforge"
+Documentation = "https://github.com/anupml/unqforge/blob/main/docs/guide.md"
 
 [tool.setuptools]
-packages = ["shortcutforge"]
+packages = ["unqforge"]
 
 [tool.setuptools.package-data]
-shortcutforge = ["constructs/*.json"]
+unqforge = ["constructs/*.json"]

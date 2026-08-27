@@ -5,7 +5,7 @@ came out of decompiled shortcuts.
 """
 import sys, os
 
-from shortcutforge import *
+from unqforge import *
 
 A = "is.workflow.actions."
 s = SC()
