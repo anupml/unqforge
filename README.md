@@ -33,14 +33,82 @@ s.dump("search.plist")
 
 Import the result into the Shortcuts app and it runs.
 
-## Install
+## Your first shortcut
+
+**1. Install**
 
 ```bash
+git clone https://github.com/anupml/shortcutforge
+cd shortcutforge
 pip install -e .
 ```
 
-Python 3.8+, standard library only, no dependencies. Runs in a-Shell on
-iOS if you want to work on-device.
+Python 3.8+, standard library only, no dependencies. Works on macOS,
+Linux, Windows, and on iOS itself through a-Shell.
+
+**2. Write it**
+
+```python
+# hello.py
+from shortcutforge import *
+
+A = "is.workflow.actions."
+s = SC()
+
+name = s.action(A + "ask", WFAskActionPrompt="What's your name?")
+s.show("Hello ", name, " 👋")
+
+s.dump("hello.plist")
+```
+
+```bash
+python3 hello.py
+```
+
+**3. Get it onto your phone**
+
+The output is a plain `.plist`. To turn it into an installable shortcut,
+use [Shortcut Source Tool](https://routinehub.co/shortcut/9026/) by
+gluebyte — it converts both ways, plist to shortcut and back.
+
+AirDrop `hello.plist` to your phone, open Shortcut Source Tool, pick the
+file, and it hands you a shortcut you can add.
+
+> Shortcuts made outside the app are unsigned, so you need
+> **Settings → Shortcuts → Allow Untrusted Shortcuts** turned on. Every
+> tool in this space has the same requirement.
+
+**4. Build something real**
+
+Every action's parameters are in [docs/actions.md](docs/actions.md), with
+a copy-pasteable snippet for each. `s.action()` returns that action's
+output, so you chain them by passing the value along:
+
+```python
+q = s.action(A + "ask", WFAskActionPrompt="City?")
+r = s.action(A + "downloadurl",
+             WFURL=ts("https://api.open-meteo.com/v1/forecast?...", q))
+temp = s.action(A + "getvalueforkey",
+                WFDictionaryKey="current.temperature_2m", WFInput=r)
+s.show("", temp)
+```
+
+`ts(...)` builds a text field out of literal text and values mixed
+together. Loops, conditions and the rest are in
+[docs/guide.md](docs/guide.md).
+
+### Letting an AI write it
+
+The reference is structured for this. Paste
+[docs/guide.md](docs/guide.md) and [docs/actions.md](docs/actions.md)
+into ChatGPT or Claude, then describe what you want:
+
+> Here are the docs for a Python library that generates iOS Shortcuts.
+> Write me one that asks for a city and shows the current temperature.
+
+Run what comes back. If it uses something unsupported you get a clear
+error naming the correct parameters, which the model can usually fix in
+one turn — rather than a shortcut that imports and quietly does nothing.
 
 ## Why this exists
 
@@ -239,6 +307,5 @@ MIT. The evidence in `constructs/` was extracted from shortcuts built in
 the Shortcuts app; no Apple resources are redistributed here.
 
 Built with help from Claude.
-
 
 🐈 *no cats were harmed in the reverse-engineering of this plist format*
