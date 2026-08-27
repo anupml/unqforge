@@ -1,7 +1,7 @@
 """The same linear model, rebuilt on sclib. Compare against linreg_gd.plist."""
 import sys, os
 
-from scforge import *
+from shortcutforge import *
 
 DATA = "1,100,8;2,300,20;3,200,17;4,400,29"
 LR, EPOCHS = 0.5, 200

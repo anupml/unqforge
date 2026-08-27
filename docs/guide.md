@@ -5,7 +5,7 @@ pip install -e .
 ```
 
 ```python
-from scforge import *
+from shortcutforge import *
 ```
 
 Action reference: [actions.md](actions.md) — generated from the evidence

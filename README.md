@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚒️ scforge
+# ⚒️ shortcutforge
 
 **Build iOS Shortcuts from Python — from evidence, not guesswork.**
 
@@ -16,7 +16,7 @@
 ---
 
 ```python
-from scforge import *
+from shortcutforge import *
 
 A = "is.workflow.actions."
 s = SC()
@@ -155,7 +155,7 @@ Useful for shortcuts too large to comfortably edit on a phone.
 <summary><b>Project layout</b></summary>
 
 ```
-scforge/       the package: sclib.py plus bundled constructs
+shortcutforge/       the package: sclib.py plus bundled constructs
 tools/         command-line tools
 docs/          guide.md (API) and actions.md (generated reference)
 examples/      runnable shortcut generators
@@ -164,12 +164,12 @@ shortcuts/     test corpus for the round-trip suite
 spec/          action_ids.txt and enum vocabulary (not committed)
 ```
 
-`constructs/` exists twice on purpose. `scforge/constructs/` is what ships
+`constructs/` exists twice on purpose. `shortcutforge/constructs/` is what ships
 to people who install the package; the top-level one is your working copy.
 Sync before releasing:
 
 ```bash
-cp constructs/*.json scforge/constructs/
+cp constructs/*.json shortcutforge/constructs/
 ```
 
 At runtime the library loads its bundled constructs first, then anything
@@ -226,7 +226,7 @@ On a Mac:
 cd /System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/
 cat dyld_shared_cache_arm64e* 2>/dev/null | strings -n 8 \
   | grep -oE 'is\.workflow\.actions\.[a-z0-9.]+' | sort -u \
-  > /path/to/scforge/spec/action_ids.txt
+  > /path/to/shortcutforge/spec/action_ids.txt
 ```
 
 A few minutes; the cache is tens of GB.

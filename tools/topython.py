@@ -133,7 +133,7 @@ class Gen:
     # ---------- emit ----------
     def run(self, meta):
         self.scan()
-        L = ["from scforge import *", "", "s = SC()"]
+        L = ["from shortcutforge import *", "", "s = SC()"]
 
         drop = {"WFWorkflowActions", "WFQuickActionSurfaces",
                 "WFWorkflowClientVersion", "WFWorkflowHasOutputFallback",
