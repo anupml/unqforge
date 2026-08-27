@@ -18,8 +18,8 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/YOURNAME/scforge"
-Documentation = "https://github.com/YOURNAME/scforge/blob/main/docs/guide.md"
+Homepage = "https://github.com/anupml/scforge"
+Documentation = "https://github.com/anupml/scforge/blob/main/docs/guide.md"
 
 [tool.setuptools]
 packages = ["scforge"]

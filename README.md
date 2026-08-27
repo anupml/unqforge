@@ -56,7 +56,7 @@ it.** No code change, no pull request.
 
 ```
 built-in actions covered    86 / 402
-round-trip suite            1146 / 1146 actions across 11 shortcuts
+round-trip suite            1290 / 1290 actions across 13 shortcuts
 ```
 
 402 is every `is.workflow.actions.*` identifier found in the Shortcuts
