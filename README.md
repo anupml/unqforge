@@ -4,7 +4,6 @@
 
 **Build iOS Shortcuts from Python — from evidence, not guesswork.**
 
-[![tests](https://github.com/anupml/scforge/actions/workflows/tests.yml/badge.svg)](https://github.com/anupml/scforge/actions/workflows/tests.yml)
 [![python](https://img.shields.io/badge/python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![license](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)](LICENSE)
 [![actions covered](https://img.shields.io/badge/actions-86%2F402-8b5cf6?style=flat-square)](docs/actions.md)
