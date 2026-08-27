@@ -43,13 +43,34 @@ COND = {"<": 0, "<=": 1, ">": 2, ">=": 3, "==": 4, "!=": 5, "between": 1003}
 
 # ------------------------------------------------------------- evidence
 
+BUNDLED = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       "constructs")
+
+
 class Constructs:
-    def __init__(self, folder="constructs"):
+    """The evidence database.
+
+    Loads the constructs shipped with the package, then anything in a
+    local constructs/ directory on top -- so an installed copy works out
+    of the box, and decompiling a shortcut in your own project extends it
+    without touching the install.
+    """
+
+    def __init__(self, folder=None):
+        if folder is not None:
+            sources = [folder]
+        else:
+            sources = [BUNDLED]
+            if os.path.isdir("constructs"):
+                sources.append("constructs")
         self.params = {}       # ident -> {param: set(shapes)}
         self.outputs = {}      # ident -> set(canonical output names)
         self.provenance = {}   # ident -> set(sources)
         self.enums = {}
-        for path in sorted(glob.glob(os.path.join(folder, "*.json"))):
+        seen_any = False
+        for d_ in sources:
+          for path in sorted(glob.glob(os.path.join(d_, "*.json"))):
+            seen_any = True
             src = os.path.basename(path).split(".")[-2]
             d = json.load(open(path))
             for ident, rec in d.get("actions", {}).items():
@@ -62,7 +83,7 @@ class Constructs:
             for k, vals in d.get("enums", {}).items():
                 self.enums.setdefault(k, set()).update(vals)
         if not self.params:
-            raise RuntimeError("no constructs found in %s/" % folder)
+            raise RuntimeError("no constructs found in %s" % ", ".join(sources))
 
     def check(self, ident, params):
         if ident not in self.params:
@@ -119,6 +140,23 @@ class Constructs:
 
 class Unverified(Exception):
     pass
+
+
+TOKEN_TYPES = {"Variable", "ActionOutput", "Ask", "Clipboard",
+               "CurrentDate", "ExtensionInput", "DeviceDetails",
+               "ShortcutInput"}
+
+
+def _is_bare_token(v):
+    """A raw token dict that hasn't been wrapped for a slot yet.
+
+    Excludes the conditional's {Type, Variable} wrapper, which has the
+    same Type key but is already a complete serialization.
+    """
+    return (isinstance(v, dict)
+            and "WFSerializationType" not in v
+            and v.get("Type") in TOKEN_TYPES
+            and set(v) != {"Type", "Variable"})
 
 
 def shape_of(v):
@@ -247,13 +285,32 @@ def E(x):
     return Expr.wrap(x)
 
 
+def _parts(x):
+    """Normalise a callback result into a list of ts() parts."""
+    if x is None:
+        return []
+    if isinstance(x, (list, tuple)):
+        return list(x)
+    return [x]
+
+
 # --------------------------------------------------------- loop scope
 
 class Loop:
     """Resolves Repeat Item / Repeat Index for the depth it was opened at."""
 
-    def __init__(self, depth):
+    def __init__(self, depth, close_uuid=None):
         self.depth = depth
+        self.close_uuid = close_uuid
+
+    @property
+    def results(self):
+        """The loop's own output: every iteration's result, collected.
+
+        Shortcuts attaches this to the CLOSING action of the block, which
+        is why the close carries the UUID rather than the open.
+        """
+        return out(self.close_uuid, "Repeat Results")
 
     def _n(self, base):
         return var(base if self.depth == 1 else "%s %d" % (base, self.depth))
@@ -276,7 +333,43 @@ class SC:
         self.depth = 0
         self.meta = {}          # overrides for top-level plist keys
 
+    def _autowrap(self, ident, params):
+        """Wrap bare values into whichever shape the evidence expects.
+
+        The database already records that WFInput on Set Variable takes a
+        WFTextTokenAttachment and that Input on Calculate Expression takes
+        a WFTextTokenString. There is no reason to make the caller repeat
+        it. Wrapping is derived from what was observed, never guessed, and
+        an ambiguous slot is reported rather than resolved.
+        """
+        known = self.k.params.get(ident)
+        if not known:
+            return params
+        for key, v in list(params.items()):
+            if key in SKIP:
+                continue
+            shapes = known.get(key)
+            if not shapes:
+                continue
+            if _is_bare_token(v):
+                a = "WFTextTokenAttachment" in shapes
+                t = "WFTextTokenString" in shapes
+                if a and t:
+                    raise Unverified(
+                        "%s.%s accepts both attachment and token string; "
+                        "wrap it yourself with att(...) or ts(...)"
+                        % (ident, key))
+                if a:
+                    params[key] = att(v)
+                elif t:
+                    params[key] = ts(v)
+            elif isinstance(v, str) and "str" not in shapes \
+                    and "WFTextTokenString" in shapes:
+                params[key] = ts(v)
+        return params
+
     def _add(self, ident, params):
+        params = self._autowrap(ident, params)
         self.k.check(ident, params)
         self.acts.append({"WFWorkflowActionIdentifier": ident,
                           "WFWorkflowActionParameters": params})
@@ -375,12 +468,14 @@ class SC:
                                else att(count))}
         self._add("is.workflow.actions.repeat.count", p)
         self.depth += 1
+        close = U()
         try:
-            yield Loop(self.depth)
+            yield Loop(self.depth, close)
         finally:
             self.depth -= 1
             self._add("is.workflow.actions.repeat.count",
-                      {"GroupingIdentifier": g, "WFControlFlowMode": 2})
+                      {"GroupingIdentifier": g, "WFControlFlowMode": 2,
+                       "UUID": close})
 
     @contextmanager
     def foreach(self, tok):
@@ -389,12 +484,14 @@ class SC:
                   {"GroupingIdentifier": g, "WFControlFlowMode": 0,
                    "WFInput": att(tok)})
         self.depth += 1
+        close = U()
         try:
-            yield Loop(self.depth)
+            yield Loop(self.depth, close)
         finally:
             self.depth -= 1
             self._add("is.workflow.actions.repeat.each",
-                      {"GroupingIdentifier": g, "WFControlFlowMode": 2})
+                      {"GroupingIdentifier": g, "WFControlFlowMode": 2,
+                       "UUID": close})
 
     @contextmanager
     def if_(self, tok, op, value, upper=None):
@@ -433,6 +530,119 @@ class SC:
 
     def if_gt(self, tok, number):
         return self.if_(tok, ">", number)
+
+    # ------------------------------------------------------------------
+    # higher-level patterns
+    # ------------------------------------------------------------------
+    @contextmanager
+    def if_has_value(self, tok):
+        """If <tok> has any value.
+
+        WFCondition 100 was inferred from the corpus rather than a
+        labelled probe, but a generated shortcut using it behaved
+        correctly on device. Emitted with no WFNumberValue, matching the
+        shape Shortcuts writes. Yields the block's own output (If
+        Result), which is whatever the taken branch produced -- that is
+        how you get a value out of a conditional.
+        """
+        if 100 not in self.k.enums.get("WFCondition", set()):
+            raise Unverified("WFCondition 100 not in evidence")
+        g, close = U(), U()
+        self._add("is.workflow.actions.conditional", {
+            "GroupingIdentifier": g, "WFCondition": 100,
+            "WFControlFlowMode": 0,
+            "WFInput": {"Type": "Variable", "Variable": att(tok)}})
+        try:
+            yield out(close, "If Result")
+        finally:
+            self._add("is.workflow.actions.conditional",
+                      {"GroupingIdentifier": g, "WFControlFlowMode": 2,
+                       "UUID": close})
+
+    def vcard_picker(self, items, label, detail, subtitle=None, photo=None,
+                     photo_base="", prompt="Choose", filename="items.vcf",
+                     number=True):
+        """A rich picker with thumbnails, from any list of dictionaries.
+
+        Shortcuts has no image-list UI, but Choose from List renders
+        contacts with their photos. So build one vCard per item with the
+        artwork base64'd into PHOTO, name the blob .vcf, run it through
+        Get Contacts from Input, and the picker comes back illustrated.
+
+        Each callback receives the loop and returns text parts (a string,
+        a token, or a list of either), so it can call getvalueforkey on
+        the current item:
+
+            s.vcard_picker(
+                results,
+                label=lambda m: s.action(GET, WFDictionaryKey="title",
+                                         WFInput=att(m.item)),
+                detail=lambda m: ["...", something],
+                photo=lambda m: url_token)
+
+        Returns the token holding the chosen item's detail text. The
+        lookup table is assembled on device with Set Value for Key, so no
+        server round trip is needed to merge it.
+        """
+        A = "is.workflow.actions."
+        self._pickers = getattr(self, "_pickers", 0) + 1
+        dvar = "_picked%d" % self._pickers
+        self.setvar(dvar, self.emptydict())
+
+        with self.foreach(items) as it:
+            lbl_parts = _parts(label(it))
+            if number:
+                lbl_parts = [it.index, ". "] + lbl_parts
+            lbl = self.text(ts(*lbl_parts))
+            det = self.text(ts(*_parts(detail(it))))
+            self.setvar(dvar, self._add_ret(
+                A + "setvalueforkey", "Dictionary",
+                WFDictionary=att(var(dvar)),
+                WFDictionaryKey=ts(lbl), WFDictionaryValue=ts(det)))
+
+            pic = None
+            if photo is not None:
+                # Guard the RAW field, not a URL built from it: a prefix
+                # makes the string non-empty even when the field is null,
+                # so the check would always pass and the fetch would 404.
+                raw = photo(it)
+                if raw is not None:
+                    with self.if_has_value(raw) as got:
+                        url = ts(photo_base, raw) if photo_base else ts(raw)
+                        img = self._add_ret(A + "downloadurl",
+                                            "Contents of URL", WFURL=url)
+                        self._add_ret(A + "base64encode", "Base64 Encoded",
+                                      WFInput=att(img),
+                                      WFBase64LineBreakMode="None")
+                    pic = got
+
+            card = ["BEGIN:VCARD\nVERSION:3.0\n",
+                    "N;CHARSET=utf-8:", lbl, ";\n"]
+            if subtitle is not None:
+                card += ["ORG;CHARSET=utf-8:"] + _parts(subtitle(it)) + [";\n"]
+            if pic is not None:
+                card += ["PHOTO;ENCODING=b:", pic, "\n"]
+            card.append("END:VCARD")
+            self.text(ts(*card))
+            loop = it
+
+        blob = self.text(ts(loop.results))
+        named = self._add_ret(A + "setitemname", "Renamed Item",
+                              WFInput=att(blob), WFName=filename)
+        people = self._add_ret(A + "detect.contacts", "Contacts",
+                               WFInput=att(named))
+        chosen = self._add_ret(A + "choosefromlist", "Chosen Item",
+                               WFInput=att(people),
+                               WFChooseFromListActionPrompt=prompt)
+        return self._add_ret(A + "getvalueforkey", "Dictionary Value",
+                             WFDictionaryKey=ts(chosen),
+                             WFInput=att(var(dvar)))
+
+    def _add_ret(self, ident, output, **params):
+        u = U()
+        params["UUID"] = u
+        self._add(ident, params)
+        return out(u, output)
 
     def plist(self):
         pl = {

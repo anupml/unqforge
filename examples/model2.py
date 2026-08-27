@@ -1,8 +1,7 @@
 """The same linear model, rebuilt on sclib. Compare against linreg_gd.plist."""
 import sys, os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from sclib import *
+from scforge import *
 
 DATA = "1,100,8;2,300,20;3,200,17;4,400,29"
 LR, EPOCHS = 0.5, 200
@@ -104,5 +103,3 @@ s.show(var("report"), "b  = ", var("bfin"), "\nMSE = ", var("mse"),
 
 s.dump("linreg_es.plist")
 print("emitted", len(s.acts), "actions, all parameters validated")
-print("\nevidence backing this build:")
-print(s.k.report())

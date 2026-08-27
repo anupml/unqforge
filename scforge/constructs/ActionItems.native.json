@@ -1,0 +1,99 @@
+{
+  "actions": {
+    "is.workflow.actions.addnewreminder": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFCalendarDescriptor": [
+          "dict{Identifier,IsAllCalendar,Title}"
+        ],
+        "WFCalendarItemCalendar": [
+          "str"
+        ],
+        "WFCalendarItemTitle": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.ask": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFAskActionPrompt": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Ask for Input"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.askllm": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFGenerativeResultType": [
+          "str"
+        ],
+        "WFLLMPrompt": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [
+        "Response"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.filter.notes": {
+      "params": {
+        "AppIntentDescriptor": [
+          "dict{ActionRequiresAppInstallation,AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+        ],
+        "UUID": [
+          "str"
+        ],
+        "WFContentItemFilter": [
+          "WFContentPredicateTableTemplate"
+        ]
+      },
+      "output_names": [
+        "Note"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.repeat.each": {
+      "params": {
+        "GroupingIdentifier": [
+          "str"
+        ],
+        "UUID": [
+          "str"
+        ],
+        "WFControlFlowMode": [
+          "int"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [],
+      "count": 2
+    }
+  },
+  "enums": {
+    "WFControlFlowMode": [
+      0,
+      2
+    ]
+  },
+  "token_types": [
+    "ActionOutput",
+    "Variable"
+  ],
+  "aggrandizements": []
+}

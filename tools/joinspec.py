@@ -15,6 +15,15 @@ Run:  python3 joinspec.py [--write]
 Without --write it only reports. With --write it emits
 constructs/enums.spec.json, a stronger provenance tier than harvesting.
 """
+
+import os as _os
+import sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+_sys.path.insert(0, _ROOT)
+_sys.argv = [_sys.argv[0]] + [_os.path.abspath(a) if _os.path.exists(a) else a
+                              for a in _sys.argv[1:]]
+_os.chdir(_ROOT)
+
 import glob, json, os, re, sys
 
 CONSTRUCTS = "constructs"

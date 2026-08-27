@@ -1,0 +1,91 @@
+{
+  "actions": {
+    "is.workflow.actions.askllm": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFGenerativeResultType": [
+          "str"
+        ],
+        "WFLLMModel": [
+          "str"
+        ],
+        "WFLLMPrompt": [
+          "WFTextTokenString",
+          "str"
+        ]
+      },
+      "output_names": [
+        "Response"
+      ],
+      "count": 3
+    },
+    "is.workflow.actions.comment": {
+      "params": {
+        "WFCommentActionText": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 4
+    },
+    "is.workflow.actions.getvalueforkey": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFDictionaryKey": [
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "Dictionary Value"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.list": {
+      "params": {
+        "CustomOutputName": [
+          "str"
+        ],
+        "UUID": [
+          "str"
+        ],
+        "WFItems": [
+          "array"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.showresult": {
+      "params": {
+        "Text": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [],
+      "count": 3
+    },
+    "is.workflow.actions.weather.currentconditions": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Weather Conditions"
+      ],
+      "count": 1
+    }
+  },
+  "enums": {},
+  "token_types": [
+    "ActionOutput"
+  ],
+  "aggrandizements": []
+}

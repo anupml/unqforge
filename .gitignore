@@ -20,3 +20,8 @@ shortcuts/SummarizePDF.wflow
 __pycache__/
 regenerated.plist
 out.plist
+.DS_Store
+*.egg-info/
+build/
+dist/
+__pycache__/

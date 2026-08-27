@@ -16,6 +16,15 @@ Run:  python3 scanspec.py            # scan default system paths
       python3 scanspec.py /some/dir  # scan somewhere specific
 Writes spec_enums.json next to itself.
 """
+
+import os as _os
+import sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+_sys.path.insert(0, _ROOT)
+_sys.argv = [_sys.argv[0]] + [_os.path.abspath(a) if _os.path.exists(a) else a
+                              for a in _sys.argv[1:]]
+_os.chdir(_ROOT)
+
 import json, os, plistlib, sys
 
 ROOTS = [

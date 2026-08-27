@@ -12,6 +12,15 @@ Usage:
   python3 coverage.py --rank       # unharvested actions, by how often
                                    # they appear in shortcuts/
 """
+
+import os as _os
+import sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+_sys.path.insert(0, _ROOT)
+_sys.argv = [_sys.argv[0]] + [_os.path.abspath(a) if _os.path.exists(a) else a
+                              for a in _sys.argv[1:]]
+_os.chdir(_ROOT)
+
 import collections, glob, json, os, plistlib, sys
 
 IDS = "spec/action_ids.txt"

@@ -13,6 +13,15 @@ Usage:
   python3 topython.py shortcut.plist            # print
   python3 topython.py shortcut.plist -o out.py  # write
 """
+
+import os as _os
+import sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+_sys.path.insert(0, _ROOT)
+_sys.argv = [_sys.argv[0]] + [_os.path.abspath(a) if _os.path.exists(a) else a
+                              for a in _sys.argv[1:]]
+_os.chdir(_ROOT)
+
 import argparse, plistlib, re, sys
 
 OBJ = "\ufffc"
@@ -124,7 +133,7 @@ class Gen:
     # ---------- emit ----------
     def run(self, meta):
         self.scan()
-        L = ["from sclib import *", "", "s = SC()"]
+        L = ["from scforge import *", "", "s = SC()"]
 
         drop = {"WFWorkflowActions", "WFQuickActionSurfaces",
                 "WFWorkflowClientVersion", "WFWorkflowHasOutputFallback",

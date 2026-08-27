@@ -1,0 +1,259 @@
+{
+  "actions": {
+    "is.workflow.actions.ask": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFAskActionPrompt": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Ask for Input"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.base64encode": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFBase64LineBreakMode": [
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.choosefromlist": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFChooseFromListActionPrompt": [
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "Chosen Item"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.conditional": {
+      "params": {
+        "GroupingIdentifier": [
+          "str"
+        ],
+        "UUID": [
+          "str"
+        ],
+        "WFCondition": [
+          "int"
+        ],
+        "WFControlFlowMode": [
+          "int"
+        ],
+        "WFInput": [
+          "ConditionalInputWrapper"
+        ]
+      },
+      "output_names": [
+        "If Result"
+      ],
+      "count": 2
+    },
+    "is.workflow.actions.detect.contacts": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "Contacts"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.dictionary": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFItems": [
+          "WFDictionaryFieldValue"
+        ]
+      },
+      "output_names": [
+        "Dictionary"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.downloadurl": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFURL": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [
+        "Contents of URL"
+      ],
+      "count": 2
+    },
+    "is.workflow.actions.gettext": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFTextActionText": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [
+        "Text"
+      ],
+      "count": 4
+    },
+    "is.workflow.actions.getvalueforkey": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFDictionaryKey": [
+          "WFTextTokenString",
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "Dictionary Value"
+      ],
+      "count": 8
+    },
+    "is.workflow.actions.repeat.each": {
+      "params": {
+        "GroupingIdentifier": [
+          "str"
+        ],
+        "UUID": [
+          "str"
+        ],
+        "WFControlFlowMode": [
+          "int"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "Repeat Results"
+      ],
+      "count": 2
+    },
+    "is.workflow.actions.setitemname": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ],
+        "WFName": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Renamed Item"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.setvalueforkey": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFDictionary": [
+          "WFTextTokenAttachment"
+        ],
+        "WFDictionaryKey": [
+          "WFTextTokenString"
+        ],
+        "WFDictionaryValue": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [
+        "Dictionary"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.setvariable": {
+      "params": {
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ],
+        "WFVariableName": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 2
+    },
+    "is.workflow.actions.showresult": {
+      "params": {
+        "Text": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.text.replace": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenString"
+        ],
+        "WFReplaceTextFind": [
+          "str"
+        ],
+        "WFReplaceTextReplace": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Updated Text"
+      ],
+      "count": 1
+    }
+  },
+  "enums": {
+    "WFCondition": [
+      100
+    ],
+    "WFControlFlowMode": [
+      0,
+      2
+    ]
+  },
+  "token_types": [
+    "ActionOutput",
+    "Variable"
+  ],
+  "aggrandizements": []
+}

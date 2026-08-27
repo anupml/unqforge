@@ -1,0 +1,38 @@
+{
+  "actions": {
+    "is.workflow.actions.ask": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFAskActionPrompt": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Ask for Input"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.askllm": {
+      "params": {
+        "FollowUp": [
+          "bool"
+        ],
+        "UUID": [
+          "str"
+        ],
+        "WFLLMPrompt": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    }
+  },
+  "enums": {},
+  "token_types": [
+    "ActionOutput"
+  ],
+  "aggrandizements": []
+}

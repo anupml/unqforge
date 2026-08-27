@@ -12,6 +12,15 @@ first appearance rather than comparing bytes.
 Usage:
   python3 roundtrip.py shortcuts/*.plist shortcuts/*.wflow
 """
+
+import os as _os
+import sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+_sys.path.insert(0, _ROOT)
+_sys.argv = [_sys.argv[0]] + [_os.path.abspath(a) if _os.path.exists(a) else a
+                              for a in _sys.argv[1:]]
+_os.chdir(_ROOT)
+
 import glob, plistlib, re, subprocess, sys, tempfile, os, collections
 
 UUID_RE = re.compile(r"^[0-9A-Fa-f-]{36}$")
@@ -63,7 +72,7 @@ def one(path, here):
     py = os.path.join(tmp, "gen.py")
     out = os.path.join(tmp, "out.plist")
 
-    g = subprocess.run([sys.executable, os.path.join(here, "topython.py"),
+    g = subprocess.run([sys.executable, os.path.join(here, "tools", "topython.py"),
                         path, "-o", py], capture_output=True, text=True)
     if g.returncode:
         return n, "codegen", g.stderr.strip().splitlines()[-1:]
@@ -83,7 +92,7 @@ def one(path, here):
 
 
 def main():
-    here = os.path.dirname(os.path.abspath(__file__))
+    here = _ROOT
     files = []
     for a in sys.argv[1:] or ["shortcuts/*"]:
         files += sorted(glob.glob(a))

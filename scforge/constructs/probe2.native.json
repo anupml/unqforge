@@ -1,0 +1,261 @@
+{
+  "actions": {
+    "is.workflow.actions.adjustdate": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFDate": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.choosefrommenu": {
+      "params": {
+        "GroupingIdentifier": [
+          "str"
+        ],
+        "WFControlFlowMode": [
+          "int"
+        ],
+        "WFMenuItemTitle": [
+          "str"
+        ],
+        "WFMenuItems": [
+          "array"
+        ]
+      },
+      "output_names": [],
+      "count": 3
+    },
+    "is.workflow.actions.detect.dictionary": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.detect.text": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.file": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "File"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.filter.calendarevents": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.filter.files": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.format.date": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFDate": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Formatted Date"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.getbatterylevel": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.getdevicedetails": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFDeviceDetail": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.gettext": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFTextActionText": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.image.convert": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.image.resize": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.lowpowermode.set": {
+      "params": {
+        "OnValue": [
+          "int"
+        ],
+        "operation": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.notification": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.properties.files": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFContentItemPropertyName": [
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.properties.music": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.repeat.count": {
+      "params": {
+        "GroupingIdentifier": [
+          "str"
+        ],
+        "WFControlFlowMode": [
+          "int"
+        ],
+        "WFRepeatCount": [
+          "real"
+        ]
+      },
+      "output_names": [],
+      "count": 2
+    },
+    "is.workflow.actions.round": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.speaktext": {
+      "params": {},
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.text.combine": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "text": [
+          "array"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.text.trimwhitespace": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFInput": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.wifi.set": {
+      "params": {},
+      "output_names": [],
+      "count": 1
+    }
+  },
+  "enums": {
+    "WFControlFlowMode": [
+      0,
+      1,
+      2
+    ]
+  },
+  "token_types": [
+    "ActionOutput",
+    "Variable"
+  ],
+  "aggrandizements": []
+}

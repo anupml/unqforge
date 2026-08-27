@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scforge"
+version = "0.1.0"
+description = "Generate iOS Shortcuts from Python, from evidence rather than guesswork"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+keywords = ["ios", "shortcuts", "plist", "automation", "workflow"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Code Generators",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/YOURNAME/scforge"
+Documentation = "https://github.com/YOURNAME/scforge/blob/main/docs/guide.md"
+
+[tool.setuptools]
+packages = ["scforge"]
+
+[tool.setuptools.package-data]
+scforge = ["constructs/*.json"]

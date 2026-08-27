@@ -1,0 +1,121 @@
+{
+  "actions": {
+    "is.workflow.actions.askllm": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFLLMPrompt": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [
+        "Response"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.choosefrommenu": {
+      "params": {
+        "GroupingIdentifier": [
+          "str"
+        ],
+        "UUID": [
+          "str"
+        ],
+        "WFControlFlowMode": [
+          "int"
+        ],
+        "WFMenuItemTitle": [
+          "str"
+        ],
+        "WFMenuItems": [
+          "array"
+        ],
+        "WFMenuPrompt": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 4
+    },
+    "is.workflow.actions.downloadurl": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFURL": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.file": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFFile": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.repeat.count": {
+      "params": {
+        "GroupingIdentifier": [
+          "str"
+        ],
+        "UUID": [
+          "str"
+        ],
+        "WFControlFlowMode": [
+          "int"
+        ],
+        "WFRepeatCount": [
+          "real"
+        ]
+      },
+      "output_names": [
+        "Repeat Results"
+      ],
+      "count": 2
+    },
+    "is.workflow.actions.showresult": {
+      "params": {
+        "Text": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.url": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFURLActionURL": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "URL"
+      ],
+      "count": 1
+    }
+  },
+  "enums": {
+    "WFControlFlowMode": [
+      0,
+      1,
+      2
+    ]
+  },
+  "token_types": [
+    "ActionOutput",
+    "Ask"
+  ],
+  "aggrandizements": []
+}
