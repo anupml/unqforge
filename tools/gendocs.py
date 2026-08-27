@@ -155,6 +155,13 @@ def main():
          "Every parameter and shape below was observed on a device. "
          "`sclib` refuses to emit anything that is not here, which is why "
          "this file contains no invented keys.", "",
+         "> **Parameters are optional, and the values listed are a lower "
+         "bound.** Shortcuts omits anything left at its default, so a "
+         "default never appears in a corpus. `WFHTTPMethod` lists only "
+         "`POST` for exactly that reason — GET is the default, so leaving "
+         "the parameter out gives you a GET request. Absence of a value "
+         "here means nobody has been observed setting it, not that it is "
+         "illegal.", "",
          "**Provenance** — `native` means Shortcuts wrote the shape itself, "
          "in a shortcut built through the app. `ranok` means we generated it "
          "and it ran correctly on device. Both are evidence; the first is "
@@ -205,7 +212,9 @@ def main():
         L += ["## Enum values", "",
               "Sampled from the corpus, except where `tools/joinspec.py` "
               "completed them from Apple's own definitions — so a legal "
-              "value may still be missing.", "",
+              "value may still be missing. In particular, the default for "
+              "any parameter is usually absent, because Shortcuts does not "
+              "write defaults into the file.", "",
               "| Key | Observed values |", "| --- | --- |"]
         for k in sorted(enums):
             vals = sorted(enums[k], key=lambda v: (isinstance(v, str), v))

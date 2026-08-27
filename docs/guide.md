@@ -56,6 +56,21 @@ s.dump("out.plist")
 `s.meta` overrides top-level plist keys (icon, `WFWorkflowTypes`, input
 classes) if you need something other than the defaults.
 
+### Parameters are optional
+
+Pass only what you want to change. Shortcuts omits anything left at its
+default, which has two consequences worth knowing:
+
+* A parameter you leave out gets its default. `downloadurl` without
+  `WFHTTPMethod` is a GET request.
+* Because defaults are never written to a file, they never appear in the
+  corpus. The values in `actions.md` are a **lower bound** on what is
+  legal, not the full set. `WFHTTPMethod` lists only `POST` for that
+  reason.
+
+So an action with no observed parameters is not necessarily an action
+that takes none — it may just be one nobody has configured yet.
+
 ### `s.action(identifier, output_name=None, **params)`
 
 Emit any harvested action. Returns its output token, or `None` when the
