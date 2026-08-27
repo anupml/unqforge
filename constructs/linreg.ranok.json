@@ -1,0 +1,198 @@
+{
+  "actions": {
+    "is.workflow.actions.calculateexpression": {
+      "params": {
+        "Input": [
+          "WFTextTokenString"
+        ],
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Calculation Result"
+      ],
+      "count": 18
+    },
+    "is.workflow.actions.conditional": {
+      "params": {
+        "GroupingIdentifier": [
+          "str"
+        ],
+        "WFCondition": [
+          "int"
+        ],
+        "WFControlFlowMode": [
+          "int"
+        ],
+        "WFInput": [
+          "ConditionalInputWrapper"
+        ],
+        "WFNumberValue": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 3
+    },
+    "is.workflow.actions.dictionary": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFItems": [
+          "WFDictionaryFieldValue"
+        ]
+      },
+      "output_names": [
+        "Dictionary"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.gettext": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFTextActionText": [
+          "WFTextTokenString",
+          "str"
+        ]
+      },
+      "output_names": [
+        "Text"
+      ],
+      "count": 5
+    },
+    "is.workflow.actions.getvalueforkey": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFDictionaryKey": [
+          "WFTextTokenString"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "Dictionary Value"
+      ],
+      "count": 14
+    },
+    "is.workflow.actions.repeat.count": {
+      "params": {
+        "GroupingIdentifier": [
+          "str"
+        ],
+        "WFControlFlowMode": [
+          "int"
+        ],
+        "WFRepeatCount": [
+          "WFTextTokenAttachment",
+          "real"
+        ]
+      },
+      "output_names": [],
+      "count": 24
+    },
+    "is.workflow.actions.repeat.each": {
+      "params": {
+        "GroupingIdentifier": [
+          "str"
+        ],
+        "WFControlFlowMode": [
+          "int"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [],
+      "count": 4
+    },
+    "is.workflow.actions.setvalueforkey": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFDictionary": [
+          "WFTextTokenAttachment"
+        ],
+        "WFDictionaryKey": [
+          "WFTextTokenString"
+        ],
+        "WFDictionaryValue": [
+          "WFTextTokenString",
+          "str"
+        ]
+      },
+      "output_names": [
+        "Dictionary"
+      ],
+      "count": 8
+    },
+    "is.workflow.actions.setvariable": {
+      "params": {
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ],
+        "WFVariableName": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 41
+    },
+    "is.workflow.actions.showresult": {
+      "params": {
+        "Text": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.text.split": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFTextCustomSeparator": [
+          "str"
+        ],
+        "WFTextSeparator": [
+          "str"
+        ],
+        "text": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [
+        "Split Text"
+      ],
+      "count": 2
+    }
+  },
+  "enums": {
+    "WFCondition": [
+      2
+    ],
+    "WFControlFlowMode": [
+      0,
+      1,
+      2
+    ],
+    "WFTextSeparator": [
+      "Custom"
+    ]
+  },
+  "token_types": [
+    "ActionOutput",
+    "Variable"
+  ],
+  "aggrandizements": [
+    "WFCoercionVariableAggrandizement"
+  ]
+}

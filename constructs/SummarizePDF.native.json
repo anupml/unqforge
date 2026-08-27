@@ -1,0 +1,59 @@
+{
+  "actions": {
+    "com.apple.WritingTools.WritingToolsAppIntentsExtension.SummarizeTextIntent": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "summaryType": [
+          "str"
+        ],
+        "text": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [
+        "Summarize Text"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.gettextfrompdf": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "Text"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.share": {
+      "params": {
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.showresult": {
+      "params": {
+        "Text": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    }
+  },
+  "enums": {},
+  "token_types": [
+    "ActionOutput",
+    "ExtensionInput"
+  ],
+  "aggrandizements": []
+}

@@ -1,0 +1,22 @@
+# Apple's files, copied locally for extraction. Do NOT commit these --
+# they are Apple's copyrighted resources, not yours to redistribute.
+spec/*.intentdefinition
+spec/*.loctable
+spec/*.actionsdata
+spec/wf_keys.txt
+
+# Apple's bundled gallery shortcuts. Fine to test against locally,
+# not fine to republish.
+shortcuts/ActionItems.wflow
+shortcuts/DocumentReview.wflow
+shortcuts/GetStartedWithModels.wflow
+shortcuts/Haiku.wflow
+shortcuts/LeftoverRecipes.wflow
+shortcuts/MorningReport.wflow
+shortcuts/SummarizePDF.wflow
+
+# generated
+*.pyc
+__pycache__/
+regenerated.plist
+out.plist

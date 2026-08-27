@@ -1,0 +1,21 @@
+{
+ "actions": {},
+ "enums": {
+  "WFInputType": [
+   "Date",
+   "Date and Time",
+   "Number",
+   "Text",
+   "Time",
+   "URL"
+  ],
+  "WFTextSeparator": [
+   "Custom",
+   "Every Character",
+   "New Lines",
+   "Spaces"
+  ]
+ },
+ "token_types": [],
+ "aggrandizements": []
+}

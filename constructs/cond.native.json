@@ -1,0 +1,128 @@
+{
+  "actions": {
+    "is.workflow.actions.conditional": {
+      "params": {
+        "GroupingIdentifier": [
+          "str"
+        ],
+        "WFAnotherNumber": [
+          "str"
+        ],
+        "WFCondition": [
+          "int"
+        ],
+        "WFControlFlowMode": [
+          "int"
+        ],
+        "WFInput": [
+          "ConditionalInputWrapper"
+        ],
+        "WFNumberValue": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 24
+    },
+    "is.workflow.actions.gettext": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFTextActionText": [
+          "WFTextTokenString",
+          "str"
+        ]
+      },
+      "output_names": [
+        "Text"
+      ],
+      "count": 2
+    },
+    "is.workflow.actions.getvalueforkey": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFDictionaryKey": [
+          "WFTextTokenString"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "Dictionary Value"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.repeat.count": {
+      "params": {
+        "GroupingIdentifier": [
+          "str"
+        ],
+        "WFControlFlowMode": [
+          "int"
+        ],
+        "WFRepeatCount": [
+          "real"
+        ]
+      },
+      "output_names": [],
+      "count": 4
+    },
+    "is.workflow.actions.setvalueforkey": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFDictionary": [
+          "WFTextTokenAttachment"
+        ],
+        "WFDictionaryKey": [
+          "WFTextTokenString"
+        ],
+        "WFDictionaryValue": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.setvariable": {
+      "params": {
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ],
+        "WFVariableName": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 2
+    }
+  },
+  "enums": {
+    "WFCondition": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1003
+    ],
+    "WFControlFlowMode": [
+      0,
+      1,
+      2
+    ]
+  },
+  "token_types": [
+    "ActionOutput",
+    "Variable"
+  ],
+  "aggrandizements": [
+    "WFCoercionVariableAggrandizement"
+  ]
+}
