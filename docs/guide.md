@@ -100,7 +100,7 @@ code, where the UUID must be preserved. Prefer `action()` for authoring.
 
 ```python
 s.text(t)              # Text action; t is a str or ts(...)
-s.setvar(name, token)  # Set Variable
+s.setvar(name, token)  # Set Variable; a literal gets a Text action first
 s.calc(expr)           # Calculate Expression; takes an E(...) expression
 s.split(token, sep)    # Split Text on a custom separator
 s.emptydict()          # empty Dictionary
@@ -182,14 +182,27 @@ with s.if_has_value(token) as got:
 
 Conditionals do **not** affect repeat depth numbering.
 
-**Comparing two variables is not supported.** `WFNumberValue` has only
-ever been observed holding a literal. Subtract and compare against zero:
+**Comparing against a variable works.** `WFNumberValue` holds either a
+literal or a `WFTextTokenAttachment`, so both forms emit correctly:
 
 ```python
-gap = s.calc(E(a) - E(b))
-with s.if_(gap, ">", 0):
+with s.if_(z, ">", var("best")):
+    s.setvar("best", z)
+```
+
+**But every comparison is numeric.** `if_` coerces its input to
+`WFNumberContentItem` and only ever writes `WFNumberValue`, so comparing
+text fails *silently* -- no exception, no broken action on device, just a
+condition that is never true:
+
+```python
+with s.if_(label, "==", other_label):   # WRONG: never matches
     ...
 ```
+
+The corpus lists `WFConditionalActionString` alongside `WFNumberValue`, so
+Shortcuts clearly has a text path; sclib does not implement it yet. Until
+it does, compare numbers only.
 
 ---
 
