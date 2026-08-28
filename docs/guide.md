@@ -100,12 +100,12 @@ code, where the UUID must be preserved. Prefer `action()` for authoring.
 
 ```python
 s.text(t)              # Text action; t is a str or ts(...)
-s.setvar(name, token)  # Set Variable; a literal gets a Text action first
+s.setvar(name, value)  # Set Variable; a literal gets a Text action first
 s.calc(expr)           # Calculate Expression; takes an E(...) expression
 s.split(token, sep)    # Split Text on a custom separator
 s.emptydict()          # empty Dictionary
-s.getval(dname, key)   # Get Value for Key, key is a list of ts parts
-s.setval(dname, key, value)
+s.getval(d, key)       # Get Value for Key; d is a dict token or a variable name
+s.setval(d, key, value)  # key and value take a str, a token, or ts parts
 s.show(*parts)         # Show Result
 ```
 
