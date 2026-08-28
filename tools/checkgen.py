@@ -1,21 +1,31 @@
 #!/usr/bin/env python3
 """
-Static-check a generated unqforge script before running it.
+Static-check a generated script before running it.
 
-Running a model's script fails at the first bad line, so a script with six
-problems takes six round trips to survey -- and every fix you make on its
-behalf contaminates the result. This walks the AST instead and reports
-everything at once, without executing anything.
+A script written against sclib fails at the first bad line, so surveying
+one with six problems takes six round trips -- and fixing them by hand as
+you go destroys whatever you were trying to measure. This walks the AST
+and reports every call to something that does not exist, without
+executing anything.
 
-    python3 checkgen.py gemini.py
+Useful mainly for scripts an LLM wrote: inventing a plausible method is a
+far more common failure than misusing a real one.
+
+  python3 tools/checkgen.py path/to/script.py
 """
-import ast
-import inspect
-import sys
+import os as _os
+import sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+_sys.path.insert(0, _ROOT)
+_os.chdir(_ROOT)
 
-sys.path.insert(0, ".")
-from unqforge import SC  # noqa: E402
-import unqforge  # noqa: E402
+import ast                                                   # noqa: E402
+import inspect                                               # noqa: E402
+import sys                                                   # noqa: E402
+from collections import Counter                              # noqa: E402
+
+import unqforge                                              # noqa: E402
+from unqforge import SC                                      # noqa: E402
 
 
 def sig(name):
@@ -26,68 +36,52 @@ def sig(name):
 
 
 def main():
-    path = sys.argv[1] if len(sys.argv) > 1 else "gemini.py"
-    tree = ast.parse(open(path).read(), path)
+    if len(sys.argv) < 2:
+        sys.exit("usage: checkgen.py <script.py>")
+    path = sys.argv[1]
+    if not _os.path.exists(path):
+        sys.exit("no such file: %s" % path)
 
-    real = {m for m in dir(SC) if not m.startswith("_")}
+    tree = ast.parse(open(path).read(), path)
+    methods = {m for m in dir(SC) if not m.startswith("_")}
     module = {m for m in dir(unqforge) if not m.startswith("_")}
 
-    invented, calls, name_slots = [], {}, []
+    calls = Counter()
+    bad_method, bad_func = [], []
 
     for node in ast.walk(tree):
         if not isinstance(node, ast.Call):
             continue
         f = node.func
-        # s.method(...)
         if isinstance(f, ast.Attribute) and isinstance(f.value, ast.Name):
+            # <builder>.method(...) -- the builder is conventionally s
             if f.value.id == "s":
-                m = f.attr
-                calls[m] = calls.get(m, 0) + 1
-                if m not in real:
-                    invented.append((node.lineno, "s.%s" % m))
-                # getval/setval take a VARIABLE NAME, not a token
-                if m in ("getval", "setval") and node.args:
-                    a0 = node.args[0]
-                    if not isinstance(a0, ast.Constant) or \
-                            not isinstance(a0.value, str):
-                        name_slots.append((node.lineno, m,
-                                           ast.dump(a0)[:60]))
-        # bare module-level function
-        elif isinstance(f, ast.Name):
-            if f.id not in module and f.id not in dir(__builtins__) \
-                    and f.id not in {"print", "len", "range", "sorted",
-                                     "sum", "max", "min", "set", "list",
-                                     "dict", "float", "int", "str"}:
-                pass  # locals and stdlib; not worth flagging
+                calls[f.attr] += 1
+                if f.attr not in methods:
+                    bad_method.append((node.lineno, "s.%s" % f.attr))
+        elif isinstance(f, ast.Name) and f.id in ("var", "att", "ts", "out",
+                                                  "E", "num", "U"):
+            if f.id not in module:
+                bad_func.append((node.lineno, f.id))
 
-    print("=== methods called on s ===")
-    for m in sorted(calls):
-        mark = "  " if m in real else "??"
-        print(" %s %-14s %3d×   %s" % (mark, m, calls[m],
-                                       sig(m) if m in real else "NOT IN SC"))
+    print("methods used")
+    for m, n in sorted(calls.items()):
+        ok = m in methods
+        print("  %s %-14s %3dx  %s" % ("  " if ok else "!!", m, n,
+                                       sig(m) if ok else "DOES NOT EXIST"))
 
-    print("\n=== invented API ===")
-    if invented:
-        for ln, name in invented:
-            print("  line %-5d %s" % (ln, name))
+    bad = bad_method + bad_func
+    print("\ninvented API")
+    if bad:
+        for lineno, name in sorted(bad):
+            print("  line %-5d %s" % (lineno, name))
+        print("\n%d call site%s to something that does not exist."
+              % (len(bad), "" if len(bad) == 1 else "s"))
     else:
         print("  none")
 
-    print("\n=== getval/setval first argument ===")
-    print("  signature: %s" % sig("getval"))
-    print("             %s" % sig("setval"))
-    print("  These take a variable NAME (a str). A token passed here ends up")
-    print("  as att(var(<dict>)) -- VariableName holding a dict, which the")
-    print("  token validator cannot see because Type is still 'Variable'.")
-    if name_slots:
-        for ln, m, dump in name_slots:
-            print("  line %-5d s.%s(%s...)" % (ln, m, dump))
-    else:
-        print("  all call sites pass a literal string -- fine")
-
-    print("\n%d invented, %d suspect name slots"
-          % (len(invented), len(name_slots)))
+    return 1 if bad else 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

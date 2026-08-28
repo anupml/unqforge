@@ -581,7 +581,11 @@ class SC:
         KEY NAMES, so a variable key silently became the text
         "TypeVariableName". A str or a token is one part, not a sequence.
         """
-        return [key] if isinstance(key, (str, dict)) else list(key)
+        if isinstance(key, (str, dict)):
+            return [key]
+        if isinstance(key, (int, float)) and not isinstance(key, bool):
+            return [num(key)]        # a number is text, not a token
+        return list(key)
 
     def getval(self, dname, key):
         u = U()

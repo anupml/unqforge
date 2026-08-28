@@ -246,6 +246,7 @@ shortcuts and running `decompile.py`.
 | --- | --- |
 | `tools/decompile.py` | plist → constructs database + readable listing |
 | `tools/harvestdb.py` | harvest every shortcut in your library at once (macOS) |
+| `tools/checkgen.py` | static-check a generated script for API that does not exist |
 | `tools/topython.py` | plist → runnable Python |
 | `tools/roundtrip.py` | plist → Python → plist, compared; the test suite |
 | `tools/coverage.py` | what is covered, and what to harvest next |
