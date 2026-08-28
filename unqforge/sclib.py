@@ -67,6 +67,7 @@ class Constructs:
         self.outputs = {}      # ident -> set(canonical output names)
         self.provenance = {}   # ident -> set(sources)
         self.enums = {}
+        self.token_types = set()   # legal Type values inside an attachment
         seen_any = False
         for d_ in sources:
           for path in sorted(glob.glob(os.path.join(d_, "*.json"))):
@@ -82,6 +83,10 @@ class Constructs:
                 self.provenance.setdefault(ident, set()).add(src)
             for k, vals in d.get("enums", {}).items():
                 self.enums.setdefault(k, set()).update(vals)
+            self.token_types.update(d.get("token_types", ()))
+        if not self.token_types:
+            # constructs files written before harvestdb recorded the key
+            self.token_types = set(TOKEN_TYPES)
         if not self.params:
             raise RuntimeError("no constructs found in %s" % ", ".join(sources))
 
@@ -100,6 +105,9 @@ class Constructs:
                 raise Unverified("%s.%s: shape %r never observed "
                                  "(known: %s)" % (ident, k, sh,
                                                   sorted(known[k])))
+            errs = check_tokens(v, self.token_types, "%s.%s" % (ident, k))
+            if errs:
+                raise Unverified(errs[0])
 
     def output_name_for(self, ident):
         """Canonical OutputName for an action, or None if never observed.
@@ -180,6 +188,60 @@ def shape_of(v):
     if isinstance(v, list):
         return "array"
     return type(v).__name__
+
+
+def check_tokens(v, token_types, path):
+    """Verify every token slot holds a real token.
+
+    shape_of() reports the serialization envelope and stops there, so an
+    attachment wrapping the integer 0 comes back as
+    "WFTextTokenAttachment" and validates clean against the corpus. On
+    device that variable is nil and every later arithmetic reading it is
+    garbage. Round-trip cannot catch this: the decoder reads the bad
+    shape back the same way it was written, so encoder and decoder agree
+    with each other while both disagree with Shortcuts.
+
+    Returns a list of messages; empty means nothing wrong.
+    """
+    errs = []
+
+    def walk(node, p):
+        if isinstance(node, dict):
+            st = node.get("WFSerializationType")
+            if st == "WFTextTokenAttachment":
+                inner = node.get("Value")
+                if not isinstance(inner, dict):
+                    errs.append(
+                        "%s: attachment wraps the literal %r. Every token "
+                        "slot needs a variable or an action output -- put a "
+                        "Text action in front" % (p, inner))
+                elif inner.get("Type") not in token_types:
+                    errs.append("%s: token Type %r never observed "
+                                "(evidence: %s)"
+                                % (p, inner.get("Type"),
+                                   ", ".join(sorted(token_types))))
+                return
+            if st == "WFTextTokenString":
+                val = node.get("Value")
+                if isinstance(val, dict):
+                    ranges = val.get("attachmentsByRange") or {}
+                    for rng, tok in ranges.items():
+                        if not isinstance(tok, dict):
+                            errs.append("%s: attachment at %s is the literal "
+                                        "%r" % (p, rng, tok))
+                        elif tok.get("Type") not in token_types:
+                            errs.append("%s: attachment at %s has Type %r, "
+                                        "never observed"
+                                        % (p, rng, tok.get("Type")))
+                return
+            for k, x in node.items():
+                walk(x, "%s.%s" % (p, k))
+        elif isinstance(node, list):
+            for i, x in enumerate(node):
+                walk(x, "%s[%d]" % (p, i))
+
+    walk(v, path)
+    return errs
 
 
 # ------------------------------------------------------------- tokens
@@ -427,9 +489,39 @@ class SC:
                   {"UUID": u, "WFTextActionText": t})
         return out(u, "Text")
 
+    def _token(self, v):
+        """Coerce v into something that can legally sit inside att().
+
+        Shortcuts' UI has no literal field on Set Variable, which is why
+        all 1798 in the corpus take a token: a literal always arrives via
+        a Text action. So emit that action rather than wrapping the raw
+        value, which produces an attachment with nothing inside it and a
+        nil variable on device.
+        """
+        if _is_bare_token(v):
+            return v
+        if isinstance(v, dict):
+            st = v.get("WFSerializationType")
+            if st == "WFTextTokenAttachment":
+                return v["Value"]            # already wrapped, unwrap once
+            if st == "WFTextTokenString":
+                return self.text(v)
+            raise Unverified("cannot put shape %r in a token slot"
+                             % shape_of(v))
+        if isinstance(v, bool):
+            raise Unverified(
+                "no evidence for how Shortcuts stores a boolean literal in "
+                "a variable; pass the text you want instead")
+        if isinstance(v, (int, float)):
+            return self.text(num(v))
+        if isinstance(v, str):
+            return self.text(v)
+        raise Unverified("cannot put %r in a token slot" % (v,))
+
     def setvar(self, name, tok):
+        """Set a variable from a token, or from a literal via a Text action."""
         self._add("is.workflow.actions.setvariable",
-                  {"WFVariableName": name, "WFInput": att(tok)})
+                  {"WFVariableName": name, "WFInput": att(self._token(tok))})
 
     def calc(self, expr):
         u = U()
@@ -526,11 +618,11 @@ class SC:
              "WFInput": {"Type": "Variable", "Variable": {
                  "Value": coerced,
                  "WFSerializationType": "WFTextTokenAttachment"}},
-             "WFNumberValue": num(value)}
+             "WFNumberValue": self._cmpvalue(value)}
         if op == "between":
             if upper is None:
                 raise ValueError("'between' needs upper")
-            p["WFAnotherNumber"] = num(upper)
+            p["WFAnotherNumber"] = self._cmpvalue(upper, "WFAnotherNumber")
         self._add("is.workflow.actions.conditional", p)
         if IF_COUNTS_DEPTH:
             self.depth += 1
@@ -541,6 +633,31 @@ class SC:
                 self.depth -= 1
             self._add("is.workflow.actions.conditional",
                       {"GroupingIdentifier": g, "WFControlFlowMode": 2})
+
+    def _cmpvalue(self, v, key="WFNumberValue"):
+        """Right-hand side of a comparison.
+
+        num() is str() for anything that is not a float, so a token passed
+        here used to serialise as the Python repr of a dict --
+        "{'Type': 'Variable', 'VariableName': 'max_z'}" written into
+        WFNumberValue. shape_of() calls that a str, which is legal, so it
+        validated clean and compared against that text on device.
+
+        Comparing against a variable is something Shortcuts supports, so
+        honour it if the corpus says WFNumberValue takes a token string,
+        and refuse rather than guess if it does not.
+        """
+        if not isinstance(v, dict):
+            return num(v)
+        shapes = self.k.params.get("is.workflow.actions.conditional",
+                                   {}).get(key, set())
+        if "WFTextTokenAttachment" in shapes:
+            return att(v)
+        raise Unverified(
+            "if_ was given a token as the comparison value, but "
+            "WFNumberValue has only ever been observed as %s. Decompile a "
+            "shortcut that compares against a variable to learn the real "
+            "shape before using this." % (sorted(shapes) or "nothing"))
 
     def if_gt(self, tok, number):
         return self.if_(tok, ">", number)
