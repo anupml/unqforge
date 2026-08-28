@@ -15,6 +15,37 @@ API reference for `sclib`, plus the command-line tools.
 
 ---
 
+## A whole one
+
+Everything below is a fragment of this. Paste it, run it, and open the
+result in Shortcuts.
+
+```python
+from unqforge import *
+
+s = SC()
+
+s.setvar("total", 0)                    # a literal, so a Text action
+                                        # is emitted in front of it
+with s.repeat(5) as i:
+    s.setvar("total", s.calc(E(var("total")) + E(i.index)))
+
+with s.if_(var("total"), ">", 10) as br:
+    s.show("big: ", var("total"))
+    br.otherwise()
+    s.show("small: ", var("total"))
+
+s.dump("sum.plist")
+```
+
+Later examples use `A` as shorthand for the identifier prefix:
+
+```python
+A = "is.workflow.actions."
+```
+
+---
+
 ## Concepts
 
 **A shortcut is a flat list.** The Shortcuts UI shows nesting, but
@@ -326,6 +357,37 @@ Wrong key name — check the list in the message.
 Unverified: x.y: shape 'S' never observed (known: [...])
 ```
 Right key, wrong wrapper. Usually `att()` vs `ts()`.
+
+```
+Unverified: x.y: attachment wraps the literal 0. Every token slot needs a
+variable or an action output -- put a Text action in front
+```
+A content slot was handed a raw value. `s.setvar` does this for you; if
+you built the attachment yourself, put a `s.text(...)` in front and pass
+its output instead. On device an attachment with nothing in it makes the
+variable nil, and every later calculation reading it is garbage — which
+is why this is refused at emit time rather than left to fail quietly.
+
+```
+Unverified: x.y: token Type 'T' never observed (evidence: ...)
+```
+The wrapper is right but what is inside is not a token Shortcuts writes.
+The legal set comes from `token_types` in your constructs, not from a
+list in the library.
+
+```
+Unverified: x.y: Variable token has VariableName {...}, not a string --
+var() was given a token instead of a name
+```
+`var()` takes a variable *name*. Passing a token yields `var(<dict>)`,
+which has a legal `Type` and a meaningless payload. If you already hold a
+token, use it directly — `getval` and `setval` accept either.
+
+```
+Unverified: x.y: ActionOutput token has OutputUUID ..., not a string
+```
+Same shape of mistake on the other token type, usually from building
+`out(...)` by hand rather than using the value an action method returned.
 
 ```
 AssertionError: emitted file differs from what we built: <path>
