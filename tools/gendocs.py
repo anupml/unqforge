@@ -6,7 +6,12 @@ The action reference is data, not prose. Writing it by hand would be
 worse than the JSON and stale the moment anyone decompiles another
 shortcut, so it is generated instead.
 
+Actions that need a third-party app installed are left out by default.
+They were harvested from whatever happened to be on this machine, so
+documenting them advertises actions that do not exist for anyone else.
+
   python3 tools/gendocs.py
+  python3 tools/gendocs.py --include-app-specific
 """
 
 import os as _os
@@ -15,6 +20,7 @@ _ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 _sys.path.insert(0, _ROOT)
 _os.chdir(_ROOT)
 
+import argparse
 import glob
 import json
 import os
@@ -62,14 +68,44 @@ ORDER = ["Text", "Dictionaries", "Lists", "Control flow", "Variables",
          "Maths", "Network", "Files", "Input & output", "Media & images",
          "Dates", "Properties", "Device", "Contacts & calendar", "Weather",
          "Apple Intelligence", "Scripting", "Other",
-         "Third-party (App Intents)"]
+         "Apple apps", "Requires a third-party app"]
 
 HEAD = {h: g for g, heads in GROUPS.items() for h in heads}
 
+# Third-party actions that are kept anyway. a-Shell is the documented way
+# to run this toolchain on iOS, so its actions are the one case where a
+# reader is likely to have the app.
+KEEP_APP_SPECIFIC = ()
+
+
+def availability(ident):
+    """Which devices can actually run this action.
+
+    builtin      ships inside Shortcuts itself; present on every device.
+    apple_app    a stock Apple app. Present by default, but the user can
+                 delete Notes or Reminders, so it is not guaranteed.
+    requires_app needs a third-party app installed. Both modern App
+                 Intents (UNQ.Lathe.*) and older Intents-framework
+                 extensions (AsheKube.app.*) land here — they serialise
+                 differently but have the same availability problem.
+
+    The identifier prefix carries all of this. The AppIntentDescriptor
+    parameter names the owning bundle, but only in its *value*, and the
+    corpus records shapes rather than values — so it adds nothing here.
+    """
+    if ident.startswith("is.workflow.actions."):
+        return "builtin"
+    if ident.startswith("com.apple."):
+        return "apple_app"
+    return "requires_app"
+
 
 def group_of(ident):
-    if not ident.startswith("is.workflow.actions."):
-        return "Third-party (App Intents)"
+    avail = availability(ident)
+    if avail == "apple_app":
+        return "Apple apps"
+    if avail == "requires_app":
+        return "Requires a third-party app"
     return HEAD.get(ident[len("is.workflow.actions."):].split(".")[0],
                     "Other")
 
@@ -128,10 +164,48 @@ def snippet(ident, rec, enums):
                                               ",\n        ".join(args))
 
 
+def drop_app_specific(actions, enums):
+    """Remove actions that need a third-party app, and any enum vocabulary
+    that only those actions used.
+
+    Enums are keyed by parameter name across the whole corpus, not per
+    action, so filtering the action list alone would still leave a Lathe
+    parameter's values sitting in the enum table. Only keys that an
+    excluded action used and no surviving action uses are dropped —
+    vocabulary from constructs/enums.spec.json, which comes from Apple's
+    own definitions and may match no harvested action at all, is left
+    alone.
+    """
+    gone = {i: r for i, r in actions.items()
+            if availability(i) == "requires_app"
+            and i not in KEEP_APP_SPECIFIC}
+    for ident in gone:
+        del actions[ident]
+
+    dead = {p for r in gone.values() for p in r["params"]}
+    live = {p for r in actions.values() for p in r["params"]}
+    for key in dead - live:
+        enums.pop(key, None)
+    return gone
+
+
 def main():
+    ap = argparse.ArgumentParser(
+        description="generate docs/actions.md from constructs/")
+    ap.add_argument("--include-app-specific", action="store_true",
+                    help="also document actions that need a third-party "
+                         "app installed. Off by default: they come from "
+                         "whatever is on the harvesting machine and do "
+                         "not exist on anyone else's device.")
+    args = ap.parse_args()
+
     if not os.path.isdir("constructs"):
         sys.exit("no constructs/ -- see README")
     actions, enums, prov = load()
+
+    dropped = {}
+    if not args.include_app_specific:
+        dropped = drop_app_specific(actions, enums)
 
     by = defaultdict(list)
     for ident in sorted(actions):
@@ -150,8 +224,11 @@ def main():
          "| **Categories** | %d |" % len(groups),
          "| **Observed uses** | %d |" % total_seen,
          "| **Confirmed by Shortcuts itself** | %d |" % n_native,
-         "| **Confirmed by running only** | %d |" % n_ranok,
-         "",
+         "| **Confirmed by running only** | %d |" % n_ranok]
+    if dropped:
+        L.append("| **Left out (need an app installed)** | %d |"
+                 % len(dropped))
+    L += ["",
          "Every parameter and shape below was observed on a device. "
          "`sclib` refuses to emit anything that is not here, which is why "
          "this file contains no invented keys.", "",
@@ -165,7 +242,19 @@ def main():
          "**Provenance** — `native` means Shortcuts wrote the shape itself, "
          "in a shortcut built through the app. `ranok` means we generated it "
          "and it ran correctly on device. Both are evidence; the first is "
-         "stronger.", "", "---", "", "## Index", ""]
+         "stronger.", ""]
+
+    if dropped:
+        L += ["> **%d action%s that need a third-party app installed "
+              "%s left out.** They were harvested from a real library, so "
+              "the shapes are correct — but the app has to be on the "
+              "device for the action to exist at all, and a shortcut "
+              "referencing a missing one imports as a broken action. "
+              "Regenerate with `--include-app-specific` if you want them."
+              % (len(dropped), "" if len(dropped) == 1 else "s",
+                 "is" if len(dropped) == 1 else "are"), ""]
+
+    L += ["---", "", "## Index", ""]
 
     for g in groups:
         L.append("**[%s](#%s)** — %s" % (
@@ -226,6 +315,12 @@ def main():
     open(OUT, "w").write("\n".join(L) + "\n")
     print("wrote %s — %d actions in %d categories, %d enum keys"
           % (OUT, len(actions), len(groups), len(enums)))
+    if dropped:
+        print("left out %d action%s needing a third-party app: %s"
+              % (len(dropped), "" if len(dropped) == 1 else "s",
+                 ", ".join(sorted(dropped)[:4])
+                 + (", ..." if len(dropped) > 4 else "")))
+        print("pass --include-app-specific to document them anyway")
 
 
 if __name__ == "__main__":

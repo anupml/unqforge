@@ -34,6 +34,7 @@ import sys
 from collections import Counter
 
 from decompile import Analysis, analyse, check_offsets      # noqa: E402
+from gendocs import availability                            # noqa: E402
 
 DB = os.path.expanduser("~/Library/Shortcuts/Shortcuts.sqlite")
 
@@ -78,15 +79,26 @@ def main():
     if not os.path.exists(args.db):
         sys.exit("no database at %s" % args.db)
 
-    # read-only URI: this is a live library, never write to it
+    # read-only URI: this is a live library, never write to it.
+    #
+    # Catch DatabaseError, not OperationalError. The sqlite3 hierarchy is
+    # Error -> DatabaseError -> OperationalError, and a Full Disk Access
+    # denial raises the parent, so catching the child lets it through as a
+    # traceback. The denial can also surface on the first read rather than
+    # on connect, depending on the macOS version, so both are inside.
     try:
         con = sqlite3.connect("file:%s?mode=ro" % args.db, uri=True)
-    except sqlite3.OperationalError as e:
-        sys.exit("cannot open the database (%s).\nGrant Terminal Full Disk "
-                 "Access in System Settings, then reopen Terminal." % e)
-
-    rows = list(con.execute(QUERY))
-    con.close()
+        rows = list(con.execute(QUERY))
+        con.close()
+    except sqlite3.DatabaseError as e:
+        sys.exit("cannot read the library (%s).\n\n"
+                 "Terminal needs Full Disk Access:\n"
+                 "  System Settings -> Privacy & Security -> Full Disk "
+                 "Access -> add\n  Terminal (or iTerm), then quit it "
+                 "completely and reopen.\n\n"
+                 "The permission is per-app and does not survive some "
+                 "updates, so it can\nlapse after it has worked before."
+                 % e)
 
     A = Analysis()
     ok = skipped = total_actions = 0
@@ -125,6 +137,20 @@ def main():
     print("\nmost used:")
     for ident, n in used.most_common(15):
         print("  %-52s %d" % (ident, n))
+
+    local = sorted(i for i in A.actions
+                   if availability(i) == "requires_app")
+    if local:
+        print("\n%d action%s came from apps installed on this machine:"
+              % (len(local), "" if len(local) == 1 else "s"))
+        for ident in local[:10]:
+            print("   %s" % ident)
+        if len(local) > 10:
+            print("   ... and %d more" % (len(local) - 10))
+        print("These do not exist on anyone else's device. They stay in "
+              "the corpus\nso sclib can still validate them, but "
+              "gendocs.py keeps them out of\ndocs/actions.md unless you "
+              "pass --include-app-specific.")
 
     if A.violations:
         print("\n%d offset/consistency warnings (older shortcuts often "

@@ -4,17 +4,20 @@
 
 | | |
 | --- | --- |
-| **Actions** | 174 |
+| **Actions** | 157 |
 | **Categories** | 19 |
-| **Observed uses** | 29090 |
-| **Confirmed by Shortcuts itself** | 174 |
+| **Observed uses** | 29048 |
+| **Confirmed by Shortcuts itself** | 157 |
 | **Confirmed by running only** | 0 |
+| **Left out (need an app installed)** | 17 |
 
 Every parameter and shape below was observed on a device. `sclib` refuses to emit anything that is not here, which is why this file contains no invented keys.
 
 > **Parameters are optional, and the values listed are a lower bound.** Shortcuts omits anything left at its default, so a default never appears in a corpus. `WFHTTPMethod` lists only `POST` for exactly that reason — GET is the default, so leaving the parameter out gives you a GET request. Absence of a value here means nobody has been observed setting it, not that it is illegal.
 
 **Provenance** — `native` means Shortcuts wrote the shape itself, in a shortcut built through the app. `ranok` means we generated it and it ran correctly on device. Both are evidence; the first is stronger.
+
+> **17 actions that need a third-party app installed are left out.** They were harvested from a real library, so the shapes are correct — but the app has to be on the device for the action to exist at all, and a shortcut referencing a missing one imports as a broken action. Regenerate with `--include-app-specific` if you want them.
 
 ---
 
@@ -56,7 +59,7 @@ Every parameter and shape below was observed on a device. `sclib` refuses to emi
 
 **[Other](#other)** — [`airdropdocument`](#isworkflowactionsairdropdocument) · [`appendvariable`](#isworkflowactionsappendvariable) · [`delay`](#isworkflowactionsdelay) · [`deletephotos`](#isworkflowactionsdeletephotos) · [`folder`](#isworkflowactionsfolder) · [`generatebarcode`](#isworkflowactionsgeneratebarcode) · [`getcurrentapp`](#isworkflowactionsgetcurrentapp) · [`getcurrentlocation`](#isworkflowactionsgetcurrentlocation) · [`getcurrentsong`](#isworkflowactionsgetcurrentsong) · [`getdirections`](#isworkflowactionsgetdirections) · [`getdistance`](#isworkflowactionsgetdistance) · [`gethtmlfromrichtext`](#isworkflowactionsgethtmlfromrichtext) · [`getitemname`](#isworkflowactionsgetitemname) · [`getitemtype`](#isworkflowactionsgetitemtype) · [`getmapslink`](#isworkflowactionsgetmapslink) · [`getrichtextfrommarkdown`](#isworkflowactionsgetrichtextfrommarkdown) · [`gettimebetweendates`](#isworkflowactionsgettimebetweendates) · [`gettraveltime`](#isworkflowactionsgettraveltime) · [`getwebpagecontents`](#isworkflowactionsgetwebpagecontents) · [`getwifi`](#isworkflowactionsgetwifi) · [`handoff`](#isworkflowactionshandoff) · [`hash`](#isworkflowactionshash) · [`upload`](#isworkflowactionsimgurupload) · [`location`](#isworkflowactionslocation) · [`openapp`](#isworkflowactionsopenapp) · [`output`](#isworkflowactionsoutput) · [`overlayimageonimage`](#isworkflowactionsoverlayimageonimage) · [`overlaytext`](#isworkflowactionsoverlaytext) · [`set`](#isworkflowactionspersonalhotspotset) · [`createalbum`](#isworkflowactionsphotoscreatealbum) · [`playsound`](#isworkflowactionsplaysound) · [`returntohomescreen`](#isworkflowactionsreturntohomescreen) · [`runsshscript`](#isworkflowactionsrunsshscript) · [`scanbarcode`](#isworkflowactionsscanbarcode) · [`searchitunes`](#isworkflowactionssearchitunes) · [`searchlocalbusinesses`](#isworkflowactionssearchlocalbusinesses) · [`selectcontacts`](#isworkflowactionsselectcontacts) · [`selectphoto`](#isworkflowactionsselectphoto) · [`takescreenshot`](#isworkflowactionstakescreenshot) · [`set`](#isworkflowactionswallpaperset)
 
-**[Third-party (App Intents)](#third-party-app-intents)** — [`ExecuteCommandIntent`](#ashekubeappa-shell-miniexecutecommandintent) · [`CSVToJSONIntent`](#unqlathecsvtojsonintent) · [`GradientDescentIntent`](#unqlathegradientdescentintent) · [`PlotPredictedActualIntent`](#unqlatheplotpredictedactualintent) · [`TrainTestSplitIntent`](#unqlathetraintestsplitintent) · [`FindTvShowsIntent`](#comalexhaytoolboxproforshortcutsfindtvshowsintent) · [`GetTvShowDetailsIntent`](#comalexhaytoolboxproforshortcutsgettvshowdetailsintent) · [`SummarizeTextIntent`](#comapplewritingtoolswritingtoolsappintentsextensionsummarizetextintent) · [`CloseTab`](#comapplemobilesafariclosetab) · [`CreateNewPrivateTab`](#comapplemobilesafaricreatenewprivatetab) · [`TabEntity`](#comapplemobilesafaritabentity) · [`openin`](#comburbninstagramopenin) · [`OpenCodexIntent`](#comopenaichatopencodexintent) · [`CreateColorImageIntent`](#comsindresorhusactionscreatecolorimageintent) · [`GetUniformTypeIdentifierIntent`](#comsindresorhusactionsgetuniformtypeidentifierintent) · [`SetUniformTypeIdentifier`](#comsindresorhusactionssetuniformtypeidentifier) · [`SymbolImageIntent`](#comsindresorhusactionssymbolimageintent) · [`GrabJellycutIntent`](#comzlinemanjellyfishgrabjellycutintent) · [`ImportObjectsIntent`](#comzlinemanjellyfishimportobjectsintent) · [`ImportShortcutIntent`](#comzlinemanjellyfishimportshortcutintent) · [`TextCaseIntent`](#maccatalystcomchristopher-hannahtext-casetextcaseintent)
+**[Apple apps](#apple-apps)** — [`SummarizeTextIntent`](#comapplewritingtoolswritingtoolsappintentsextensionsummarizetextintent) · [`CloseTab`](#comapplemobilesafariclosetab) · [`CreateNewPrivateTab`](#comapplemobilesafaricreatenewprivatetab) · [`TabEntity`](#comapplemobilesafaritabentity)
 
 ---
 
@@ -2968,142 +2971,7 @@ s.action("is.workflow.actions.wallpaper.set",
 
 ---
 
-## Third-party (App Intents)
-
-### `AsheKube.app.a-Shell-mini.ExecuteCommandIntent`
-
-`native` · seen 6×
-
-Returns `output`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `ShowWhenRun` | `bool` |
-| `command` | `array` |
-| `keepGoing` | `bool` |
-| `openWindow` | `str` |
-
-```python
-out = s.action("AsheKube.app.a-Shell-mini.ExecuteCommandIntent",
-        ShowWhenRun=False,
-        command=[],
-        keepGoing=False,
-        openWindow="...")
-```
-
-### `UNQ.Lathe.CSVToJSONIntent`
-
-`native` · seen 1×
-
-Returns `CSV to JSON`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name}` |
-| `csv` | `WFTextTokenString` |
-
-```python
-out = s.action("UNQ.Lathe.CSVToJSONIntent",
-        AppIntentDescriptor="...",
-        csv=ts("..."))
-```
-
-### `UNQ.Lathe.GradientDescentIntent`
-
-`native` · seen 1×
-
-Returns `Fit with Gradient Descent`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name}` |
-| `Show-features` | `bool` |
-| `epochs` | `str` |
-| `features` | `array` |
-| `json` | `WFTextTokenString` |
-| `learningRate` | `str` |
-| `target` | `str` |
-
-```python
-out = s.action("UNQ.Lathe.GradientDescentIntent",
-        AppIntentDescriptor="...",
-        Show-features=False,
-        epochs="...",
-        features=[],
-        json=ts("..."),
-        learningRate="...",
-        target="...")
-```
-
-### `UNQ.Lathe.PlotPredictedActualIntent`
-
-`native` · seen 1×
-
-Returns `Plot Predicted vs Actual`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name}` |
-| `json` | `WFTextTokenString` |
-| `model` | `WFTextTokenString` |
-
-```python
-out = s.action("UNQ.Lathe.PlotPredictedActualIntent",
-        AppIntentDescriptor="...",
-        json=ts("..."),
-        model=ts("..."))
-```
-
-### `UNQ.Lathe.TrainTestSplitIntent`
-
-`native` · seen 1×
-
-Returns `Train/Test Split`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name}` |
-| `json` | `WFTextTokenString` |
-| `randomSeed` | `str` |
-| `testFraction` | `str` |
-
-```python
-out = s.action("UNQ.Lathe.TrainTestSplitIntent",
-        AppIntentDescriptor="...",
-        json=ts("..."),
-        randomSeed="...",
-        testFraction="...")
-```
-
-### `com.alexhay.ToolboxProForShortcuts.FindTvShowsIntent`
-
-`native` · seen 2×
-
-Returns `TV Shows`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `query` | `WFTextTokenString` |
-
-```python
-out = s.action("com.alexhay.ToolboxProForShortcuts.FindTvShowsIntent",
-        query=ts("..."))
-```
-
-### `com.alexhay.ToolboxProForShortcuts.GetTvShowDetailsIntent`
-
-`native` · seen 2×
-
-Returns `TV Show Details`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `tvShow` | `WFTextTokenAttachment` |
-
-```python
-out = s.action("com.alexhay.ToolboxProForShortcuts.GetTvShowDetailsIntent",
-        tvShow=att(x))
-```
+## Apple apps
 
 ### `com.apple.WritingTools.WritingToolsAppIntentsExtension.SummarizeTextIntent`
 
@@ -3173,183 +3041,6 @@ out = s.action("com.apple.mobilesafari.TabEntity",
         WFContentItemFilter="...",
         WFContentItemLimitEnabled=False,
         WFContentItemLimitNumber=0)
-```
-
-### `com.burbn.instagram.openin`
-
-`native` · seen 1×
-
-No output.
-
-| Parameter | Accepts |
-| --- | --- |
-| `InstagramInput` | `WFTextTokenAttachment` |
-
-```python
-s.action("com.burbn.instagram.openin",
-        InstagramInput=att(x))
-```
-
-### `com.openai.chat.OpenCodexIntent`
-
-`native` · seen 1×
-
-No output.
-
-| Parameter | Accepts |
-| --- | --- |
-| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
-| `createTask` | `bool` |
-
-```python
-s.action("com.openai.chat.OpenCodexIntent",
-        AppIntentDescriptor="...",
-        createTask=False)
-```
-
-### `com.sindresorhus.Actions.CreateColorImageIntent`
-
-`native` · seen 1×
-
-No output.
-
-| Parameter | Accepts |
-| --- | --- |
-| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
-| `color` | `WFTextTokenString` |
-| `height` | `str` |
-| `opacity` | `real` |
-| `width` | `str` |
-
-```python
-s.action("com.sindresorhus.Actions.CreateColorImageIntent",
-        AppIntentDescriptor="...",
-        color=ts("..."),
-        height="...",
-        opacity=0,
-        width="...")
-```
-
-### `com.sindresorhus.Actions.GetUniformTypeIdentifierIntent`
-
-`native` · seen 1×
-
-No output.
-
-| Parameter | Accepts |
-| --- | --- |
-| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
-| `file` | `WFTextTokenAttachment` |
-
-```python
-s.action("com.sindresorhus.Actions.GetUniformTypeIdentifierIntent",
-        AppIntentDescriptor="...",
-        file=att(x))
-```
-
-### `com.sindresorhus.Actions.SetUniformTypeIdentifier`
-
-`native` · seen 7×
-
-No output.
-
-| Parameter | Accepts |
-| --- | --- |
-| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
-| `file` | `WFTextTokenAttachment` |
-| `typeIdentifier` | `str` |
-
-```python
-s.action("com.sindresorhus.Actions.SetUniformTypeIdentifier",
-        AppIntentDescriptor="...",
-        file=att(x),
-        typeIdentifier="...")
-```
-
-### `com.sindresorhus.Actions.SymbolImageIntent`
-
-`native` · seen 3×
-
-No output.
-
-| Parameter | Accepts |
-| --- | --- |
-| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
-| `color` | `WFTextTokenString` |
-| `rendering` | `WFTextTokenAttachment` |
-| `size` | `str` |
-| `symbolName` | `WFTextTokenString` |
-| `weight` | `WFTextTokenAttachment` · `str` |
-
-```python
-s.action("com.sindresorhus.Actions.SymbolImageIntent",
-        AppIntentDescriptor="...",
-        color=ts("..."),
-        rendering=att(x),
-        size="...",
-        symbolName=ts("..."),
-        weight=att(x))
-```
-
-### `com.zlineman.Jellyfish.GrabJellycutIntent`
-
-`native` · seen 1×
-
-Returns `File`.
-
-No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
-
-```python
-out = s.action("com.zlineman.Jellyfish.GrabJellycutIntent")
-```
-
-### `com.zlineman.Jellyfish.ImportObjectsIntent`
-
-`native` · seen 6×
-
-No output.
-
-| Parameter | Accepts |
-| --- | --- |
-| `shortcut` | `WFTextTokenAttachment` |
-
-```python
-s.action("com.zlineman.Jellyfish.ImportObjectsIntent",
-        shortcut=att(x))
-```
-
-### `com.zlineman.Jellyfish.ImportShortcutIntent`
-
-`native` · seen 6×
-
-No output.
-
-| Parameter | Accepts |
-| --- | --- |
-| `shortcut` | `WFTextTokenAttachment` |
-
-```python
-s.action("com.zlineman.Jellyfish.ImportShortcutIntent",
-        shortcut=att(x))
-```
-
-### `maccatalyst.com.Christopher-Hannah.Text-Case.TextCaseIntent`
-
-`native` · seen 1×
-
-Returns `Formatted Text`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `ShowWhenRun` | `bool` |
-| `format` | `str` |
-| `text` | `WFTextTokenString` |
-
-```python
-out = s.action("maccatalyst.com.Christopher-Hannah.Text-Case.TextCaseIntent",
-        ShowWhenRun=False,
-        format="...",
-        text=ts("..."))
 ```
 
 <sub>[back to index](#index)</sub>
