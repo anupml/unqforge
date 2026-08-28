@@ -220,6 +220,23 @@ def check_tokens(v, token_types, path):
                                 "(evidence: %s)"
                                 % (p, inner.get("Type"),
                                    ", ".join(sorted(token_types))))
+                else:
+                    # A legal Type is not enough. var() given a token
+                    # instead of a name yields VariableName holding a
+                    # dict, which is the right shape around the wrong
+                    # content -- exactly what the Type check misses.
+                    t = inner.get("Type")
+                    if t == "Variable" and \
+                            not isinstance(inner.get("VariableName"), str):
+                        errs.append(
+                            "%s: Variable token has VariableName %r, not a "
+                            "string -- var() was given a token instead of a "
+                            "name" % (p, inner.get("VariableName")))
+                    elif t == "ActionOutput" and \
+                            not isinstance(inner.get("OutputUUID"), str):
+                        errs.append(
+                            "%s: ActionOutput token has OutputUUID %r, not "
+                            "a string" % (p, inner.get("OutputUUID")))
                 return
             if st == "WFTextTokenString":
                 val = node.get("Value")
@@ -545,19 +562,40 @@ class SC:
                       "WFSerializationType": "WFDictionaryFieldValue"}})
         return out(u, "Dictionary")
 
+    @staticmethod
+    def _dictarg(d):
+        """The dictionary being read or written: a variable name or a token.
+
+        Every other method on SC takes a token, so requiring a name here
+        was a trap. A str is still treated as a variable name, which is
+        what existing code passes.
+        """
+        return var(d) if isinstance(d, str) else d
+
+    @staticmethod
+    def _keyparts(key):
+        """Normalise into ts() parts.
+
+        ts(*key) on a bare string yields one part per character -- which
+        happens to reassemble correctly -- and on a token dict yields its
+        KEY NAMES, so a variable key silently became the text
+        "TypeVariableName". A str or a token is one part, not a sequence.
+        """
+        return [key] if isinstance(key, (str, dict)) else list(key)
+
     def getval(self, dname, key):
         u = U()
         self._add("is.workflow.actions.getvalueforkey",
-                  {"UUID": u, "WFInput": att(var(dname)),
-                   "WFDictionaryKey": ts(*key)})
+                  {"UUID": u, "WFInput": att(self._dictarg(dname)),
+                   "WFDictionaryKey": ts(*self._keyparts(key))})
         return out(u, "Dictionary Value")
 
     def setval(self, dname, key, value):
         u = U()
-        p = {"UUID": u, "WFDictionary": att(var(dname)),
-             "WFDictionaryKey": ts(*key),
+        p = {"UUID": u, "WFDictionary": att(self._dictarg(dname)),
+             "WFDictionaryKey": ts(*self._keyparts(key)),
              "WFDictionaryValue": value if isinstance(value, str)
-             else ts(*value)}
+             else ts(*self._keyparts(value))}
         self._add("is.workflow.actions.setvalueforkey", p)
         return out(u, "Dictionary")
 
