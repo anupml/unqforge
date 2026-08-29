@@ -87,7 +87,7 @@ python3 hello.py
 **3. Get it onto your phone**
 
 The output is a plain `.plist`. To turn it into an installable shortcut,
-use [Shortcut Source Tool](https://routinehub.co/shortcut/9026/) by
+use [Shortcut Source Tool](https://routinehub.co/shortcut/5256/) by
 gluebyte — it converts both ways, plist to shortcut and back.
 
 AirDrop `hello.plist` to your phone, open Shortcut Source Tool, pick the
