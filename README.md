@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚒️ shortcutforge
+# ⚒️ unqforge
 
 **Build iOS Shortcuts from Python — from evidence, not guesswork.**
 
@@ -16,7 +16,7 @@
 ---
 
 ```python
-from shortcutforge import *
+from unqforge import *
 
 A = "is.workflow.actions."
 s = SC()
@@ -38,8 +38,8 @@ Import the result into the Shortcuts app and it runs.
 **1. Install**
 
 ```bash
-git clone https://github.com/anupml/shortcutforge
-cd shortcutforge
+git clone https://github.com/anupml/unqforge
+cd unqforge
 pip install -e .
 ```
 
@@ -50,16 +50,16 @@ Python 3.8+, standard library only, no dependencies.
 `git` or working `pip`, so grab the zip instead:
 
 ```bash
-curl -L -o sf.zip https://github.com/anupml/shortcutforge/archive/refs/heads/main.zip
-python3 -c "import zipfile; zipfile.ZipFile('sf.zip').extractall('.')"
-cd shortcutforge-main
+curl -L -o uf.zip https://github.com/anupml/unqforge/archive/refs/heads/main.zip
+python3 -c "import zipfile; zipfile.ZipFile('uf.zip').extractall('.')"
+cd unqforge-main
 ```
 
 Run your scripts from inside that folder and start them with:
 
 ```python
 import sys; sys.path.insert(0, ".")
-from shortcutforge import *
+from unqforge import *
 ```
 
 The full test suite runs there too — `python3 tools/roundtrip.py shortcuts/*`
@@ -69,7 +69,7 @@ rebuilds 1246 actions on-device, UNQ MUSIC included.
 
 ```python
 # hello.py
-from shortcutforge import *
+from unqforge import *
 
 A = "is.workflow.actions."
 s = SC()
@@ -87,7 +87,7 @@ python3 hello.py
 **3. Get it onto your phone**
 
 The output is a plain `.plist`. To turn it into an installable shortcut,
-use [Shortcut Source Tool](https://routinehub.co/shortcut/5256/) by
+use [Shortcut Source Tool](https://routinehub.co/shortcut/9026/) by
 gluebyte — it converts both ways, plist to shortcut and back.
 
 AirDrop `hello.plist` to your phone, open Shortcut Source Tool, pick the
@@ -246,7 +246,6 @@ shortcuts and running `decompile.py`.
 | --- | --- |
 | `tools/decompile.py` | plist → constructs database + readable listing |
 | `tools/harvestdb.py` | harvest every shortcut in your library at once (macOS) |
-| `tools/checkgen.py` | static-check a generated script for API that does not exist |
 | `tools/topython.py` | plist → runnable Python |
 | `tools/roundtrip.py` | plist → Python → plist, compared; the test suite |
 | `tools/coverage.py` | what is covered, and what to harvest next |
@@ -273,7 +272,7 @@ Useful for shortcuts too large to comfortably edit on a phone.
 <summary><b>Project layout</b></summary>
 
 ```
-shortcutforge/       the package: sclib.py plus bundled constructs
+unqforge/      the package: sclib.py plus bundled constructs
 tools/         command-line tools
 docs/          guide.md (API) and actions.md (generated reference)
 examples/      runnable shortcut generators
@@ -282,12 +281,12 @@ shortcuts/     test corpus for the round-trip suite
 spec/          action_ids.txt and enum vocabulary (not committed)
 ```
 
-`constructs/` exists twice on purpose. `shortcutforge/constructs/` is what ships
+`constructs/` exists twice on purpose. `unqforge/constructs/` is what ships
 to people who install the package; the top-level one is your working copy.
 Sync before releasing:
 
 ```bash
-cp constructs/*.json shortcutforge/constructs/
+cp constructs/*.json unqforge/constructs/
 ```
 
 At runtime the library loads its bundled constructs first, then anything
@@ -342,7 +341,7 @@ On a Mac:
 cd /System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/
 cat dyld_shared_cache_arm64e* 2>/dev/null | strings -n 8 \
   | grep -oE 'is\.workflow\.actions\.[a-z0-9.]+' | sort -u \
-  > /path/to/shortcutforge/spec/action_ids.txt
+  > /path/to/unqforge/spec/action_ids.txt
 ```
 
 A few minutes; the cache is tens of GB.
