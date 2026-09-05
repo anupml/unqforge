@@ -642,29 +642,50 @@ class SC:
                        "UUID": close})
 
     @contextmanager
-    def if_(self, tok, op, value, upper=None):
+    def if_(self, tok, op, value, upper=None, text=None):
         """If <tok> <op> <value>.  op is one of COND's keys.
-        'between' additionally needs upper."""
+        'between' additionally needs upper.
+
+        Numeric or textual is decided by WHICH FIELD IS WRITTEN, not by
+        the condition code: 4 and 5 both appear in the corpus against
+        WFNumberValue and against WFConditionalActionString. So a text
+        comparison is the same operator with a different right-hand side
+        field and no numeric coercion on the input.
+
+        text=True/False forces the path for a bare token, which is
+        ambiguous on its own and stays numeric by default.
+        """
         if op not in COND:
             raise Unverified("unknown operator %r" % op)
         code = COND[op]
         if code not in self.k.enums.get("WFCondition", set()):
             raise Unverified("WFCondition %d (%r) not in evidence" % (code, op))
+        as_text = self._is_textval(value) if text is None else text
+        if as_text and op == "between":
+            raise Unverified("'between' has only ever been observed numeric")
         g = U()
-        coerced = dict(tok)
-        coerced["Aggrandizements"] = [{
-            "CoercionItemClass": "WFNumberContentItem",
-            "Type": "WFCoercionVariableAggrandizement"}]
         p = {"GroupingIdentifier": g, "WFCondition": code,
-             "WFControlFlowMode": 0,
-             "WFInput": {"Type": "Variable", "Variable": {
-                 "Value": coerced,
-                 "WFSerializationType": "WFTextTokenAttachment"}},
-             "WFNumberValue": self._cmpvalue(value)}
-        if op == "between":
-            if upper is None:
-                raise ValueError("'between' needs upper")
-            p["WFAnotherNumber"] = self._cmpvalue(upper, "WFAnotherNumber")
+             "WFControlFlowMode": 0}
+        if as_text:
+            # No coercion. Several string conditionals in the corpus carry
+            # no Aggrandizements at all, and WFNumberContentItem has never
+            # been observed on this path -- coercing the input to a number
+            # is exactly what made text comparison fail silently.
+            p["WFInput"] = {"Type": "Variable", "Variable": att(tok)}
+            p["WFConditionalActionString"] = self._cmpstring(value)
+        else:
+            coerced = dict(tok)
+            coerced["Aggrandizements"] = [{
+                "CoercionItemClass": "WFNumberContentItem",
+                "Type": "WFCoercionVariableAggrandizement"}]
+            p["WFInput"] = {"Type": "Variable", "Variable": {
+                "Value": coerced,
+                "WFSerializationType": "WFTextTokenAttachment"}}
+            p["WFNumberValue"] = self._cmpvalue(value)
+            if op == "between":
+                if upper is None:
+                    raise ValueError("'between' needs upper")
+                p["WFAnotherNumber"] = self._cmpvalue(upper, "WFAnotherNumber")
         self._add("is.workflow.actions.conditional", p)
         if IF_COUNTS_DEPTH:
             self.depth += 1
@@ -700,6 +721,40 @@ class SC:
             "WFNumberValue has only ever been observed as %s. Decompile a "
             "shortcut that compares against a variable to learn the real "
             "shape before using this." % (sorted(shapes) or "nothing"))
+
+    @staticmethod
+    def _is_textval(v):
+        """Does this comparison value select the string path?
+
+        A str or a ts(...) is text; a number is numeric. A bare token is
+        ambiguous -- it was numeric before this existed, so it stays
+        numeric unless the caller passes text=True.
+        """
+        return isinstance(v, str) or (
+            isinstance(v, dict)
+            and v.get("WFSerializationType") == "WFTextTokenString")
+
+    def _cmpstring(self, v):
+        """Right-hand side of a text comparison.
+
+        Written to WFConditionalActionString, which the corpus records as
+        str | WFTextTokenString -- so an interpolated right-hand side
+        works natively here, unlike WFNumberValue which needs the value
+        wrapped in an attachment.
+        """
+        shapes = self.k.params.get("is.workflow.actions.conditional",
+                                   {}).get("WFConditionalActionString", set())
+        if _is_bare_token(v):
+            v = ts(v)
+        elif isinstance(v, dict) and \
+                v.get("WFSerializationType") == "WFTextTokenAttachment":
+            v = ts(v["Value"])
+        sh = shape_of(v)
+        if sh not in shapes:
+            raise Unverified(
+                "if_: WFConditionalActionString shape %r never observed "
+                "(known: %s)" % (sh, sorted(shapes) or "nothing"))
+        return v
 
     def if_gt(self, tok, number):
         return self.if_(tok, ">", number)

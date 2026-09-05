@@ -25,3 +25,5 @@ out.plist
 build/
 dist/
 __pycache__/
+ifprobe*.plist
+ifprobe*.shortcut

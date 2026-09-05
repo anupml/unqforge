@@ -221,19 +221,31 @@ with s.if_(z, ">", var("best")):
     s.setvar("best", z)
 ```
 
-**But every comparison is numeric.** `if_` coerces its input to
-`WFNumberContentItem` and only ever writes `WFNumberValue`, so comparing
-text fails *silently* -- no exception, no broken action on device, just a
-condition that is never true:
+**Text or numeric is chosen by the value you compare against.** A `str`
+or a `ts(...)` writes `WFConditionalActionString`; a number writes
+`WFNumberValue`. The operator is the same either way -- `==` is
+`WFCondition` 4 on both paths, and it is the field that selects the
+comparison, not the code.
 
 ```python
-with s.if_(label, "==", other_label):   # WRONG: never matches
+with s.if_(label, "==", "done"):        # text
+    ...
+with s.if_(count, ">", 5):              # numeric
     ...
 ```
 
-The corpus lists `WFConditionalActionString` alongside `WFNumberValue`, so
-Shortcuts clearly has a text path; sclib does not implement it yet. Until
-it does, compare numbers only.
+A bare token is ambiguous and stays numeric, since that is what it meant
+before the text path existed. Pass `text=True` to force it:
+
+```python
+with s.if_(label, "==", var("wanted"), text=True):
+    ...
+```
+
+The numeric path coerces its input to `WFNumberContentItem`; the text
+path emits no coercion at all, matching the string conditionals in the
+corpus. `between` is numeric only -- it has never been observed with a
+string right-hand side.
 
 ---
 
@@ -326,6 +338,29 @@ actions by how often they appear in your corpus.
 python3 tools/scanspec.py            # scan Apple's .intentdefinition files
 python3 tools/joinspec.py [--write]  # complete sampled enums from that scan
 ```
+
+---
+
+## Installing what you built
+
+`dump()` writes a plist. To get it onto a device it has to be signed,
+which needs a Mac:
+
+```bash
+plutil -convert binary1 -o out.shortcut out.plist
+shortcuts sign -m anyone -i out.shortcut -o signed.shortcut
+open signed.shortcut
+```
+
+**The input file must be named `.shortcut`.** `shortcuts sign` rejects a
+`.plist` with "isn't in the correct format" no matter what is inside it,
+so the conversion above writes to a `.shortcut` name rather than
+converting in place. Whether the binary conversion is needed at all, or
+only the extension, is untested.
+
+`-m anyone` is what you want for anything shared. The default,
+`people-who-know-me`, produces a file that installs for you and nobody
+else.
 
 ---
 
