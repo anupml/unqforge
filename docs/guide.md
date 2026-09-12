@@ -139,6 +139,11 @@ s.getval(d, key)       # Get Value for Key; d is a dict token or a variable name
 s.setval(d, key, value)  # key and value take a str, a token, or ts parts
 s.show(*parts)         # Show Result
 ```
+`getval` keys may be **dot-paths**: `getval(d, "success.iei")` drills into
+a nested dictionary in a single Get Dictionary Value — Shortcuts splits
+the path itself, no second lookup and no aggrandizement. Verified on
+device and in the corpus (the key lands in `WFDictionaryKey` as a plain
+string).
 
 ---
 
