@@ -40,6 +40,18 @@ def num(v):
 
 COND = {"<": 0, "<=": 1, ">": 2, ">=": 3, "==": 4, "!=": 5, "between": 1003}
 
+# Control-flow actions whose output is SYNTHESIZED, never learned. A
+# conditional's output is always "If Result", a repeat's always "Repeat
+# Results" -- sclib builds these in code (Loop.results, if_has_value), so
+# there is nothing to harvest. The decompiler used to attach whatever
+# OutputName rode in on a token that resolved to the block's closing UUID,
+# which polluted these idents with unrelated inner-action names ("Album",
+# "Icon Fetch", ...). output_name_for must ignore learned names for these.
+STRUCTURAL = {"is.workflow.actions.conditional",
+              "is.workflow.actions.repeat.count",
+              "is.workflow.actions.repeat.each",
+              "is.workflow.actions.choosefrommenu"}
+
 
 # ------------------------------------------------------------- evidence
 
@@ -78,8 +90,13 @@ class Constructs:
                 slot = self.params.setdefault(ident, {})
                 for p, shapes in rec["params"].items():
                     slot.setdefault(p, set()).update(shapes)
-                self.outputs.setdefault(ident, set()).update(
-                    rec.get("output_names", []))
+                # Structural actions never carry learned output names --
+                # their output is synthesized, and any name in a construct
+                # file for them is decompiler pollution. Neutralize it at
+                # load time so existing polluted files need no rewrite.
+                if ident not in STRUCTURAL:
+                    self.outputs.setdefault(ident, set()).update(
+                        rec.get("output_names", []))
                 self.provenance.setdefault(ident, set()).add(src)
             for k, vals in d.get("enums", {}).items():
                 self.enums.setdefault(k, set()).update(vals)

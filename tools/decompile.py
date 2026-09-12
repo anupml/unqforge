@@ -48,6 +48,10 @@ def u16_to_py(s):
 CF_OPEN, CF_ELSE, CF_CLOSE = 0, 1, 2
 REPEATS = {"is.workflow.actions.repeat.count",
            "is.workflow.actions.repeat.each"}
+STRUCTURAL = {"is.workflow.actions.conditional",
+              "is.workflow.actions.repeat.count",
+              "is.workflow.actions.repeat.each",
+              "is.workflow.actions.choosefrommenu"}
 
 
 # ---------------------------------------------------------------- shapes
@@ -165,6 +169,9 @@ def analyse(acts, A):
             if tok["Type"] == "ActionOutput":
                 uu = tok.get("OutputUUID")
                 owner = A.uuid_owner.get(uu)
+                if (owner and tok.get("OutputName") and not renamed
+                        and owner not in STRUCTURAL):
+                    A.actions[owner]["output_names"].add(tok["OutputName"])
                 # A renamed magic variable carries the user's label, not the
                 # action's canonical output name. Only learn from actions that
                 # were not renamed.
