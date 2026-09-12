@@ -45,6 +45,31 @@ def u16_to_py(s):
         u += 2 if ord(ch) > 0xFFFF else 1
     return m
 
+import re as _re
+# XML 1.0 forbids these code points even as numeric char references:
+# everything 0x00-0x1F except tab(09) newline(0A) return(0D). A strict
+# parser rejects the whole file on the first one, so we strip them to read
+# tools that emit them. Matches &#N; (decimal) and &#xN; (hex), any case.
+_ILLEGAL_REF = _re.compile(
+    rb'&#(?:x0*([0-9a-fA-F]{1,2})|0*(\d{1,2}));')
+
+def _cp_of(m):
+    return int(m.group(1), 16) if m.group(1) is not None else int(m.group(2))
+
+def _strip_illegal_refs(raw):
+    """Remove XML-illegal control-char references from raw plist bytes.
+    Returns (cleaned_bytes, count_removed). Leaves tab/newline/CR and every
+    other reference untouched."""
+    n = [0]
+    def sub(m):
+        cp = _cp_of(m)
+        if cp < 0x20 and cp not in (0x09, 0x0A, 0x0D):
+            n[0] += 1
+            return b''
+        return m.group(0)
+    return _ILLEGAL_REF.sub(sub, raw), n[0]
+
+
 CF_OPEN, CF_ELSE, CF_CLOSE = 0, 1, 2
 REPEATS = {"is.workflow.actions.repeat.count",
            "is.workflow.actions.repeat.each"}
@@ -169,14 +194,13 @@ def analyse(acts, A):
             if tok["Type"] == "ActionOutput":
                 uu = tok.get("OutputUUID")
                 owner = A.uuid_owner.get(uu)
+                # A renamed magic variable carries the user's label, not
+                # the action's canonical output name. Only learn from actions
+                # not renamed. Structural idents never learn a name -- their
+                # output is synthesized in sclib.
+                renamed = "CustomOutputName" in A.uuid_params.get(uu, {})
                 if (owner and tok.get("OutputName") and not renamed
                         and owner not in STRUCTURAL):
-                    A.actions[owner]["output_names"].add(tok["OutputName"])
-                # A renamed magic variable carries the user's label, not the
-                # action's canonical output name. Only learn from actions that
-                # were not renamed.
-                renamed = "CustomOutputName" in A.uuid_params.get(uu, {})
-                if owner and tok.get("OutputName") and not renamed:
                     A.actions[owner]["output_names"].add(tok["OutputName"])
             if tok["Type"] == "Variable":
                 name = tok.get("VariableName", "")
@@ -316,10 +340,28 @@ def main():
 
     with open(args.plist, "rb") as f:
         raw = f.read()
-    pl = plistlib.loads(raw)
-    acts = pl["WFWorkflowActions"]
 
     A = Analysis()
+    try:
+        pl = plistlib.loads(raw)
+    except Exception as e:
+        # Some tools (e.g. gluebyte's Shortcut Source Tool) emit control
+        # characters as XML char references -- &#x8;, &#x1;, &#xB; ... .
+        # XML 1.0 forbids every char below 0x20 except tab/newline/CR even
+        # as a numeric reference, so strict parsers reject the whole file.
+        # These bytes are meaningless in a shortcut, so strip them and
+        # record it rather than dying. sclib's own write_plist never emits
+        # them; this is purely to READ hostile input.
+        cleaned, n = _strip_illegal_refs(raw)
+        if n == 0:
+            raise                    # not the illegal-ref case; real error
+        pl = plistlib.loads(cleaned)
+        A.violations.append(
+            "%d XML-illegal control-char reference(s) stripped to parse "
+            "(source tool emitted chars forbidden by XML 1.0); do not "
+            "harvest constructs from this file blindly" % n)
+    acts = pl["WFWorkflowActions"]
+
     if b"\xc3\xaf\xc2\xbf\xc2\xbc" in raw or "\u00ef\u00bf\u00bc" in \
             raw.decode("utf-8", "replace"):
         A.violations.append(
