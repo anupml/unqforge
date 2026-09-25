@@ -667,7 +667,8 @@ class SC:
         the condition code: 4 and 5 both appear in the corpus against
         WFNumberValue and against WFConditionalActionString. So a text
         comparison is the same operator with a different right-hand side
-        field and no numeric coercion on the input.
+        field, and the input coerced to Text (WFStringContentItem) rather
+        than to a number.
 
         text=True/False forces the path for a bare token, which is
         ambiguous on its own and stays numeric by default.
@@ -684,12 +685,24 @@ class SC:
         p = {"GroupingIdentifier": g, "WFCondition": code,
              "WFControlFlowMode": 0}
         if as_text:
-            # No coercion. Several string conditionals in the corpus carry
-            # no Aggrandizements at all, and WFNumberContentItem has never
-            # been observed on this path -- coercing the input to a number
-            # is exactly what made text comparison fail silently.
-            p["WFInput"] = {"Type": "Variable", "Variable": att(tok)}
-            p["WFConditionalActionString"] = self._cmpstring(value)
+            # Coerce the input to Text, exactly as Shortcuts writes it
+            # (constructs/client_fix.native.json). Without it the If guesses
+            # the input's type; for a Dictionary Value it guesses Number,
+            # compares the (missing) number field, and every branch matches.
+            # The app also writes the string into WFNumberValue, so we do too.
+            base = tok["Value"] if (isinstance(tok, dict) and tok.get(
+                "WFSerializationType") == "WFTextTokenAttachment") else tok
+            coerced = dict(base)
+            coerced["Aggrandizements"] = [{
+                "CoercionItemClass": "WFStringContentItem",
+                "Type": "WFCoercionVariableAggrandizement"}]
+            p["WFInput"] = {"Type": "Variable", "Variable": {
+                "Value": coerced,
+                "WFSerializationType": "WFTextTokenAttachment"}}
+            cmp = self._cmpstring(value)
+            p["WFConditionalActionString"] = cmp
+            if isinstance(cmp, str):
+                p["WFNumberValue"] = cmp
         else:
             coerced = dict(tok)
             coerced["Aggrandizements"] = [{
