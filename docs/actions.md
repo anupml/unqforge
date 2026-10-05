@@ -6,10 +6,10 @@
 | --- | --- |
 | **Actions** | 157 |
 | **Categories** | 19 |
-| **Observed uses** | 29048 |
+| **Observed uses** | 29202 |
 | **Confirmed by Shortcuts itself** | 157 |
 | **Confirmed by running only** | 0 |
-| **Left out (need an app installed)** | 17 |
+| **Left out (need an app installed)** | 20 |
 
 Every parameter and shape below was observed on a device. `sclib` refuses to emit anything that is not here, which is why this file contains no invented keys.
 
@@ -17,7 +17,7 @@ Every parameter and shape below was observed on a device. `sclib` refuses to emi
 
 **Provenance** — `native` means Shortcuts wrote the shape itself, in a shortcut built through the app. `ranok` means we generated it and it ran correctly on device. Both are evidence; the first is stronger.
 
-> **17 actions that need a third-party app installed are left out.** They were harvested from a real library, so the shapes are correct — but the app has to be on the device for the action to exist at all, and a shortcut referencing a missing one imports as a broken action. Regenerate with `--include-app-specific` if you want them.
+> **20 actions that need a third-party app installed are left out.** They were harvested from a real library, so the shapes are correct — but the app has to be on the device for the action to exist at all, and a shortcut referencing a missing one imports as a broken action. Regenerate with `--include-app-specific` if you want them.
 
 ---
 
@@ -67,7 +67,7 @@ Every parameter and shape below was observed on a device. `sclib` refuses to emi
 
 ### `is.workflow.actions.gettext`
 
-`native` · `ranok` · seen 2303×
+`native` · `ranok` · seen 2323×
 
 Returns `Stamina1` or `Testo` or `Text` or `テキスト`.
 
@@ -84,7 +84,7 @@ out = s.action("is.workflow.actions.gettext",
 
 ### `is.workflow.actions.text.changecase`
 
-`native` · seen 32×
+`native` · seen 33×
 
 Returns `Updated Text`.
 
@@ -193,7 +193,7 @@ out = s.action("is.workflow.actions.text.replace",
 
 ### `is.workflow.actions.text.split`
 
-`native` · `ranok` · seen 72×
+`native` · `ranok` · seen 73×
 
 Returns `Split Text`.
 
@@ -271,7 +271,7 @@ out = s.action("is.workflow.actions.detect.address",
 
 ### `is.workflow.actions.detect.contacts`
 
-`native` · `ranok` · seen 252×
+`native` · `ranok` · seen 254×
 
 Returns `Contacts`.
 
@@ -303,7 +303,7 @@ s.action("is.workflow.actions.detect.date",
 
 ### `is.workflow.actions.detect.dictionary`
 
-`native` · seen 33×
+`native` · seen 37×
 
 Returns `Dictionary`.
 
@@ -386,7 +386,7 @@ out = s.action("is.workflow.actions.dictionary",
 
 ### `is.workflow.actions.getvalueforkey`
 
-`native` · `ranok` · seen 5046×
+`native` · `ranok` · seen 5069×
 
 Returns `Dictionary Value` or `辞書の値`.
 
@@ -656,7 +656,7 @@ out = s.action("is.workflow.actions.choosefrommenu",
 
 ### `is.workflow.actions.comment`
 
-`native` · seen 114×
+`native` · seen 116×
 
 No output.
 
@@ -671,7 +671,7 @@ s.action("is.workflow.actions.comment",
 
 ### `is.workflow.actions.conditional`
 
-`native` · `ranok` · seen 6669×
+`native` · `ranok` · seen 6709×
 
 Returns `Album if` or `Board` or `Formatted and Checked State` or `Icon Fetch` or `If Result` or `IfResult` or `Shell Folder` or `SourceXX` or `Y` or `background image` or `error` or `foreground` or `image` or `lastinslink` or `os` or `symbolColorOption` or `warning` or `“if文”の結果`.
 
@@ -706,7 +706,7 @@ out = s.action("is.workflow.actions.conditional",
 
 ### `is.workflow.actions.exit`
 
-`native` · seen 271×
+`native` · seen 276×
 
 No output.
 
@@ -730,7 +730,7 @@ out = s.action("is.workflow.actions.nothing")
 
 ### `is.workflow.actions.repeat.count`
 
-`native` · `ranok` · seen 118×
+`native` · `ranok` · seen 120×
 
 Returns `Repeat Results`.
 
@@ -820,7 +820,7 @@ s.action("is.workflow.actions.getvariable",
 
 ### `is.workflow.actions.setvariable`
 
-`native` · `ranok` · seen 1872×
+`native` · `ranok` · seen 1889×
 
 No output.
 
@@ -915,7 +915,7 @@ out = s.action("is.workflow.actions.number.random",
 
 ### `is.workflow.actions.round`
 
-`native` · seen 18×
+`native` · seen 19×
 
 Returns `Rounded Number` or `端数処理済みの数値`.
 
@@ -923,15 +923,15 @@ Returns `Rounded Number` or `端数処理済みの数値`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `WFInput` | `WFTextTokenAttachment` |
-| `WFRoundMode` | `str` |
-| `WFRoundTo` | `str` |
+| `WFRoundMode` | `str`<br>values: `Always Round Down`, `Always Round Up`, `Normal` |
+| `WFRoundTo` | `str`<br>values: `10 ^`, `Billionths`, `Hundred Millionths`, `Hundred Thousands`, `Hundred Thousandths`, `Hundreds Place`, `Hundredths`, `Millions` |
 
 ```python
 out = s.action("is.workflow.actions.round",
         CustomOutputName="...",
         WFInput=att(x),
-        WFRoundMode="...",
-        WFRoundTo="...")
+        WFRoundMode="Always Round Down",
+        WFRoundTo="10 ^")
 ```
 
 ### `is.workflow.actions.statistics`
@@ -943,12 +943,12 @@ Returns `Minimum` or `Sum`.
 | Parameter | Accepts |
 | --- | --- |
 | `Input` | `WFTextTokenAttachment` |
-| `WFStatisticsOperation` | `str` |
+| `WFStatisticsOperation` | `str`<br>values: `Average`, `Maximum`, `Median`, `Minimum`, `Mode`, `Range`, `Standard Deviation`, `Sum` |
 
 ```python
 out = s.action("is.workflow.actions.statistics",
         Input=att(x),
-        WFStatisticsOperation="...")
+        WFStatisticsOperation="Average")
 ```
 
 <sub>[back to index](#index)</sub>
@@ -959,7 +959,7 @@ out = s.action("is.workflow.actions.statistics",
 
 ### `is.workflow.actions.downloadurl`
 
-`native` · `ranok` · seen 1180×
+`native` · `ranok` · seen 1186×
 
 Returns `Contents of URL`.
 
@@ -998,18 +998,18 @@ Returns `Current IP Address`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFIPAddressSourceOption` | `str` |
-| `WFIPAddressTypeOption` | `str` |
+| `WFIPAddressSourceOption` | `str`<br>values: `External`, `Local` |
+| `WFIPAddressTypeOption` | `str`<br>values: `IPv4`, `IPv6` |
 
 ```python
 out = s.action("is.workflow.actions.getipaddress",
-        WFIPAddressSourceOption="...",
-        WFIPAddressTypeOption="...")
+        WFIPAddressSourceOption="External",
+        WFIPAddressTypeOption="IPv4")
 ```
 
 ### `is.workflow.actions.openurl`
 
-`native` · seen 506×
+`native` · seen 508×
 
 No output.
 
@@ -1026,7 +1026,7 @@ s.action("is.workflow.actions.openurl",
 
 ### `is.workflow.actions.showwebpage`
 
-`native` · seen 183×
+`native` · seen 184×
 
 No output.
 
@@ -1105,21 +1105,21 @@ Returns `Base64 Encoded`.
 | Parameter | Accepts |
 | --- | --- |
 | `CustomOutputName` | `str` |
-| `WFBase64LineBreakMode` | `str` |
+| `WFBase64LineBreakMode` | `str`<br>values: `Every 64 Characters`, `Every 76 Characters`, `None` |
 | `WFEncodeMode` | `str`<br>values: `Decode`, `Encode` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.base64encode",
         CustomOutputName="...",
-        WFBase64LineBreakMode="...",
+        WFBase64LineBreakMode="Every 64 Characters",
         WFEncodeMode="Decode",
         WFInput=att(x))
 ```
 
 ### `is.workflow.actions.documentpicker.open`
 
-`native` · seen 160×
+`native` · seen 161×
 
 Returns `File`.
 
@@ -1142,7 +1142,7 @@ out = s.action("is.workflow.actions.documentpicker.open",
 
 ### `is.workflow.actions.documentpicker.save`
 
-`native` · seen 230×
+`native` · seen 231×
 
 Returns `Saved File`.
 
@@ -1358,7 +1358,7 @@ out = s.action("is.workflow.actions.gettypeaction",
 
 ### `is.workflow.actions.makepdf`
 
-`native` · seen 4×
+`native` · seen 5×
 
 Returns `PDF`.
 
@@ -1394,7 +1394,7 @@ out = s.action("is.workflow.actions.makezip",
 
 ### `is.workflow.actions.previewdocument`
 
-`native` · seen 28×
+`native` · seen 29×
 
 No output.
 
@@ -1411,7 +1411,7 @@ s.action("is.workflow.actions.previewdocument",
 
 ### `is.workflow.actions.setitemname`
 
-`native` · `ranok` · seen 475×
+`native` · `ranok` · seen 477×
 
 Returns `Renamed Item` or `Set Name` or `Ítem renombrado` or `名称変更された項目`.
 
@@ -1474,7 +1474,7 @@ s.action("is.workflow.actions.alert",
 
 ### `is.workflow.actions.ask`
 
-`native` · `ranok` · seen 376×
+`native` · `ranok` · seen 377×
 
 Returns `Ask for Input` or `Provided Input`.
 
@@ -1509,7 +1509,7 @@ out = s.action("is.workflow.actions.ask",
 
 ### `is.workflow.actions.choosefromlist`
 
-`native` · `ranok` · seen 375×
+`native` · `ranok` · seen 378×
 
 Returns `Chosen Item` or `Selected Item` or `選択した項目`.
 
@@ -1633,7 +1633,7 @@ s.action("is.workflow.actions.share",
 
 ### `is.workflow.actions.showresult`
 
-`native` · `ranok` · seen 559×
+`native` · `ranok` · seen 569×
 
 No output.
 
@@ -1681,7 +1681,7 @@ out = s.action("is.workflow.actions.getrichtextfromhtml",
 
 ### `is.workflow.actions.image.convert`
 
-`native` · seen 19×
+`native` · seen 20×
 
 Returns `Converted Image`.
 
@@ -1711,7 +1711,7 @@ Returns `Cropped Image`.
 | Parameter | Accepts |
 | --- | --- |
 | `WFImageCropHeight` | `WFTextTokenAttachment` · `str` |
-| `WFImageCropPosition` | `str` |
+| `WFImageCropPosition` | `str`<br>values: `Bottom Left`, `Bottom Right`, `Center`, `Custom`, `Top Left`, `Top Right` |
 | `WFImageCropWidth` | `WFTextTokenAttachment` · `str` |
 | `WFImageCropX` | `real` · `str` |
 | `WFImageCropY` | `str` |
@@ -1720,7 +1720,7 @@ Returns `Cropped Image`.
 ```python
 out = s.action("is.workflow.actions.image.crop",
         WFImageCropHeight=att(x),
-        WFImageCropPosition="...",
+        WFImageCropPosition="Bottom Left",
         WFImageCropWidth=att(x),
         WFImageCropX=0,
         WFImageCropY="...",
@@ -1754,7 +1754,7 @@ Returns `Masked Image`.
 | `WFCustomMaskImage` | `WFTextTokenAttachment` |
 | `WFInput` | `WFTextTokenAttachment` |
 | `WFMaskCornerRadius` | `str` |
-| `WFMaskType` | `str` |
+| `WFMaskType` | `str`<br>values: `Custom Image`, `Ellipse`, `Icon`, `Rounded Rectangle` |
 
 ```python
 out = s.action("is.workflow.actions.image.mask",
@@ -1762,7 +1762,7 @@ out = s.action("is.workflow.actions.image.mask",
         WFCustomMaskImage=att(x),
         WFInput=att(x),
         WFMaskCornerRadius="...",
-        WFMaskType="...")
+        WFMaskType="Custom Image")
 ```
 
 ### `is.workflow.actions.image.removebackground`
@@ -1791,7 +1791,7 @@ Returns `Resized Image`.
 | `CustomOutputName` | `str` |
 | `WFImage` | `WFTextTokenAttachment` |
 | `WFImageResizeHeight` | `WFTextTokenAttachment` · `int` · `str` |
-| `WFImageResizeKey` | `str` |
+| `WFImageResizeKey` | `str`<br>values: `Longest Edge`, `Percentage`, `Size` |
 | `WFImageResizeLength` | `WFTextTokenAttachment` · `str` |
 | `WFImageResizeWidth` | `WFTextTokenAttachment` · `int` · `str` |
 
@@ -1800,7 +1800,7 @@ out = s.action("is.workflow.actions.image.resize",
         CustomOutputName="...",
         WFImage=att(x),
         WFImageResizeHeight=att(x),
-        WFImageResizeKey="...",
+        WFImageResizeKey="Longest Edge",
         WFImageResizeLength=att(x),
         WFImageResizeWidth=att(x))
 ```
@@ -1824,7 +1824,7 @@ out = s.action("is.workflow.actions.image.rotate",
 
 ### `is.workflow.actions.savetocameraroll`
 
-`native` · seen 39×
+`native` · seen 40×
 
 Returns `Saved Photo Media`.
 
@@ -1847,28 +1847,28 @@ out = s.action("is.workflow.actions.savetocameraroll",
 
 ### `is.workflow.actions.adjustdate`
 
-`native` · seen 5×
+`native` · seen 6×
 
 Returns `Adjusted Date`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `CustomOutputName` | `str` |
-| `WFAdjustOperation` | `str` |
+| `WFAdjustOperation` | `str`<br>values: `Add`, `Get Start of Day`, `Get Start of Hour`, `Get Start of Minute`, `Get Start of Month`, `Get Start of Week`, `Get Start of Year`, `Subtract` |
 | `WFDate` | `WFTextTokenString` |
 | `WFDuration` | `WFQuantityFieldValue` |
 
 ```python
 out = s.action("is.workflow.actions.adjustdate",
         CustomOutputName="...",
-        WFAdjustOperation="...",
+        WFAdjustOperation="Add",
         WFDate=ts("..."),
         WFDuration="...")
 ```
 
 ### `is.workflow.actions.date`
 
-`native` · seen 13×
+`native` · seen 14×
 
 Returns `Date`.
 
@@ -1883,7 +1883,7 @@ out = s.action("is.workflow.actions.date",
 
 ### `is.workflow.actions.format.date`
 
-`native` · seen 8×
+`native` · seen 9×
 
 Returns `Formatted Date`.
 
@@ -1892,18 +1892,18 @@ Returns `Formatted Date`.
 | `CustomOutputName` | `str` |
 | `WFDate` | `WFTextTokenString` · `str` |
 | `WFDateFormat` | `str` |
-| `WFDateFormatStyle` | `str` |
+| `WFDateFormatStyle` | `str`<br>values: `Custom`, `ISO 8601`, `Long`, `Medium`, `None`, `RFC 2822`, `Relative`, `Short` |
 | `WFISO8601IncludeTime` | `bool` |
-| `WFTimeFormatStyle` | `str` |
+| `WFTimeFormatStyle` | `str`<br>values: `Long`, `Medium`, `None`, `Relative`, `Short` |
 
 ```python
 out = s.action("is.workflow.actions.format.date",
         CustomOutputName="...",
         WFDate="...",
         WFDateFormat="...",
-        WFDateFormatStyle="...",
+        WFDateFormatStyle="Custom",
         WFISO8601IncludeTime=False,
-        WFTimeFormatStyle="...")
+        WFTimeFormatStyle="Long")
 ```
 
 ### `is.workflow.actions.format.number`
@@ -2042,11 +2042,11 @@ Returns `Current Appearance` or `Device Model` or `Screen Height` or `Screen Wid
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFDeviceDetail` | `str` |
+| `WFDeviceDetail` | `str`<br>values: `Current Appearance`, `Current Brightness`, `Current Volume`, `Device Hostname`, `Device Is Watch`, `Device Model`, `Device Name`, `Screen Height` |
 
 ```python
 out = s.action("is.workflow.actions.getdevicedetails",
-        WFDeviceDetail="...")
+        WFDeviceDetail="Current Appearance")
 ```
 
 ### `is.workflow.actions.lowpowermode.set`
@@ -2108,7 +2108,7 @@ No output.
 | Parameter | Accepts |
 | --- | --- |
 | `ShowWhenRun` | `bool` |
-| `WFAlertTime` | `str` |
+| `WFAlertTime` | `str`<br>values: `1 day before`, `1 hour before`, `1 week before`, `15 minutes before`, `2 days before`, `2 hours before`, `30 minutes before`, `5 minutes before` |
 | `WFCalendarDescriptor` | `dict{Identifier,IsAllCalendar,RGBAValue,Title}` |
 | `WFCalendarItemCalendar` | `str` |
 | `WFCalendarItemEndDate` | `WFTextTokenString` |
@@ -2120,7 +2120,7 @@ No output.
 ```python
 s.action("is.workflow.actions.addnewevent",
         ShowWhenRun=False,
-        WFAlertTime="...",
+        WFAlertTime="1 day before",
         WFCalendarDescriptor="...",
         WFCalendarItemCalendar="...",
         WFCalendarItemEndDate=ts("..."),
@@ -2357,12 +2357,12 @@ Returns `QR Code`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFQRErrorCorrectionLevel` | `str` |
+| `WFQRErrorCorrectionLevel` | `str`<br>values: `High`, `Low`, `Medium`, `Quartile` |
 | `WFText` | `WFTextTokenString` |
 
 ```python
 out = s.action("is.workflow.actions.generatebarcode",
-        WFQRErrorCorrectionLevel="...",
+        WFQRErrorCorrectionLevel="High",
         WFText=ts("..."))
 ```
 
@@ -2401,11 +2401,11 @@ Returns `Current Song`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Subject` | `str` |
+| `Subject` | `str`<br>values: `Battery Level`, `Current Playback Time`, `Current Song`, `Is Charging`, `Is Connected to Charger` |
 
 ```python
 out = s.action("is.workflow.actions.getcurrentsong",
-        Subject="...")
+        Subject="Battery Level")
 ```
 
 ### `is.workflow.actions.getdirections`
@@ -2418,13 +2418,13 @@ No output.
 | --- | --- |
 | `WFDestination` | `WFTextTokenAttachment` |
 | `WFGetDirectionsActionApp` | `str` |
-| `WFGetDirectionsActionMode` | `str` |
+| `WFGetDirectionsActionMode` | `str`<br>values: `Biking`, `Direct`, `Driving`, `Transit`, `Walking` |
 
 ```python
 s.action("is.workflow.actions.getdirections",
         WFDestination=att(x),
         WFGetDirectionsActionApp="...",
-        WFGetDirectionsActionMode="...")
+        WFGetDirectionsActionMode="Biking")
 ```
 
 ### `is.workflow.actions.getdistance`
@@ -2436,16 +2436,16 @@ No output.
 | Parameter | Accepts |
 | --- | --- |
 | `Accuracy` | `str` |
-| `WFDistanceUnit` | `str` |
-| `WFGetDirectionsActionMode` | `str` |
+| `WFDistanceUnit` | `str`<br>values: `Kilometers`, `Miles` |
+| `WFGetDirectionsActionMode` | `str`<br>values: `Biking`, `Direct`, `Driving`, `Transit`, `Walking` |
 | `WFGetDirectionsCustomLocation` | `WFTextTokenAttachment` |
 | `WFGetDistanceDestination` | `WFTextTokenAttachment` |
 
 ```python
 s.action("is.workflow.actions.getdistance",
         Accuracy="...",
-        WFDistanceUnit="...",
-        WFGetDirectionsActionMode="...",
+        WFDistanceUnit="Kilometers",
+        WFGetDirectionsActionMode="Biking",
         WFGetDirectionsCustomLocation=att(x),
         WFGetDistanceDestination=att(x))
 ```
@@ -2469,7 +2469,7 @@ out = s.action("is.workflow.actions.gethtmlfromrichtext",
 
 ### `is.workflow.actions.getitemname`
 
-`native` · seen 12×
+`native` · seen 14×
 
 Returns `Name`.
 
@@ -2538,14 +2538,14 @@ No output.
 | `CustomOutputName` | `str` |
 | `WFInput` | `WFTextTokenString` |
 | `WFTimeUntilFromDate` | `WFTextTokenString` |
-| `WFTimeUntilUnit` | `str` |
+| `WFTimeUntilUnit` | `str`<br>values: `Days`, `Hours`, `Minutes`, `Months`, `Seconds`, `Total Time`, `Weeks`, `Years` |
 
 ```python
 s.action("is.workflow.actions.gettimebetweendates",
         CustomOutputName="...",
         WFInput=ts("..."),
         WFTimeUntilFromDate=ts("..."),
-        WFTimeUntilUnit="...")
+        WFTimeUntilUnit="Days")
 ```
 
 ### `is.workflow.actions.gettraveltime`
@@ -2557,13 +2557,13 @@ No output.
 | Parameter | Accepts |
 | --- | --- |
 | `WFDestination` | `WFTextTokenAttachment` |
-| `WFGetDirectionsActionMode` | `str` |
+| `WFGetDirectionsActionMode` | `str`<br>values: `Biking`, `Direct`, `Driving`, `Transit`, `Walking` |
 | `WFGetDirectionsCustomLocation` | `WFTextTokenAttachment` |
 
 ```python
 s.action("is.workflow.actions.gettraveltime",
         WFDestination=att(x),
-        WFGetDirectionsActionMode="...",
+        WFGetDirectionsActionMode="Biking",
         WFGetDirectionsCustomLocation=att(x))
 ```
 
@@ -2590,11 +2590,11 @@ Returns `Network Details`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFWiFiDetail` | `str` |
+| `WFWiFiDetail` | `str`<br>values: `BSSID`, `Network Name` |
 
 ```python
 out = s.action("is.workflow.actions.getwifi",
-        WFWiFiDetail="...")
+        WFWiFiDetail="BSSID")
 ```
 
 ### `is.workflow.actions.handoff`
@@ -2685,13 +2685,13 @@ No output.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFNoOutputSurfaceBehavior` | `str` |
+| `WFNoOutputSurfaceBehavior` | `str`<br>values: `Copy to Clipboard`, `Do Nothing`, `Respond` |
 | `WFOutput` | `WFTextTokenString` |
 | `WFResponse` | `WFTextTokenString` |
 
 ```python
 s.action("is.workflow.actions.output",
-        WFNoOutputSurfaceBehavior="...",
+        WFNoOutputSurfaceBehavior="Copy to Clipboard",
         WFOutput=ts("..."),
         WFResponse=ts("..."))
 ```
@@ -2706,7 +2706,7 @@ Returns `Overlaid Image`.
 | --- | --- |
 | `WFImage` | `WFTextTokenAttachment` |
 | `WFImageHeight` | `WFTextTokenAttachment` · `str` |
-| `WFImagePosition` | `str` |
+| `WFImagePosition` | `str`<br>values: `Bottom Left`, `Bottom Right`, `Center`, `Custom`, `Top Left`, `Top Right` |
 | `WFImageWidth` | `WFTextTokenAttachment` · `str` |
 | `WFImageX` | `WFTextTokenAttachment` |
 | `WFImageY` | `WFTextTokenAttachment` |
@@ -2719,7 +2719,7 @@ Returns `Overlaid Image`.
 out = s.action("is.workflow.actions.overlayimageonimage",
         WFImage=att(x),
         WFImageHeight=att(x),
-        WFImagePosition="...",
+        WFImagePosition="Bottom Left",
         WFImageWidth=att(x),
         WFImageX=att(x),
         WFImageY=att(x),
@@ -2743,13 +2743,13 @@ Returns `Image with Text`.
 | `WFImage` | `WFTextTokenAttachment` |
 | `WFPercentageTextX` | `real` |
 | `WFPercentageTextY` | `real` |
-| `WFSizingMethod` | `str` |
+| `WFSizingMethod` | `str`<br>values: `Absolute`, `Proportional` |
 | `WFText` | `WFTextTokenString` |
-| `WFTextAlignment` | `str` |
+| `WFTextAlignment` | `str`<br>values: `Center`, `Left`, `Right` |
 | `WFTextBoxWidth` | `WFTextTokenAttachment` |
 | `WFTextOffset` | `WFTextTokenAttachment` |
 | `WFTextOutlineEnabled` | `bool` |
-| `WFTextPosition` | `str` |
+| `WFTextPosition` | `str`<br>values: `Bottom Center`, `Bottom Left`, `Bottom Right`, `Center`, `Custom Position`, `Middle Left`, `Middle Right`, `Top Center` |
 | `WFTextRotation` | `str` |
 | `WFTextStrokeColor` | `dict{WFColorRepresentationType,alphaComponent,blueComponent,greenComponent,redComponent}` |
 | `WFTextStrokeWidth` | `str` |
@@ -2763,13 +2763,13 @@ out = s.action("is.workflow.actions.overlaytext",
         WFImage=att(x),
         WFPercentageTextX=0,
         WFPercentageTextY=0,
-        WFSizingMethod="...",
+        WFSizingMethod="Absolute",
         WFText=ts("..."),
-        WFTextAlignment="...",
+        WFTextAlignment="Center",
         WFTextBoxWidth=att(x),
         WFTextOffset=att(x),
         WFTextOutlineEnabled=False,
-        WFTextPosition="...",
+        WFTextPosition="Bottom Center",
         WFTextRotation="...",
         WFTextStrokeColor="...",
         WFTextStrokeWidth="...",
@@ -2841,7 +2841,7 @@ Returns `Shell Script Result`.
 | Parameter | Accepts |
 | --- | --- |
 | `WFInput` | `WFTextTokenAttachment` |
-| `WFSSHAuthenticationType` | `str` |
+| `WFSSHAuthenticationType` | `str`<br>values: `Password`, `SSH Key` |
 | `WFSSHHost` | `WFTextTokenString` |
 | `WFSSHPassword` | `WFTextTokenString` |
 | `WFSSHPort` | `WFTextTokenString` |
@@ -2851,7 +2851,7 @@ Returns `Shell Script Result`.
 ```python
 out = s.action("is.workflow.actions.runsshscript",
         WFInput=att(x),
-        WFSSHAuthenticationType="...",
+        WFSSHAuthenticationType="Password",
         WFSSHHost=ts("..."),
         WFSSHPassword=ts("..."),
         WFSSHPort=ts("..."),
@@ -2927,12 +2927,12 @@ Returns `Photos`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFPhotoPickerTypes` | `array` · `str` |
+| `WFPhotoPickerTypes` | `array` · `str`<br>values: `Images`, `Live Photos`, `Videos` |
 | `WFSelectMultiplePhotos` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.selectphoto",
-        WFPhotoPickerTypes=[],
+        WFPhotoPickerTypes="Images",
         WFSelectMultiplePhotos=False)
 ```
 
@@ -2958,13 +2958,13 @@ No output.
 | --- | --- |
 | `WFInput` | `WFTextTokenAttachment` |
 | `WFSelectedPoster` | `dict{UUID,name,providerBundleIdentifier}` |
-| `WFWallpaperLocation` | `str` |
+| `WFWallpaperLocation` | `str`<br>values: `Home Screen`, `Lock Screen` |
 
 ```python
 s.action("is.workflow.actions.wallpaper.set",
         WFInput=att(x),
         WFSelectedPoster="...",
-        WFWallpaperLocation="...")
+        WFWallpaperLocation="Home Screen")
 ```
 
 <sub>[back to index](#index)</sub>
@@ -3053,18 +3053,114 @@ Sampled from the corpus, except where `tools/joinspec.py` completed them from Ap
 
 | Key | Observed values |
 | --- | --- |
+| `AssertionType` | `Event Ends`, `I Leave`, `Time`, `Turned Off` |
+| `InputMode` | `as arguments`, `to stdin` |
+| `Subject` | `Battery Level`, `Current Playback Time`, `Current Song`, `Is Charging`, `Is Connected to Charger` |
+| `TransmitSaveTo` | `Local`, `Remote` |
+| `WFAdjustOperation` | `Add`, `Get Start of Day`, `Get Start of Hour`, `Get Start of Minute`, `Get Start of Month`, `Get Start of Week`, `Get Start of Year`, `Subtract` |
+| `WFAlertCondition` | `At Time`, `When I Arrive`, `When I Leave`, `When Messaging` |
+| `WFAlertEnabled` | `Alert`, `No Alert` |
+| `WFAlertTime` | `1 day before`, `1 hour before`, `1 week before`, `15 minutes before`, `2 days before`, `2 hours before`, `30 minutes before`, `5 minutes before`, `At time of event`, `Custom` |
+| `WFAppRatio` | `½ + ½`, `⅓ + ⅔` |
+| `WFAppendFileWriteMode` | `Append`, `Prepend` |
+| `WFAskForType` | `Contacts`, `Date`, `Email Address`, `Files`, `Music`, `Phone Number`, `Photos`, `Text` |
+| `WFBase64LineBreakMode` | `Every 64 Characters`, `Every 76 Characters`, `None` |
+| `WFCameraCaptureDevice` | `Back`, `Front` |
+| `WFCameraCaptureQuality` | `High`, `Low`, `Medium` |
+| `WFCellularDetail` | `Carrier Name`, `Country Code`, `Is Roaming Abroad`, `Number of Signal Bars`, `Radio Technology` |
+| `WFCloudAppPrivacyType` | `Private`, `Public` |
 | `WFCondition` | `0`, `1`, `2`, `3`, `4`, `5`, `8`, `9`, `99`, `100`, `101`, `999`, `1000`, `1001`, `1003` |
+| `WFConfiguration` | `Bottom Half`, `Bottom Left Quarter`, `Bottom Right Quarter`, `Dimensions`, `Fit Screen`, `Left Half`, `Right Half`, `Top Half`, `Top Left Quarter`, `Top Right Quarter` |
 | `WFControlFlowMode` | `0`, `1`, `2` |
 | `WFCountType` | `Items`, `Lines`, `Words` |
+| `WFDateActionMode` | `Current Date`, `Specified Date` |
+| `WFDateFormatStyle` | `Custom`, `ISO 8601`, `Long`, `Medium`, `None`, `RFC 2822`, `Relative`, `Short` |
+| `WFDateSpecifier` | `Any Day`, `Specified Day`, `Today`, `Tomorrow` |
+| `WFDeviceDetail` | `Current Appearance`, `Current Brightness`, `Current Volume`, `Device Hostname`, `Device Is Watch`, `Device Model`, `Device Name`, `Screen Height`, `Screen Width`, `System Build Number`, `System Version` |
+| `WFDictateTextStopListening` | `After Pause`, `After Short Pause`, `On Tap` |
+| `WFDistanceUnit` | `Kilometers`, `Miles` |
 | `WFEncodeMode` | `Decode`, `Encode` |
+| `WFEvernoteWriteMode` | `Append`, `Prepend` |
+| `WFFaceTimeType` | `Audio`, `Video` |
+| `WFFileFormat` | `HEIF`, `JPEG`, `PNG` |
+| `WFFileSizeFormat` | `Automatic`, `Bytes`, `EB`, `GB`, `KB`, `MB`, `PB`, `TB`, `YB or Higher`, `ZB` |
 | `WFGetDictionaryValueType` | `All Keys`, `All Values`, `Value` |
+| `WFGetDirectionsActionMode` | `Biking`, `Direct`, `Driving`, `Transit`, `Walking` |
+| `WFGetTextFromPDFTextType` | `Rich Text`, `Text` |
 | `WFHTTPBodyType` | `File`, `Form`, `JSON` |
 | `WFHTTPMethod` | `DELETE`, `GET`, `POST` |
 | `WFHashType` | `SHA512` |
+| `WFHideAppMode` | `All Apps`, `App` |
+| `WFIPAddressSourceOption` | `External`, `Local` |
+| `WFIPAddressTypeOption` | `IPv4`, `IPv6` |
+| `WFImageCombineMode` | `Horizontally`, `In a Grid`, `Vertically` |
+| `WFImageCropPosition` | `Bottom Left`, `Bottom Right`, `Center`, `Custom`, `Top Left`, `Top Right` |
+| `WFImageFlipDirection` | `Horizontal`, `Vertical` |
 | `WFImageFormat` | `BMP`, `HEIF`, `JPEG`, `PNG` |
+| `WFImagePosition` | `Bottom Left`, `Bottom Right`, `Center`, `Custom`, `Top Left`, `Top Right` |
+| `WFImageResizeKey` | `Longest Edge`, `Percentage`, `Size` |
+| `WFImgurAlbumLayout` | `Blog`, `Grid`, `Horizontal`, `Vertical` |
+| `WFImgurAlbumPrivacy` | `Hidden`, `Public`, `Secret` |
+| `WFImportAudioFilesEncoder` | `AAC`, `AIFF`, `Default`, `Lossless`, `MP3`, `WAV` |
 | `WFInputType` | `Date`, `Date and Time`, `Number`, `Text`, `Time`, `URL` |
 | `WFItemSpecifier` | `First Item`, `Item At Index`, `Items in Range`, `Last Item`, `Random Item` |
 | `WFItemType` | `0`, `1`, `2`, `3`, `4`, `5` |
+| `WFMaskType` | `Custom Image`, `Ellipse`, `Icon`, `Rounded Rectangle` |
 | `WFMathOperation` | `+`, `-`, `×`, `÷` |
+| `WFMediaAudioFormat` | `AIFF`, `M4A` |
+| `WFMediaRouteOperation` | `Add`, `Remove`, `Set` |
+| `WFMediaSize` | `1280x720`, `1920x1080`, `3840x2160`, `640x480`, `960x540`, `HEVC 1920x1080`, `HEVC 3840x2160`, `Passthrough`, `ProRes 422` |
+| `WFMediaSpeed` | `0.5X`, `2X`, `Custom`, `Normal` |
+| `WFNoInputBehavior` | `Ask For`, `Continue`, `Get Clipboard`, `Stop and Respond` |
+| `WFNoOutputSurfaceBehavior` | `Copy to Clipboard`, `Do Nothing`, `Respond` |
+| `WFPDFDocumentMergeBehavior` | `Append`, `Shuffle` |
+| `WFPDFIncludedPages` | `All Pages`, `Page Range`, `Single Page` |
+| `WFPhotoPickerTypes` | `Images`, `Live Photos`, `Videos` |
+| `WFPickingMode` | `Files`, `Folders` |
+| `WFPlayMusicActionRepeat` | `All`, `None`, `One` |
+| `WFPlayMusicActionShuffle` | `Off`, `Songs` |
+| `WFPlayPauseBehavior` | `Pause`, `Play`, `Play/Pause` |
+| `WFPocketItemState` | `All`, `Archived`, `Unread` |
+| `WFPosition` | `Bottom Center`, `Bottom Left`, `Bottom Right`, `Center`, `Coordinates`, `Middle Left`, `Middle Right`, `Top Center`, `Top Left`, `Top Right` |
+| `WFPostState` | `Add to Queue`, `Post Now`, `Post Privately`, `Save as Draft` |
+| `WFPostType` | `Audio`, `Chat`, `Link`, `Photos`, `Quote`, `Text`, `Video` |
+| `WFPosterType` | `All`, `Current` |
+| `WFPriority` | `High`, `Low`, `Medium`, `None` |
+| `WFQRErrorCorrectionLevel` | `High`, `Low`, `Medium`, `Quartile` |
+| `WFQuitAppMode` | `All Apps`, `App` |
+| `WFRecordingCompression` | `Normal`, `Very High` |
+| `WFRecordingEnd` | `After Time`, `On Tap` |
+| `WFRecordingStart` | `Immediately`, `On Tap` |
+| `WFRelativeDateFormatStyle` | `Long`, `Medium`, `Short` |
+| `WFRoundMode` | `Always Round Down`, `Always Round Up`, `Normal` |
+| `WFRoundTo` | `10 ^`, `Billionths`, `Hundred Millionths`, `Hundred Thousands`, `Hundred Thousandths`, `Hundreds Place`, `Hundredths`, `Millions`, `Millionths`, `Ones Place`, `Ten Millionths`, `Ten Thousands`, `Ten Thousandths`, `Tens Place`, `Tenths`, `Thousands`, `Thousandths` |
+| `WFSSHAuthenticationType` | `Password`, `SSH Key` |
+| `WFScientificMathOperation` | `10^x`, `Modulus`, `abs(x)`, `cos(x)`, `e^x`, `ln(x)`, `log(x)`, `sin(x)`, `tan(x)`, `x!`, `x^2`, `x^3`, `x^y`, `√x`, `∛x` |
+| `WFSearchWebDestination` | `Amazon`, `Bing`, `DuckDuckGo`, `Google`, `Reddit`, `Twitter`, `Yahoo!`, `YouTube`, `eBay` |
+| `WFSeekBehavior` | `Backward By`, `Forward By`, `To Time` |
+| `WFShutdownMode` | `Restart`, `Shut Down` |
+| `WFSize` | `Large`, `Medium`, `Original`, `Small` |
+| `WFSizingMethod` | `Absolute`, `Proportional` |
+| `WFSkipBackBehavior` | `Beginning`, `Previous Song` |
+| `WFStatisticsOperation` | `Average`, `Maximum`, `Median`, `Minimum`, `Mode`, `Range`, `Standard Deviation`, `Sum` |
+| `WFTakeScreenshotActionInteractiveSelectionType` | `Custom`, `Window` |
+| `WFTakeScreenshotScreenshotType` | `Full Screen`, `Interactive` |
+| `WFTextAlignment` | `Center`, `Left`, `Right` |
+| `WFTextPosition` | `Bottom Center`, `Bottom Left`, `Bottom Right`, `Center`, `Custom Position`, `Middle Left`, `Middle Right`, `Top Center`, `Top Left`, `Top Right` |
 | `WFTextSeparator` | `Custom`, `Every Character`, `New Lines`, `Spaces` |
+| `WFTimeFormatStyle` | `Long`, `Medium`, `None`, `Relative`, `Short` |
+| `WFTimeUntilUnit` | `Days`, `Hours`, `Minutes`, `Months`, `Seconds`, `Total Time`, `Weeks`, `Years` |
+| `WFTodoistPriority` | `1`, `2`, `3`, `4` |
+| `WFTodoistReminderType` | `Email`, `Push Notification`, `Text Message` |
+| `WFTrelloCardPosition` | `Bottom`, `Top` |
+| `WFTrelloItemType` | `Boards`, `Cards`, `Lists` |
+| `WFTrelloPosition` | `Bottom`, `Top` |
+| `WFURLComponent` | `Fragment`, `Host`, `Password`, `Path`, `Port`, `Query`, `Scheme`, `User` |
+| `WFVPNOperation` | `Connect`, `Disconnect`, `Set On Demand`, `Toggle`, `Toggle On Demand` |
+| `WFVibrateHapticType` | `Click`, `Default`, `Down Direction`, `Failure`, `Retry`, `Start`, `Stop`, `Success`, `Up Direction` |
+| `WFWallpaperLocation` | `Home Screen`, `Lock Screen` |
+| `WFWeatherForecastType` | `Daily`, `Hourly` |
+| `WFWhenToPlay` | `Later`, `Next` |
+| `WFWiFiDetail` | `BSSID`, `Network Name` |
+| `presetGroup` | `B&W`, `Color`, `Creative`, `Curve`, `Grain`, `Sharpening`, `Vignetting` |
 

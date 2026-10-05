@@ -1,0 +1,76 @@
+{
+  "actions": {
+    "is.workflow.actions.downloadurl": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFHTTPMethod": [
+          "str"
+        ],
+        "WFJSONValues": [
+          "WFDictionaryFieldValue"
+        ],
+        "WFURL": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Contents of URL"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.gettext": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFTextActionText": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Text"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.getvalueforkey": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFDictionaryKey": [
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "Dictionary Value"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.showresult": {
+      "params": {
+        "Text": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    }
+  },
+  "enums": {
+    "WFHTTPMethod": [
+      "POST"
+    ],
+    "WFItemType": [
+      0
+    ]
+  },
+  "token_types": [
+    "ActionOutput"
+  ],
+  "aggrandizements": []
+}

@@ -1,0 +1,93 @@
+{
+  "actions": {
+    "com.anthropic.claude.ClaudeAppIntentsExtension": {
+      "params": {
+        "AppIntentDescriptor": [
+          "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+        ],
+        "UUID": [
+          "str"
+        ],
+        "message": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [
+        "Ask Claude"
+      ],
+      "count": 1
+    },
+    "com.openai.chat.AskIntent": {
+      "params": {
+        "AppIntentDescriptor": [
+          "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+        ],
+        "UUID": [
+          "str"
+        ],
+        "continuous": [
+          "bool"
+        ],
+        "prompt": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [
+        "Ask ChatGPT"
+      ],
+      "count": 1
+    },
+    "com.openai.chat.OpenNewChatInProjectIntent": {
+      "params": {
+        "AppIntentDescriptor": [
+          "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+        ],
+        "UUID": [
+          "str"
+        ],
+        "project": [
+          "dict{identifier,image,subtitle,title}"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.comment": {
+      "params": {
+        "WFCommentActionText": [
+          "str"
+        ]
+      },
+      "output_names": [],
+      "count": 2
+    },
+    "is.workflow.actions.gettext": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFTextActionText": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Text"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.showresult": {
+      "params": {
+        "Text": [
+          "WFTextTokenString"
+        ]
+      },
+      "output_names": [],
+      "count": 2
+    }
+  },
+  "enums": {},
+  "token_types": [
+    "ActionOutput"
+  ],
+  "aggrandizements": []
+}
