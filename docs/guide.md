@@ -248,9 +248,13 @@ with s.if_(label, "==", var("wanted"), text=True):
 ```
 
 The numeric path coerces its input to `WFNumberContentItem`; the text
-path emits no coercion at all, matching the string conditionals in the
-corpus. `between` is numeric only -- it has never been observed with a
-string right-hand side.
+path coerces it to `WFStringContentItem` and, for a plain `str`
+right-hand side, mirrors the string into `WFNumberValue` too -- both
+exactly as Shortcuts writes a text comparison
+(`constructs/client_fix.native.json`). Without the text coercion an If
+on a Dictionary Value guesses Number, compares the missing number field,
+and **every branch matches**. `between` is numeric only -- it has never
+been observed with a string right-hand side.
 
 ---
 
@@ -378,6 +382,36 @@ else.
 4. `s.action("is.workflow.actions.thing", ...)` now works.
 
 No library change.
+
+Use the output of the action in a later step (Show Result is enough)
+before exporting. An output that nothing consumes is never written to the
+file, so its name is never learned and `s.action` returns `None` for it.
+
+---
+
+## App actions
+
+Actions from third-party apps (App Intents) are harvested the same way,
+but they also carry an `AppIntentDescriptor` naming the app. Pass it back
+exactly as it was recorded:
+
+```python
+CHATGPT = {"TeamIdentifier": "2DC432GLL2", "BundleIdentifier": "com.openai.chat",
+           "Name": "ChatGPT", "AppIntentIdentifier": "AskIntent"}
+
+idea = s.action(A + "ask", WFAskActionPrompt="What should I ask?")
+reply = s.action("com.openai.chat.AskIntent", AppIntentDescriptor=CHATGPT,
+                 prompt=ts("Answer briefly: ", idea))     # output: Ask ChatGPT
+s.show(reply)
+```
+
+Claude works the same way: `com.anthropic.claude.ClaudeAppIntentsExtension`
+with a `message` parameter, output "Ask Claude"
+(`constructs/ai_apps.native.json`).
+
+The app has to be installed on the device that runs the shortcut, or the
+action imports as broken. That is why `docs/actions.md` leaves app actions
+out; `python3 tools/gendocs.py --include-app-specific` lists them.
 
 ---
 
