@@ -4,12 +4,12 @@
 
 | | |
 | --- | --- |
-| **Actions** | 157 |
+| **Actions** | 441 |
 | **Categories** | 19 |
-| **Observed uses** | 29202 |
-| **Confirmed by Shortcuts itself** | 157 |
+| **Observed uses** | 75020 |
+| **Confirmed by Shortcuts itself** | 441 |
 | **Confirmed by running only** | 0 |
-| **Left out (need an app installed)** | 20 |
+| **Left out (need an app installed)** | 155 |
 
 Every parameter and shape below was observed on a device. `sclib` refuses to emit anything that is not here, which is why this file contains no invented keys.
 
@@ -17,17 +17,17 @@ Every parameter and shape below was observed on a device. `sclib` refuses to emi
 
 **Provenance** — `native` means Shortcuts wrote the shape itself, in a shortcut built through the app. `ranok` means we generated it and it ran correctly on device. Both are evidence; the first is stronger.
 
-> **20 actions that need a third-party app installed are left out.** They were harvested from a real library, so the shapes are correct — but the app has to be on the device for the action to exist at all, and a shortcut referencing a missing one imports as a broken action. Regenerate with `--include-app-specific` if you want them.
+> **155 actions that need a third-party app installed are left out.** They were harvested from a real library, so the shapes are correct — but the app has to be on the device for the action to exist at all, and a shortcut referencing a missing one imports as a broken action. Regenerate with `--include-app-specific` if you want them.
 
 ---
 
 ## Index
 
-**[Text](#text)** — [`gettext`](#isworkflowactionsgettext) · [`changecase`](#isworkflowactionstextchangecase) · [`combine`](#isworkflowactionstextcombine) · [`match`](#isworkflowactionstextmatch) · [`getgroup`](#isworkflowactionstextmatchgetgroup) · [`replace`](#isworkflowactionstextreplace) · [`split`](#isworkflowactionstextsplit) · [`trimwhitespace`](#isworkflowactionstexttrimwhitespace) · [`urlencode`](#isworkflowactionsurlencode)
+**[Text](#text)** — [`correctspelling`](#isworkflowactionscorrectspelling) · [`detectlanguage`](#isworkflowactionsdetectlanguage) · [`gettext`](#isworkflowactionsgettext) · [`changecase`](#isworkflowactionstextchangecase) · [`combine`](#isworkflowactionstextcombine) · [`match`](#isworkflowactionstextmatch) · [`getgroup`](#isworkflowactionstextmatchgetgroup) · [`replace`](#isworkflowactionstextreplace) · [`split`](#isworkflowactionstextsplit) · [`translate`](#isworkflowactionstexttranslate) · [`trimwhitespace`](#isworkflowactionstexttrimwhitespace) · [`urlencode`](#isworkflowactionsurlencode)
 
-**[Dictionaries](#dictionaries)** — [`address`](#isworkflowactionsdetectaddress) · [`contacts`](#isworkflowactionsdetectcontacts) · [`date`](#isworkflowactionsdetectdate) · [`dictionary`](#isworkflowactionsdetectdictionary) · [`images`](#isworkflowactionsdetectimages) · [`link`](#isworkflowactionsdetectlink) · [`text`](#isworkflowactionsdetecttext) · [`dictionary`](#isworkflowactionsdictionary) · [`getvalueforkey`](#isworkflowactionsgetvalueforkey) · [`setvalueforkey`](#isworkflowactionssetvalueforkey)
+**[Dictionaries](#dictionaries)** — [`address`](#isworkflowactionsdetectaddress) · [`contacts`](#isworkflowactionsdetectcontacts) · [`date`](#isworkflowactionsdetectdate) · [`dictionary`](#isworkflowactionsdetectdictionary) · [`emailaddress`](#isworkflowactionsdetectemailaddress) · [`images`](#isworkflowactionsdetectimages) · [`link`](#isworkflowactionsdetectlink) · [`number`](#isworkflowactionsdetectnumber) · [`phonenumber`](#isworkflowactionsdetectphonenumber) · [`text`](#isworkflowactionsdetecttext) · [`dictionary`](#isworkflowactionsdictionary) · [`getvalueforkey`](#isworkflowactionsgetvalueforkey) · [`setvalueforkey`](#isworkflowactionssetvalueforkey)
 
-**[Lists](#lists)** — [`count`](#isworkflowactionscount) · [`calendarevents`](#isworkflowactionsfiltercalendarevents) · [`contacts`](#isworkflowactionsfiltercontacts) · [`files`](#isworkflowactionsfilterfiles) · [`notes`](#isworkflowactionsfilternotes) · [`photos`](#isworkflowactionsfilterphotos) · [`reminders`](#isworkflowactionsfilterreminders) · [`getitemfromlist`](#isworkflowactionsgetitemfromlist) · [`list`](#isworkflowactionslist)
+**[Lists](#lists)** — [`count`](#isworkflowactionscount) · [`apps`](#isworkflowactionsfilterapps) · [`articles`](#isworkflowactionsfilterarticles) · [`calendarevents`](#isworkflowactionsfiltercalendarevents) · [`contacts`](#isworkflowactionsfiltercontacts) · [`files`](#isworkflowactionsfilterfiles) · [`quantity`](#isworkflowactionsfilterhealthquantity) · [`images`](#isworkflowactionsfilterimages) · [`locations`](#isworkflowactionsfilterlocations) · [`music`](#isworkflowactionsfiltermusic) · [`notes`](#isworkflowactionsfilternotes) · [`photos`](#isworkflowactionsfilterphotos) · [`reminders`](#isworkflowactionsfilterreminders) · [`getitemfromlist`](#isworkflowactionsgetitemfromlist) · [`list`](#isworkflowactionslist)
 
 **[Control flow](#control-flow)** — [`choosefrommenu`](#isworkflowactionschoosefrommenu) · [`comment`](#isworkflowactionscomment) · [`conditional`](#isworkflowactionsconditional) · [`exit`](#isworkflowactionsexit) · [`nothing`](#isworkflowactionsnothing) · [`count`](#isworkflowactionsrepeatcount) · [`each`](#isworkflowactionsrepeateach) · [`runworkflow`](#isworkflowactionsrunworkflow) · [`waittoreturn`](#isworkflowactionswaittoreturn)
 
@@ -37,54 +37,88 @@ Every parameter and shape below was observed on a device. `sclib` refuses to emi
 
 **[Network](#network)** — [`downloadurl`](#isworkflowactionsdownloadurl) · [`getipaddress`](#isworkflowactionsgetipaddress) · [`openurl`](#isworkflowactionsopenurl) · [`showwebpage`](#isworkflowactionsshowwebpage) · [`url`](#isworkflowactionsurl) · [`expand`](#isworkflowactionsurlexpand) · [`getheaders`](#isworkflowactionsurlgetheaders)
 
-**[Files](#files)** — [`base64encode`](#isworkflowactionsbase64encode) · [`open`](#isworkflowactionsdocumentpickeropen) · [`save`](#isworkflowactionsdocumentpickersave) · [`file`](#isworkflowactionsfile) · [`append`](#isworkflowactionsfileappend) · [`createfolder`](#isworkflowactionsfilecreatefolder) · [`delete`](#isworkflowactionsfiledelete) · [`getfoldercontents`](#isworkflowactionsfilegetfoldercontents) · [`getlink`](#isworkflowactionsfilegetlink) · [`move`](#isworkflowactionsfilemove) · [`rename`](#isworkflowactionsfilerename) · [`select`](#isworkflowactionsfileselect) · [`gettextfrompdf`](#isworkflowactionsgettextfrompdf) · [`gettypeaction`](#isworkflowactionsgettypeaction) · [`makepdf`](#isworkflowactionsmakepdf) · [`makezip`](#isworkflowactionsmakezip) · [`previewdocument`](#isworkflowactionspreviewdocument) · [`setitemname`](#isworkflowactionssetitemname) · [`unzip`](#isworkflowactionsunzip)
+**[Files](#files)** — [`base64encode`](#isworkflowactionsbase64encode) · [`open`](#isworkflowactionsdocumentpickeropen) · [`save`](#isworkflowactionsdocumentpickersave) · [`file`](#isworkflowactionsfile) · [`append`](#isworkflowactionsfileappend) · [`createfolder`](#isworkflowactionsfilecreatefolder) · [`delete`](#isworkflowactionsfiledelete) · [`getfoldercontents`](#isworkflowactionsfilegetfoldercontents) · [`getlink`](#isworkflowactionsfilegetlink) · [`move`](#isworkflowactionsfilemove) · [`rename`](#isworkflowactionsfilerename) · [`reveal`](#isworkflowactionsfilereveal) · [`select`](#isworkflowactionsfileselect) · [`gettextfrompdf`](#isworkflowactionsgettextfrompdf) · [`gettypeaction`](#isworkflowactionsgettypeaction) · [`makepdf`](#isworkflowactionsmakepdf) · [`makezip`](#isworkflowactionsmakezip) · [`previewdocument`](#isworkflowactionspreviewdocument) · [`setitemname`](#isworkflowactionssetitemname) · [`unzip`](#isworkflowactionsunzip)
 
 **[Input & output](#input--output)** — [`alert`](#isworkflowactionsalert) · [`ask`](#isworkflowactionsask) · [`choosefromlist`](#isworkflowactionschoosefromlist) · [`getclipboard`](#isworkflowactionsgetclipboard) · [`getmyworkflows`](#isworkflowactionsgetmyworkflows) · [`notification`](#isworkflowactionsnotification) · [`openin`](#isworkflowactionsopenin) · [`setclipboard`](#isworkflowactionssetclipboard) · [`share`](#isworkflowactionsshare) · [`showresult`](#isworkflowactionsshowresult) · [`speaktext`](#isworkflowactionsspeaktext)
 
-**[Media & images](#media--images)** — [`getrichtextfromhtml`](#isworkflowactionsgetrichtextfromhtml) · [`convert`](#isworkflowactionsimageconvert) · [`crop`](#isworkflowactionsimagecrop) · [`flip`](#isworkflowactionsimageflip) · [`mask`](#isworkflowactionsimagemask) · [`removebackground`](#isworkflowactionsimageremovebackground) · [`resize`](#isworkflowactionsimageresize) · [`rotate`](#isworkflowactionsimagerotate) · [`savetocameraroll`](#isworkflowactionssavetocameraroll)
+**[Media & images](#media--images)** — [`encodemedia`](#isworkflowactionsencodemedia) · [`getrichtextfromhtml`](#isworkflowactionsgetrichtextfromhtml) · [`combine`](#isworkflowactionsimagecombine) · [`convert`](#isworkflowactionsimageconvert) · [`crop`](#isworkflowactionsimagecrop) · [`flip`](#isworkflowactionsimageflip) · [`mask`](#isworkflowactionsimagemask) · [`removebackground`](#isworkflowactionsimageremovebackground) · [`resize`](#isworkflowactionsimageresize) · [`rotate`](#isworkflowactionsimagerotate) · [`savetocameraroll`](#isworkflowactionssavetocameraroll) · [`takephoto`](#isworkflowactionstakephoto)
 
-**[Dates](#dates)** — [`adjustdate`](#isworkflowactionsadjustdate) · [`date`](#isworkflowactionsdate) · [`date`](#isworkflowactionsformatdate) · [`number`](#isworkflowactionsformatnumber)
+**[Dates](#dates)** — [`adjustdate`](#isworkflowactionsadjustdate) · [`converttimezone`](#isworkflowactionsconverttimezone) · [`date`](#isworkflowactionsdate) · [`date`](#isworkflowactionsformatdate) · [`filesize`](#isworkflowactionsformatfilesize) · [`number`](#isworkflowactionsformatnumber)
 
-**[Properties](#properties)** — [`calendarevents`](#isworkflowactionspropertiescalendarevents) · [`contacts`](#isworkflowactionspropertiescontacts) · [`files`](#isworkflowactionspropertiesfiles) · [`locations`](#isworkflowactionspropertieslocations) · [`music`](#isworkflowactionspropertiesmusic)
+**[Properties](#properties)** — [`appearance`](#isworkflowactionspropertiesappearance) · [`appstore`](#isworkflowactionspropertiesappstore) · [`articles`](#isworkflowactionspropertiesarticles) · [`calendarevents`](#isworkflowactionspropertiescalendarevents) · [`contacts`](#isworkflowactionspropertiescontacts) · [`files`](#isworkflowactionspropertiesfiles) · [`quantity`](#isworkflowactionspropertieshealthquantity) · [`images`](#isworkflowactionspropertiesimages) · [`itunesstore`](#isworkflowactionspropertiesitunesstore) · [`locations`](#isworkflowactionspropertieslocations) · [`music`](#isworkflowactionspropertiesmusic) · [`reminders`](#isworkflowactionspropertiesreminders) · [`ridestatus`](#isworkflowactionspropertiesridestatus) · [`safariwebpage`](#isworkflowactionspropertiessafariwebpage) · [`shazam`](#isworkflowactionspropertiesshazam) · [`conditions`](#isworkflowactionspropertiesweatherconditions) · [`workflow`](#isworkflowactionspropertiesworkflow)
 
-**[Device](#device)** — [`getbatterylevel`](#isworkflowactionsgetbatterylevel) · [`getdevicedetails`](#isworkflowactionsgetdevicedetails) · [`set`](#isworkflowactionslowpowermodeset) · [`setvolume`](#isworkflowactionssetvolume) · [`set`](#isworkflowactionswifiset)
+**[Device](#device)** — [`set`](#isworkflowactionsairplanemodeset) · [`set`](#isworkflowactionsbluetoothset) · [`set`](#isworkflowactionscellulardataset) · [`getfocus`](#isworkflowactionsdndgetfocus) · [`set`](#isworkflowactionsdndset) · [`getbatterylevel`](#isworkflowactionsgetbatterylevel) · [`getdevicedetails`](#isworkflowactionsgetdevicedetails) · [`set`](#isworkflowactionslowpowermodeset) · [`setbrightness`](#isworkflowactionssetbrightness) · [`setvolume`](#isworkflowactionssetvolume) · [`vibrate`](#isworkflowactionsvibrate) · [`set`](#isworkflowactionswifiset)
 
-**[Contacts & calendar](#contacts--calendar)** — [`addnewevent`](#isworkflowactionsaddnewevent) · [`addnewreminder`](#isworkflowactionsaddnewreminder)
+**[Contacts & calendar](#contacts--calendar)** — [`addnewevent`](#isworkflowactionsaddnewevent) · [`addnewreminder`](#isworkflowactionsaddnewreminder) · [`contacts`](#isworkflowactionscontacts)
 
-**[Weather](#weather)** — [`currentconditions`](#isworkflowactionsweathercurrentconditions)
+**[Weather](#weather)** — [`currentconditions`](#isworkflowactionsweathercurrentconditions) · [`forecast`](#isworkflowactionsweatherforecast)
 
 **[Apple Intelligence](#apple-intelligence)** — [`askllm`](#isworkflowactionsaskllm)
 
 **[Scripting](#scripting)** — [`runapplescript`](#isworkflowactionsrunapplescript) · [`runjavascriptforautomation`](#isworkflowactionsrunjavascriptforautomation) · [`runjavascriptonwebpage`](#isworkflowactionsrunjavascriptonwebpage) · [`runshellscript`](#isworkflowactionsrunshellscript)
 
-**[Other](#other)** — [`airdropdocument`](#isworkflowactionsairdropdocument) · [`appendvariable`](#isworkflowactionsappendvariable) · [`delay`](#isworkflowactionsdelay) · [`deletephotos`](#isworkflowactionsdeletephotos) · [`folder`](#isworkflowactionsfolder) · [`generatebarcode`](#isworkflowactionsgeneratebarcode) · [`getcurrentapp`](#isworkflowactionsgetcurrentapp) · [`getcurrentlocation`](#isworkflowactionsgetcurrentlocation) · [`getcurrentsong`](#isworkflowactionsgetcurrentsong) · [`getdirections`](#isworkflowactionsgetdirections) · [`getdistance`](#isworkflowactionsgetdistance) · [`gethtmlfromrichtext`](#isworkflowactionsgethtmlfromrichtext) · [`getitemname`](#isworkflowactionsgetitemname) · [`getitemtype`](#isworkflowactionsgetitemtype) · [`getmapslink`](#isworkflowactionsgetmapslink) · [`getrichtextfrommarkdown`](#isworkflowactionsgetrichtextfrommarkdown) · [`gettimebetweendates`](#isworkflowactionsgettimebetweendates) · [`gettraveltime`](#isworkflowactionsgettraveltime) · [`getwebpagecontents`](#isworkflowactionsgetwebpagecontents) · [`getwifi`](#isworkflowactionsgetwifi) · [`handoff`](#isworkflowactionshandoff) · [`hash`](#isworkflowactionshash) · [`upload`](#isworkflowactionsimgurupload) · [`location`](#isworkflowactionslocation) · [`openapp`](#isworkflowactionsopenapp) · [`output`](#isworkflowactionsoutput) · [`overlayimageonimage`](#isworkflowactionsoverlayimageonimage) · [`overlaytext`](#isworkflowactionsoverlaytext) · [`set`](#isworkflowactionspersonalhotspotset) · [`createalbum`](#isworkflowactionsphotoscreatealbum) · [`playsound`](#isworkflowactionsplaysound) · [`returntohomescreen`](#isworkflowactionsreturntohomescreen) · [`runsshscript`](#isworkflowactionsrunsshscript) · [`scanbarcode`](#isworkflowactionsscanbarcode) · [`searchitunes`](#isworkflowactionssearchitunes) · [`searchlocalbusinesses`](#isworkflowactionssearchlocalbusinesses) · [`selectcontacts`](#isworkflowactionsselectcontacts) · [`selectphoto`](#isworkflowactionsselectphoto) · [`takescreenshot`](#isworkflowactionstakescreenshot) · [`set`](#isworkflowactionswallpaperset)
+**[Other](#other)** — [`additemtolist`](#isworkflowactionsadditemtolist) · [`addmusictoupnext`](#isworkflowactionsaddmusictoupnext) · [`addnewcalendar`](#isworkflowactionsaddnewcalendar) · [`addnewcontact`](#isworkflowactionsaddnewcontact) · [`addquickreminder`](#isworkflowactionsaddquickreminder) · [`address`](#isworkflowactionsaddress) · [`addtoplaylist`](#isworkflowactionsaddtoplaylist) · [`airdropdocument`](#isworkflowactionsairdropdocument) · [`appearance`](#isworkflowactionsappearance) · [`appendnote`](#isworkflowactionsappendnote) · [`appendvariable`](#isworkflowactionsappendvariable) · [`avairyeditphoto`](#isworkflowactionsavairyeditphoto) · [`clearupnext`](#isworkflowactionsclearupnext) · [`compresspdf`](#isworkflowactionscompresspdf) · [`createplaylist`](#isworkflowactionscreateplaylist) · [`delay`](#isworkflowactionsdelay) · [`deletephotos`](#isworkflowactionsdeletephotos) · [`deletestoredcontent`](#isworkflowactionsdeletestoredcontent) · [`dictatetext`](#isworkflowactionsdictatetext) · [`dismisssiri`](#isworkflowactionsdismisssiri) · [`set`](#isworkflowactionsdisplayalways-onset) · [`savefile`](#isworkflowactionsdropboxsavefile) · [`email`](#isworkflowactionsemail) · [`get`](#isworkflowactionsevernoteget) · [`getlink`](#isworkflowactionsevernotegetlink) · [`new`](#isworkflowactionsevernotenew) · [`exportsong`](#isworkflowactionsexportsong) · [`extracttextfromimage`](#isworkflowactionsextracttextfromimage) · [`flashlight`](#isworkflowactionsflashlight) · [`folder`](#isworkflowactionsfolder) · [`generatebarcode`](#isworkflowactionsgeneratebarcode) · [`playlist`](#isworkflowactionsgetplaylist) · [`getarticle`](#isworkflowactionsgetarticle) · [`getcurrentapp`](#isworkflowactionsgetcurrentapp) · [`getcurrentlocation`](#isworkflowactionsgetcurrentlocation) · [`getcurrentsong`](#isworkflowactionsgetcurrentsong) · [`getdirections`](#isworkflowactionsgetdirections) · [`getdistance`](#isworkflowactionsgetdistance) · [`getepisodesforpodcast`](#isworkflowactionsgetepisodesforpodcast) · [`getframesfromimage`](#isworkflowactionsgetframesfromimage) · [`gethalfwaypoint`](#isworkflowactionsgethalfwaypoint) · [`gethomeaccessorystate`](#isworkflowactionsgethomeaccessorystate) · [`gethtmlfromrichtext`](#isworkflowactionsgethtmlfromrichtext) · [`getitemname`](#isworkflowactionsgetitemname) · [`getitemtype`](#isworkflowactionsgetitemtype) · [`getlastphoto`](#isworkflowactionsgetlastphoto) · [`getlastscreenshot`](#isworkflowactionsgetlastscreenshot) · [`getlastvideo`](#isworkflowactionsgetlastvideo) · [`getlatestbursts`](#isworkflowactionsgetlatestbursts) · [`getlatestlivephotos`](#isworkflowactionsgetlatestlivephotos) · [`getmapslink`](#isworkflowactionsgetmapslink) · [`getmarkdownfromrichtext`](#isworkflowactionsgetmarkdownfromrichtext) · [`getnameofemoji`](#isworkflowactionsgetnameofemoji) · [`getonscreencontent`](#isworkflowactionsgetonscreencontent) · [`getonscreencontext`](#isworkflowactionsgetonscreencontext) · [`getparentdirectory`](#isworkflowactionsgetparentdirectory) · [`getparkedcarlocation`](#isworkflowactionsgetparkedcarlocation) · [`getrichtextfrommarkdown`](#isworkflowactionsgetrichtextfrommarkdown) · [`getstoredcontent`](#isworkflowactionsgetstoredcontent) · [`gettimebetweendates`](#isworkflowactionsgettimebetweendates) · [`gettraveltime`](#isworkflowactionsgettraveltime) · [`getupcomingevents`](#isworkflowactionsgetupcomingevents) · [`getupcomingreminders`](#isworkflowactionsgetupcomingreminders) · [`geturlcomponent`](#isworkflowactionsgeturlcomponent) · [`getwebpagecontents`](#isworkflowactionsgetwebpagecontents) · [`getwifi`](#isworkflowactionsgetwifi) · [`giphy`](#isworkflowactionsgiphy) · [`handoff`](#isworkflowactionshandoff) · [`handoffplayback`](#isworkflowactionshandoffplayback) · [`hash`](#isworkflowactionshash) · [`log`](#isworkflowactionshealthquantitylog) · [`homeaccessory`](#isworkflowactionshomeaccessory) · [`upload`](#isworkflowactionsimgurupload) · [`intercom`](#isworkflowactionsintercom) · [`set`](#isworkflowactionslisteningmodeset) · [`location`](#isworkflowactionslocation) · [`app`](#isworkflowactionslockapp) · [`lockscreen`](#isworkflowactionslockscreen) · [`makegif`](#isworkflowactionsmakegif) · [`makeimagefrompdfpage`](#isworkflowactionsmakeimagefrompdfpage) · [`makeimagefromrichtext`](#isworkflowactionsmakeimagefromrichtext) · [`makespokenaudiofromtext`](#isworkflowactionsmakespokenaudiofromtext) · [`makevideofromgif`](#isworkflowactionsmakevideofromgif) · [`convert`](#isworkflowactionsmeasurementconvert) · [`create`](#isworkflowactionsmeasurementcreate) · [`set`](#isworkflowactionsnightshiftset) · [`openapp`](#isworkflowactionsopenapp) · [`openpasswords`](#isworkflowactionsopenpasswords) · [`openxcallbackurl`](#isworkflowactionsopenxcallbackurl) · [`set`](#isworkflowactionsorientationlockset) · [`output`](#isworkflowactionsoutput) · [`overlayimageonimage`](#isworkflowactionsoverlayimageonimage) · [`overlaytext`](#isworkflowactionsoverlaytext) · [`pausemusic`](#isworkflowactionspausemusic) · [`get`](#isworkflowactionspersonalhotspotpasswordget) · [`set`](#isworkflowactionspersonalhotspotpasswordset) · [`set`](#isworkflowactionspersonalhotspotset) · [`phonenumber`](#isworkflowactionsphonenumber) · [`createalbum`](#isworkflowactionsphotoscreatealbum) · [`playmusic`](#isworkflowactionsplaymusic) · [`playpodcast`](#isworkflowactionsplaypodcast) · [`playsound`](#isworkflowactionsplaysound) · [`get`](#isworkflowactionspostersget) · [`switch`](#isworkflowactionspostersswitch) · [`postonfacebook`](#isworkflowactionspostonfacebook) · [`print`](#isworkflowactionsprint) · [`readinglist`](#isworkflowactionsreadinglist) · [`reboot`](#isworkflowactionsreboot) · [`recordaudio`](#isworkflowactionsrecordaudio) · [`showlist`](#isworkflowactionsremindersshowlist) · [`removeevents`](#isworkflowactionsremoveevents) · [`removefromalbum`](#isworkflowactionsremovefromalbum) · [`removereminders`](#isworkflowactionsremovereminders) · [`returntohomescreen`](#isworkflowactionsreturntohomescreen) · [`requestride`](#isworkflowactionsriderequestride) · [`rss`](#isworkflowactionsrss) · [`runextension`](#isworkflowactionsrunextension) · [`runsshscript`](#isworkflowactionsrunsshscript) · [`scanbarcode`](#isworkflowactionsscanbarcode) · [`searchappstore`](#isworkflowactionssearchappstore) · [`searchitunes`](#isworkflowactionssearchitunes) · [`searchlocalbusinesses`](#isworkflowactionssearchlocalbusinesses) · [`searchmaps`](#isworkflowactionssearchmaps) · [`searchpodcasts`](#isworkflowactionssearchpodcasts) · [`searchweb`](#isworkflowactionssearchweb) · [`seek`](#isworkflowactionsseek) · [`selectcontacts`](#isworkflowactionsselectcontacts) · [`selectphone`](#isworkflowactionsselectphone) · [`selectphoto`](#isworkflowactionsselectphoto) · [`sendemail`](#isworkflowactionssendemail) · [`sendmessage`](#isworkflowactionssendmessage) · [`setairdropreceiving`](#isworkflowactionssetairdropreceiving) · [`setparkedcar`](#isworkflowactionssetparkedcar) · [`setplaybackdestination`](#isworkflowactionssetplaybackdestination) · [`setstoredcontent`](#isworkflowactionssetstoredcontent) · [`calendarevents`](#isworkflowactionssetterscalendarevents) · [`contacts`](#isworkflowactionssetterscontacts) · [`reminders`](#isworkflowactionssettersreminders) · [`shazamMedia`](#isworkflowactionsshazammedia) · [`showdefinition`](#isworkflowactionsshowdefinition) · [`showincalendar`](#isworkflowactionsshowincalendar) · [`showinstore`](#isworkflowactionsshowinstore) · [`shownote`](#isworkflowactionsshownote) · [`set`](#isworkflowactionssilenceunknowncallersset) · [`handle`](#isworkflowactionssirikitdonationhandle) · [`skipback`](#isworkflowactionsskipback) · [`skipforward`](#isworkflowactionsskipforward) · [`splitpdf`](#isworkflowactionssplitpdf) · [`splitscreen`](#isworkflowactionssplitscreen) · [`spotlightsearch`](#isworkflowactionsspotlightsearch) · [`set`](#isworkflowactionsstagemanagerset) · [`takescreenshot`](#isworkflowactionstakescreenshot) · [`takevideo`](#isworkflowactionstakevideo) · [`start`](#isworkflowactionstimerstart) · [`trimvideo`](#isworkflowactionstrimvideo) · [`set`](#isworkflowactionstruetoneset) · [`post`](#isworkflowactionstumblrpost) · [`tweet`](#isworkflowactionstweet) · [`open`](#isworkflowactionsuseractivityopen) · [`pay`](#isworkflowactionsvenmopay) · [`request`](#isworkflowactionsvenmorequest) · [`viewresult`](#isworkflowactionsviewresult) · [`get`](#isworkflowactionsvpnget) · [`set`](#isworkflowactionsvpnset) · [`set`](#isworkflowactionswallpaperset) · [`end`](#isworkflowactionsworkoutend) · [`start`](#isworkflowactionsworkoutstart)
 
-**[Apple apps](#apple-apps)** — [`SummarizeTextIntent`](#comapplewritingtoolswritingtoolsappintentsextensionsummarizetextintent) · [`CloseTab`](#comapplemobilesafariclosetab) · [`CreateNewPrivateTab`](#comapplemobilesafaricreatenewprivatetab) · [`TabEntity`](#comapplemobilesafaritabentity)
+**[Apple apps](#apple-apps)** — [`AccessibilityAutoBrightnessEnabledEntity-UpdatableEntity`](#comappleaccessibilityuiserveraccessibilityautobrightnessenabledentity-updatableentity) · [`AccessibilityBoldTextEnabledEntity-UpdatableEntity`](#comappleaccessibilityuiserveraccessibilityboldtextenabledentity-updatableentity) · [`AXSetBackgroundSoundIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxsetbackgroundsoundintent) · [`AXSetBackgroundSoundVolumeIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxsetbackgroundsoundvolumeintent) · [`AXSetLargeTextIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxsetlargetextintent) · [`AXStartGuidedAccessIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxstartguidedaccessintent) · [`AXStartSpeakScreenIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxstartspeakscreenintent) · [`AXToggleAssistiveTouchIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtoggleassistivetouchintent) · [`AXToggleAutoAnswerCallsIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtoggleautoanswercallsintent) · [`AXToggleBackgroundSoundsIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtogglebackgroundsoundsintent) · [`AXToggleClassicInvertIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtoggleclassicinvertintent) · [`AXToggleColorFiltersIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtogglecolorfiltersintent) · [`AXToggleContrastIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtogglecontrastintent) · [`AXToggleLEDFlashIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtoggleledflashintent) · [`AXToggleLiveCaptionsIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtogglelivecaptionsintent) · [`AXToggleMonoAudioIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtogglemonoaudiointent) · [`AXToggleReduceMotionIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtogglereducemotionintent) · [`AXToggleSmartInvertIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtogglesmartinvertintent) · [`AXToggleSoundDetectionIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtogglesounddetectionintent) · [`AXToggleSwitchControlIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtoggleswitchcontrolintent) · [`AXToggleTransparencyIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtoggletransparencyintent) · [`AXToggleVoiceControlIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtogglevoicecontrolintent) · [`AXToggleVoiceOverIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtogglevoiceoverintent) · [`AXToggleWhitePointIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtogglewhitepointintent) · [`AXToggleZoomIntent`](#comappleaccessibilityutilitiesaxsettingsshortcutsaxtogglezoomintent) · [`PageNavigationIntent`](#comappleappstorepagenavigationintent) · [`SearchFile`](#comappledocumentsappsearchfile) · [`GenerateImageIntent`](#comapplegenerativeplaygroundappgenerateimageintent) · [`OpenViewIntent`](#comapplehealthopenviewintent) · [`ReaderModeIntent`](#comapplemagnifierreadermodeintent) · [`CreateContactIntent`](#comapplemobileaddressbookcreatecontactintent) · [`DeleteContactIntent`](#comapplemobileaddressbookdeletecontactintent) · [`MessageEntity`](#comapplemobilesmsmessageentity) · [`OpenConversationIntent`](#comapplemobilesmsopenconversationintent) · [`NPRFPingMyPhoneIntent`](#comapplenanosettingsnprfpingmyphoneintent) · [`NPRFSetAlwaysOnIntent`](#comapplenanosettingsnprfsetalwaysonintent) · [`NPRFSetSchoolTimeIntent`](#comapplenanosettingsnprfsetschooltimeintent) · [`NPRFSetSilentModeIntent`](#comapplenanosettingsnprfsetsilentmodeintent) · [`NPRFSetTheaterModeIntent`](#comapplenanosettingsnprfsettheatermodeintent) · [`NPRFSetWaterLockIntent`](#comapplenanosettingsnprfsetwaterlockintent) · [`TNiOSAddValuesToSpreadsheetIntent`](#comapplenumberstniosaddvaluestospreadsheetintent) · [`COSSetGizmoFaceIntent`](#comapplepbbridgesupportbridgeintentscossetgizmofaceintent) · [`OpenPassIntent`](#comapplepassbookopenpassintent) · [`AirDropReceivingModeEntity-UpdatableEntity`](#comapplepreferencesairdropreceivingmodeentity-updatableentity) · [`MPSilenceUnknownCallersToggleEntity-UpdatableEntity`](#comapplepreferencesmpsilenceunknowncallerstoggleentity-updatableentity) · [`CellularPlanEntity`](#comappleshortcutsactionscellularplanentity) · [`GetOrientationAction`](#comappleshortcutsactionsgetorientationaction) · [`OpenCameraAction`](#comappleshortcutsactionsopencameraaction) · [`ResetCellularDataStatisticsAction`](#comappleshortcutsactionsresetcellulardatastatisticsaction) · [`SetBatteryChargeLimitAction`](#comappleshortcutsactionssetbatterychargelimitaction) · [`SetDataRoamingAction`](#comappleshortcutsactionssetdataroamingaction) · [`SetDefaultCellularPlanAction`](#comappleshortcutsactionssetdefaultcellularplanaction) · [`SetSilentModeAction`](#comappleshortcutsactionssetsilentmodeaction) · [`SetVoiceDataModeAction`](#comappleshortcutsactionssetvoicedatamodeaction) · [`ShowControlCenterAction`](#comappleshortcutsactionsshowcontrolcenteraction) · [`ToggleCellularPlanAction`](#comappleshortcutsactionstogglecellularplanaction) · [`TranscribeAudioAction`](#comappleshortcutsactionstranscribeaudioaction) · [`SearchSpotlightIntent`](#comapplespotlightsearchspotlightintent) · [`LaunchApplicationIntent`](#comappletvremoteuiservicelaunchapplicationintent) · [`LaunchRemoteIntent`](#comappletvremoteuiservicelaunchremoteintent) · [`LaunchScreenSaverIntent`](#comappletvremoteuiservicelaunchscreensaverintent) · [`PauseContentIntent`](#comappletvremoteuiservicepausecontentintent) · [`SkipContentIntent`](#comappletvremoteuiserviceskipcontentintent) · [`SleepAppleTVIntent`](#comappletvremoteuiservicesleepappletvintent) · [`WakeAppleTVIntent`](#comappletvremoteuiservicewakeappletvintent) · [`RecordVoiceMemoIntent`](#comapplevoicememosrecordvoicememointent) · [`AdjustToneIntent`](#comapplewritingtoolswritingtoolsappintentsextensionadjusttoneintent) · [`FormatListIntent`](#comapplewritingtoolswritingtoolsappintentsextensionformatlistintent) · [`FormatTableIntent`](#comapplewritingtoolswritingtoolsappintentsextensionformattableintent) · [`ProofreadIntent`](#comapplewritingtoolswritingtoolsappintentsextensionproofreadintent) · [`RewriteTextIntent`](#comapplewritingtoolswritingtoolsappintentsextensionrewritetextintent) · [`SummarizeTextIntent`](#comapplewritingtoolswritingtoolsappintentsextensionsummarizetextintent) · [`CancelTimerIntent`](#comappleclockcanceltimerintent) · [`DeleteAlarmIntent`](#comappleclockdeletealarmintent) · [`facetime`](#comapplefacetimefacetime) · [`CRLCreateBoardIntent`](#comapplefreeformcrlcreateboardintent) · [`CalculateAppUsageIntent`](#comappleintelligenceplatformintelligenceplatformintelligenceplatformdataactionsappintentsextensioncalculateappusageintent) · [`CreateEntryIntent`](#comapplejournalcreateentryintent) · [`MailMessageEntity`](#comapplemobilemailmailmessageentity) · [`SearchMessagesAction`](#comapplemobilemailsearchmessagesaction) · [`CreateFolderLinkAction`](#comapplemobilenotescreatefolderlinkaction) · [`DeleteNotesLinkAction`](#comapplemobilenotesdeletenoteslinkaction) · [`ScanDocumentLinkAction`](#comapplemobilenotesscandocumentlinkaction) · [`SharingExtension`](#comapplemobilenotessharingextension) · [`call`](#comapplemobilephonecall) · [`CloseTab`](#comapplemobilesafariclosetab) · [`CreateNewPrivateTab`](#comapplemobilesafaricreatenewprivatetab) · [`CreateNewTab`](#comapplemobilesafaricreatenewtab) · [`CreateTabAssistantIntent`](#comapplemobilesafaricreatetabassistantintent) · [`LoadURLInTab`](#comapplemobilesafariloadurlintab) · [`TabEntity`](#comapplemobilesafaritabentity) · [`HideAssetsIntent`](#comapplemobileslideshowhideassetsintent) · [`OpenAssetIntent`](#comapplemobileslideshowopenassetintent) · [`OpenCollectionIntent`](#comapplemobileslideshowopencollectionintent) · [`StreamShareService`](#comapplemobileslideshowstreamshareservice) · [`MTCreateAlarmIntent`](#comapplemobiletimer-frameworkmobiletimerintentsmtcreatealarmintent) · [`MTGetAlarmsIntent`](#comapplemobiletimer-frameworkmobiletimerintentsmtgetalarmsintent) · [`MTToggleAlarmIntent`](#comapplemobiletimer-frameworkmobiletimerintentsmttogglealarmintent) · [`CancelTimerIntent`](#comapplemobiletimercanceltimerintent) · [`DeleteAlarmIntent`](#comapplemobiletimerdeletealarmintent) · [`EditSleepAlarmIntent`](#comapplemobiletimereditsleepalarmintent) · [`GetCurrentTimerDetailsIntent`](#comapplemobiletimergetcurrenttimerdetailsintent) · [`PauseTimerIntent`](#comapplemobiletimerpausetimerintent) · [`ResumeTimerIntent`](#comapplemobiletimerresumetimerintent) · [`StartStopwatchIntent`](#comapplemobiletimerstartstopwatchintent) · [`StopStopwatchIntent`](#comapplemobiletimerstopstopwatchintent) · [`RecognizeMusicIntent`](#comapplemusicrecognitionrecognizemusicintent) · [`DeleteListsAppIntent`](#comappleremindersdeletelistsappintent) · [`TTRCreateListAppIntent`](#comappleremindersttrcreatelistappintent) · [`AddShortcutToHomeScreenAction`](#comappleshortcutsaddshortcuttohomescreenaction) · [`CreateFolderAction`](#comappleshortcutscreatefolderaction) · [`CreateShortcutiCloudLinkAction`](#comappleshortcutscreateshortcuticloudlinkaction) · [`CreateWorkflowAction`](#comappleshortcutscreateworkflowaction) · [`DeleteWorkflowAction`](#comappleshortcutsdeleteworkflowaction) · [`MoveShortcutToFolderAction`](#comappleshortcutsmoveshortcuttofolderaction) · [`OpenNavigationDestinationAction`](#comappleshortcutsopennavigationdestinationaction) · [`OpenWorkflowAction`](#comappleshortcutsopenworkflowaction) · [`RenameShortcutAction`](#comappleshortcutsrenameshortcutaction) · [`SearchActionDrawerAction`](#comappleshortcutssearchactiondraweraction) · [`SearchShortcutsAction`](#comappleshortcutssearchshortcutsaction) · [`SetShortcutAttributesAction`](#comappleshortcutssetshortcutattributesaction) · [`WeatherIntent`](#comappleweatherweatherintent)
 
 ---
 
 ## Text
 
+### `is.workflow.actions.correctspelling`
+
+`native` · seen 19×
+
+Returns `Corrected Spelling`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `Show-text` | `bool` |
+| `text` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.correctspelling",
+        Show-text=False,
+        text=att(x))
+```
+
+### `is.workflow.actions.detectlanguage`
+
+`native` · seen 9×
+
+Returns `Language`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenString` |
+
+```python
+out = s.action("is.workflow.actions.detectlanguage",
+        WFInput=ts("..."))
+```
+
 ### `is.workflow.actions.gettext`
 
-`native` · `ranok` · seen 2323×
+`native` · `ranok` · seen 3984×
 
 Returns `Stamina1` or `Testo` or `Text` or `テキスト`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `CustomOutputName` | `str` |
+| `WFShowWorkflow` | `bool` |
 | `WFTextActionText` | `WFTextTokenString` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.gettext",
         CustomOutputName="...",
+        WFShowWorkflow=False,
         WFTextActionText="...")
 ```
 
 ### `is.workflow.actions.text.changecase`
 
-`native` · seen 33×
+`native` · seen 243×
 
 Returns `Updated Text`.
 
@@ -92,35 +126,43 @@ Returns `Updated Text`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `Show-text` | `bool` |
-| `WFCaseType` | `str` |
-| `text` | `WFTextTokenAttachment` |
+| `ShowWhenRun` | `bool` |
+| `WFCaseType` | `WFTextTokenAttachment` · `str` |
+| `text` | `WFTextTokenAttachment` · `WFTextTokenString` |
 
 ```python
 out = s.action("is.workflow.actions.text.changecase",
         CustomOutputName="...",
         Show-text=False,
-        WFCaseType="...",
+        ShowWhenRun=False,
+        WFCaseType=att(x),
         text=att(x))
 ```
 
 ### `is.workflow.actions.text.combine`
 
-`native` · seen 29×
+`native` · seen 408×
 
 Returns `Combined Text`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `Credit` | `str` |
 | `CustomOutputName` | `str` |
+| `RoutineHub` | `int` |
 | `Show-text` | `bool` |
-| `WFTextCustomSeparator` | `str` |
+| `ShowWhenRun` | `bool` |
+| `WFTextCustomSeparator` | `WFTextTokenString` · `str` |
 | `WFTextSeparator` | `str`<br>values: `Custom`, `Every Character`, `New Lines`, `Spaces` |
-| `text` | `WFTextTokenAttachment` · `array` |
+| `text` | `WFTextTokenAttachment` · `WFTextTokenString` · `array` |
 
 ```python
 out = s.action("is.workflow.actions.text.combine",
+        Credit="...",
         CustomOutputName="...",
+        RoutineHub=0,
         Show-text=False,
+        ShowWhenRun=False,
         WFTextCustomSeparator="...",
         WFTextSeparator="Custom",
         text=att(x))
@@ -128,20 +170,26 @@ out = s.action("is.workflow.actions.text.combine",
 
 ### `is.workflow.actions.text.match`
 
-`native` · seen 256×
+`native` · seen 697×
 
 Returns `Matches` or `一致`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `Credit` | `str` |
 | `CustomOutputName` | `str` |
+| `RoutineHub` | `int` |
+| `ShowWhenRun` | `bool` |
 | `WFMatchTextCaseSensitive` | `bool` |
 | `WFMatchTextPattern` | `WFTextTokenString` · `str` |
 | `text` | `WFTextTokenString` |
 
 ```python
 out = s.action("is.workflow.actions.text.match",
+        Credit="...",
         CustomOutputName="...",
+        RoutineHub=0,
+        ShowWhenRun=False,
         WFMatchTextCaseSensitive=False,
         WFMatchTextPattern="...",
         text=ts("..."))
@@ -149,51 +197,65 @@ out = s.action("is.workflow.actions.text.match",
 
 ### `is.workflow.actions.text.match.getgroup`
 
-`native` · seen 9×
+`native` · seen 147×
 
 Returns `Text`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `WFGroupIndex` | `str` |
+| `RoutineHub` | `int` |
+| `ShowWhenRun` | `bool` |
+| `WFGetGroupType` | `str` |
+| `WFGroupIndex` | `int` · `str` |
 | `matches` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.text.match.getgroup",
+        Credit="...",
         CustomOutputName="...",
-        WFGroupIndex="...",
+        RoutineHub=0,
+        ShowWhenRun=False,
+        WFGetGroupType="...",
+        WFGroupIndex=0,
         matches=att(x))
 ```
 
 ### `is.workflow.actions.text.replace`
 
-`native` · `ranok` · seen 850×
+`native` · `ranok` · seen 1526×
 
 Returns `Updated Text` or `アップデートされたテキスト`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `WFInput` | `WFTextTokenString` |
+| `RoutineHub` | `int` |
+| `WFInput` | `WFTextTokenString` · `str` |
 | `WFReplaceTextCaseSensitive` | `bool` |
 | `WFReplaceTextFind` | `WFTextTokenString` · `str` |
 | `WFReplaceTextRegularExpression` | `bool` |
 | `WFReplaceTextReplace` | `WFTextTokenString` · `str` |
+| `WFShowWorkflow` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.text.replace",
+        Credit="...",
         CustomOutputName="...",
-        WFInput=ts("..."),
+        RoutineHub=0,
+        WFInput="...",
         WFReplaceTextCaseSensitive=False,
         WFReplaceTextFind="...",
         WFReplaceTextRegularExpression=False,
-        WFReplaceTextReplace="...")
+        WFReplaceTextReplace="...",
+        WFShowWorkflow=False)
 ```
 
 ### `is.workflow.actions.text.split`
 
-`native` · `ranok` · seen 73×
+`native` · `ranok` · seen 653×
 
 Returns `Split Text`.
 
@@ -201,37 +263,60 @@ Returns `Split Text`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `Show-text` | `bool` |
-| `WFTextCustomSeparator` | `str` |
-| `WFTextSeparator` | `str`<br>values: `Custom`, `Every Character`, `New Lines`, `Spaces` |
+| `ShowWhenRun` | `bool` |
+| `WFTextCustomSeparator` | `WFTextTokenString` · `str` |
+| `WFTextSeparator` | `WFTextTokenAttachment` · `str`<br>values: `Custom`, `Every Character`, `New Lines`, `Spaces` |
 | `text` | `WFTextTokenAttachment` · `WFTextTokenString` |
 
 ```python
 out = s.action("is.workflow.actions.text.split",
         CustomOutputName="...",
         Show-text=False,
+        ShowWhenRun=False,
         WFTextCustomSeparator="...",
         WFTextSeparator="Custom",
         text=att(x))
 ```
 
-### `is.workflow.actions.text.trimwhitespace`
+### `is.workflow.actions.text.translate`
 
-`native` · seen 1×
+`native` · seen 47×
 
-No output.
+Returns `Translated Text`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFInput` | `str` |
+| `WFInputText` | `WFTextTokenString` |
+| `WFSelectedFromLanguage` | `WFTextTokenAttachment` · `str` |
+| `WFSelectedLanguage` | `WFTextTokenAttachment` · `str` |
 
 ```python
-s.action("is.workflow.actions.text.trimwhitespace",
+out = s.action("is.workflow.actions.text.translate",
+        WFInputText=ts("..."),
+        WFSelectedFromLanguage=att(x),
+        WFSelectedLanguage=att(x))
+```
+
+### `is.workflow.actions.text.trimwhitespace`
+
+`native` · seen 73×
+
+Returns `Updated Text`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFInput` | `WFTextTokenString` · `str` |
+
+```python
+out = s.action("is.workflow.actions.text.trimwhitespace",
+        CustomOutputName="...",
         WFInput="...")
 ```
 
 ### `is.workflow.actions.urlencode`
 
-`native` · seen 49×
+`native` · seen 268×
 
 Returns `URL Encoded Text`.
 
@@ -239,13 +324,13 @@ Returns `URL Encoded Text`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `WFEncodeMode` | `str`<br>values: `Decode`, `Encode` |
-| `WFInput` | `WFTextTokenString` |
+| `WFInput` | `WFTextTokenString` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.urlencode",
         CustomOutputName="...",
         WFEncodeMode="Decode",
-        WFInput=ts("..."))
+        WFInput="...")
 ```
 
 <sub>[back to index](#index)</sub>
@@ -256,7 +341,7 @@ out = s.action("is.workflow.actions.urlencode",
 
 ### `is.workflow.actions.detect.address`
 
-`native` · seen 5×
+`native` · seen 25×
 
 Returns `Addresses`.
 
@@ -271,24 +356,9 @@ out = s.action("is.workflow.actions.detect.address",
 
 ### `is.workflow.actions.detect.contacts`
 
-`native` · `ranok` · seen 254×
+`native` · `ranok` · seen 341×
 
 Returns `Contacts`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `WFInput` | `WFTextTokenAttachment` |
-
-```python
-out = s.action("is.workflow.actions.detect.contacts",
-        WFInput=att(x))
-```
-
-### `is.workflow.actions.detect.date`
-
-`native` · seen 1×
-
-No output.
 
 | Parameter | Accepts |
 | --- | --- |
@@ -296,14 +366,31 @@ No output.
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
-s.action("is.workflow.actions.detect.date",
+out = s.action("is.workflow.actions.detect.contacts",
+        CustomOutputName="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.detect.date`
+
+`native` · seen 122×
+
+Returns `Dates`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.detect.date",
         CustomOutputName="...",
         WFInput=att(x))
 ```
 
 ### `is.workflow.actions.detect.dictionary`
 
-`native` · seen 37×
+`native` · seen 519×
 
 Returns `Dictionary`.
 
@@ -318,26 +405,77 @@ out = s.action("is.workflow.actions.detect.dictionary",
         WFInput=att(x))
 ```
 
+### `is.workflow.actions.detect.emailaddress`
+
+`native` · seen 11×
+
+Returns `Email Addresses`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenString` |
+
+```python
+out = s.action("is.workflow.actions.detect.emailaddress",
+        WFInput=ts("..."))
+```
+
 ### `is.workflow.actions.detect.images`
 
-`native` · seen 18×
+`native` · seen 137×
 
 Returns `Images`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.detect.images",
+        CustomOutputName="...",
         WFInput=att(x))
 ```
 
 ### `is.workflow.actions.detect.link`
 
-`native` · seen 8×
+`native` · seen 166×
 
 Returns `URLs`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFInput` | `WFTextTokenString` · `str` |
+
+```python
+out = s.action("is.workflow.actions.detect.link",
+        CustomOutputName="...",
+        WFInput="...")
+```
+
+### `is.workflow.actions.detect.number`
+
+`native` · seen 95×
+
+Returns `Numbers`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.detect.number",
+        CustomOutputName="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.detect.phonenumber`
+
+`native` · seen 27×
+
+Returns `Phone Numbers`.
 
 | Parameter | Accepts |
 | --- | --- |
@@ -345,14 +483,14 @@ Returns `URLs`.
 | `WFInput` | `WFTextTokenString` |
 
 ```python
-out = s.action("is.workflow.actions.detect.link",
+out = s.action("is.workflow.actions.detect.phonenumber",
         CustomOutputName="...",
         WFInput=ts("..."))
 ```
 
 ### `is.workflow.actions.detect.text`
 
-`native` · seen 15×
+`native` · seen 349×
 
 Returns `Text`.
 
@@ -360,33 +498,41 @@ Returns `Text`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `WFInput` | `WFTextTokenAttachment` |
+| `WFShowWorkflow` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.detect.text",
         CustomOutputName="...",
-        WFInput=att(x))
+        WFInput=att(x),
+        WFShowWorkflow=False)
 ```
 
 ### `is.workflow.actions.dictionary`
 
-`native` · `ranok` · seen 317×
+`native` · `ranok` · seen 1243×
 
 Returns `Dictionary` or `辞書`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `WFItems` | `WFDictionaryFieldValue` |
+| `RoutineHub` | `int` |
+| `WFItems` | `WFDictionaryFieldValue` · `dict{Value}` |
+| `WFShowWorkflow` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.dictionary",
+        Credit="...",
         CustomOutputName="...",
-        WFItems="...")
+        RoutineHub=0,
+        WFItems="...",
+        WFShowWorkflow=False)
 ```
 
 ### `is.workflow.actions.getvalueforkey`
 
-`native` · `ranok` · seen 5069×
+`native` · `ranok` · seen 6012×
 
 Returns `Dictionary Value` or `辞書の値`.
 
@@ -407,7 +553,7 @@ out = s.action("is.workflow.actions.getvalueforkey",
 
 ### `is.workflow.actions.setvalueforkey`
 
-`native` · `ranok` · seen 97×
+`native` · `ranok` · seen 353×
 
 Returns `Dictionary`.
 
@@ -434,7 +580,7 @@ out = s.action("is.workflow.actions.setvalueforkey",
 
 ### `is.workflow.actions.count`
 
-`native` · seen 62×
+`native` · seen 651×
 
 Returns `Count`.
 
@@ -442,32 +588,74 @@ Returns `Count`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `Input` | `WFTextTokenAttachment` |
-| `WFCountType` | `str`<br>values: `Items`, `Lines`, `Words` |
+| `WFCountType` | `WFTextTokenAttachment` · `str`<br>values: `Characters`, `Items`, `Lines`, `Sentences`, `Words` |
 
 ```python
 out = s.action("is.workflow.actions.count",
         CustomOutputName="...",
         Input=att(x),
-        WFCountType="Items")
+        WFCountType="Characters")
 ```
 
-### `is.workflow.actions.filter.calendarevents`
+### `is.workflow.actions.filter.apps`
 
-`native` · seen 5×
+`native` · seen 3×
 
-Returns `Calendar Events`.
+Returns `Apps`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+
+```python
+out = s.action("is.workflow.actions.filter.apps",
+        WFContentItemFilter="...")
+```
+
+### `is.workflow.actions.filter.articles`
+
+`native` · seen 7×
+
+Returns `Articles`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
 | `WFContentItemInputParameter` | `WFTextTokenAttachment` |
 | `WFContentItemLimitEnabled` | `bool` |
-| `WFContentItemLimitNumber` | `int` |
+| `WFContentItemLimitNumber` | `real` |
+| `WFContentItemSortOrder` | `str` |
+| `WFContentItemSortProperty` | `str` |
+
+```python
+out = s.action("is.workflow.actions.filter.articles",
+        WFContentItemFilter="...",
+        WFContentItemInputParameter=att(x),
+        WFContentItemLimitEnabled=False,
+        WFContentItemLimitNumber=0,
+        WFContentItemSortOrder="...",
+        WFContentItemSortProperty="...")
+```
+
+### `is.workflow.actions.filter.calendarevents`
+
+`native` · seen 62×
+
+Returns `Calendar Events`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+| `WFContentItemInputParameter` | `WFTextTokenAttachment` · `str` |
+| `WFContentItemLimitEnabled` | `bool` |
+| `WFContentItemLimitNumber` | `int` · `real` |
 | `WFContentItemSortOrder` | `str` |
 | `WFContentItemSortProperty` | `str` |
 
 ```python
 out = s.action("is.workflow.actions.filter.calendarevents",
+        CustomOutputName="...",
         WFContentItemFilter="...",
         WFContentItemInputParameter=att(x),
         WFContentItemLimitEnabled=False,
@@ -478,7 +666,7 @@ out = s.action("is.workflow.actions.filter.calendarevents",
 
 ### `is.workflow.actions.filter.contacts`
 
-`native` · seen 3×
+`native` · seen 46×
 
 Returns `Contacts`.
 
@@ -488,7 +676,9 @@ Returns `Contacts`.
 | `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
 | `WFContentItemInputParameter` | `WFTextTokenAttachment` |
 | `WFContentItemLimitEnabled` | `bool` |
-| `WFContentItemLimitNumber` | `real` |
+| `WFContentItemLimitNumber` | `int` · `real` |
+| `WFContentItemSortOrder` | `str` |
+| `WFContentItemSortProperty` | `str` |
 
 ```python
 out = s.action("is.workflow.actions.filter.contacts",
@@ -496,26 +686,217 @@ out = s.action("is.workflow.actions.filter.contacts",
         WFContentItemFilter="...",
         WFContentItemInputParameter=att(x),
         WFContentItemLimitEnabled=False,
-        WFContentItemLimitNumber=0)
+        WFContentItemLimitNumber=0,
+        WFContentItemSortOrder="...",
+        WFContentItemSortProperty="...")
 ```
 
 ### `is.workflow.actions.filter.files`
 
-`native` · seen 32×
+`native` · seen 348×
 
 Returns `Files` or `ファイル`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `Credit` | `str` |
+| `CustomOutputName` | `str` |
+| `RoutineHub` | `int` |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+| `WFContentItemInputParameter` | `WFTextTokenAttachment` |
+| `WFContentItemLimitEnabled` | `bool` |
+| `WFContentItemLimitNumber` | `WFTextTokenAttachment` · `int` · `real` |
+| `WFContentItemSortOrder` | `str` |
+| `WFContentItemSortProperty` | `str` |
+
+```python
+out = s.action("is.workflow.actions.filter.files",
+        Credit="...",
+        CustomOutputName="...",
+        RoutineHub=0,
+        WFContentItemFilter="...",
+        WFContentItemInputParameter=att(x),
+        WFContentItemLimitEnabled=False,
+        WFContentItemLimitNumber=att(x),
+        WFContentItemSortOrder="...",
+        WFContentItemSortProperty="...")
+```
+
+### `is.workflow.actions.filter.health.quantity`
+
+`native` · seen 14×
+
+Returns `Health Samples`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+| `WFContentItemLimitEnabled` | `bool` |
+| `WFContentItemLimitNumber` | `real` |
+| `WFContentItemSortOrder` | `str` |
+| `WFContentItemSortProperty` | `str` |
+| `WFHKSampleFilteringFillMissing` | `bool` |
+| `WFHKSampleFilteringGroupBy` | `str` |
+| `WFHKSampleFilteringUnit` | `str` |
+
+```python
+out = s.action("is.workflow.actions.filter.health.quantity",
+        WFContentItemFilter="...",
+        WFContentItemLimitEnabled=False,
+        WFContentItemLimitNumber=0,
+        WFContentItemSortOrder="...",
+        WFContentItemSortProperty="...",
+        WFHKSampleFilteringFillMissing=False,
+        WFHKSampleFilteringGroupBy="...",
+        WFHKSampleFilteringUnit="...")
+```
+
+### `is.workflow.actions.filter.images`
+
+`native` · seen 5×
+
+Returns `Images`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
 | `WFContentItemInputParameter` | `WFTextTokenAttachment` |
 | `WFContentItemLimitEnabled` | `bool` |
+| `WFContentItemSortOrder` | `str` |
+| `WFContentItemSortProperty` | `str` |
+
+```python
+out = s.action("is.workflow.actions.filter.images",
+        WFContentItemFilter="...",
+        WFContentItemInputParameter=att(x),
+        WFContentItemLimitEnabled=False,
+        WFContentItemSortOrder="...",
+        WFContentItemSortProperty="...")
+```
+
+### `is.workflow.actions.filter.locations`
+
+`native` · seen 4×
+
+Returns `Locations`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+| `WFContentItemInputParameter` | `WFTextTokenAttachment` |
+| `WFContentItemSortOrder` | `str` |
+| `WFContentItemSortProperty` | `str` |
+
+```python
+out = s.action("is.workflow.actions.filter.locations",
+        WFContentItemFilter="...",
+        WFContentItemInputParameter=att(x),
+        WFContentItemSortOrder="...",
+        WFContentItemSortProperty="...")
+```
+
+### `is.workflow.actions.filter.music`
+
+`native` · seen 17×
+
+Returns `Music`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+| `WFContentItemInputParameter` | `WFTextTokenAttachment` |
+| `WFContentItemLimitEnabled` | `bool` |
+| `WFContentItemLimitNumber` | `WFTextTokenAttachment` · `int` · `real` |
+| `WFContentItemSortOrder` | `str` |
+| `WFContentItemSortProperty` | `str` |
+
+```python
+out = s.action("is.workflow.actions.filter.music",
+        CustomOutputName="...",
+        WFContentItemFilter="...",
+        WFContentItemInputParameter=att(x),
+        WFContentItemLimitEnabled=False,
+        WFContentItemLimitNumber=att(x),
+        WFContentItemSortOrder="...",
+        WFContentItemSortProperty="...")
+```
+
+### `is.workflow.actions.filter.notes`
+
+`native` · seen 34×
+
+Returns `Note`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{ActionRequiresAppInstallation,AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `CustomOutputName` | `str` |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+| `WFContentItemInputParameter` | `WFTextTokenAttachment` · `str` |
+| `WFContentItemLimitEnabled` | `bool` |
+| `WFContentItemLimitNumber` | `WFTextTokenAttachment` · `int` · `real` |
+| `WFContentItemSortOrder` | `str` |
+| `WFContentItemSortProperty` | `str` |
+
+```python
+out = s.action("is.workflow.actions.filter.notes",
+        AppIntentDescriptor="...",
+        CustomOutputName="...",
+        WFContentItemFilter="...",
+        WFContentItemInputParameter=att(x),
+        WFContentItemLimitEnabled=False,
+        WFContentItemLimitNumber=att(x),
+        WFContentItemSortOrder="...",
+        WFContentItemSortProperty="...")
+```
+
+### `is.workflow.actions.filter.photos`
+
+`native` · seen 71×
+
+Returns `Photos`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+| `WFContentItemInputParameter` | `WFTextTokenAttachment` · `str` |
+| `WFContentItemLimitEnabled` | `bool` |
+| `WFContentItemLimitNumber` | `WFTextTokenAttachment` · `int` · `real` |
+| `WFContentItemSortOrder` | `str` |
+| `WFContentItemSortProperty` | `str` |
+
+```python
+out = s.action("is.workflow.actions.filter.photos",
+        CustomOutputName="...",
+        WFContentItemFilter="...",
+        WFContentItemInputParameter=att(x),
+        WFContentItemLimitEnabled=False,
+        WFContentItemLimitNumber=att(x),
+        WFContentItemSortOrder="...",
+        WFContentItemSortProperty="...")
+```
+
+### `is.workflow.actions.filter.reminders`
+
+`native` · seen 41×
+
+Returns `Reminders`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+| `WFContentItemInputParameter` | `WFTextTokenAttachment` · `str` |
+| `WFContentItemLimitEnabled` | `bool` |
 | `WFContentItemLimitNumber` | `real` |
 | `WFContentItemSortOrder` | `str` |
 | `WFContentItemSortProperty` | `str` |
 
 ```python
-out = s.action("is.workflow.actions.filter.files",
+out = s.action("is.workflow.actions.filter.reminders",
+        CustomOutputName="...",
         WFContentItemFilter="...",
         WFContentItemInputParameter=att(x),
         WFContentItemLimitEnabled=False,
@@ -524,66 +905,9 @@ out = s.action("is.workflow.actions.filter.files",
         WFContentItemSortProperty="...")
 ```
 
-### `is.workflow.actions.filter.notes`
-
-`native` · seen 1×
-
-Returns `Note`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `AppIntentDescriptor` | `dict{ActionRequiresAppInstallation,AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
-| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
-
-```python
-out = s.action("is.workflow.actions.filter.notes",
-        AppIntentDescriptor="...",
-        WFContentItemFilter="...")
-```
-
-### `is.workflow.actions.filter.photos`
-
-`native` · seen 3×
-
-Returns `Photos`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
-| `WFContentItemLimitEnabled` | `bool` |
-| `WFContentItemLimitNumber` | `real` |
-| `WFContentItemSortOrder` | `str` |
-| `WFContentItemSortProperty` | `str` |
-
-```python
-out = s.action("is.workflow.actions.filter.photos",
-        WFContentItemFilter="...",
-        WFContentItemLimitEnabled=False,
-        WFContentItemLimitNumber=0,
-        WFContentItemSortOrder="...",
-        WFContentItemSortProperty="...")
-```
-
-### `is.workflow.actions.filter.reminders`
-
-`native` · seen 2×
-
-Returns `Reminders`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
-| `WFContentItemInputParameter` | `WFTextTokenAttachment` |
-
-```python
-out = s.action("is.workflow.actions.filter.reminders",
-        WFContentItemFilter="...",
-        WFContentItemInputParameter=att(x))
-```
-
 ### `is.workflow.actions.getitemfromlist`
 
-`native` · seen 873×
+`native` · seen 1575×
 
 Returns `Item from List` or `リストからの項目`.
 
@@ -591,9 +915,9 @@ Returns `Item from List` or `リストからの項目`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `WFInput` | `WFTextTokenAttachment` |
-| `WFItemIndex` | `WFTextTokenAttachment` · `str` |
-| `WFItemRangeEnd` | `WFTextTokenAttachment` · `str` |
-| `WFItemRangeStart` | `str` |
+| `WFItemIndex` | `WFTextTokenAttachment` · `int` · `real` · `str` |
+| `WFItemRangeEnd` | `WFTextTokenAttachment` · `int` · `str` |
+| `WFItemRangeStart` | `WFTextTokenAttachment` · `int` · `real` · `str` |
 | `WFItemSpecifier` | `str`<br>values: `First Item`, `Item At Index`, `Items in Range`, `Last Item`, `Random Item` |
 
 ```python
@@ -602,13 +926,13 @@ out = s.action("is.workflow.actions.getitemfromlist",
         WFInput=att(x),
         WFItemIndex=att(x),
         WFItemRangeEnd=att(x),
-        WFItemRangeStart="...",
+        WFItemRangeStart=att(x),
         WFItemSpecifier="First Item")
 ```
 
 ### `is.workflow.actions.list`
 
-`native` · seen 44×
+`native` · seen 533×
 
 Returns `List`.
 
@@ -631,12 +955,15 @@ out = s.action("is.workflow.actions.list",
 
 ### `is.workflow.actions.choosefrommenu`
 
-`native` · seen 2041×
+`native` · seen 3286×
 
 Returns `Menu Result`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `Credit` | `str` |
+| `CustomOutputName` | `str` |
+| `RoutineHub` | `int` |
 | `WFControlFlowMode` | `int`<br>values: `0`, `1`, `2` |
 | `WFMenuItemAttributedTitle` | `dict{attachmentsByRange,string}` |
 | `WFMenuItemTitle` | `str` |
@@ -646,6 +973,9 @@ Returns `Menu Result`.
 
 ```python
 out = s.action("is.workflow.actions.choosefrommenu",
+        Credit="...",
+        CustomOutputName="...",
+        RoutineHub=0,
         WFControlFlowMode=0,
         WFMenuItemAttributedTitle="...",
         WFMenuItemTitle="...",
@@ -656,7 +986,7 @@ out = s.action("is.workflow.actions.choosefrommenu",
 
 ### `is.workflow.actions.comment`
 
-`native` · seen 116×
+`native` · seen 1356×
 
 No output.
 
@@ -671,83 +1001,88 @@ s.action("is.workflow.actions.comment",
 
 ### `is.workflow.actions.conditional`
 
-`native` · `ranok` · seen 6709×
+`native` · `ranok` · seen 8368×
 
 Returns `Album if` or `Board` or `Formatted and Checked State` or `Icon Fetch` or `If Result` or `IfResult` or `Shell Folder` or `SourceXX` or `Y` or `background image` or `error` or `foreground` or `image` or `lastinslink` or `os` or `symbolColorOption` or `warning` or `“if文”の結果`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `CustomOutputName` | `str` |
+| `WFAnotherDate` | `WFTextTokenAttachment` · `datetime` |
+| `WFAnotherMeasurement` | `WFQuantityFieldValue` |
 | `WFAnotherNumber` | `WFTextTokenAttachment` · `str` |
+| `WFApp` | `dict{BundleIdentifier,Name,TeamIdentifier}` |
 | `WFCondition` | `int`<br>values: `0`, `1`, `2`, `3`, `4`, `5`, `8`, `9` |
+| `WFConditionalActionBoolean` | `int` |
 | `WFConditionalActionString` | `WFTextTokenString` · `str` |
 | `WFConditionalLegacyComparisonBehavior` | `bool` |
 | `WFConditions` | `WFContentPredicateTableTemplate` |
 | `WFControlFlowMode` | `int`<br>values: `0`, `1`, `2` |
+| `WFDate` | `WFTextTokenAttachment` · `datetime` |
 | `WFDuration` | `WFQuantityFieldValue` |
-| `WFEnumeration` | `str` |
+| `WFEnumeration` | `WFTextTokenAttachment` · `str` |
 | `WFInput` | `ConditionalInputWrapper` |
-| `WFNumberValue` | `WFTextTokenAttachment` · `str` |
+| `WFLinkEnumeration` | `str` |
+| `WFMeasurement` | `WFQuantityFieldValue` |
+| `WFNumberValue` | `WFTextTokenAttachment` · `int` · `real` · `str` |
+| `WFShowWorkflow` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.conditional",
         CustomOutputName="...",
+        WFAnotherDate=att(x),
+        WFAnotherMeasurement="...",
         WFAnotherNumber=att(x),
+        WFApp="...",
         WFCondition=0,
+        WFConditionalActionBoolean=0,
         WFConditionalActionString="...",
         WFConditionalLegacyComparisonBehavior=False,
         WFConditions="...",
         WFControlFlowMode=0,
+        WFDate=att(x),
         WFDuration="...",
-        WFEnumeration="...",
+        WFEnumeration=att(x),
         WFInput="...",
-        WFNumberValue=att(x))
+        WFLinkEnumeration="...",
+        WFMeasurement="...",
+        WFNumberValue=att(x),
+        WFShowWorkflow=False)
 ```
 
 ### `is.workflow.actions.exit`
 
-`native` · seen 276×
+`native` · seen 1418×
 
 No output.
 
-No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+| Parameter | Accepts |
+| --- | --- |
+| `WFResult` | `WFTextTokenAttachment` · `dict{}` |
 
 ```python
-s.action("is.workflow.actions.exit")
+s.action("is.workflow.actions.exit",
+        WFResult=att(x))
 ```
 
 ### `is.workflow.actions.nothing`
 
-`native` · seen 50×
+`native` · seen 493×
 
 Returns `Nothing`.
 
-No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
 
 ```python
-out = s.action("is.workflow.actions.nothing")
+out = s.action("is.workflow.actions.nothing",
+        CustomOutputName="...")
 ```
 
 ### `is.workflow.actions.repeat.count`
 
-`native` · `ranok` · seen 120×
-
-Returns `Repeat Results`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `WFControlFlowMode` | `int`<br>values: `0`, `1`, `2` |
-| `WFRepeatCount` | `WFTextTokenAttachment` · `int` · `real` |
-
-```python
-out = s.action("is.workflow.actions.repeat.count",
-        WFControlFlowMode=0,
-        WFRepeatCount=att(x))
-```
-
-### `is.workflow.actions.repeat.each`
-
-`native` · `ranok` · seen 714×
+`native` · `ranok` · seen 640×
 
 Returns `Repeat Results`.
 
@@ -755,39 +1090,64 @@ Returns `Repeat Results`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `WFControlFlowMode` | `int`<br>values: `0`, `1`, `2` |
+| `WFRepeatCount` | `WFTextTokenAttachment` · `int` · `real` |
+
+```python
+out = s.action("is.workflow.actions.repeat.count",
+        CustomOutputName="...",
+        WFControlFlowMode=0,
+        WFRepeatCount=att(x))
+```
+
+### `is.workflow.actions.repeat.each`
+
+`native` · `ranok` · seen 1450×
+
+Returns `Repeat Results`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `Credit` | `str` |
+| `CustomOutputName` | `str` |
+| `RoutineHub` | `int` |
+| `WFControlFlowMode` | `int`<br>values: `0`, `1`, `2` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.repeat.each",
+        Credit="...",
         CustomOutputName="...",
+        RoutineHub=0,
         WFControlFlowMode=0,
         WFInput=att(x))
 ```
 
 ### `is.workflow.actions.runworkflow`
 
-`native` · seen 123×
+`native` · seen 899×
 
 Returns `Shortcut Result`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `WFInput` | `WFTextTokenAttachment` |
-| `WFShowWorkflow` | `bool` |
-| `WFWorkflow` | `WFTextTokenAttachment` · `dict{isSelf,workflowIdentifier,workflowName}` · `dict{isSelf,workflowName}` |
+| `WFShowWorkflow` | `WFTextTokenAttachment` · `bool` |
+| `WFWorkflow` | `WFTextTokenAttachment` · `dict{isSelf,workflowIdentifier,workflowName}` · `dict{isSelf,workflowName}` · `dict{isSelf}` |
 | `WFWorkflowName` | `WFTextTokenAttachment` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.runworkflow",
+        CustomOutputName="...",
         WFInput=att(x),
-        WFShowWorkflow=False,
+        WFShowWorkflow=att(x),
         WFWorkflow=att(x),
         WFWorkflowName=att(x))
 ```
 
 ### `is.workflow.actions.waittoreturn`
 
-`native` · seen 9×
+`native` · seen 105×
 
 No output.
 
@@ -805,7 +1165,7 @@ s.action("is.workflow.actions.waittoreturn")
 
 ### `is.workflow.actions.getvariable`
 
-`native` · seen 134×
+`native` · seen 403×
 
 No output.
 
@@ -820,18 +1180,24 @@ s.action("is.workflow.actions.getvariable",
 
 ### `is.workflow.actions.setvariable`
 
-`native` · `ranok` · seen 1889×
+`native` · `ranok` · seen 3229×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
 | `WFInput` | `WFTextTokenAttachment` |
+| `WFSerializationType` | `str` |
+| `WFShowWorkflow` | `bool` |
+| `WFVariable` | `WFTextTokenAttachment` |
 | `WFVariableName` | `str` |
 
 ```python
 s.action("is.workflow.actions.setvariable",
         WFInput=att(x),
+        WFSerializationType="...",
+        WFShowWorkflow=False,
+        WFVariable=att(x),
         WFVariableName="...")
 ```
 
@@ -843,24 +1209,24 @@ s.action("is.workflow.actions.setvariable",
 
 ### `is.workflow.actions.calculateexpression`
 
-`native` · `ranok` · seen 39×
+`native` · `ranok` · seen 181×
 
 Returns `Calculation Result` or `計算結果`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `CustomOutputName` | `str` |
-| `Input` | `WFTextTokenString` |
+| `Input` | `WFTextTokenString` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.calculateexpression",
         CustomOutputName="...",
-        Input=ts("..."))
+        Input="...")
 ```
 
 ### `is.workflow.actions.math`
 
-`native` · seen 120×
+`native` · seen 628×
 
 Returns `Calculation Result`.
 
@@ -868,20 +1234,24 @@ Returns `Calculation Result`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `WFInput` | `WFTextTokenAttachment` · `str` |
-| `WFMathOperand` | `WFTextTokenAttachment` · `str` |
-| `WFMathOperation` | `str`<br>values: `+`, `-`, `×`, `÷` |
+| `WFMathOperand` | `WFTextTokenAttachment` · `int` · `real` · `str` |
+| `WFMathOperation` | `WFTextTokenAttachment` · `str`<br>values: `+`, `-`, `×`, `÷`, `…` |
+| `WFScientificMathOperand` | `WFTextTokenAttachment` · `real` · `str` |
+| `WFScientificMathOperation` | `str`<br>values: `10^x`, `Modulus`, `abs(x)`, `cos(x)`, `e^x`, `ln(x)`, `log(x)`, `sin(x)` |
 
 ```python
 out = s.action("is.workflow.actions.math",
         CustomOutputName="...",
         WFInput=att(x),
         WFMathOperand=att(x),
-        WFMathOperation="+")
+        WFMathOperation="+",
+        WFScientificMathOperand=att(x),
+        WFScientificMathOperation="10^x")
 ```
 
 ### `is.workflow.actions.number`
 
-`native` · seen 88×
+`native` · seen 632×
 
 Returns `Number`.
 
@@ -898,24 +1268,26 @@ out = s.action("is.workflow.actions.number",
 
 ### `is.workflow.actions.number.random`
 
-`native` · seen 128×
+`native` · seen 318×
 
 Returns `Random Number`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFRandomNumberMaximum` | `str` |
-| `WFRandomNumberMinimum` | `str` |
+| `CustomOutputName` | `str` |
+| `WFRandomNumberMaximum` | `WFTextTokenAttachment` · `int` · `real` · `str` |
+| `WFRandomNumberMinimum` | `WFTextTokenAttachment` · `int` · `real` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.number.random",
-        WFRandomNumberMaximum="...",
-        WFRandomNumberMinimum="...")
+        CustomOutputName="...",
+        WFRandomNumberMaximum=att(x),
+        WFRandomNumberMinimum=att(x))
 ```
 
 ### `is.workflow.actions.round`
 
-`native` · seen 19×
+`native` · seen 203×
 
 Returns `Rounded Number` or `端数処理済みの数値`.
 
@@ -923,30 +1295,36 @@ Returns `Rounded Number` or `端数処理済みの数値`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `WFInput` | `WFTextTokenAttachment` |
-| `WFRoundMode` | `str`<br>values: `Always Round Down`, `Always Round Up`, `Normal` |
-| `WFRoundTo` | `str`<br>values: `10 ^`, `Billionths`, `Hundred Millionths`, `Hundred Thousands`, `Hundred Thousandths`, `Hundreds Place`, `Hundredths`, `Millions` |
+| `WFRoundDecimalPlaces` | `int` · `real` |
+| `WFRoundMode` | `WFTextTokenAttachment` · `str`<br>values: `Always Round Down`, `Always Round Up`, `Normal` |
+| `WFRoundTo` | `WFTextTokenAttachment` · `str`<br>values: `10 ^`, `Billionths`, `Hundred Millionths`, `Hundred Thousands`, `Hundred Thousandths`, `Hundreds Place`, `Hundredths`, `Millions` |
+| `WFRoundType` | `str` |
 
 ```python
 out = s.action("is.workflow.actions.round",
         CustomOutputName="...",
         WFInput=att(x),
+        WFRoundDecimalPlaces=0,
         WFRoundMode="Always Round Down",
-        WFRoundTo="10 ^")
+        WFRoundTo="10 ^",
+        WFRoundType="...")
 ```
 
 ### `is.workflow.actions.statistics`
 
-`native` · seen 5×
+`native` · seen 81×
 
 Returns `Minimum` or `Sum`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `Input` | `WFTextTokenAttachment` |
 | `WFStatisticsOperation` | `str`<br>values: `Average`, `Maximum`, `Median`, `Minimum`, `Mode`, `Range`, `Standard Deviation`, `Sum` |
 
 ```python
 out = s.action("is.workflow.actions.statistics",
+        CustomOutputName="...",
         Input=att(x),
         WFStatisticsOperation="Average")
 ```
@@ -959,27 +1337,31 @@ out = s.action("is.workflow.actions.statistics",
 
 ### `is.workflow.actions.downloadurl`
 
-`native` · `ranok` · seen 1186×
+`native` · `ranok` · seen 2181×
 
 Returns `Contents of URL`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `Advanced` | `bool` |
+| `Credit` | `str` |
 | `CustomOutputName` | `str` |
+| `RoutineHub` | `int` |
 | `ShowHeaders` | `bool` |
 | `WFFormValues` | `WFDictionaryFieldValue` |
-| `WFHTTPBodyType` | `str`<br>values: `File`, `Form`, `JSON` |
-| `WFHTTPHeaders` | `WFDictionaryFieldValue` |
-| `WFHTTPMethod` | `str`<br>values: `DELETE`, `GET`, `POST` |
-| `WFJSONValues` | `WFDictionaryFieldValue` |
-| `WFRequestVariable` | `WFTextTokenAttachment` |
+| `WFHTTPBodyType` | `str`<br>values: `File`, `Form`, `JSON`, `JSON/Form/File`, `Json` |
+| `WFHTTPHeaders` | `WFDictionaryFieldValue` · `dict{Value}` |
+| `WFHTTPMethod` | `str`<br>values: `DELETE`, `GET`, `POST`, `PUT` |
+| `WFJSONValues` | `WFDictionaryFieldValue` · `dict{Value}` |
+| `WFRequestVariable` | `WFTextTokenAttachment` · `dict{}` · `str` |
 | `WFURL` | `WFTextTokenString` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.downloadurl",
         Advanced=False,
+        Credit="...",
         CustomOutputName="...",
+        RoutineHub=0,
         ShowHeaders=False,
         WFFormValues="...",
         WFHTTPBodyType="File",
@@ -992,41 +1374,49 @@ out = s.action("is.workflow.actions.downloadurl",
 
 ### `is.workflow.actions.getipaddress`
 
-`native` · seen 11×
+`native` · seen 300×
 
 Returns `Current IP Address`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `WFIPAddressSourceOption` | `str`<br>values: `External`, `Local` |
 | `WFIPAddressTypeOption` | `str`<br>values: `IPv4`, `IPv6` |
 
 ```python
 out = s.action("is.workflow.actions.getipaddress",
+        CustomOutputName="...",
         WFIPAddressSourceOption="External",
         WFIPAddressTypeOption="IPv4")
 ```
 
 ### `is.workflow.actions.openurl`
 
-`native` · seen 508×
+`native` · seen 1572×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
+| `Credit` | `str` |
+| `RoutineHub` | `int` |
 | `Show-WFInput` | `bool` |
-| `WFInput` | `WFTextTokenAttachment` · `WFTextTokenString` · `str` |
+| `WFInput` | `WFTextTokenAttachment` · `WFTextTokenString` · `array` · `str` |
+| `WFShowWorkflow` | `bool` |
 
 ```python
 s.action("is.workflow.actions.openurl",
+        Credit="...",
+        RoutineHub=0,
         Show-WFInput=False,
-        WFInput=att(x))
+        WFInput=att(x),
+        WFShowWorkflow=False)
 ```
 
 ### `is.workflow.actions.showwebpage`
 
-`native` · seen 184×
+`native` · seen 495×
 
 No output.
 
@@ -1043,7 +1433,7 @@ s.action("is.workflow.actions.showwebpage",
 
 ### `is.workflow.actions.url`
 
-`native` · seen 63×
+`native` · seen 731×
 
 Returns `URL`.
 
@@ -1051,39 +1441,45 @@ Returns `URL`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `Show-WFURLActionURL` | `bool` |
-| `WFURLActionURL` | `WFTextTokenAttachment` · `WFTextTokenString` · `str` |
+| `WFShowWorkflow` | `bool` |
+| `WFURLActionURL` | `WFTextTokenAttachment` · `WFTextTokenString` · `array` · `str` |
+| `WFVariable` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.url",
         CustomOutputName="...",
         Show-WFURLActionURL=False,
-        WFURLActionURL=att(x))
+        WFShowWorkflow=False,
+        WFURLActionURL=att(x),
+        WFVariable=att(x))
 ```
 
 ### `is.workflow.actions.url.expand`
 
-`native` · seen 8×
+`native` · seen 127×
 
 Returns `Expanded URL`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `URL` | `WFTextTokenString` |
 
 ```python
 out = s.action("is.workflow.actions.url.expand",
+        CustomOutputName="...",
         URL=ts("..."))
 ```
 
 ### `is.workflow.actions.url.getheaders`
 
-`native` · seen 2×
+`native` · seen 14×
 
 Returns `Headers of URL`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFInput` | `str` |
+| `WFInput` | `WFTextTokenString` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.url.getheaders",
@@ -1098,7 +1494,7 @@ out = s.action("is.workflow.actions.url.getheaders",
 
 ### `is.workflow.actions.base64encode`
 
-`native` · `ranok` · seen 217×
+`native` · `ranok` · seen 649×
 
 Returns `Base64 Encoded`.
 
@@ -1106,35 +1502,43 @@ Returns `Base64 Encoded`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `WFBase64LineBreakMode` | `str`<br>values: `Every 64 Characters`, `Every 76 Characters`, `None` |
-| `WFEncodeMode` | `str`<br>values: `Decode`, `Encode` |
+| `WFEncodeMode` | `WFTextTokenAttachment` · `str`<br>values: `Decode`, `Encode` |
 | `WFInput` | `WFTextTokenAttachment` |
+| `WFShowWorkflow` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.base64encode",
         CustomOutputName="...",
         WFBase64LineBreakMode="Every 64 Characters",
         WFEncodeMode="Decode",
-        WFInput=att(x))
+        WFInput=att(x),
+        WFShowWorkflow=False)
 ```
 
 ### `is.workflow.actions.documentpicker.open`
 
-`native` · seen 161×
+`native` · seen 716×
 
 Returns `File`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
+| `SelectMultiple` | `bool` |
 | `WFFile` | `WFTextTokenAttachment` · `dict{displayName,fileLocation,filename}` |
 | `WFFileErrorIfNotFound` | `bool` |
+| `WFFileStorageService` | `str` |
 | `WFGetFilePath` | `WFTextTokenString` · `str` |
 | `WFGetFolderContents` | `bool` |
 | `WFShowFilePicker` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.documentpicker.open",
+        CustomOutputName="...",
+        SelectMultiple=False,
         WFFile=att(x),
         WFFileErrorIfNotFound=False,
+        WFFileStorageService="...",
         WFGetFilePath="...",
         WFGetFolderContents=False,
         WFShowFilePicker=False)
@@ -1142,7 +1546,7 @@ out = s.action("is.workflow.actions.documentpicker.open",
 
 ### `is.workflow.actions.documentpicker.save`
 
-`native` · seen 231×
+`native` · seen 968×
 
 Returns `Saved File`.
 
@@ -1151,8 +1555,9 @@ Returns `Saved File`.
 | `CustomOutputName` | `str` |
 | `WFAskWhereToSave` | `bool` |
 | `WFFileDestinationPath` | `WFTextTokenString` · `str` |
+| `WFFileStorageService` | `str` |
 | `WFFolder` | `WFTextTokenAttachment` · `dict{displayName,fileLocation,filename}` |
-| `WFInput` | `WFTextTokenAttachment` |
+| `WFInput` | `WFTextTokenAttachment` · `dict{displayName,fileLocation,filename}` |
 | `WFSaveFileOverwrite` | `bool` |
 
 ```python
@@ -1160,6 +1565,7 @@ out = s.action("is.workflow.actions.documentpicker.save",
         CustomOutputName="...",
         WFAskWhereToSave=False,
         WFFileDestinationPath="...",
+        WFFileStorageService="...",
         WFFolder=att(x),
         WFInput=att(x),
         WFSaveFileOverwrite=False)
@@ -1167,58 +1573,70 @@ out = s.action("is.workflow.actions.documentpicker.save",
 
 ### `is.workflow.actions.file`
 
-`native` · seen 25×
+`native` · seen 182×
 
 Returns `File`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `WFFile` | `WFTextTokenAttachment` · `dict{displayName,fileLocation,filename}` |
 
 ```python
 out = s.action("is.workflow.actions.file",
+        CustomOutputName="...",
         WFFile=att(x))
 ```
 
 ### `is.workflow.actions.file.append`
 
-`native` · seen 50×
+`native` · seen 137×
 
-No output.
+Returns `Appended File`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFFile` | `WFTextTokenAttachment` |
-| `WFFilePath` | `WFTextTokenString` |
-| `WFInput` | `WFTextTokenString` |
+| `WFAppendFileWriteMode` | `str`<br>values: `Append`, `Prepend` |
+| `WFAppendOnNewLine` | `bool` |
+| `WFFile` | `WFTextTokenAttachment` · `dict{displayName,fileLocation,filename}` |
+| `WFFilePath` | `WFTextTokenString` · `str` |
+| `WFFileStorageService` | `str` |
+| `WFInput` | `WFTextTokenString` · `str` |
 
 ```python
-s.action("is.workflow.actions.file.append",
+out = s.action("is.workflow.actions.file.append",
+        WFAppendFileWriteMode="Append",
+        WFAppendOnNewLine=False,
         WFFile=att(x),
-        WFFilePath=ts("..."),
-        WFInput=ts("..."))
+        WFFilePath="...",
+        WFFileStorageService="...",
+        WFInput="...")
 ```
 
 ### `is.workflow.actions.file.createfolder`
 
-`native` · seen 42×
+`native` · seen 426×
 
 Returns `Created Folder`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `WFFilePath` | `WFTextTokenString` · `str` |
+| `WFFileStorageService` | `str` |
 | `WFFolder` | `WFTextTokenAttachment` · `dict{displayName,fileLocation,filename}` |
 
 ```python
 out = s.action("is.workflow.actions.file.createfolder",
+        CustomOutputName="...",
         WFFilePath="...",
+        WFFileStorageService="...",
         WFFolder=att(x))
 ```
 
 ### `is.workflow.actions.file.delete`
 
-`native` · seen 20×
+`native` · seen 294×
 
 No output.
 
@@ -1226,7 +1644,7 @@ No output.
 | --- | --- |
 | `WFDeleteFileConfirmDeletion` | `bool` |
 | `WFDeleteImmediatelyDelete` | `bool` |
-| `WFInput` | `WFTextTokenAttachment` |
+| `WFInput` | `WFTextTokenAttachment` · `dict{displayName,fileLocation,filename}` |
 
 ```python
 s.action("is.workflow.actions.file.delete",
@@ -1237,24 +1655,26 @@ s.action("is.workflow.actions.file.delete",
 
 ### `is.workflow.actions.file.getfoldercontents`
 
-`native` · seen 13×
+`native` · seen 187×
 
-Returns `Contents of Folder` or `Get Contents of Folder`.
+Returns `Contents of Folder` or `Folder Contents` or `Get Contents of Folder`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `Recursive` | `bool` |
 | `WFFolder` | `WFTextTokenAttachment` · `dict{displayName,fileLocation,filename}` |
 
 ```python
 out = s.action("is.workflow.actions.file.getfoldercontents",
+        CustomOutputName="...",
         Recursive=False,
         WFFolder=att(x))
 ```
 
 ### `is.workflow.actions.file.getlink`
 
-`native` · seen 3×
+`native` · seen 29×
 
 Returns `Link to File`.
 
@@ -1269,26 +1689,26 @@ out = s.action("is.workflow.actions.file.getlink",
 
 ### `is.workflow.actions.file.move`
 
-`native` · seen 5×
+`native` · seen 32×
 
 Returns `File`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `WFFile` | `WFTextTokenAttachment` · `dict{displayName,fileLocation,filename}` |
-| `WFFolder` | `dict{displayName,fileLocation,filename}` |
+| `WFFolder` | `WFTextTokenAttachment` · `dict{displayName,fileLocation,filename}` |
 | `WFReplaceExisting` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.file.move",
         WFFile=att(x),
-        WFFolder="...",
+        WFFolder=att(x),
         WFReplaceExisting=False)
 ```
 
 ### `is.workflow.actions.file.rename`
 
-`native` · seen 40×
+`native` · seen 111×
 
 Returns `File`.
 
@@ -1303,98 +1723,133 @@ out = s.action("is.workflow.actions.file.rename",
         WFNewFilename="...")
 ```
 
+### `is.workflow.actions.file.reveal`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFFile` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.file.reveal",
+        WFFile=att(x))
+```
+
 ### `is.workflow.actions.file.select`
 
-`native` · seen 14×
+`native` · seen 181×
 
 Returns `File`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `SelectMultiple` | `bool` |
+| `WFFile` | `WFTextTokenAttachment` |
 | `WFGetFolderContents` | `bool` |
+| `WFPickingMode` | `WFTextTokenAttachment` · `str`<br>values: `Files`, `Folders` |
 | `WFShowFilePicker` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.file.select",
+        CustomOutputName="...",
         SelectMultiple=False,
+        WFFile=att(x),
         WFGetFolderContents=False,
+        WFPickingMode="Files",
         WFShowFilePicker=False)
 ```
 
 ### `is.workflow.actions.gettextfrompdf`
 
-`native` · seen 1×
+`native` · seen 21×
 
 Returns `Text`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
+| `WFCombinePages` | `bool` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.gettextfrompdf",
+        CustomOutputName="...",
+        WFCombinePages=False,
         WFInput=att(x))
 ```
 
 ### `is.workflow.actions.gettypeaction`
 
-`native` · seen 46×
+`native` · seen 110×
 
 Returns `File of Type`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `Credit` | `str` |
 | `CustomOutputName` | `str` |
+| `RoutineHub` | `int` |
 | `WFFileType` | `WFTextTokenString` · `str` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.gettypeaction",
+        Credit="...",
         CustomOutputName="...",
+        RoutineHub=0,
         WFFileType="...",
         WFInput=att(x))
 ```
 
 ### `is.workflow.actions.makepdf`
 
-`native` · seen 5×
+`native` · seen 83×
 
 Returns `PDF`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `WFInput` | `WFTextTokenAttachment` |
-| `WFPDFIncludeMargin` | `bool` |
+| `WFPDFDocumentMergeBehavior` | `str`<br>values: `Append`, `Shuffle` |
+| `WFPDFIncludeMargin` | `WFTextTokenAttachment` · `bool` |
+| `WFPDFIncludedPages` | `WFTextTokenAttachment` · `str`<br>values: `All Pages`, `Page Range`, `Single Page` |
 
 ```python
 out = s.action("is.workflow.actions.makepdf",
         WFInput=att(x),
-        WFPDFIncludeMargin=False)
+        WFPDFDocumentMergeBehavior="Append",
+        WFPDFIncludeMargin=att(x),
+        WFPDFIncludedPages="All Pages")
 ```
 
 ### `is.workflow.actions.makezip`
 
-`native` · seen 4×
+`native` · seen 57×
 
 Returns `Archive`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFArchiveFormat` | `str` |
+| `CustomOutputName` | `str` |
+| `WFArchiveFormat` | `WFTextTokenAttachment` · `str` |
 | `WFInput` | `WFTextTokenAttachment` |
-| `WFZIPName` | `WFTextTokenString` |
+| `WFZIPName` | `WFTextTokenString` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.makezip",
-        WFArchiveFormat="...",
+        CustomOutputName="...",
+        WFArchiveFormat=att(x),
         WFInput=att(x),
-        WFZIPName=ts("..."))
+        WFZIPName="...")
 ```
 
 ### `is.workflow.actions.previewdocument`
 
-`native` · seen 29×
+`native` · seen 460×
 
 No output.
 
@@ -1411,14 +1866,16 @@ s.action("is.workflow.actions.previewdocument",
 
 ### `is.workflow.actions.setitemname`
 
-`native` · `ranok` · seen 477×
+`native` · `ranok` · seen 1114×
 
 Returns `Renamed Item` or `Set Name` or `Ítem renombrado` or `名称変更された項目`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `Advanced` | `bool` |
+| `Credit` | `str` |
 | `CustomOutputName` | `str` |
+| `RoutineHub` | `int` |
 | `WFDontIncludeFileExtension` | `bool` |
 | `WFInput` | `WFTextTokenAttachment` |
 | `WFName` | `WFTextTokenString` · `str` |
@@ -1426,7 +1883,9 @@ Returns `Renamed Item` or `Set Name` or `Ítem renombrado` or `名称変更さ�
 ```python
 out = s.action("is.workflow.actions.setitemname",
         Advanced=False,
+        Credit="...",
         CustomOutputName="...",
+        RoutineHub=0,
         WFDontIncludeFileExtension=False,
         WFInput=att(x),
         WFName="...")
@@ -1434,16 +1893,18 @@ out = s.action("is.workflow.actions.setitemname",
 
 ### `is.workflow.actions.unzip`
 
-`native` · seen 11×
+`native` · seen 63×
 
 Returns `Files`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `WFArchive` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.unzip",
+        CustomOutputName="...",
         WFArchive=att(x))
 ```
 
@@ -1455,7 +1916,7 @@ out = s.action("is.workflow.actions.unzip",
 
 ### `is.workflow.actions.alert`
 
-`native` · seen 721×
+`native` · seen 1987×
 
 No output.
 
@@ -1474,7 +1935,7 @@ s.action("is.workflow.actions.alert",
 
 ### `is.workflow.actions.ask`
 
-`native` · `ranok` · seen 377×
+`native` · `ranok` · seen 1452×
 
 Returns `Ask for Input` or `Provided Input`.
 
@@ -1482,89 +1943,113 @@ Returns `Ask for Input` or `Provided Input`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `Question` | `str` |
-| `WFAllowsMultilineText` | `bool` |
-| `WFAskActionAllowsDecimalNumbers` | `bool` |
+| `ShowWhenRun` | `bool` |
+| `WFAllowsMultilineText` | `WFTextTokenAttachment` · `bool` |
+| `WFAskActionAllowsDecimalNumbers` | `WFTextTokenAttachment` · `bool` |
 | `WFAskActionAllowsNegativeNumbers` | `bool` |
+| `WFAskActionDateGranularity` | `str` |
 | `WFAskActionDefaultAnswer` | `WFTextTokenString` · `str` |
-| `WFAskActionDefaultAnswerDate` | `WFTextTokenString` |
-| `WFAskActionDefaultAnswerNumber` | `WFTextTokenAttachment` · `str` |
-| `WFAskActionDefaultAnswerURL` | `str` |
+| `WFAskActionDefaultAnswerDate` | `WFTextTokenString` · `str` |
+| `WFAskActionDefaultAnswerDateAndTime` | `WFTextTokenString` · `str` |
+| `WFAskActionDefaultAnswerNumber` | `WFTextTokenAttachment` · `int` · `str` |
+| `WFAskActionDefaultAnswerTime` | `WFTextTokenString` · `str` |
+| `WFAskActionDefaultAnswerURL` | `WFTextTokenString` · `str` |
 | `WFAskActionPrompt` | `WFTextTokenString` · `str` |
 | `WFInputType` | `str`<br>values: `Date`, `Date and Time`, `Number`, `Text`, `Time`, `URL` |
+| `WFShowWorkflow` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.ask",
         CustomOutputName="...",
         Question="...",
-        WFAllowsMultilineText=False,
-        WFAskActionAllowsDecimalNumbers=False,
+        ShowWhenRun=False,
+        WFAllowsMultilineText=att(x),
+        WFAskActionAllowsDecimalNumbers=att(x),
         WFAskActionAllowsNegativeNumbers=False,
+        WFAskActionDateGranularity="...",
         WFAskActionDefaultAnswer="...",
-        WFAskActionDefaultAnswerDate=ts("..."),
+        WFAskActionDefaultAnswerDate="...",
+        WFAskActionDefaultAnswerDateAndTime="...",
         WFAskActionDefaultAnswerNumber=att(x),
+        WFAskActionDefaultAnswerTime="...",
         WFAskActionDefaultAnswerURL="...",
         WFAskActionPrompt="...",
-        WFInputType="Date")
+        WFInputType="Date",
+        WFShowWorkflow=False)
 ```
 
 ### `is.workflow.actions.choosefromlist`
 
-`native` · `ranok` · seen 378×
+`native` · `ranok` · seen 1234×
 
 Returns `Chosen Item` or `Selected Item` or `選択した項目`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `Credit` | `str` |
 | `CustomOutputName` | `str` |
+| `RoutineHub` | `int` |
 | `WFChooseFromListActionPrompt` | `WFTextTokenString` · `str` |
-| `WFChooseFromListActionSelectAll` | `bool` |
-| `WFChooseFromListActionSelectMultiple` | `bool` |
+| `WFChooseFromListActionSelectAll` | `WFTextTokenAttachment` · `bool` |
+| `WFChooseFromListActionSelectMultiple` | `WFTextTokenAttachment` · `bool` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.choosefromlist",
+        Credit="...",
         CustomOutputName="...",
+        RoutineHub=0,
         WFChooseFromListActionPrompt="...",
-        WFChooseFromListActionSelectAll=False,
-        WFChooseFromListActionSelectMultiple=False,
+        WFChooseFromListActionSelectAll=att(x),
+        WFChooseFromListActionSelectMultiple=att(x),
         WFInput=att(x))
 ```
 
 ### `is.workflow.actions.getclipboard`
 
-`native` · seen 11×
+`native` · seen 212×
 
 Returns `Clipboard`.
 
-No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
 
 ```python
-out = s.action("is.workflow.actions.getclipboard")
+out = s.action("is.workflow.actions.getclipboard",
+        CustomOutputName="...")
 ```
 
 ### `is.workflow.actions.getmyworkflows`
 
-`native` · seen 18×
+`native` · seen 301×
 
 Returns `My Shortcuts`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `Credit` | `str` |
+| `CustomOutputName` | `str` |
 | `Folder` | `WFTextTokenAttachment` · `dict{DisplayString,Identifier}` |
+| `RoutineHub` | `int` |
 
 ```python
 out = s.action("is.workflow.actions.getmyworkflows",
-        Folder=att(x))
+        Credit="...",
+        CustomOutputName="...",
+        Folder=att(x),
+        RoutineHub=0)
 ```
 
 ### `is.workflow.actions.notification`
 
-`native` · seen 37×
+`native` · seen 748×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `WFInput` | `WFTextTokenAttachment` |
 | `WFNotificationActionBody` | `WFTextTokenString` · `str` |
 | `WFNotificationActionSound` | `bool` |
@@ -1572,6 +2057,7 @@ No output.
 
 ```python
 s.action("is.workflow.actions.notification",
+        CustomOutputName="...",
         WFInput=att(x),
         WFNotificationActionBody="...",
         WFNotificationActionSound=False,
@@ -1580,45 +2066,47 @@ s.action("is.workflow.actions.notification",
 
 ### `is.workflow.actions.openin`
 
-`native` · seen 8×
+`native` · seen 108×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFInput` | `WFTextTokenAttachment` |
+| `WFInput` | `WFTextTokenAttachment` · `dict{displayName,fileLocation,filename}` |
 | `WFOpenInAppIdentifier` | `str` |
 | `WFOpenInAskWhenRun` | `bool` |
-| `WFSelectedApp` | `dict{BundleIdentifier,Name,TeamIdentifier}` |
+| `WFSelectedApp` | `WFTextTokenAttachment` · `dict{BundleIdentifier,Name,TeamIdentifier}` |
 
 ```python
 s.action("is.workflow.actions.openin",
         WFInput=att(x),
         WFOpenInAppIdentifier="...",
         WFOpenInAskWhenRun=False,
-        WFSelectedApp="...")
+        WFSelectedApp=att(x))
 ```
 
 ### `is.workflow.actions.setclipboard`
 
-`native` · seen 52×
+`native` · seen 524×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
+| `WFExpirationDate` | `WFTextTokenString` · `str` |
 | `WFInput` | `WFTextTokenAttachment` |
 | `WFLocalOnly` | `bool` |
 
 ```python
 s.action("is.workflow.actions.setclipboard",
+        WFExpirationDate="...",
         WFInput=att(x),
         WFLocalOnly=False)
 ```
 
 ### `is.workflow.actions.share`
 
-`native` · seen 14×
+`native` · seen 243×
 
 No output.
 
@@ -1633,29 +2121,46 @@ s.action("is.workflow.actions.share",
 
 ### `is.workflow.actions.showresult`
 
-`native` · `ranok` · seen 569×
+`native` · `ranok` · seen 1070×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `Text` | `WFTextTokenString` · `str` |
+| `WFInput` | `str` |
 
 ```python
 s.action("is.workflow.actions.showresult",
-        Text="...")
+        CustomOutputName="...",
+        Text="...",
+        WFInput="...")
 ```
 
 ### `is.workflow.actions.speaktext`
 
-`native` · seen 1×
+`native` · seen 167×
 
 No output.
 
-No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+| Parameter | Accepts |
+| --- | --- |
+| `WFSpeakTextLanguage` | `WFTextTokenAttachment` · `str` |
+| `WFSpeakTextPitch` | `WFTextTokenAttachment` · `real` |
+| `WFSpeakTextRate` | `WFTextTokenAttachment` · `real` |
+| `WFSpeakTextVoice` | `WFTextTokenAttachment` · `str` |
+| `WFSpeakTextWait` | `bool` |
+| `WFText` | `WFTextTokenString` · `str` |
 
 ```python
-s.action("is.workflow.actions.speaktext")
+s.action("is.workflow.actions.speaktext",
+        WFSpeakTextLanguage=att(x),
+        WFSpeakTextPitch=att(x),
+        WFSpeakTextRate=att(x),
+        WFSpeakTextVoice=att(x),
+        WFSpeakTextWait=False,
+        WFText="...")
 ```
 
 <sub>[back to index](#index)</sub>
@@ -1664,39 +2169,105 @@ s.action("is.workflow.actions.speaktext")
 
 ## Media & images
 
+### `is.workflow.actions.encodemedia`
+
+`native` · seen 66×
+
+Returns `Encoded Media`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `Metadata` | `bool` |
+| `WFMedia` | `WFTextTokenAttachment` |
+| `WFMediaAudioFormat` | `WFTextTokenAttachment` · `str`<br>values: `AIFF`, `M4A` |
+| `WFMediaAudioOnly` | `WFTextTokenAttachment` · `bool` |
+| `WFMediaBitrate` | `str` |
+| `WFMediaCustomSpeed` | `WFTextTokenAttachment` |
+| `WFMediaSize` | `WFTextTokenAttachment` · `str`<br>values: `1280x720`, `1920x1080`, `3840x2160`, `640x480`, `960x540`, `HEVC 1920x1080`, `HEVC 3840x2160`, `Passthrough` |
+| `WFMediaSpeed` | `WFTextTokenAttachment` · `str`<br>values: `0.5X`, `2X`, `Custom`, `Normal` |
+| `WFMetadataAlbum` | `WFTextTokenString` · `str` |
+| `WFMetadataArtist` | `WFTextTokenString` · `str` |
+| `WFMetadataArtwork` | `WFTextTokenAttachment` |
+| `WFMetadataGenre` | `WFTextTokenString` · `str` |
+| `WFMetadataTitle` | `WFTextTokenString` · `str` |
+| `WFMetadataYear` | `WFTextTokenString` · `str` |
+
+```python
+out = s.action("is.workflow.actions.encodemedia",
+        Metadata=False,
+        WFMedia=att(x),
+        WFMediaAudioFormat="AIFF",
+        WFMediaAudioOnly=att(x),
+        WFMediaBitrate="...",
+        WFMediaCustomSpeed=att(x),
+        WFMediaSize="1280x720",
+        WFMediaSpeed="0.5X",
+        WFMetadataAlbum="...",
+        WFMetadataArtist="...",
+        WFMetadataArtwork=att(x),
+        WFMetadataGenre="...",
+        WFMetadataTitle="...",
+        WFMetadataYear="...")
+```
+
 ### `is.workflow.actions.getrichtextfromhtml`
 
-`native` · seen 76×
+`native` · seen 223×
 
 Returns `HTMLからのリッチテキスト` or `Rich Text from HTML`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `WFHTML` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.getrichtextfromhtml",
+        CustomOutputName="...",
         WFHTML=att(x))
+```
+
+### `is.workflow.actions.image.combine`
+
+`native` · seen 37×
+
+Returns `Combined Image`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFImageCombineDirection` | `str` |
+| `WFImageCombineMode` | `WFTextTokenAttachment` · `str`<br>values: `Horizontally`, `In a Grid`, `Vertically` |
+| `WFImageCombineSpacing` | `WFTextTokenAttachment` · `int` · `real` · `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.image.combine",
+        CustomOutputName="...",
+        WFImageCombineDirection="...",
+        WFImageCombineMode="Horizontally",
+        WFImageCombineSpacing=att(x),
+        WFInput=att(x))
 ```
 
 ### `is.workflow.actions.image.convert`
 
-`native` · seen 20×
+`native` · seen 122×
 
 Returns `Converted Image`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `CustomOutputName` | `str` |
-| `WFImageCompressionQuality` | `int` · `real` |
-| `WFImageFormat` | `str`<br>values: `BMP`, `HEIF`, `JPEG`, `PNG` |
+| `WFImageCompressionQuality` | `WFTextTokenAttachment` · `int` · `real` |
+| `WFImageFormat` | `WFTextTokenAttachment` · `str`<br>values: `BMP`, `GIF`, `HEIF`, `JPEG`, `Match Input`, `PNG` |
 | `WFImagePreserveMetadata` | `bool` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.image.convert",
         CustomOutputName="...",
-        WFImageCompressionQuality=0,
+        WFImageCompressionQuality=att(x),
         WFImageFormat="BMP",
         WFImagePreserveMetadata=False,
         WFInput=att(x))
@@ -1704,47 +2275,51 @@ out = s.action("is.workflow.actions.image.convert",
 
 ### `is.workflow.actions.image.crop`
 
-`native` · seen 8×
+`native` · seen 82×
 
 Returns `Cropped Image`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFImageCropHeight` | `WFTextTokenAttachment` · `str` |
-| `WFImageCropPosition` | `str`<br>values: `Bottom Left`, `Bottom Right`, `Center`, `Custom`, `Top Left`, `Top Right` |
-| `WFImageCropWidth` | `WFTextTokenAttachment` · `str` |
-| `WFImageCropX` | `real` · `str` |
-| `WFImageCropY` | `str` |
+| `CustomOutputName` | `str` |
+| `WFImageCropHeight` | `WFTextTokenAttachment` · `int` · `real` · `str` |
+| `WFImageCropPosition` | `WFTextTokenAttachment` · `str`<br>values: `Bottom Left`, `Bottom Right`, `Center`, `Custom`, `Top Left`, `Top Right` |
+| `WFImageCropWidth` | `WFTextTokenAttachment` · `int` · `real` · `str` |
+| `WFImageCropX` | `WFTextTokenAttachment` · `int` · `real` · `str` |
+| `WFImageCropY` | `WFTextTokenAttachment` · `int` · `real` · `str` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.image.crop",
+        CustomOutputName="...",
         WFImageCropHeight=att(x),
         WFImageCropPosition="Bottom Left",
         WFImageCropWidth=att(x),
-        WFImageCropX=0,
-        WFImageCropY="...",
+        WFImageCropX=att(x),
+        WFImageCropY=att(x),
         WFInput=att(x))
 ```
 
 ### `is.workflow.actions.image.flip`
 
-`native` · seen 1×
+`native` · seen 15×
 
 Returns `Flipped Image`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `WFImageFlipDirection` | `WFTextTokenAttachment` · `str`<br>values: `Horizontal`, `Vertical` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.image.flip",
+        WFImageFlipDirection="Horizontal",
         WFInput=att(x))
 ```
 
 ### `is.workflow.actions.image.mask`
 
-`native` · seen 12×
+`native` · seen 46×
 
 Returns `Masked Image`.
 
@@ -1753,7 +2328,7 @@ Returns `Masked Image`.
 | `CustomOutputName` | `str` |
 | `WFCustomMaskImage` | `WFTextTokenAttachment` |
 | `WFInput` | `WFTextTokenAttachment` |
-| `WFMaskCornerRadius` | `str` |
+| `WFMaskCornerRadius` | `WFTextTokenAttachment` · `real` · `str` |
 | `WFMaskType` | `str`<br>values: `Custom Image`, `Ellipse`, `Icon`, `Rounded Rectangle` |
 
 ```python
@@ -1761,28 +2336,30 @@ out = s.action("is.workflow.actions.image.mask",
         CustomOutputName="...",
         WFCustomMaskImage=att(x),
         WFInput=att(x),
-        WFMaskCornerRadius="...",
+        WFMaskCornerRadius=att(x),
         WFMaskType="Custom Image")
 ```
 
 ### `is.workflow.actions.image.removebackground`
 
-`native` · seen 2×
+`native` · seen 17×
 
-No output.
+Returns `Image Without Background`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `WFCropToBounds` | `bool` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
-s.action("is.workflow.actions.image.removebackground",
+out = s.action("is.workflow.actions.image.removebackground",
+        WFCropToBounds=False,
         WFInput=att(x))
 ```
 
 ### `is.workflow.actions.image.resize`
 
-`native` · seen 36×
+`native` · seen 141×
 
 Returns `Resized Image`.
 
@@ -1790,10 +2367,11 @@ Returns `Resized Image`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `WFImage` | `WFTextTokenAttachment` |
-| `WFImageResizeHeight` | `WFTextTokenAttachment` · `int` · `str` |
-| `WFImageResizeKey` | `str`<br>values: `Longest Edge`, `Percentage`, `Size` |
+| `WFImageResizeHeight` | `WFTextTokenAttachment` · `int` · `real` · `str` |
+| `WFImageResizeKey` | `WFTextTokenAttachment` · `str`<br>values: `Longest Edge`, `Percentage`, `Size` |
 | `WFImageResizeLength` | `WFTextTokenAttachment` · `str` |
-| `WFImageResizeWidth` | `WFTextTokenAttachment` · `int` · `str` |
+| `WFImageResizePercentage` | `WFTextTokenAttachment` · `str` |
+| `WFImageResizeWidth` | `WFTextTokenAttachment` · `int` · `real` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.image.resize",
@@ -1802,29 +2380,30 @@ out = s.action("is.workflow.actions.image.resize",
         WFImageResizeHeight=att(x),
         WFImageResizeKey="Longest Edge",
         WFImageResizeLength=att(x),
+        WFImageResizePercentage=att(x),
         WFImageResizeWidth=att(x))
 ```
 
 ### `is.workflow.actions.image.rotate`
 
-`native` · seen 1×
+`native` · seen 18×
 
 Returns `Rotated Image/Video`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `WFImage` | `WFTextTokenAttachment` |
-| `WFImageRotateAmount` | `str` |
+| `WFImageRotateAmount` | `WFTextTokenAttachment` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.image.rotate",
         WFImage=att(x),
-        WFImageRotateAmount="...")
+        WFImageRotateAmount=att(x))
 ```
 
 ### `is.workflow.actions.savetocameraroll`
 
-`native` · seen 40×
+`native` · seen 296×
 
 Returns `Saved Photo Media`.
 
@@ -1839,6 +2418,27 @@ out = s.action("is.workflow.actions.savetocameraroll",
         WFInput=att(x))
 ```
 
+### `is.workflow.actions.takephoto`
+
+`native` · seen 88×
+
+Returns `Photo`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFCameraCaptureDevice` | `WFTextTokenAttachment` · `str`<br>values: `Back`, `Front` |
+| `WFCameraCaptureShowPreview` | `bool` |
+| `WFPhotoCount` | `WFTextTokenAttachment` · `int` · `real` |
+
+```python
+out = s.action("is.workflow.actions.takephoto",
+        CustomOutputName="...",
+        WFCameraCaptureDevice="Back",
+        WFCameraCaptureShowPreview=False,
+        WFPhotoCount=att(x))
+```
+
 <sub>[back to index](#index)</sub>
 
 ---
@@ -1847,43 +2447,68 @@ out = s.action("is.workflow.actions.savetocameraroll",
 
 ### `is.workflow.actions.adjustdate`
 
-`native` · seen 6×
+`native` · seen 192×
 
 Returns `Adjusted Date`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `CustomOutputName` | `str` |
+| `WFAdjustOffsetPicker` | `WFTimeOffsetValue` |
 | `WFAdjustOperation` | `str`<br>values: `Add`, `Get Start of Day`, `Get Start of Hour`, `Get Start of Minute`, `Get Start of Month`, `Get Start of Week`, `Get Start of Year`, `Subtract` |
-| `WFDate` | `WFTextTokenString` |
+| `WFDate` | `WFTextTokenString` · `str` |
 | `WFDuration` | `WFQuantityFieldValue` |
 
 ```python
 out = s.action("is.workflow.actions.adjustdate",
         CustomOutputName="...",
+        WFAdjustOffsetPicker="...",
         WFAdjustOperation="Add",
-        WFDate=ts("..."),
+        WFDate="...",
         WFDuration="...")
+```
+
+### `is.workflow.actions.converttimezone`
+
+`native` · seen 7×
+
+Returns `Converted Date`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `Date` | `WFTextTokenString` |
+| `DestinationTimeZone` | `WFTextTokenAttachment` · `dict{alCityIdentifier,localizedCityName,timeZone}` |
+| `SourceTimeZone` | `WFTextTokenAttachment` · `dict{alCityIdentifier,localizedCityName,timeZone}` |
+
+```python
+out = s.action("is.workflow.actions.converttimezone",
+        Date=ts("..."),
+        DestinationTimeZone=att(x),
+        SourceTimeZone=att(x))
 ```
 
 ### `is.workflow.actions.date`
 
-`native` · seen 14×
+`native` · seen 350×
 
 Returns `Date`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `CustomOutputName` | `str` |
+| `WFDateActionDate` | `WFTextTokenString` · `str` |
+| `WFDateActionMode` | `WFTextTokenAttachment` · `str`<br>values: `Current Date`, `Specified Date` |
 
 ```python
 out = s.action("is.workflow.actions.date",
-        CustomOutputName="...")
+        CustomOutputName="...",
+        WFDateActionDate="...",
+        WFDateActionMode="Current Date")
 ```
 
 ### `is.workflow.actions.format.date`
 
-`native` · seen 9×
+`native` · seen 242×
 
 Returns `Formatted Date`.
 
@@ -1891,9 +2516,10 @@ Returns `Formatted Date`.
 | --- | --- |
 | `CustomOutputName` | `str` |
 | `WFDate` | `WFTextTokenString` · `str` |
-| `WFDateFormat` | `str` |
+| `WFDateFormat` | `WFTextTokenString` · `str` |
 | `WFDateFormatStyle` | `str`<br>values: `Custom`, `ISO 8601`, `Long`, `Medium`, `None`, `RFC 2822`, `Relative`, `Short` |
 | `WFISO8601IncludeTime` | `bool` |
+| `WFLocale` | `str` |
 | `WFTimeFormatStyle` | `str`<br>values: `Long`, `Medium`, `None`, `Relative`, `Short` |
 
 ```python
@@ -1903,22 +2529,46 @@ out = s.action("is.workflow.actions.format.date",
         WFDateFormat="...",
         WFDateFormatStyle="Custom",
         WFISO8601IncludeTime=False,
+        WFLocale="...",
         WFTimeFormatStyle="Long")
+```
+
+### `is.workflow.actions.format.filesize`
+
+`native` · seen 14×
+
+Returns `Formatted File Size`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFFileSize` | `WFTextTokenAttachment` |
+| `WFFileSizeFormat` | `str`<br>values: `Automatic`, `Bytes`, `EB`, `GB`, `KB`, `MB`, `PB`, `TB` |
+| `WFFileSizeIncludeUnits` | `bool` |
+
+```python
+out = s.action("is.workflow.actions.format.filesize",
+        WFFileSize=att(x),
+        WFFileSizeFormat="Automatic",
+        WFFileSizeIncludeUnits=False)
 ```
 
 ### `is.workflow.actions.format.number`
 
-`native` · seen 2×
+`native` · seen 53×
 
 Returns `Formatted Number`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
+| `WFMathOperand` | `WFTextTokenAttachment` |
 | `WFNumber` | `WFTextTokenAttachment` |
-| `WFNumberFormatDecimalPlaces` | `real` |
+| `WFNumberFormatDecimalPlaces` | `int` · `real` |
 
 ```python
 out = s.action("is.workflow.actions.format.number",
+        CustomOutputName="...",
+        WFMathOperand=att(x),
         WFNumber=att(x),
         WFNumberFormatDecimalPlaces=0)
 ```
@@ -1929,9 +2579,57 @@ out = s.action("is.workflow.actions.format.number",
 
 ## Properties
 
+### `is.workflow.actions.properties.appearance`
+
+`native` · seen 3×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.properties.appearance")
+```
+
+### `is.workflow.actions.properties.appstore`
+
+`native` · seen 27×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFContentItemPropertyName` | `WFTextTokenAttachment` · `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.properties.appstore",
+        CustomOutputName="...",
+        WFContentItemPropertyName=att(x),
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.properties.articles`
+
+`native` · seen 15×
+
+Returns `Body`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFContentItemPropertyName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.properties.articles",
+        WFContentItemPropertyName="...",
+        WFInput=att(x))
+```
+
 ### `is.workflow.actions.properties.calendarevents`
 
-`native` · seen 6×
+`native` · seen 33×
 
 Returns `End Date` or `Location` or `Start Date` or `Title`.
 
@@ -1948,7 +2646,7 @@ out = s.action("is.workflow.actions.properties.calendarevents",
 
 ### `is.workflow.actions.properties.contacts`
 
-`native` · seen 11×
+`native` · seen 55×
 
 Returns `Direcciones de correo electrónico` or `Email Address` or `Email Addresses` or `Name` or `Números de teléfono` or `Phone Numbers` or `Street Addresses`.
 
@@ -1967,9 +2665,28 @@ out = s.action("is.workflow.actions.properties.contacts",
 
 ### `is.workflow.actions.properties.files`
 
-`native` · seen 5×
+`native` · seen 98×
 
-Returns `File Extension` or `File Size`.
+Returns `File Extension` or `File Size` or `Name`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFContentItemPropertyName` | `WFTextTokenAttachment` · `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.properties.files",
+        CustomOutputName="...",
+        WFContentItemPropertyName=att(x),
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.properties.health.quantity`
+
+`native` · seen 3×
+
+Returns `Value`.
 
 | Parameter | Accepts |
 | --- | --- |
@@ -1977,14 +2694,50 @@ Returns `File Extension` or `File Size`.
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
-out = s.action("is.workflow.actions.properties.files",
+out = s.action("is.workflow.actions.properties.health.quantity",
+        WFContentItemPropertyName="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.properties.images`
+
+`native` · seen 73×
+
+Returns `Width`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFContentItemPropertyName` | `WFTextTokenAttachment` · `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.properties.images",
+        CustomOutputName="...",
+        WFContentItemPropertyName=att(x),
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.properties.itunesstore`
+
+`native` · seen 8×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFContentItemPropertyName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.properties.itunesstore",
         WFContentItemPropertyName="...",
         WFInput=att(x))
 ```
 
 ### `is.workflow.actions.properties.locations`
 
-`native` · seen 2×
+`native` · seen 33×
 
 Returns `Latitude` or `Longitude`.
 
@@ -2001,7 +2754,53 @@ out = s.action("is.workflow.actions.properties.locations",
 
 ### `is.workflow.actions.properties.music`
 
+`native` · seen 11×
+
+Returns `Artist`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFContentItemPropertyName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.properties.music",
+        WFContentItemPropertyName="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.properties.reminders`
+
+`native` · seen 10×
+
+Returns `Due Date`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFContentItemPropertyName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.properties.reminders",
+        WFContentItemPropertyName="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.properties.ridestatus`
+
 `native` · seen 2×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.properties.ridestatus")
+```
+
+### `is.workflow.actions.properties.safariwebpage`
+
+`native` · seen 11×
 
 No output.
 
@@ -2011,9 +2810,52 @@ No output.
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
-s.action("is.workflow.actions.properties.music",
+s.action("is.workflow.actions.properties.safariwebpage",
         WFContentItemPropertyName="...",
         WFInput=att(x))
+```
+
+### `is.workflow.actions.properties.shazam`
+
+`native` · seen 3×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.properties.shazam")
+```
+
+### `is.workflow.actions.properties.weather.conditions`
+
+`native` · seen 38×
+
+Returns `Condition`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFContentItemPropertyName` | `WFTextTokenAttachment` · `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.properties.weather.conditions",
+        CustomOutputName="...",
+        WFContentItemPropertyName=att(x),
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.properties.workflow`
+
+`native` · seen 4×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.properties.workflow")
 ```
 
 <sub>[back to index](#index)</sub>
@@ -2022,75 +2864,208 @@ s.action("is.workflow.actions.properties.music",
 
 ## Device
 
-### `is.workflow.actions.getbatterylevel`
+### `is.workflow.actions.airplanemode.set`
 
-`native` · seen 2×
+`native` · seen 115×
 
-Returns `Battery Level`.
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `OnValue` | `WFTextTokenAttachment` · `bool` · `int` |
+| `ShowWhenRun` | `bool` |
+| `operation` | `str` |
+
+```python
+s.action("is.workflow.actions.airplanemode.set",
+        OnValue=att(x),
+        ShowWhenRun=False,
+        operation="...")
+```
+
+### `is.workflow.actions.bluetooth.set`
+
+`native` · seen 70×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `OnValue` | `WFTextTokenAttachment` · `bool` · `int` |
+| `operation` | `str` |
+
+```python
+s.action("is.workflow.actions.bluetooth.set",
+        OnValue=att(x),
+        operation="...")
+```
+
+### `is.workflow.actions.cellulardata.set`
+
+`native` · seen 87×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `OnValue` | `WFTextTokenAttachment` · `bool` · `int` |
+| `operation` | `str` |
+
+```python
+s.action("is.workflow.actions.cellulardata.set",
+        OnValue=att(x),
+        operation="...")
+```
+
+### `is.workflow.actions.dnd.getfocus`
+
+`native` · seen 32×
+
+Returns `Current Focus`.
 
 No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
 
 ```python
-out = s.action("is.workflow.actions.getbatterylevel")
+out = s.action("is.workflow.actions.dnd.getfocus")
+```
+
+### `is.workflow.actions.dnd.set`
+
+`native` · seen 66×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AssertionType` | `WFTextTokenAttachment` · `str`<br>values: `Event Ends`, `I Leave`, `Time`, `Turned Off` |
+| `Enabled` | `WFTextTokenAttachment` · `bool` · `int` |
+| `Event` | `WFTextTokenAttachment` |
+| `FocusModes` | `WFTextTokenAttachment` · `dict{DisplayString,Identifier}` |
+| `Operation` | `str` |
+| `Time` | `WFTextTokenString` · `str` |
+
+```python
+s.action("is.workflow.actions.dnd.set",
+        AssertionType="Event Ends",
+        Enabled=att(x),
+        Event=att(x),
+        FocusModes=att(x),
+        Operation="...",
+        Time="...")
+```
+
+### `is.workflow.actions.getbatterylevel`
+
+`native` · seen 104×
+
+Returns `Battery Level` or `Battery State`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `Subject` | `WFTextTokenAttachment` · `str`<br>values: `Battery Level`, `Current Playback Time`, `Current Song`, `Is Charging`, `Is Connected to Charger` |
+
+```python
+out = s.action("is.workflow.actions.getbatterylevel",
+        CustomOutputName="...",
+        Subject="Battery Level")
 ```
 
 ### `is.workflow.actions.getdevicedetails`
 
-`native` · seen 21×
+`native` · seen 389×
 
 Returns `Current Appearance` or `Device Model` or `Screen Height` or `Screen Width` or `System Version`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFDeviceDetail` | `str`<br>values: `Current Appearance`, `Current Brightness`, `Current Volume`, `Device Hostname`, `Device Is Watch`, `Device Model`, `Device Name`, `Screen Height` |
+| `CustomOutputName` | `str` |
+| `WFDeviceDetail` | `WFTextTokenAttachment` · `str`<br>values: `Current Appearance`, `Current Brightness`, `Current Volume`, `Device Hostname`, `Device Is Watch`, `Device Model`, `Device Name`, `Screen Height` |
 
 ```python
 out = s.action("is.workflow.actions.getdevicedetails",
+        CustomOutputName="...",
         WFDeviceDetail="Current Appearance")
 ```
 
 ### `is.workflow.actions.lowpowermode.set`
 
-`native` · seen 1×
+`native` · seen 63×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
-| `OnValue` | `int` |
+| `OnValue` | `WFTextTokenAttachment` · `bool` · `int` |
 | `operation` | `str` |
 
 ```python
 s.action("is.workflow.actions.lowpowermode.set",
-        OnValue=0,
+        OnValue=att(x),
         operation="...")
 ```
 
-### `is.workflow.actions.setvolume`
+### `is.workflow.actions.setbrightness`
 
-`native` · seen 3×
+`native` · seen 88×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFVolume` | `real` |
+| `WFBrightness` | `WFTextTokenAttachment` · `int` · `real` |
+
+```python
+s.action("is.workflow.actions.setbrightness",
+        WFBrightness=att(x))
+```
+
+### `is.workflow.actions.setvolume`
+
+`native` · seen 126×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFVolume` | `WFTextTokenAttachment` · `int` · `real` |
+| `WFVolumeSetting` | `WFTextTokenAttachment` · `str` |
 
 ```python
 s.action("is.workflow.actions.setvolume",
-        WFVolume=0)
+        WFVolume=att(x),
+        WFVolumeSetting=att(x))
 ```
 
-### `is.workflow.actions.wifi.set`
+### `is.workflow.actions.vibrate`
 
-`native` · seen 1×
+`native` · seen 111×
 
 No output.
 
 No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
 
 ```python
-s.action("is.workflow.actions.wifi.set")
+s.action("is.workflow.actions.vibrate")
+```
+
+### `is.workflow.actions.wifi.set`
+
+`native` · seen 123×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `OnValue` | `WFTextTokenAttachment` · `bool` · `int` |
+| `ShowWhenRun` | `bool` |
+| `operation` | `str` |
+
+```python
+s.action("is.workflow.actions.wifi.set",
+        OnValue=att(x),
+        ShowWhenRun=False,
+        operation="...")
 ```
 
 <sub>[back to index](#index)</sub>
@@ -2101,52 +3076,103 @@ s.action("is.workflow.actions.wifi.set")
 
 ### `is.workflow.actions.addnewevent`
 
-`native` · seen 1×
+`native` · seen 53×
 
-No output.
+Returns `New Event`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `ShowWhenRun` | `bool` |
-| `WFAlertTime` | `str`<br>values: `1 day before`, `1 hour before`, `1 week before`, `15 minutes before`, `2 days before`, `2 hours before`, `30 minutes before`, `5 minutes before` |
-| `WFCalendarDescriptor` | `dict{Identifier,IsAllCalendar,RGBAValue,Title}` |
-| `WFCalendarItemCalendar` | `str` |
-| `WFCalendarItemEndDate` | `WFTextTokenString` |
-| `WFCalendarItemLocation` | `WFTextTokenString` |
-| `WFCalendarItemNotes` | `WFTextTokenString` |
-| `WFCalendarItemStartDate` | `WFTextTokenString` |
-| `WFCalendarItemTitle` | `WFTextTokenString` |
+| `WFAlertCustomTime` | `WFTextTokenString` |
+| `WFAlertTime` | `WFTextTokenAttachment` · `str`<br>values: `1 day before`, `1 hour before`, `1 week before`, `15 minutes before`, `2 days before`, `2 hours before`, `30 minutes before`, `5 minutes before` |
+| `WFCalendarDescriptor` | `WFTextTokenAttachment` · `dict{Identifier,IsAllCalendar,RGBAValue,Title}` |
+| `WFCalendarItemAllDay` | `WFTextTokenAttachment` · `bool` |
+| `WFCalendarItemCalendar` | `WFTextTokenAttachment` · `str` |
+| `WFCalendarItemDates` | `bool` |
+| `WFCalendarItemEndDate` | `WFTextTokenString` · `str` |
+| `WFCalendarItemLocation` | `WFTextTokenString` · `str` |
+| `WFCalendarItemNotes` | `WFTextTokenString` · `str` |
+| `WFCalendarItemStartDate` | `WFTextTokenString` · `str` |
+| `WFCalendarItemTitle` | `WFTextTokenString` · `str` |
 
 ```python
-s.action("is.workflow.actions.addnewevent",
+out = s.action("is.workflow.actions.addnewevent",
         ShowWhenRun=False,
+        WFAlertCustomTime=ts("..."),
         WFAlertTime="1 day before",
-        WFCalendarDescriptor="...",
-        WFCalendarItemCalendar="...",
-        WFCalendarItemEndDate=ts("..."),
-        WFCalendarItemLocation=ts("..."),
-        WFCalendarItemNotes=ts("..."),
-        WFCalendarItemStartDate=ts("..."),
-        WFCalendarItemTitle=ts("..."))
+        WFCalendarDescriptor=att(x),
+        WFCalendarItemAllDay=att(x),
+        WFCalendarItemCalendar=att(x),
+        WFCalendarItemDates=False,
+        WFCalendarItemEndDate="...",
+        WFCalendarItemLocation="...",
+        WFCalendarItemNotes="...",
+        WFCalendarItemStartDate="...",
+        WFCalendarItemTitle="...")
 ```
 
 ### `is.workflow.actions.addnewreminder`
 
-`native` · seen 1×
+`native` · seen 60×
 
-No output.
+Returns `New Reminder`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFCalendarDescriptor` | `dict{Identifier,IsAllCalendar,Title}` |
+| `CustomOutputName` | `str` |
+| `WFAlertCondition` | `WFTextTokenAttachment` · `str`<br>values: `At Time`, `When I Arrive`, `When I Leave`, `When Messaging` |
+| `WFAlertCustomTime` | `WFTextTokenString` · `str` |
+| `WFAlertEnabled` | `WFTextTokenAttachment` · `str`<br>values: `Alert`, `No Alert` |
+| `WFAlertLocation` | `WFTextTokenAttachment` |
+| `WFAlertTrigger` | `str` |
+| `WFCalendarDescriptor` | `WFTextTokenAttachment` · `dict{Identifier,IsAllCalendar,Title}` |
+| `WFCalendarItemAlert` | `bool` |
 | `WFCalendarItemCalendar` | `str` |
-| `WFCalendarItemTitle` | `WFTextTokenString` |
+| `WFCalendarItemNotes` | `WFTextTokenString` · `str` |
+| `WFCalendarItemTitle` | `WFTextTokenString` · `str` |
+| `WFFlag` | `bool` |
+| `WFImages` | `WFTextTokenAttachment` |
+| `WFPriority` | `WFTextTokenAttachment` · `str`<br>values: `High`, `Low`, `Medium`, `None` |
+| `WFTags` | `WFTextTokenAttachment` · `str` |
+| `WFURL` | `WFTextTokenString` · `str` |
+| `WFUrgent` | `bool` |
 
 ```python
-s.action("is.workflow.actions.addnewreminder",
-        WFCalendarDescriptor="...",
+out = s.action("is.workflow.actions.addnewreminder",
+        CustomOutputName="...",
+        WFAlertCondition="At Time",
+        WFAlertCustomTime="...",
+        WFAlertEnabled="Alert",
+        WFAlertLocation=att(x),
+        WFAlertTrigger="...",
+        WFCalendarDescriptor=att(x),
+        WFCalendarItemAlert=False,
         WFCalendarItemCalendar="...",
-        WFCalendarItemTitle=ts("..."))
+        WFCalendarItemNotes="...",
+        WFCalendarItemTitle="...",
+        WFFlag=False,
+        WFImages=att(x),
+        WFPriority="High",
+        WFTags=att(x),
+        WFURL="...",
+        WFUrgent=False)
+```
+
+### `is.workflow.actions.contacts`
+
+`native` · seen 13×
+
+Returns `Contacts`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `Show-WFContact` | `bool` |
+| `WFContact` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.contacts",
+        Show-WFContact=False,
+        WFContact=att(x))
 ```
 
 <sub>[back to index](#index)</sub>
@@ -2157,14 +3183,38 @@ s.action("is.workflow.actions.addnewreminder",
 
 ### `is.workflow.actions.weather.currentconditions`
 
-`native` · seen 2×
+`native` · seen 100×
 
 Returns `Weather Conditions`.
 
-No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFWeatherCustomLocation` | `WFTextTokenAttachment` · `dict{isCurrentLocation}` |
 
 ```python
-out = s.action("is.workflow.actions.weather.currentconditions")
+out = s.action("is.workflow.actions.weather.currentconditions",
+        CustomOutputName="...",
+        WFWeatherCustomLocation=att(x))
+```
+
+### `is.workflow.actions.weather.forecast`
+
+`native` · seen 42×
+
+Returns `Weather Conditions`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFWeatherCustomLocation` | `WFTextTokenAttachment` · `dict{isCurrentLocation}` · `dict{placemark}` |
+| `WFWeatherForecastType` | `WFTextTokenAttachment` · `str`<br>values: `Daily`, `Hourly` |
+
+```python
+out = s.action("is.workflow.actions.weather.forecast",
+        CustomOutputName="...",
+        WFWeatherCustomLocation=att(x),
+        WFWeatherForecastType="Daily")
 ```
 
 <sub>[back to index](#index)</sub>
@@ -2175,22 +3225,26 @@ out = s.action("is.workflow.actions.weather.currentconditions")
 
 ### `is.workflow.actions.askllm`
 
-`native` · seen 9×
+`native` · seen 135×
 
 Returns `Response`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `FollowUp` | `bool` |
+| `WFAllowWebSearch` | `bool` |
 | `WFGenerativeResultType` | `str` |
-| `WFLLMModel` | `str` |
+| `WFLLMModel` | `WFTextTokenAttachment` · `str` |
 | `WFLLMPrompt` | `WFTextTokenString` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.askllm",
+        CustomOutputName="...",
         FollowUp=False,
+        WFAllowWebSearch=False,
         WFGenerativeResultType="...",
-        WFLLMModel="...",
+        WFLLMModel=att(x),
         WFLLMPrompt="...")
 ```
 
@@ -2202,22 +3256,24 @@ out = s.action("is.workflow.actions.askllm",
 
 ### `is.workflow.actions.runapplescript`
 
-`native` · seen 3×
+`native` · seen 15×
 
-No output.
+Returns `AppleScript Result`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `Input` | `WFTextTokenAttachment` |
 | `Script` | `str` |
 
 ```python
-s.action("is.workflow.actions.runapplescript",
+out = s.action("is.workflow.actions.runapplescript",
+        Input=att(x),
         Script="...")
 ```
 
 ### `is.workflow.actions.runjavascriptforautomation`
 
-`native` · seen 1×
+`native` · seen 3×
 
 No output.
 
@@ -2232,36 +3288,42 @@ s.action("is.workflow.actions.runjavascriptforautomation",
 
 ### `is.workflow.actions.runjavascriptonwebpage`
 
-`native` · seen 5×
+`native` · seen 64×
 
 Returns `JavaScript Result`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `WFInput` | `WFTextTokenAttachment` |
-| `WFJavaScript` | `str` |
+| `WFJavaScript` | `WFTextTokenString` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.runjavascriptonwebpage",
+        CustomOutputName="...",
         WFInput=att(x),
         WFJavaScript="...")
 ```
 
 ### `is.workflow.actions.runshellscript`
 
-`native` · seen 9×
+`native` · seen 29×
 
-No output.
+Returns `Shell Script Result`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `Input` | `WFTextTokenAttachment` |
+| `InputMode` | `str`<br>values: `as arguments`, `to stdin` |
+| `RunAsRoot` | `bool` |
 | `Script` | `WFTextTokenString` · `str` |
 | `Shell` | `str` |
 
 ```python
-s.action("is.workflow.actions.runshellscript",
+out = s.action("is.workflow.actions.runshellscript",
         Input=att(x),
+        InputMode="as arguments",
+        RunAsRoot=False,
         Script="...",
         Shell="...")
 ```
@@ -2272,9 +3334,141 @@ s.action("is.workflow.actions.runshellscript",
 
 ## Other
 
+### `is.workflow.actions.additemtolist`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFListVariable` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.additemtolist",
+        WFListVariable=att(x))
+```
+
+### `is.workflow.actions.addmusictoupnext`
+
+`native` · seen 5×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFMusic` | `WFTextTokenAttachment` |
+| `WFWhenToPlay` | `str`<br>values: `Later`, `Next` |
+
+```python
+s.action("is.workflow.actions.addmusictoupnext",
+        WFMusic=att(x),
+        WFWhenToPlay="Later")
+```
+
+### `is.workflow.actions.addnewcalendar`
+
+`native` · seen 7×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CalendarName` | `WFTextTokenString` · `str` |
+
+```python
+s.action("is.workflow.actions.addnewcalendar",
+        CalendarName="...")
+```
+
+### `is.workflow.actions.addnewcontact`
+
+`native` · seen 11×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `ShowWhenRun` | `bool` |
+| `WFContactCompany` | `str` |
+| `WFContactEmails` | `WFTextTokenAttachment` |
+| `WFContactFirstName` | `WFTextTokenString` · `str` |
+| `WFContactLastName` | `WFTextTokenString` · `str` |
+| `WFContactNotes` | `WFTextTokenString` · `str` |
+| `WFContactPhoneNumbers` | `WFContactFieldValue` · `WFTextTokenAttachment` |
+| `WFContactPhoto` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.addnewcontact",
+        ShowWhenRun=False,
+        WFContactCompany="...",
+        WFContactEmails=att(x),
+        WFContactFirstName="...",
+        WFContactLastName="...",
+        WFContactNotes="...",
+        WFContactPhoneNumbers=att(x),
+        WFContactPhoto=att(x))
+```
+
+### `is.workflow.actions.addquickreminder`
+
+`native` · seen 2×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.addquickreminder")
+```
+
+### `is.workflow.actions.address`
+
+`native` · seen 13×
+
+Returns `Street Address`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFAddressLine1` | `WFTextTokenString` · `str` |
+| `WFAddressLine2` | `WFTextTokenString` · `str` |
+| `WFCity` | `WFTextTokenString` · `str` |
+| `WFCountry` | `WFTextTokenString` · `str` |
+| `WFPostalCode` | `WFTextTokenString` · `str` |
+| `WFState` | `WFTextTokenString` · `str` |
+
+```python
+out = s.action("is.workflow.actions.address",
+        CustomOutputName="...",
+        WFAddressLine1="...",
+        WFAddressLine2="...",
+        WFCity="...",
+        WFCountry="...",
+        WFPostalCode="...",
+        WFState="...")
+```
+
+### `is.workflow.actions.addtoplaylist`
+
+`native` · seen 12×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenAttachment` |
+| `WFPlaylistName` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.addtoplaylist",
+        WFInput=att(x),
+        WFPlaylistName=att(x))
+```
+
 ### `is.workflow.actions.airdropdocument`
 
-`native` · seen 1×
+`native` · seen 17×
 
 No output.
 
@@ -2287,9 +3481,49 @@ s.action("is.workflow.actions.airdropdocument",
         WFInput=att(x))
 ```
 
-### `is.workflow.actions.appendvariable`
+### `is.workflow.actions.appearance`
 
 `native` · seen 48×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+| `style` | `str` |
+
+```python
+s.action("is.workflow.actions.appearance",
+        operation="...",
+        style="...")
+```
+
+### `is.workflow.actions.appendnote`
+
+`native` · seen 29×
+
+Returns `Appended Note`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `CustomOutputName` | `str` |
+| `WFInput` | `WFTextTokenString` · `str` |
+| `WFNote` | `WFTextTokenAttachment` · `dict{identifier,image,subtitle,title}` · `dict{identifier,subtitle,title}` |
+| `ignoreWhitespace` | `bool` |
+
+```python
+out = s.action("is.workflow.actions.appendnote",
+        AppIntentDescriptor="...",
+        CustomOutputName="...",
+        WFInput="...",
+        WFNote=att(x),
+        ignoreWhitespace=False)
+```
+
+### `is.workflow.actions.appendvariable`
+
+`native` · seen 501×
 
 No output.
 
@@ -2304,9 +3538,72 @@ s.action("is.workflow.actions.appendvariable",
         WFVariableName="...")
 ```
 
+### `is.workflow.actions.avairyeditphoto`
+
+`native` · seen 18×
+
+Returns `Markup Result`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFDocument` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.avairyeditphoto",
+        WFDocument=att(x))
+```
+
+### `is.workflow.actions.clearupnext`
+
+`native` · seen 3×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.clearupnext")
+```
+
+### `is.workflow.actions.compresspdf`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.compresspdf",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.createplaylist`
+
+`native` · seen 10×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFPlaylistAuthor` | `WFTextTokenString` · `str` |
+| `WFPlaylistDescription` | `WFTextTokenString` · `str` |
+| `WFPlaylistItems` | `WFTextTokenAttachment` |
+| `WFPlaylistName` | `WFTextTokenString` · `str` |
+
+```python
+s.action("is.workflow.actions.createplaylist",
+        WFPlaylistAuthor="...",
+        WFPlaylistDescription="...",
+        WFPlaylistItems=att(x),
+        WFPlaylistName="...")
+```
+
 ### `is.workflow.actions.delay`
 
-`native` · seen 54×
+`native` · seen 519×
 
 No output.
 
@@ -2321,17 +3618,213 @@ s.action("is.workflow.actions.delay",
 
 ### `is.workflow.actions.deletephotos`
 
-`native` · seen 1×
+`native` · seen 42×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
 | `photos` | `WFTextTokenAttachment` |
 
 ```python
 s.action("is.workflow.actions.deletephotos",
+        AppIntentDescriptor="...",
         photos=att(x))
+```
+
+### `is.workflow.actions.deletestoredcontent`
+
+`native` · seen 6×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFStoredContentGlobalValue` | `bool` |
+| `WFStoredContentKey` | `WFTextTokenString` · `str` |
+
+```python
+s.action("is.workflow.actions.deletestoredcontent",
+        WFStoredContentGlobalValue=False,
+        WFStoredContentKey="...")
+```
+
+### `is.workflow.actions.dictatetext`
+
+`native` · seen 76×
+
+Returns `Dictated Text`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFDictateTextStopListening` | `WFTextTokenAttachment` · `str`<br>values: `After Pause`, `After Short Pause`, `On Tap` |
+| `WFSpeechLanguage` | `WFTextTokenAttachment` · `str` |
+
+```python
+out = s.action("is.workflow.actions.dictatetext",
+        CustomOutputName="...",
+        WFDictateTextStopListening="After Pause",
+        WFSpeechLanguage=att(x))
+```
+
+### `is.workflow.actions.dismisssiri`
+
+`native` · seen 25×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.dismisssiri")
+```
+
+### `is.workflow.actions.display.always-on.set`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `OnValue` | `int` |
+
+```python
+s.action("is.workflow.actions.display.always-on.set",
+        OnValue=0)
+```
+
+### `is.workflow.actions.dropbox.savefile`
+
+`native` · seen 5×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFAskWhereToSave` | `bool` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.dropbox.savefile",
+        WFAskWhereToSave=False,
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.email`
+
+`native` · seen 16×
+
+Returns `Email Address`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFEmailAddress` | `WFContactFieldValue` · `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.email",
+        WFEmailAddress=att(x))
+```
+
+### `is.workflow.actions.evernote.get`
+
+`native` · seen 2×
+
+Returns `Notes`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFEvernoteNotesCount` | `real` |
+
+```python
+out = s.action("is.workflow.actions.evernote.get",
+        WFEvernoteNotesCount=0)
+```
+
+### `is.workflow.actions.evernote.getlink`
+
+`native` · seen 2×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.evernote.getlink")
+```
+
+### `is.workflow.actions.evernote.new`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFEvernoteNoteTitle` | `WFTextTokenString` |
+| `WFEvernoteNotebook` | `WFTextTokenAttachment` |
+| `WFEvernoteTags` | `WFTextTokenAttachment` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.evernote.new",
+        WFEvernoteNoteTitle=ts("..."),
+        WFEvernoteNotebook=att(x),
+        WFEvernoteTags=att(x),
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.exportsong`
+
+`native` · seen 8×
+
+Returns `Music`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFExportSongActionSelectMultiple` | `bool` |
+
+```python
+out = s.action("is.workflow.actions.exportsong",
+        WFExportSongActionSelectMultiple=False)
+```
+
+### `is.workflow.actions.extracttextfromimage`
+
+`native` · seen 72×
+
+Returns `Text from Image`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFImage` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.extracttextfromimage",
+        WFImage=att(x))
+```
+
+### `is.workflow.actions.flashlight`
+
+`native` · seen 64×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFFlashlightLevel` | `WFTextTokenAttachment` · `int` · `real` |
+| `WFFlashlightSetting` | `str` |
+| `operation` | `str` |
+| `state` | `WFTextTokenAttachment` · `bool` · `int` |
+
+```python
+s.action("is.workflow.actions.flashlight",
+        WFFlashlightLevel=att(x),
+        WFFlashlightSetting="...",
+        operation="...",
+        state=att(x))
 ```
 
 ### `is.workflow.actions.folder`
@@ -2351,51 +3844,92 @@ s.action("is.workflow.actions.folder",
 
 ### `is.workflow.actions.generatebarcode`
 
-`native` · seen 1×
+`native` · seen 62×
 
 Returns `QR Code`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `WFQRErrorCorrectionLevel` | `str`<br>values: `High`, `Low`, `Medium`, `Quartile` |
-| `WFText` | `WFTextTokenString` |
+| `WFQRForegroundColor` | `dict{WFColorRepresentationType,alphaComponent,blueComponent,greenComponent,redComponent}` |
+| `WFQRRounded` | `bool` |
+| `WFText` | `WFTextTokenString` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.generatebarcode",
         WFQRErrorCorrectionLevel="High",
-        WFText=ts("..."))
+        WFQRForegroundColor="...",
+        WFQRRounded=False,
+        WFText="...")
+```
+
+### `is.workflow.actions.get.playlist`
+
+`native` · seen 12×
+
+Returns `Playlist`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFPlaylistName` | `WFTextTokenAttachment` · `str` |
+
+```python
+out = s.action("is.workflow.actions.get.playlist",
+        WFPlaylistName=att(x))
+```
+
+### `is.workflow.actions.getarticle`
+
+`native` · seen 13×
+
+Returns `Article`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFWebPage` | `WFTextTokenString` |
+
+```python
+out = s.action("is.workflow.actions.getarticle",
+        WFWebPage=ts("..."))
 ```
 
 ### `is.workflow.actions.getcurrentapp`
 
-`native` · seen 2×
+`native` · seen 65×
 
 Returns `Current App`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFVisibleAppScope` | `str` |
+| `CustomOutputName` | `str` |
+| `WFVisibleAppScope` | `WFTextTokenAttachment` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.getcurrentapp",
-        WFVisibleAppScope="...")
+        CustomOutputName="...",
+        WFVisibleAppScope=att(x))
 ```
 
 ### `is.workflow.actions.getcurrentlocation`
 
-`native` · seen 2×
+`native` · seen 102×
 
 Returns `Current Location`.
 
-No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+| Parameter | Accepts |
+| --- | --- |
+| `Accuracy` | `str` |
+| `CustomOutputName` | `str` |
 
 ```python
-out = s.action("is.workflow.actions.getcurrentlocation")
+out = s.action("is.workflow.actions.getcurrentlocation",
+        Accuracy="...",
+        CustomOutputName="...")
 ```
 
 ### `is.workflow.actions.getcurrentsong`
 
-`native` · seen 1×
+`native` · seen 17×
 
 Returns `Current Song`.
 
@@ -2410,28 +3944,30 @@ out = s.action("is.workflow.actions.getcurrentsong",
 
 ### `is.workflow.actions.getdirections`
 
-`native` · seen 18×
+`native` · seen 45×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
 | `WFDestination` | `WFTextTokenAttachment` |
-| `WFGetDirectionsActionApp` | `str` |
-| `WFGetDirectionsActionMode` | `str`<br>values: `Biking`, `Direct`, `Driving`, `Transit`, `Walking` |
+| `WFGetDirectionsActionApp` | `WFTextTokenAttachment` · `str` |
+| `WFGetDirectionsActionMode` | `WFTextTokenAttachment` · `str`<br>values: `Biking`, `Direct`, `Driving`, `Transit`, `Walking` |
+| `WFLocation` | `WFTextTokenAttachment` |
 
 ```python
 s.action("is.workflow.actions.getdirections",
         WFDestination=att(x),
-        WFGetDirectionsActionApp="...",
-        WFGetDirectionsActionMode="Biking")
+        WFGetDirectionsActionApp=att(x),
+        WFGetDirectionsActionMode="Biking",
+        WFLocation=att(x))
 ```
 
 ### `is.workflow.actions.getdistance`
 
-`native` · seen 2×
+`native` · seen 13×
 
-No output.
+Returns `Distance`.
 
 | Parameter | Accepts |
 | --- | --- |
@@ -2442,7 +3978,7 @@ No output.
 | `WFGetDistanceDestination` | `WFTextTokenAttachment` |
 
 ```python
-s.action("is.workflow.actions.getdistance",
+out = s.action("is.workflow.actions.getdistance",
         Accuracy="...",
         WFDistanceUnit="Kilometers",
         WFGetDirectionsActionMode="Biking",
@@ -2450,84 +3986,51 @@ s.action("is.workflow.actions.getdistance",
         WFGetDistanceDestination=att(x))
 ```
 
-### `is.workflow.actions.gethtmlfromrichtext`
+### `is.workflow.actions.getepisodesforpodcast`
 
-`native` · seen 17×
+`native` · seen 2×
 
-Returns `HTML from Rich Text`.
+Returns `Episodes`.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+out = s.action("is.workflow.actions.getepisodesforpodcast")
+```
+
+### `is.workflow.actions.getframesfromimage`
+
+`native` · seen 6×
+
+Returns `Frames from Image`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `CustomOutputName` | `str` |
-| `WFInput` | `WFTextTokenAttachment` |
+| `WFImage` | `WFTextTokenAttachment` |
 
 ```python
-out = s.action("is.workflow.actions.gethtmlfromrichtext",
-        CustomOutputName="...",
-        WFInput=att(x))
+out = s.action("is.workflow.actions.getframesfromimage",
+        WFImage=att(x))
 ```
 
-### `is.workflow.actions.getitemname`
+### `is.workflow.actions.gethalfwaypoint`
 
-`native` · seen 14×
+`native` · seen 4×
 
-Returns `Name`.
+Returns `Halfway Point`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFInput` | `WFTextTokenAttachment` |
+| `WFGetHalfwayPointFirstLocation` | `WFTextTokenAttachment` |
+| `WFGetHalfwayPointSecondLocation` | `WFTextTokenAttachment` |
 
 ```python
-out = s.action("is.workflow.actions.getitemname",
-        WFInput=att(x))
+out = s.action("is.workflow.actions.gethalfwaypoint",
+        WFGetHalfwayPointFirstLocation=att(x),
+        WFGetHalfwayPointSecondLocation=att(x))
 ```
 
-### `is.workflow.actions.getitemtype`
-
-`native` · seen 5×
-
-Returns `Type`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `WFInput` | `WFTextTokenAttachment` |
-
-```python
-out = s.action("is.workflow.actions.getitemtype",
-        WFInput=att(x))
-```
-
-### `is.workflow.actions.getmapslink`
-
-`native` · seen 1×
-
-Returns `Maps URL`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `WFInput` | `WFTextTokenAttachment` |
-
-```python
-out = s.action("is.workflow.actions.getmapslink",
-        WFInput=att(x))
-```
-
-### `is.workflow.actions.getrichtextfrommarkdown`
-
-`native` · seen 1×
-
-Returns `Rich Text from Markdown`.
-
-| Parameter | Accepts |
-| --- | --- |
-| `WFInput` | `WFTextTokenAttachment` |
-
-```python
-out = s.action("is.workflow.actions.getrichtextfrommarkdown",
-        WFInput=att(x))
-```
-
-### `is.workflow.actions.gettimebetweendates`
+### `is.workflow.actions.gethomeaccessorystate`
 
 `native` · seen 3×
 
@@ -2535,71 +4038,440 @@ No output.
 
 | Parameter | Accepts |
 | --- | --- |
-| `CustomOutputName` | `str` |
-| `WFInput` | `WFTextTokenString` |
-| `WFTimeUntilFromDate` | `WFTextTokenString` |
-| `WFTimeUntilUnit` | `str`<br>values: `Days`, `Hours`, `Minutes`, `Months`, `Seconds`, `Total Time`, `Weeks`, `Years` |
+| `WFHMCharacteristic` | `dict{HomeIdentifier}` |
+| `WFHMService` | `dict{HomeIdentifier,HomeService}` |
 
 ```python
-s.action("is.workflow.actions.gettimebetweendates",
-        CustomOutputName="...",
-        WFInput=ts("..."),
-        WFTimeUntilFromDate=ts("..."),
-        WFTimeUntilUnit="Days")
+s.action("is.workflow.actions.gethomeaccessorystate",
+        WFHMCharacteristic="...",
+        WFHMService="...")
 ```
 
-### `is.workflow.actions.gettraveltime`
+### `is.workflow.actions.gethtmlfromrichtext`
 
-`native` · seen 1×
+`native` · seen 124×
+
+Returns `HTML from Rich Text`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+| `WFMakeFullDocument` | `bool` |
+
+```python
+out = s.action("is.workflow.actions.gethtmlfromrichtext",
+        CustomOutputName="...",
+        WFInput=att(x),
+        WFMakeFullDocument=False)
+```
+
+### `is.workflow.actions.getitemname`
+
+`native` · seen 117×
+
+Returns `Name`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `GetWebPageTitle` | `bool` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.getitemname",
+        CustomOutputName="...",
+        GetWebPageTitle=False,
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.getitemtype`
+
+`native` · seen 134×
+
+Returns `Type`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.getitemtype",
+        CustomOutputName="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.getlastphoto`
+
+`native` · seen 16×
+
+Returns `Latest Photos`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFGetLatestPhotoCount` | `int` · `real` |
+| `WFGetLatestPhotosActionIncludeScreenshots` | `bool` |
+
+```python
+out = s.action("is.workflow.actions.getlastphoto",
+        WFGetLatestPhotoCount=0,
+        WFGetLatestPhotosActionIncludeScreenshots=False)
+```
+
+### `is.workflow.actions.getlastscreenshot`
+
+`native` · seen 7×
+
+Returns `Latest Screenshots`.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+out = s.action("is.workflow.actions.getlastscreenshot")
+```
+
+### `is.workflow.actions.getlastvideo`
+
+`native` · seen 6×
+
+Returns `Latest Videos`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFGetLatestPhotoCount` | `real` |
+
+```python
+out = s.action("is.workflow.actions.getlastvideo",
+        WFGetLatestPhotoCount=0)
+```
+
+### `is.workflow.actions.getlatestbursts`
+
+`native` · seen 2×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.getlatestbursts")
+```
+
+### `is.workflow.actions.getlatestlivephotos`
+
+`native` · seen 2×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.getlatestlivephotos")
+```
+
+### `is.workflow.actions.getmapslink`
+
+`native` · seen 23×
+
+Returns `Maps URL`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.getmapslink",
+        CustomOutputName="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.getmarkdownfromrichtext`
+
+`native` · seen 13×
+
+Returns `Markdown from Rich Text`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.getmarkdownfromrichtext",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.getnameofemoji`
+
+`native` · seen 19×
+
+Returns `Name of Emoji`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenString` |
+
+```python
+out = s.action("is.workflow.actions.getnameofemoji",
+        WFInput=ts("..."))
+```
+
+### `is.workflow.actions.getonscreencontent`
+
+`native` · seen 6×
+
+Returns `Get What’s On Screen`.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+out = s.action("is.workflow.actions.getonscreencontent")
+```
+
+### `is.workflow.actions.getonscreencontext`
+
+`native` · seen 3×
+
+Returns `On-Screen Text`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFOnScreenContextResultType` | `str` |
+
+```python
+out = s.action("is.workflow.actions.getonscreencontext",
+        WFOnScreenContextResultType="...")
+```
+
+### `is.workflow.actions.getparentdirectory`
+
+`native` · seen 2×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFDestination` | `WFTextTokenAttachment` |
-| `WFGetDirectionsActionMode` | `str`<br>values: `Biking`, `Direct`, `Driving`, `Transit`, `Walking` |
-| `WFGetDirectionsCustomLocation` | `WFTextTokenAttachment` |
+| `WFInput` | `WFTextTokenAttachment` |
 
 ```python
-s.action("is.workflow.actions.gettraveltime",
+s.action("is.workflow.actions.getparentdirectory",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.getparkedcarlocation`
+
+`native` · seen 5×
+
+Returns `Car Location`.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+out = s.action("is.workflow.actions.getparkedcarlocation")
+```
+
+### `is.workflow.actions.getrichtextfrommarkdown`
+
+`native` · seen 48×
+
+Returns `Rich Text from Markdown`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.getrichtextfrommarkdown",
+        CustomOutputName="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.getstoredcontent`
+
+`native` · seen 26×
+
+Returns `Stored Content`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFStoredContentGlobalValue` | `bool` |
+| `WFStoredContentKey` | `WFTextTokenString` · `str` |
+
+```python
+out = s.action("is.workflow.actions.getstoredcontent",
+        CustomOutputName="...",
+        WFStoredContentGlobalValue=False,
+        WFStoredContentKey="...")
+```
+
+### `is.workflow.actions.gettimebetweendates`
+
+`native` · seen 207×
+
+Returns `Time Between Dates`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFInput` | `WFTextTokenString` |
+| `WFTimeUntilCustomDate` | `WFTextTokenString` |
+| `WFTimeUntilFromDate` | `WFTextTokenString` · `str` |
+| `WFTimeUntilReferenceDate` | `str` |
+| `WFTimeUntilUnit` | `WFTextTokenAttachment` · `str`<br>values: `Days`, `Hours`, `Minutes`, `Months`, `Seconds`, `Total Time`, `Weeks`, `Years` |
+
+```python
+out = s.action("is.workflow.actions.gettimebetweendates",
+        CustomOutputName="...",
+        WFInput=ts("..."),
+        WFTimeUntilCustomDate=ts("..."),
+        WFTimeUntilFromDate="...",
+        WFTimeUntilReferenceDate="...",
+        WFTimeUntilUnit="Days")
+```
+
+### `is.workflow.actions.gettraveltime`
+
+`native` · seen 32×
+
+Returns `Travel Time`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFDestination` | `WFTextTokenAttachment` |
+| `WFGetDirectionsActionMode` | `WFTextTokenAttachment` · `str`<br>values: `Biking`, `Direct`, `Driving`, `Transit`, `Walking` |
+| `WFGetDirectionsCustomLocation` | `WFTextTokenAttachment` · `dict{isCurrentLocation,placemark}` · `dict{isCurrentLocation}` |
+
+```python
+out = s.action("is.workflow.actions.gettraveltime",
+        CustomOutputName="...",
         WFDestination=att(x),
         WFGetDirectionsActionMode="Biking",
         WFGetDirectionsCustomLocation=att(x))
 ```
 
+### `is.workflow.actions.getupcomingevents`
+
+`native` · seen 30×
+
+Returns `Upcoming Events`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFDateSpecifier` | `WFTextTokenAttachment` · `str`<br>values: `Any Day`, `Specified Day`, `Today`, `Tomorrow` |
+| `WFGetUpcomingItemCalendar` | `dict{Identifier,IsAllCalendar,RGBAValue,Title}` · `dict{IsAllCalendar}` |
+| `WFGetUpcomingItemCount` | `WFTextTokenAttachment` · `int` · `real` |
+
+```python
+out = s.action("is.workflow.actions.getupcomingevents",
+        WFDateSpecifier="Any Day",
+        WFGetUpcomingItemCalendar="...",
+        WFGetUpcomingItemCount=att(x))
+```
+
+### `is.workflow.actions.getupcomingreminders`
+
+`native` · seen 11×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFGetUpcomingItemCalendar` | `dict{Identifier,IsAllCalendar,Title}` |
+| `WFGetUpcomingItemCount` | `real` |
+
+```python
+s.action("is.workflow.actions.getupcomingreminders",
+        WFGetUpcomingItemCalendar="...",
+        WFGetUpcomingItemCount=0)
+```
+
+### `is.workflow.actions.geturlcomponent`
+
+`native` · seen 35×
+
+Returns `Component of URL`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFURL` | `WFTextTokenString` |
+| `WFURLComponent` | `str`<br>values: `Fragment`, `Host`, `Password`, `Path`, `Port`, `Query`, `Scheme`, `User` |
+
+```python
+out = s.action("is.workflow.actions.geturlcomponent",
+        CustomOutputName="...",
+        WFURL=ts("..."),
+        WFURLComponent="Fragment")
+```
+
 ### `is.workflow.actions.getwebpagecontents`
 
-`native` · seen 5×
+`native` · seen 187×
 
 Returns `Contents of Web Page`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `WFInput` | `WFTextTokenString` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.getwebpagecontents",
+        CustomOutputName="...",
         WFInput="...")
 ```
 
 ### `is.workflow.actions.getwifi`
 
-`native` · seen 1×
+`native` · seen 164×
 
 Returns `Network Details`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `Credit` | `str` |
+| `CustomOutputName` | `str` |
+| `RoutineHub` | `int` |
+| `WFCellularDetail` | `str`<br>values: `Carrier Name`, `Country Code`, `Is Roaming Abroad`, `Number of Signal Bars`, `Radio Technology` |
+| `WFNetworkDetailsNetwork` | `WFTextTokenAttachment` · `str` |
 | `WFWiFiDetail` | `str`<br>values: `BSSID`, `Network Name` |
 
 ```python
 out = s.action("is.workflow.actions.getwifi",
+        Credit="...",
+        CustomOutputName="...",
+        RoutineHub=0,
+        WFCellularDetail="Carrier Name",
+        WFNetworkDetailsNetwork=att(x),
         WFWiFiDetail="BSSID")
+```
+
+### `is.workflow.actions.giphy`
+
+`native` · seen 8×
+
+Returns `GIFs`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFGiphyQuery` | `WFTextTokenString` |
+| `WFGiphySelectMultiple` | `bool` |
+| `WFGiphyShowPicker` | `bool` |
+
+```python
+out = s.action("is.workflow.actions.giphy",
+        WFGiphyQuery=ts("..."),
+        WFGiphySelectMultiple=False,
+        WFGiphyShowPicker=False)
 ```
 
 ### `is.workflow.actions.handoff`
 
-`native` · seen 2×
+`native` · seen 49×
 
 No output.
 
@@ -2609,114 +4481,450 @@ No parameters observed — either it takes none, or every sample was left at its
 s.action("is.workflow.actions.handoff")
 ```
 
+### `is.workflow.actions.handoffplayback`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFDestinationMediaRoute` | `WFTextTokenAttachment` |
+| `WFSourceMediaRoute` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.handoffplayback",
+        WFDestinationMediaRoute=att(x),
+        WFSourceMediaRoute=att(x))
+```
+
 ### `is.workflow.actions.hash`
 
-`native` · seen 5×
+`native` · seen 39×
 
 Returns `Hash`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFHashType` | `str`<br>values: `SHA512` |
+| `CustomOutputName` | `str` |
+| `WFHashType` | `WFTextTokenAttachment` · `str`<br>values: `MD5`, `SHA256`, `SHA512` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.hash",
-        WFHashType="SHA512",
+        CustomOutputName="...",
+        WFHashType="MD5",
         WFInput=att(x))
 ```
 
-### `is.workflow.actions.imgur.upload`
+### `is.workflow.actions.health.quantity.log`
 
-`native` · seen 1×
+`native` · seen 16×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
+| `WFCategorySampleEnumeration` | `str` |
+| `WFQuantitySampleAdditionalQuantity` | `WFQuantityFieldValue` |
+| `WFQuantitySampleDate` | `WFTextTokenString` · `str` |
+| `WFQuantitySampleQuantity` | `WFQuantityFieldValue` |
+| `WFQuantitySampleType` | `str` |
+| `WFSampleEndDate` | `WFTextTokenString` |
+
+```python
+s.action("is.workflow.actions.health.quantity.log",
+        WFCategorySampleEnumeration="...",
+        WFQuantitySampleAdditionalQuantity="...",
+        WFQuantitySampleDate="...",
+        WFQuantitySampleQuantity="...",
+        WFQuantitySampleType="...",
+        WFSampleEndDate=ts("..."))
+```
+
+### `is.workflow.actions.homeaccessory`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFHomeTriggerActionSets` | `dict{WFHFTriggerActionSetsBuilderParameterStateActionSets,WFHFTriggerActionSetsBuilderParameterStateHome}` |
+
+```python
+s.action("is.workflow.actions.homeaccessory",
+        WFHomeTriggerActionSets="...")
+```
+
+### `is.workflow.actions.imgur.upload`
+
+`native` · seen 11×
+
+Returns `Imgur URLs`.
+
+| Parameter | Accepts |
+| --- | --- |
 | `WFImgurAnonymous` | `bool` |
+| `WFImgurDescription` | `WFTextTokenString` |
 | `WFImgurDirectLink` | `bool` |
+| `WFImgurTitle` | `WFTextTokenString` · `str` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
-s.action("is.workflow.actions.imgur.upload",
+out = s.action("is.workflow.actions.imgur.upload",
         WFImgurAnonymous=False,
+        WFImgurDescription=ts("..."),
         WFImgurDirectLink=False,
+        WFImgurTitle="...",
         WFInput=att(x))
+```
+
+### `is.workflow.actions.intercom`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFHome` | `WFTextTokenAttachment` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.intercom",
+        WFHome=att(x),
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.listeningmode.set`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFListeningMode` | `str` |
+| `WFRoute` | `dict{isLocalDevice,routeName,routeUID}` |
+
+```python
+s.action("is.workflow.actions.listeningmode.set",
+        WFListeningMode="...",
+        WFRoute="...")
 ```
 
 ### `is.workflow.actions.location`
 
-`native` · seen 3×
+`native` · seen 31×
 
 Returns `Location`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFLocation` | `WFTextTokenAttachment` |
+| `CustomOutputName` | `str` |
+| `WFLocation` | `WFTextTokenAttachment` · `dict{isCurrentLocation}` |
 
 ```python
 out = s.action("is.workflow.actions.location",
+        CustomOutputName="...",
         WFLocation=att(x))
 ```
 
-### `is.workflow.actions.openapp`
+### `is.workflow.actions.lock.app`
 
-`native` · seen 7×
+`native` · seen 3×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.lock.app")
+```
+
+### `is.workflow.actions.lockscreen`
+
+`native` · seen 29×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.lockscreen")
+```
+
+### `is.workflow.actions.makegif`
+
+`native` · seen 37×
+
+Returns `GIF`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenAttachment` |
+| `WFMakeGIFActionAutoSize` | `bool` |
+| `WFMakeGIFActionDelayTime` | `WFTextTokenAttachment` · `real` · `str` |
+| `WFMakeGIFActionLoopEnabled` | `WFTextTokenAttachment` · `bool` |
+| `WFMakeGIFActionManualSizeHeight` | `WFTextTokenAttachment` · `str` |
+| `WFMakeGIFActionManualSizeWidth` | `WFTextTokenAttachment` · `str` |
+
+```python
+out = s.action("is.workflow.actions.makegif",
+        WFInput=att(x),
+        WFMakeGIFActionAutoSize=False,
+        WFMakeGIFActionDelayTime=att(x),
+        WFMakeGIFActionLoopEnabled=att(x),
+        WFMakeGIFActionManualSizeHeight=att(x),
+        WFMakeGIFActionManualSizeWidth=att(x))
+```
+
+### `is.workflow.actions.makeimagefrompdfpage`
+
+`native` · seen 13×
+
+Returns `Image`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenAttachment` |
+| `WFMakeImageFromPDFPageImageFormat` | `str` |
+| `WFMakeImageFromPDFPageResolution` | `str` |
+
+```python
+out = s.action("is.workflow.actions.makeimagefrompdfpage",
+        WFInput=att(x),
+        WFMakeImageFromPDFPageImageFormat="...",
+        WFMakeImageFromPDFPageResolution="...")
+```
+
+### `is.workflow.actions.makeimagefromrichtext`
+
+`native` · seen 14×
+
+Returns `Image`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFHeight` | `WFTextTokenAttachment` · `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+| `WFWidth` | `WFTextTokenAttachment` · `str` |
+
+```python
+out = s.action("is.workflow.actions.makeimagefromrichtext",
+        CustomOutputName="...",
+        WFHeight=att(x),
+        WFInput=att(x),
+        WFWidth=att(x))
+```
+
+### `is.workflow.actions.makespokenaudiofromtext`
+
+`native` · seen 13×
+
+Returns `Spoken Audio`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenString` |
+| `WFSpeakTextLanguage` | `str` |
+| `WFSpeakTextRate` | `real` |
+| `WFSpeakTextVoice` | `str` |
+
+```python
+out = s.action("is.workflow.actions.makespokenaudiofromtext",
+        WFInput=ts("..."),
+        WFSpeakTextLanguage="...",
+        WFSpeakTextRate=0,
+        WFSpeakTextVoice="...")
+```
+
+### `is.workflow.actions.makevideofromgif`
+
+`native` · seen 6×
+
+Returns `Video`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInputGIF` | `WFTextTokenAttachment` |
+| `WFMakeVideoFromGIFActionLoopCount` | `real` |
+
+```python
+out = s.action("is.workflow.actions.makevideofromgif",
+        WFInputGIF=att(x),
+        WFMakeVideoFromGIFActionLoopCount=0)
+```
+
+### `is.workflow.actions.measurement.convert`
+
+`native` · seen 13×
+
+Returns `Converted Measurement`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenAttachment` |
+| `WFMeasurementUnit` | `WFTextTokenAttachment` · `dict{WFNSUnitSymbol,WFNSUnitType}` |
+| `WFMeasurementUnitType` | `WFTextTokenAttachment` · `str` |
+
+```python
+out = s.action("is.workflow.actions.measurement.convert",
+        WFInput=att(x),
+        WFMeasurementUnit=att(x),
+        WFMeasurementUnitType=att(x))
+```
+
+### `is.workflow.actions.measurement.create`
+
+`native` · seen 12×
+
+Returns `Measurement`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFMeasurementUnit` | `WFQuantityFieldValue` |
+| `WFMeasurementUnitType` | `WFTextTokenAttachment` · `str` |
+
+```python
+out = s.action("is.workflow.actions.measurement.create",
+        WFMeasurementUnit="...",
+        WFMeasurementUnitType=att(x))
+```
+
+### `is.workflow.actions.nightshift.set`
+
+`native` · seen 10×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFAppIdentifier` | `str` |
-| `WFSelectedApp` | `dict{BundleIdentifier,Name,TeamIdentifier}` |
+| `OnValue` | `int` |
+| `operation` | `WFTextTokenAttachment` · `str` |
 
 ```python
-s.action("is.workflow.actions.openapp",
+s.action("is.workflow.actions.nightshift.set",
+        OnValue=0,
+        operation=att(x))
+```
+
+### `is.workflow.actions.openapp`
+
+`native` · seen 304×
+
+Returns `App`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFAppIdentifier` | `str` |
+| `WFOpenInSlideOver` | `bool` |
+| `WFSelectedApp` | `WFTextTokenAttachment` · `dict{BundleIdentifier,Name,TeamIdentifier}` |
+| `WFWindowingFormat` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.openapp",
         WFAppIdentifier="...",
-        WFSelectedApp="...")
+        WFOpenInSlideOver=False,
+        WFSelectedApp=att(x),
+        WFWindowingFormat=att(x))
+```
+
+### `is.workflow.actions.openpasswords`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFShowPasswordsSearchTerm` | `WFTextTokenString` |
+
+```python
+s.action("is.workflow.actions.openpasswords",
+        WFShowPasswordsSearchTerm=ts("..."))
+```
+
+### `is.workflow.actions.openxcallbackurl`
+
+`native` · seen 10×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFXCallbackCustomCallbackEnabled` | `bool` |
+| `WFXCallbackCustomSuccessURLEnabled` | `bool` |
+| `WFXCallbackURL` | `WFTextTokenString` |
+
+```python
+s.action("is.workflow.actions.openxcallbackurl",
+        WFXCallbackCustomCallbackEnabled=False,
+        WFXCallbackCustomSuccessURLEnabled=False,
+        WFXCallbackURL=ts("..."))
+```
+
+### `is.workflow.actions.orientationlock.set`
+
+`native` · seen 16×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `OnValue` | `int` |
+| `operation` | `str` |
+
+```python
+s.action("is.workflow.actions.orientationlock.set",
+        OnValue=0,
+        operation="...")
 ```
 
 ### `is.workflow.actions.output`
 
-`native` · seen 28×
+`native` · seen 195×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
 | `WFNoOutputSurfaceBehavior` | `str`<br>values: `Copy to Clipboard`, `Do Nothing`, `Respond` |
-| `WFOutput` | `WFTextTokenString` |
-| `WFResponse` | `WFTextTokenString` |
+| `WFOutput` | `WFTextTokenString` · `str` |
+| `WFResponse` | `WFTextTokenString` · `str` |
 
 ```python
 s.action("is.workflow.actions.output",
         WFNoOutputSurfaceBehavior="Copy to Clipboard",
-        WFOutput=ts("..."),
-        WFResponse=ts("..."))
+        WFOutput="...",
+        WFResponse="...")
 ```
 
 ### `is.workflow.actions.overlayimageonimage`
 
-`native` · seen 17×
+`native` · seen 75×
 
 Returns `Overlaid Image`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `WFImage` | `WFTextTokenAttachment` |
-| `WFImageHeight` | `WFTextTokenAttachment` · `str` |
+| `WFImageHeight` | `WFTextTokenAttachment` · `real` · `str` |
 | `WFImagePosition` | `str`<br>values: `Bottom Left`, `Bottom Right`, `Center`, `Custom`, `Top Left`, `Top Right` |
-| `WFImageWidth` | `WFTextTokenAttachment` · `str` |
-| `WFImageX` | `WFTextTokenAttachment` |
-| `WFImageY` | `WFTextTokenAttachment` |
+| `WFImageWidth` | `WFTextTokenAttachment` · `real` · `str` |
+| `WFImageX` | `WFTextTokenAttachment` · `str` |
+| `WFImageY` | `WFTextTokenAttachment` · `str` |
 | `WFInput` | `WFTextTokenAttachment` |
-| `WFOverlayImageOpacity` | `str` |
-| `WFRotation` | `str` |
+| `WFOverlayImageOpacity` | `WFTextTokenAttachment` · `str` |
+| `WFRotation` | `WFTextTokenAttachment` · `str` |
 | `WFShouldShowImageEditor` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.overlayimageonimage",
+        CustomOutputName="...",
         WFImage=att(x),
         WFImageHeight=att(x),
         WFImagePosition="Bottom Left",
@@ -2724,36 +4932,42 @@ out = s.action("is.workflow.actions.overlayimageonimage",
         WFImageX=att(x),
         WFImageY=att(x),
         WFInput=att(x),
-        WFOverlayImageOpacity="...",
-        WFRotation="...",
+        WFOverlayImageOpacity=att(x),
+        WFRotation=att(x),
         WFShouldShowImageEditor=False)
 ```
 
 ### `is.workflow.actions.overlaytext`
 
-`native` · seen 2×
+`native` · seen 31×
 
 Returns `Image with Text`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `CustomOutputName` | `str` |
-| `WFFont` | `dict{WFFontDescriptorFamily}` |
-| `WFFontSize` | `WFTextTokenAttachment` |
+| `WFFont` | `dict{WFFontDescriptorFamily}` · `dict{WFFontDescriptorName}` |
+| `WFFontSize` | `WFTextTokenAttachment` · `str` |
 | `WFImage` | `WFTextTokenAttachment` |
+| `WFPercentageFontSize` | `WFTextTokenAttachment` · `real` |
+| `WFPercentageTextBoxWidth` | `int` · `real` |
+| `WFPercentageTextOffset` | `real` |
+| `WFPercentageTextStrokeWidth` | `real` |
 | `WFPercentageTextX` | `real` |
 | `WFPercentageTextY` | `real` |
 | `WFSizingMethod` | `str`<br>values: `Absolute`, `Proportional` |
-| `WFText` | `WFTextTokenString` |
+| `WFText` | `WFTextTokenString` · `str` |
 | `WFTextAlignment` | `str`<br>values: `Center`, `Left`, `Right` |
-| `WFTextBoxWidth` | `WFTextTokenAttachment` |
-| `WFTextOffset` | `WFTextTokenAttachment` |
+| `WFTextBoxWidth` | `WFTextTokenAttachment` · `str` |
+| `WFTextColor` | `dict{WFColorRepresentationType,alphaComponent,blueComponent,greenComponent,redComponent}` |
+| `WFTextOffset` | `WFTextTokenAttachment` · `str` |
 | `WFTextOutlineEnabled` | `bool` |
 | `WFTextPosition` | `str`<br>values: `Bottom Center`, `Bottom Left`, `Bottom Right`, `Center`, `Custom Position`, `Middle Left`, `Middle Right`, `Top Center` |
 | `WFTextRotation` | `str` |
 | `WFTextStrokeColor` | `dict{WFColorRepresentationType,alphaComponent,blueComponent,greenComponent,redComponent}` |
 | `WFTextStrokeWidth` | `str` |
-| `WFTextX` | `WFTextTokenAttachment` |
+| `WFTextX` | `WFTextTokenAttachment` · `str` |
+| `WFTextY` | `str` |
 
 ```python
 out = s.action("is.workflow.actions.overlaytext",
@@ -2761,53 +4975,159 @@ out = s.action("is.workflow.actions.overlaytext",
         WFFont="...",
         WFFontSize=att(x),
         WFImage=att(x),
+        WFPercentageFontSize=att(x),
+        WFPercentageTextBoxWidth=0,
+        WFPercentageTextOffset=0,
+        WFPercentageTextStrokeWidth=0,
         WFPercentageTextX=0,
         WFPercentageTextY=0,
         WFSizingMethod="Absolute",
-        WFText=ts("..."),
+        WFText="...",
         WFTextAlignment="Center",
         WFTextBoxWidth=att(x),
+        WFTextColor="...",
         WFTextOffset=att(x),
         WFTextOutlineEnabled=False,
         WFTextPosition="Bottom Center",
         WFTextRotation="...",
         WFTextStrokeColor="...",
         WFTextStrokeWidth="...",
-        WFTextX=att(x))
+        WFTextX=att(x),
+        WFTextY="...")
 ```
 
-### `is.workflow.actions.personalhotspot.set`
+### `is.workflow.actions.pausemusic`
 
-`native` · seen 1×
-
-No output.
-
-No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
-
-```python
-s.action("is.workflow.actions.personalhotspot.set")
-```
-
-### `is.workflow.actions.photos.createalbum`
-
-`native` · seen 2×
+`native` · seen 27×
 
 No output.
 
 | Parameter | Accepts |
 | --- | --- |
-| `AlbumName` | `WFTextTokenString` |
+| `WFMediaRoute` | `dict{isLocalDevice,routeUID}` |
+| `WFPlayPauseBehavior` | `str`<br>values: `Pause`, `Play`, `Play/Pause` |
+
+```python
+s.action("is.workflow.actions.pausemusic",
+        WFMediaRoute="...",
+        WFPlayPauseBehavior="Pause")
+```
+
+### `is.workflow.actions.personalhotspot.password.get`
+
+`native` · seen 9×
+
+Returns `Personal Hotspot Password`.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+out = s.action("is.workflow.actions.personalhotspot.password.get")
+```
+
+### `is.workflow.actions.personalhotspot.password.set`
+
+`native` · seen 5×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenString` |
+
+```python
+s.action("is.workflow.actions.personalhotspot.password.set",
+        WFInput=ts("..."))
+```
+
+### `is.workflow.actions.personalhotspot.set`
+
+`native` · seen 21×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `OnValue` | `int` |
+| `operation` | `str` |
+
+```python
+s.action("is.workflow.actions.personalhotspot.set",
+        OnValue=0,
+        operation="...")
+```
+
+### `is.workflow.actions.phonenumber`
+
+`native` · seen 6×
+
+Returns `Phone Number`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFPhoneNumber` | `WFContactFieldValue` · `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.phonenumber",
+        WFPhoneNumber=att(x))
+```
+
+### `is.workflow.actions.photos.createalbum`
+
+`native` · seen 22×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AlbumName` | `WFTextTokenString` · `str` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 s.action("is.workflow.actions.photos.createalbum",
-        AlbumName=ts("..."),
+        AlbumName="...",
         WFInput=att(x))
+```
+
+### `is.workflow.actions.playmusic`
+
+`native` · seen 30×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFMediaItems` | `WFTextTokenAttachment` · `dict{itemName,playbackArchiveData,type}` |
+| `WFPlayMusicActionRepeat` | `WFTextTokenAttachment` · `str`<br>values: `All`, `None`, `One` |
+| `WFPlayMusicActionShuffle` | `WFTextTokenAttachment` · `str`<br>values: `Off`, `Songs` |
+
+```python
+s.action("is.workflow.actions.playmusic",
+        WFMediaItems=att(x),
+        WFPlayMusicActionRepeat="All",
+        WFPlayMusicActionShuffle="Off")
+```
+
+### `is.workflow.actions.playpodcast`
+
+`native` · seen 6×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFPodcastPlaybackOrder` | `str` |
+| `WFPodcastShow` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.playpodcast",
+        WFPodcastPlaybackOrder="...",
+        WFPodcastShow=att(x))
 ```
 
 ### `is.workflow.actions.playsound`
 
-`native` · seen 6×
+`native` · seen 127×
 
 No output.
 
@@ -2820,9 +5140,182 @@ s.action("is.workflow.actions.playsound",
         WFInput=att(x))
 ```
 
+### `is.workflow.actions.posters.get`
+
+`native` · seen 17×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFPosterType` | `str`<br>values: `All`, `Current` |
+
+```python
+s.action("is.workflow.actions.posters.get",
+        WFPosterType="All")
+```
+
+### `is.workflow.actions.posters.switch`
+
+`native` · seen 8×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFPoster` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.posters.switch",
+        WFPoster=att(x))
+```
+
+### `is.workflow.actions.postonfacebook`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `FacebookContent` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.postonfacebook",
+        FacebookContent=att(x))
+```
+
+### `is.workflow.actions.print`
+
+`native` · seen 6×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.print",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.readinglist`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFURL` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.readinglist",
+        WFURL=att(x))
+```
+
+### `is.workflow.actions.reboot`
+
+`native` · seen 33×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFShutdownMode` | `WFTextTokenAttachment` · `str`<br>values: `Restart`, `Shut Down` |
+
+```python
+s.action("is.workflow.actions.reboot",
+        WFShutdownMode="Restart")
+```
+
+### `is.workflow.actions.recordaudio`
+
+`native` · seen 23×
+
+Returns `Recorded Audio`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFRecordingCompression` | `str`<br>values: `Normal`, `Very High` |
+| `WFRecordingEnd` | `str`<br>values: `After Time`, `On Tap` |
+| `WFRecordingStart` | `str`<br>values: `Immediately`, `On Tap` |
+
+```python
+out = s.action("is.workflow.actions.recordaudio",
+        WFRecordingCompression="Normal",
+        WFRecordingEnd="After Time",
+        WFRecordingStart="Immediately")
+```
+
+### `is.workflow.actions.reminders.showlist`
+
+`native` · seen 7×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFList` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.reminders.showlist",
+        WFList=att(x))
+```
+
+### `is.workflow.actions.removeevents`
+
+`native` · seen 6×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFCalendarIncludeFutureEvents` | `bool` |
+| `WFInputEvents` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.removeevents",
+        WFCalendarIncludeFutureEvents=False,
+        WFInputEvents=att(x))
+```
+
+### `is.workflow.actions.removefromalbum`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenAttachment` |
+| `WFRemoveAlbumSelectedGroup` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.removefromalbum",
+        WFInput=att(x),
+        WFRemoveAlbumSelectedGroup=att(x))
+```
+
+### `is.workflow.actions.removereminders`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInputReminders` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.removereminders",
+        WFInputReminders=att(x))
+```
+
 ### `is.workflow.actions.returntohomescreen`
 
-`native` · seen 1×
+`native` · seen 58×
 
 No output.
 
@@ -2832,9 +5325,66 @@ No parameters observed — either it takes none, or every sample was left at its
 s.action("is.workflow.actions.returntohomescreen")
 ```
 
-### `is.workflow.actions.runsshscript`
+### `is.workflow.actions.ride.requestride`
 
 `native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `DropOffLocation` | `WFTextTokenAttachment` |
+| `PartySize` | `WFTextTokenAttachment` |
+| `PickupLocation` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.ride.requestride",
+        DropOffLocation=att(x),
+        PartySize=att(x),
+        PickupLocation=att(x))
+```
+
+### `is.workflow.actions.rss`
+
+`native` · seen 42×
+
+Returns `RSS Items`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFRSSFeedURL` | `WFTextTokenString` · `str` |
+| `WFRSSItemQuantity` | `WFTextTokenAttachment` · `int` · `real` |
+
+```python
+out = s.action("is.workflow.actions.rss",
+        CustomOutputName="...",
+        WFRSSFeedURL="...",
+        WFRSSItemQuantity=att(x))
+```
+
+### `is.workflow.actions.runextension`
+
+`native` · seen 7×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFApp` | `dict{BundleIdentifier,Name,TeamIdentifier}` |
+| `WFAppIdentifier` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.runextension",
+        WFApp="...",
+        WFAppIdentifier="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.runsshscript`
+
+`native` · seen 18×
 
 Returns `Shell Script Result`.
 
@@ -2842,113 +5392,883 @@ Returns `Shell Script Result`.
 | --- | --- |
 | `WFInput` | `WFTextTokenAttachment` |
 | `WFSSHAuthenticationType` | `str`<br>values: `Password`, `SSH Key` |
-| `WFSSHHost` | `WFTextTokenString` |
-| `WFSSHPassword` | `WFTextTokenString` |
-| `WFSSHPort` | `WFTextTokenString` |
+| `WFSSHHost` | `WFTextTokenString` · `str` |
+| `WFSSHPassword` | `WFTextTokenString` · `str` |
+| `WFSSHPort` | `WFTextTokenString` · `str` |
 | `WFSSHScript` | `WFTextTokenString` · `str` |
-| `WFSSHUser` | `WFTextTokenString` |
+| `WFSSHUser` | `WFTextTokenString` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.runsshscript",
         WFInput=att(x),
         WFSSHAuthenticationType="Password",
-        WFSSHHost=ts("..."),
-        WFSSHPassword=ts("..."),
-        WFSSHPort=ts("..."),
+        WFSSHHost="...",
+        WFSSHPassword="...",
+        WFSSHPort="...",
         WFSSHScript="...",
-        WFSSHUser=ts("..."))
+        WFSSHUser="...")
 ```
 
 ### `is.workflow.actions.scanbarcode`
 
-`native` · seen 1×
+`native` · seen 32×
 
-No output.
+Returns `QR/Barcode`.
 
 No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
 
 ```python
-s.action("is.workflow.actions.scanbarcode")
+out = s.action("is.workflow.actions.scanbarcode")
+```
+
+### `is.workflow.actions.searchappstore`
+
+`native` · seen 52×
+
+Returns `App Store Apps`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFAttribute` | `WFTextTokenAttachment` · `str` |
+| `WFCountry` | `WFTextTokenAttachment` · `str` |
+| `WFEntity` | `WFTextTokenAttachment` · `str` |
+| `WFItemLimit` | `WFTextTokenAttachment` · `int` · `real` |
+| `WFSearchTerm` | `WFTextTokenString` · `str` |
+
+```python
+out = s.action("is.workflow.actions.searchappstore",
+        CustomOutputName="...",
+        WFAttribute=att(x),
+        WFCountry=att(x),
+        WFEntity=att(x),
+        WFItemLimit=att(x),
+        WFSearchTerm="...")
 ```
 
 ### `is.workflow.actions.searchitunes`
 
-`native` · seen 1×
+`native` · seen 21×
 
 Returns `iTunes Products`.
 
 | Parameter | Accepts |
 | --- | --- |
 | `WFAttribute` | `str` |
-| `WFSearchTerm` | `WFTextTokenString` |
+| `WFCountry` | `WFTextTokenAttachment` · `str` |
+| `WFEntity` | `str` |
+| `WFItemLimit` | `WFTextTokenAttachment` · `int` · `real` |
+| `WFMediaType` | `str` |
+| `WFSearchTerm` | `WFTextTokenString` · `str` |
 
 ```python
 out = s.action("is.workflow.actions.searchitunes",
         WFAttribute="...",
-        WFSearchTerm=ts("..."))
+        WFCountry=att(x),
+        WFEntity="...",
+        WFItemLimit=att(x),
+        WFMediaType="...",
+        WFSearchTerm="...")
 ```
 
 ### `is.workflow.actions.searchlocalbusinesses`
 
-`native` · seen 2×
+`native` · seen 19×
 
 Returns `Local Businesses`.
 
 | Parameter | Accepts |
 | --- | --- |
+| `CustomOutputName` | `str` |
 | `WFInput` | `WFTextTokenAttachment` |
-| `WFSearchQuery` | `WFTextTokenString` |
+| `WFSearchQuery` | `WFTextTokenString` · `str` |
 | `WFSearchRadius` | `WFQuantityFieldValue` |
 
 ```python
 out = s.action("is.workflow.actions.searchlocalbusinesses",
+        CustomOutputName="...",
         WFInput=att(x),
-        WFSearchQuery=ts("..."),
+        WFSearchQuery="...",
         WFSearchRadius="...")
+```
+
+### `is.workflow.actions.searchmaps`
+
+`native` · seen 23×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenAttachment` |
+| `WFSearchMapsActionApp` | `WFTextTokenAttachment` · `str` |
+
+```python
+s.action("is.workflow.actions.searchmaps",
+        WFInput=att(x),
+        WFSearchMapsActionApp=att(x))
+```
+
+### `is.workflow.actions.searchpodcasts`
+
+`native` · seen 6×
+
+Returns `Podcasts`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFCountry` | `str` |
+| `WFEntity` | `str` |
+| `WFItemLimit` | `int` · `real` |
+| `WFSearchTerm` | `WFTextTokenString` |
+
+```python
+out = s.action("is.workflow.actions.searchpodcasts",
+        WFCountry="...",
+        WFEntity="...",
+        WFItemLimit=0,
+        WFSearchTerm=ts("..."))
+```
+
+### `is.workflow.actions.searchweb`
+
+`native` · seen 34×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInputText` | `WFTextTokenString` · `str` |
+| `WFSearchWebDestination` | `WFTextTokenAttachment` · `str`<br>values: `Amazon`, `Bing`, `DuckDuckGo`, `Google`, `Reddit`, `Twitter`, `Yahoo!`, `YouTube` |
+
+```python
+s.action("is.workflow.actions.searchweb",
+        WFInputText="...",
+        WFSearchWebDestination="Amazon")
+```
+
+### `is.workflow.actions.seek`
+
+`native` · seen 5×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFMediaRoute` | `dict{isLocalDevice,routeUID}` |
+| `WFSeekBehavior` | `str`<br>values: `Backward By`, `Forward By`, `To Time` |
+| `WFTimeInterval` | `WFQuantityFieldValue` |
+
+```python
+s.action("is.workflow.actions.seek",
+        WFMediaRoute="...",
+        WFSeekBehavior="Backward By",
+        WFTimeInterval="...")
 ```
 
 ### `is.workflow.actions.selectcontacts`
 
-`native` · seen 2×
+`native` · seen 55×
 
 Returns `Contacts`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `CustomOutputName` | `str` |
+| `WFSelectMultiple` | `bool` |
+
+```python
+out = s.action("is.workflow.actions.selectcontacts",
+        CustomOutputName="...",
+        WFSelectMultiple=False)
+```
+
+### `is.workflow.actions.selectphone`
+
+`native` · seen 4×
+
+Returns `Phone Numbers`.
 
 No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
 
 ```python
-out = s.action("is.workflow.actions.selectcontacts")
+out = s.action("is.workflow.actions.selectphone")
 ```
 
 ### `is.workflow.actions.selectphoto`
 
-`native` · seen 25×
+`native` · seen 266×
 
 Returns `Photos`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFPhotoPickerTypes` | `array` · `str`<br>values: `Images`, `Live Photos`, `Videos` |
+| `CustomOutputName` | `str` |
+| `WFPhotoPickerTypes` | `WFTextTokenAttachment` · `array` · `str`<br>values: `Images`, `Live Photos`, `Videos` |
 | `WFSelectMultiplePhotos` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.selectphoto",
+        CustomOutputName="...",
         WFPhotoPickerTypes="Images",
         WFSelectMultiplePhotos=False)
 ```
 
-### `is.workflow.actions.takescreenshot`
+### `is.workflow.actions.sendemail`
+
+`native` · seen 110×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFEmailAccountActionSelectedAccount` | `WFTextTokenAttachment` · `str` |
+| `WFSendEmailActionBccRecipients` | `WFTextTokenAttachment` |
+| `WFSendEmailActionFrom` | `WFTextTokenString` · `str` |
+| `WFSendEmailActionInputAttachments` | `WFTextTokenString` · `str` |
+| `WFSendEmailActionShowComposeSheet` | `bool` |
+| `WFSendEmailActionSubject` | `WFTextTokenString` · `str` |
+| `WFSendEmailActionToRecipients` | `WFContactFieldValue` · `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.sendemail",
+        WFEmailAccountActionSelectedAccount=att(x),
+        WFSendEmailActionBccRecipients=att(x),
+        WFSendEmailActionFrom="...",
+        WFSendEmailActionInputAttachments="...",
+        WFSendEmailActionShowComposeSheet=False,
+        WFSendEmailActionSubject="...",
+        WFSendEmailActionToRecipients=att(x))
+```
+
+### `is.workflow.actions.sendmessage`
+
+`native` · seen 134×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `IntentAppDefinition` | `dict{BundleIdentifier,IntentClassName,Name,TeamIdentifier}` · `dict{BundleIdentifier,Name,TeamIdentifier}` · `dict{BundleIdentifier}` |
+| `IntentAppIdentifier` | `str` |
+| `ShowWhenRun` | `WFTextTokenAttachment` · `bool` |
+| `WFSendMessageActionRecipients` | `WFContactFieldValue` · `WFTextTokenAttachment` |
+| `WFSendMessageContent` | `WFTextTokenString` · `str` |
+
+```python
+s.action("is.workflow.actions.sendmessage",
+        AppIntentDescriptor="...",
+        IntentAppDefinition="...",
+        IntentAppIdentifier="...",
+        ShowWhenRun=att(x),
+        WFSendMessageActionRecipients=att(x),
+        WFSendMessageContent="...")
+```
+
+### `is.workflow.actions.setairdropreceiving`
+
+`native` · seen 24×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFAirDropState` | `WFTextTokenAttachment` · `str` |
+
+```python
+s.action("is.workflow.actions.setairdropreceiving",
+        WFAirDropState=att(x))
+```
+
+### `is.workflow.actions.setparkedcar`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFImage` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.setparkedcar",
+        WFImage=att(x))
+```
+
+### `is.workflow.actions.setplaybackdestination`
+
+`native` · seen 15×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFMediaRoute` | `WFTextTokenAttachment` · `dict{isLocalDevice,routeName,routeUID}` |
+| `WFMediaRouteOperation` | `str`<br>values: `Add`, `Remove`, `Set` |
+
+```python
+s.action("is.workflow.actions.setplaybackdestination",
+        WFMediaRoute=att(x),
+        WFMediaRouteOperation="Add")
+```
+
+### `is.workflow.actions.setstoredcontent`
+
+`native` · seen 25×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenString` · `str` |
+| `WFStoredContentGlobalValue` | `bool` |
+| `WFStoredContentKey` | `WFTextTokenString` · `str` |
+
+```python
+s.action("is.workflow.actions.setstoredcontent",
+        WFInput="...",
+        WFStoredContentGlobalValue=False,
+        WFStoredContentKey="...")
+```
+
+### `is.workflow.actions.setters.calendarevents`
+
+`native` · seen 12×
+
+Returns `Edited Calendar event`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `Mode` | `str` |
+| `WFCalendarEventContentItemAttachments` | `WFTextTokenAttachment` |
+| `WFCalendarEventContentItemNotes` | `WFTextTokenString` |
+| `WFCalendarEventContentItemStartDate` | `WFTextTokenString` |
+| `WFCalendarEventContentItemURL` | `WFTextTokenString` |
+| `WFContentItemPropertyName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.setters.calendarevents",
+        Mode="...",
+        WFCalendarEventContentItemAttachments=att(x),
+        WFCalendarEventContentItemNotes=ts("..."),
+        WFCalendarEventContentItemStartDate=ts("..."),
+        WFCalendarEventContentItemURL=ts("..."),
+        WFContentItemPropertyName="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.setters.contacts`
+
+`native` · seen 7×
+
+Returns `Edited Contact`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `Mode` | `str` |
+| `ValueLabel` | `str` |
+| `WFContactContentItemPhoneNumbers` | `WFTextTokenString` |
+| `WFContentItemPropertyName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.setters.contacts",
+        Mode="...",
+        ValueLabel="...",
+        WFContactContentItemPhoneNumbers=ts("..."),
+        WFContentItemPropertyName="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.setters.reminders`
+
+`native` · seen 11×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `Mode` | `str` |
+| `RemoveSpecifiedValue` | `WFTextTokenAttachment` |
+| `WFContentItemPropertyName` | `str` |
+| `WFInput` | `WFTextTokenAttachment` |
+| `WFReminderContentItemDueDate` | `WFTextTokenString` |
+| `WFReminderContentItemIsCompleted` | `int` |
+| `WFReminderContentItemNotes` | `WFTextTokenString` |
+| `WFReminderContentItemTags` | `WFTextTokenAttachment` |
+| `WFReminderContentItemTitle` | `WFTextTokenString` |
+
+```python
+s.action("is.workflow.actions.setters.reminders",
+        Mode="...",
+        RemoveSpecifiedValue=att(x),
+        WFContentItemPropertyName="...",
+        WFInput=att(x),
+        WFReminderContentItemDueDate=ts("..."),
+        WFReminderContentItemIsCompleted=0,
+        WFReminderContentItemNotes=ts("..."),
+        WFReminderContentItemTags=att(x),
+        WFReminderContentItemTitle=ts("..."))
+```
+
+### `is.workflow.actions.shazamMedia`
+
+`native` · seen 5×
+
+Returns `Shazam Media`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFShazamMediaActionErrorIfNotRecognized` | `bool` |
+| `WFShazamMediaActionShowWhenRun` | `bool` |
+
+```python
+out = s.action("is.workflow.actions.shazamMedia",
+        WFShazamMediaActionErrorIfNotRecognized=False,
+        WFShazamMediaActionShowWhenRun=False)
+```
+
+### `is.workflow.actions.showdefinition`
+
+`native` · seen 12×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `Word` | `WFTextTokenString` |
+
+```python
+s.action("is.workflow.actions.showdefinition",
+        Word=ts("..."))
+```
+
+### `is.workflow.actions.showincalendar`
+
+`native` · seen 5×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFEvent` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.showincalendar",
+        WFEvent=att(x))
+```
+
+### `is.workflow.actions.showinstore`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFProduct` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.showinstore",
+        WFProduct=att(x))
+```
+
+### `is.workflow.actions.shownote`
+
+`native` · seen 22×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `WFInput` | `WFTextTokenAttachment` · `dict{identifier,image,subtitle,title}` |
+
+```python
+s.action("is.workflow.actions.shownote",
+        AppIntentDescriptor="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.silenceunknowncallers.set`
 
 `native` · seen 3×
 
-Returns `Screenshot`.
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `OnValue` | `int` |
+
+```python
+s.action("is.workflow.actions.silenceunknowncallers.set",
+        OnValue=0)
+```
+
+### `is.workflow.actions.sirikit.donation.handle`
+
+`native` · seen 7×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `ForceExecutionOnPhone` | `bool` |
+| `IntentData` | `bytes` |
+| `ShowWhenRun` | `bool` |
+
+```python
+s.action("is.workflow.actions.sirikit.donation.handle",
+        ForceExecutionOnPhone=False,
+        IntentData="...",
+        ShowWhenRun=False)
+```
+
+### `is.workflow.actions.skipback`
+
+`native` · seen 11×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFMediaRoute` | `dict{isLocalDevice,routeUID}` |
+| `WFSkipBackBehavior` | `str`<br>values: `Beginning`, `Previous Song` |
+
+```python
+s.action("is.workflow.actions.skipback",
+        WFMediaRoute="...",
+        WFSkipBackBehavior="Beginning")
+```
+
+### `is.workflow.actions.skipforward`
+
+`native` · seen 13×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFMediaRoute` | `dict{isLocalDevice,routeUID}` |
+
+```python
+s.action("is.workflow.actions.skipforward",
+        WFMediaRoute="...")
+```
+
+### `is.workflow.actions.splitpdf`
+
+`native` · seen 8×
+
+Returns `PDF Pages`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.splitpdf",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.splitscreen`
+
+`native` · seen 2×
+
+No output.
 
 No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
 
 ```python
-out = s.action("is.workflow.actions.takescreenshot")
+s.action("is.workflow.actions.splitscreen")
+```
+
+### `is.workflow.actions.spotlightsearch`
+
+`native` · seen 3×
+
+Returns `Results`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInputText` | `WFTextTokenString` |
+
+```python
+out = s.action("is.workflow.actions.spotlightsearch",
+        WFInputText=ts("..."))
+```
+
+### `is.workflow.actions.stagemanager.set`
+
+`native` · seen 4×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.stagemanager.set")
+```
+
+### `is.workflow.actions.takescreenshot`
+
+`native` · seen 80×
+
+Returns `Screenshot`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFTakeScreenshotMainMonitorOnly` | `bool` |
+| `WFTakeScreenshotScreenshotType` | `str`<br>values: `Full Screen`, `Interactive` |
+
+```python
+out = s.action("is.workflow.actions.takescreenshot",
+        WFTakeScreenshotMainMonitorOnly=False,
+        WFTakeScreenshotScreenshotType="Full Screen")
+```
+
+### `is.workflow.actions.takevideo`
+
+`native` · seen 19×
+
+Returns `Video`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFCameraCaptureDevice` | `WFTextTokenAttachment` · `str`<br>values: `Back`, `Front` |
+| `WFCameraCaptureQuality` | `WFTextTokenAttachment` · `str`<br>values: `High`, `Low`, `Medium` |
+| `WFRecordingStart` | `str`<br>values: `Immediately`, `On Tap` |
+
+```python
+out = s.action("is.workflow.actions.takevideo",
+        WFCameraCaptureDevice="Back",
+        WFCameraCaptureQuality="High",
+        WFRecordingStart="Immediately")
+```
+
+### `is.workflow.actions.timer.start`
+
+`native` · seen 45×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `IntentAppDefinition` | `dict{BundleIdentifier,ExtensionBundleIdentifier,Name,TeamIdentifier}` |
+| `WFDuration` | `WFQuantityFieldValue` |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.timer.start",
+        AppIntentDescriptor="...",
+        IntentAppDefinition="...",
+        WFDuration="...",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.trimvideo`
+
+`native` · seen 10×
+
+Returns `Trimmed Media`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInputMedia` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("is.workflow.actions.trimvideo",
+        WFInputMedia=att(x))
+```
+
+### `is.workflow.actions.truetone.set`
+
+`native` · seen 13×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `OnValue` | `int` |
+| `operation` | `WFTextTokenAttachment` · `str` |
+
+```python
+s.action("is.workflow.actions.truetone.set",
+        OnValue=0,
+        operation=att(x))
+```
+
+### `is.workflow.actions.tumblr.post`
+
+`native` · seen 2×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.tumblr.post")
+```
+
+### `is.workflow.actions.tweet`
+
+`native` · seen 5×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `TweetInput` | `WFTextTokenString` |
+
+```python
+s.action("is.workflow.actions.tweet",
+        TweetInput=ts("..."))
+```
+
+### `is.workflow.actions.useractivity.open`
+
+`native` · seen 17×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppBundleIdentifier` | `str` |
+| `UserActivityData` | `bytes` |
+| `UserActivityDescriptor` | `dict{BundleIdentifier,Name,TeamIdentifier,UserActivityType}` |
+| `UserActivitySubtitle` | `str` |
+
+```python
+s.action("is.workflow.actions.useractivity.open",
+        AppBundleIdentifier="...",
+        UserActivityData="...",
+        UserActivityDescriptor="...",
+        UserActivitySubtitle="...")
+```
+
+### `is.workflow.actions.venmo.pay`
+
+`native` · seen 8×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `IntentAppDefinition` | `dict{BundleIdentifier,ExtensionBundleIdentifier,Name,TeamIdentifier}` |
+| `IntentAppIdentifier` | `str` |
+| `WFVenmoActionAmount` | `WFQuantityFieldValue` |
+| `WFVenmoActionAppSwitch` | `bool` |
+| `WFVenmoActionNote` | `WFTextTokenString` · `str` |
+| `WFVenmoActionRecipients` | `WFContactFieldValue` · `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.venmo.pay",
+        IntentAppDefinition="...",
+        IntentAppIdentifier="...",
+        WFVenmoActionAmount="...",
+        WFVenmoActionAppSwitch=False,
+        WFVenmoActionNote="...",
+        WFVenmoActionRecipients=att(x))
+```
+
+### `is.workflow.actions.venmo.request`
+
+`native` · seen 7×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `IntentAppDefinition` | `dict{BundleIdentifier,ExtensionBundleIdentifier,Name,TeamIdentifier}` |
+| `ShowWhenRun` | `bool` |
+| `WFVenmoActionAmount` | `WFQuantityFieldValue` · `WFTextTokenAttachment` |
+| `WFVenmoActionAppSwitch` | `bool` |
+| `WFVenmoActionNote` | `WFTextTokenString` |
+| `WFVenmoActionRecipients` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.venmo.request",
+        IntentAppDefinition="...",
+        ShowWhenRun=False,
+        WFVenmoActionAmount=att(x),
+        WFVenmoActionAppSwitch=False,
+        WFVenmoActionNote=ts("..."),
+        WFVenmoActionRecipients=att(x))
+```
+
+### `is.workflow.actions.viewresult`
+
+`native` · seen 10×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.viewresult",
+        WFInput=att(x))
+```
+
+### `is.workflow.actions.vpn.get`
+
+`native` · seen 3×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("is.workflow.actions.vpn.get")
+```
+
+### `is.workflow.actions.vpn.set`
+
+`native` · seen 16×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFVPN` | `WFTextTokenAttachment` · `dict{appDescriptor,connected,identifier,onDemandEnabled,title}` · `dict{appDescriptor,identifier,title}` |
+| `WFVPNOperation` | `str`<br>values: `Connect`, `Disconnect`, `Set On Demand`, `Toggle`, `Toggle On Demand` |
+
+```python
+s.action("is.workflow.actions.vpn.set",
+        WFVPN=att(x),
+        WFVPNOperation="Connect")
 ```
 
 ### `is.workflow.actions.wallpaper.set`
+
+`native` · seen 41×
+
+Returns `Wallpaper`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFInput` | `WFTextTokenAttachment` |
+| `WFSelectedPoster` | `WFTextTokenAttachment` · `dict{UUID,name,providerBundleIdentifier}` |
+| `WFWallpaperLegibilityBlur` | `bool` |
+| `WFWallpaperLocation` | `WFTextTokenAttachment` · `array` · `str`<br>values: `Home Screen`, `Lock Screen` |
+| `WFWallpaperShowPreview` | `bool` |
+| `WFWallpaperSmartCrop` | `WFTextTokenAttachment` · `bool` |
+
+```python
+out = s.action("is.workflow.actions.wallpaper.set",
+        WFInput=att(x),
+        WFSelectedPoster=att(x),
+        WFWallpaperLegibilityBlur=False,
+        WFWallpaperLocation="Home Screen",
+        WFWallpaperShowPreview=False,
+        WFWallpaperSmartCrop=att(x))
+```
+
+### `is.workflow.actions.workout.end`
 
 `native` · seen 2×
 
@@ -2956,15 +6276,32 @@ No output.
 
 | Parameter | Accepts |
 | --- | --- |
-| `WFInput` | `WFTextTokenAttachment` |
-| `WFSelectedPoster` | `dict{UUID,name,providerBundleIdentifier}` |
-| `WFWallpaperLocation` | `str`<br>values: `Home Screen`, `Lock Screen` |
+| `IntentAppDefinition` | `dict{BundleIdentifier}` |
 
 ```python
-s.action("is.workflow.actions.wallpaper.set",
-        WFInput=att(x),
-        WFSelectedPoster="...",
-        WFWallpaperLocation="Home Screen")
+s.action("is.workflow.actions.workout.end",
+        IntentAppDefinition="...")
+```
+
+### `is.workflow.actions.workout.start`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `IntentAppDefinition` | `dict{BundleIdentifier}` |
+| `WorkoutGoal` | `WFQuantityFieldValue` |
+| `isOpenEnded` | `int` |
+| `workoutName` | `WFTextTokenAttachment` |
+
+```python
+s.action("is.workflow.actions.workout.start",
+        IntentAppDefinition="...",
+        WorkoutGoal="...",
+        isOpenEnded=0,
+        workoutName=att(x))
 ```
 
 <sub>[back to index](#index)</sub>
@@ -2973,26 +6310,1439 @@ s.action("is.workflow.actions.wallpaper.set",
 
 ## Apple apps
 
-### `com.apple.WritingTools.WritingToolsAppIntentsExtension.SummarizeTextIntent`
+### `com.apple.AccessibilityUIServer.AccessibilityAutoBrightnessEnabledEntity-UpdatableEntity`
 
-`native` · seen 1×
+`native` · seen 6×
 
-Returns `Summarize Text`.
+No output.
 
 | Parameter | Accepts |
 | --- | --- |
-| `summaryType` | `str` |
+| `WFTableTemplate` | `WFContentPredicateTableTemplate` |
+| `value` | `dict{WFOperator,WFSubject,WFValue}` · `dict{WFOperator,WFSubject}` |
+
+```python
+s.action("com.apple.AccessibilityUIServer.AccessibilityAutoBrightnessEnabledEntity-UpdatableEntity",
+        WFTableTemplate="...",
+        value="...")
+```
+
+### `com.apple.AccessibilityUIServer.AccessibilityBoldTextEnabledEntity-UpdatableEntity`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFTableTemplate` | `WFContentPredicateTableTemplate` |
+
+```python
+s.action("com.apple.AccessibilityUIServer.AccessibilityBoldTextEnabledEntity-UpdatableEntity",
+        WFTableTemplate="...")
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXSetBackgroundSoundIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `backgroundSound` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXSetBackgroundSoundIntent",
+        backgroundSound=att(x))
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXSetBackgroundSoundVolumeIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `volumeType` | `str` |
+| `volumeValue` | `real` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXSetBackgroundSoundVolumeIntent",
+        volumeType="...",
+        volumeValue=0)
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXSetLargeTextIntent`
+
+`native` · seen 12×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `textSize` | `WFTextTokenAttachment` · `str` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXSetLargeTextIntent",
+        textSize=att(x))
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXStartGuidedAccessIntent`
+
+`native` · seen 3×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXStartGuidedAccessIntent")
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXStartSpeakScreenIntent`
+
+`native` · seen 3×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXStartSpeakScreenIntent")
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleAssistiveTouchIntent`
+
+`native` · seen 7×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleAssistiveTouchIntent",
+        operation="...")
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleAutoAnswerCallsIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleAutoAnswerCallsIntent",
+        operation="...")
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleBackgroundSoundsIntent`
+
+`native` · seen 7×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `duration` | `WFQuantityFieldValue` |
+| `operation` | `str` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleBackgroundSoundsIntent",
+        duration="...",
+        operation="...")
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleClassicInvertIntent`
+
+`native` · seen 18×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+| `state` | `int` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleClassicInvertIntent",
+        operation="...",
+        state=0)
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleColorFiltersIntent`
+
+`native` · seen 8×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+| `state` | `int` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleColorFiltersIntent",
+        operation="...",
+        state=0)
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleContrastIntent`
+
+`native` · seen 10×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+| `state` | `int` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleContrastIntent",
+        operation="...",
+        state=0)
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleLEDFlashIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleLEDFlashIntent",
+        operation="...")
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleLiveCaptionsIntent`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleLiveCaptionsIntent",
+        operation="...")
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleMonoAudioIntent`
+
+`native` · seen 2×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleMonoAudioIntent")
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleReduceMotionIntent`
+
+`native` · seen 27×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+| `state` | `WFTextTokenAttachment` · `int` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleReduceMotionIntent",
+        operation="...",
+        state=att(x))
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleSmartInvertIntent`
+
+`native` · seen 9×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+| `state` | `int` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleSmartInvertIntent",
+        operation="...",
+        state=0)
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleSoundDetectionIntent`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleSoundDetectionIntent",
+        operation="...")
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleSwitchControlIntent`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleSwitchControlIntent",
+        operation="...")
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleTransparencyIntent`
+
+`native` · seen 12×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+| `state` | `int` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleTransparencyIntent",
+        operation="...",
+        state=0)
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleVoiceControlIntent`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+| `state` | `int` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleVoiceControlIntent",
+        operation="...",
+        state=0)
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleVoiceOverIntent`
+
+`native` · seen 6×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleVoiceOverIntent")
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleWhitePointIntent`
+
+`native` · seen 23×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+| `state` | `int` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleWhitePointIntent",
+        operation="...",
+        state=0)
+```
+
+### `com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleZoomIntent`
+
+`native` · seen 7×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+| `state` | `int` |
+
+```python
+s.action("com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleZoomIntent",
+        operation="...",
+        state=0)
+```
+
+### `com.apple.AppStore.PageNavigationIntent`
+
+`native` · seen 5×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `target` | `str` |
+
+```python
+s.action("com.apple.AppStore.PageNavigationIntent",
+        AppIntentDescriptor="...",
+        target="...")
+```
+
+### `com.apple.DocumentsApp.SearchFile`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `searchPhrase` | `WFTextTokenString` |
+
+```python
+s.action("com.apple.DocumentsApp.SearchFile",
+        AppIntentDescriptor="...",
+        searchPhrase=ts("..."))
+```
+
+### `com.apple.GenerativePlaygroundApp.GenerateImageIntent`
+
+`native` · seen 12×
+
+Returns `Image`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `image` | `dict{displayName,fileLocation,filename}` |
+| `prompt` | `WFTextTokenString` |
+| `saveToLibrary` | `str` |
+| `saveToPlayground` | `str` |
+| `style` | `WFTextTokenAttachment` · `dict{identifier,image,subtitle,title}` |
+
+```python
+out = s.action("com.apple.GenerativePlaygroundApp.GenerateImageIntent",
+        AppIntentDescriptor="...",
+        image="...",
+        prompt=ts("..."),
+        saveToLibrary="...",
+        saveToPlayground="...",
+        style=att(x))
+```
+
+### `com.apple.Health.OpenViewIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `target` | `dict{identifier,subtitle,symbol,title}` |
+
+```python
+s.action("com.apple.Health.OpenViewIntent",
+        AppIntentDescriptor="...",
+        target="...")
+```
+
+### `com.apple.Magnifier.ReaderModeIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.Magnifier.ReaderModeIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.MobileAddressBook.CreateContactIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.MobileAddressBook.CreateContactIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.MobileAddressBook.DeleteContactIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.MobileAddressBook.DeleteContactIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.MobileSMS.MessageEntity`
+
+`native` · seen 4×
+
+Returns `Message`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{ActionRequiresAppInstallation,AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+| `WFContentItemLimitEnabled` | `bool` |
+| `WFContentItemLimitNumber` | `real` |
+| `WFContentItemSortOrder` | `str` |
+| `WFContentItemSortProperty` | `str` |
+
+```python
+out = s.action("com.apple.MobileSMS.MessageEntity",
+        AppIntentDescriptor="...",
+        WFContentItemFilter="...",
+        WFContentItemLimitEnabled=False,
+        WFContentItemLimitNumber=0,
+        WFContentItemSortOrder="...",
+        WFContentItemSortProperty="...")
+```
+
+### `com.apple.MobileSMS.OpenConversationIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.MobileSMS.OpenConversationIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.NanoSettings.NPRFPingMyPhoneIntent`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `state` | `str` |
+
+```python
+s.action("com.apple.NanoSettings.NPRFPingMyPhoneIntent",
+        state="...")
+```
+
+### `com.apple.NanoSettings.NPRFSetAlwaysOnIntent`
+
+`native` · seen 2×
+
+No output.
+
+No parameters observed — either it takes none, or every sample was left at its defaults. Shortcuts omits defaults entirely, so an unconfigured action teaches nothing.
+
+```python
+s.action("com.apple.NanoSettings.NPRFSetAlwaysOnIntent")
+```
+
+### `com.apple.NanoSettings.NPRFSetSchoolTimeIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+
+```python
+s.action("com.apple.NanoSettings.NPRFSetSchoolTimeIntent",
+        operation="...")
+```
+
+### `com.apple.NanoSettings.NPRFSetSilentModeIntent`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `ShowWhenRun` | `bool` |
+| `operation` | `str` |
+| `state` | `str` |
+
+```python
+s.action("com.apple.NanoSettings.NPRFSetSilentModeIntent",
+        ShowWhenRun=False,
+        operation="...",
+        state="...")
+```
+
+### `com.apple.NanoSettings.NPRFSetTheaterModeIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+
+```python
+s.action("com.apple.NanoSettings.NPRFSetTheaterModeIntent",
+        operation="...")
+```
+
+### `com.apple.NanoSettings.NPRFSetWaterLockIntent`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `operation` | `str` |
+
+```python
+s.action("com.apple.NanoSettings.NPRFSetWaterLockIntent",
+        operation="...")
+```
+
+### `com.apple.Numbers.TNiOSAddValuesToSpreadsheetIntent`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `position` | `str` |
+| `sheetName` | `str` |
+| `spreadsheet` | `dict{displayName,fileLocation,filename}` |
+| `tableName` | `str` |
+| `values` | `array` |
+
+```python
+s.action("com.apple.Numbers.TNiOSAddValuesToSpreadsheetIntent",
+        position="...",
+        sheetName="...",
+        spreadsheet="...",
+        tableName="...",
+        values=[])
+```
+
+### `com.apple.PBBridgeSupport.BridgeIntents.COSSetGizmoFaceIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `face` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.PBBridgeSupport.BridgeIntents.COSSetGizmoFaceIntent",
+        face=att(x))
+```
+
+### `com.apple.Passbook.OpenPassIntent`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.Passbook.OpenPassIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.Preferences.AirDropReceivingModeEntity-UpdatableEntity`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFTableTemplate` | `WFContentPredicateTableTemplate` |
+
+```python
+s.action("com.apple.Preferences.AirDropReceivingModeEntity-UpdatableEntity",
+        WFTableTemplate="...")
+```
+
+### `com.apple.Preferences.MPSilenceUnknownCallersToggleEntity-UpdatableEntity`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `WFTableTemplate` | `WFContentPredicateTableTemplate` |
+
+```python
+s.action("com.apple.Preferences.MPSilenceUnknownCallersToggleEntity-UpdatableEntity",
+        WFTableTemplate="...")
+```
+
+### `com.apple.ShortcutsActions.CellularPlanEntity`
+
+`native` · seen 14×
+
+Returns `Cellular Plan`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{BundleIdentifier}` |
+| `CustomOutputName` | `str` |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+| `WFContentItemInputParameter` | `WFTextTokenAttachment` |
+| `WFContentItemLimitEnabled` | `bool` |
+| `WFContentItemLimitNumber` | `real` |
+
+```python
+out = s.action("com.apple.ShortcutsActions.CellularPlanEntity",
+        AppIntentDescriptor="...",
+        CustomOutputName="...",
+        WFContentItemFilter="...",
+        WFContentItemInputParameter=att(x),
+        WFContentItemLimitEnabled=False,
+        WFContentItemLimitNumber=0)
+```
+
+### `com.apple.ShortcutsActions.GetOrientationAction`
+
+`native` · seen 41×
+
+Returns `Get Orientation`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+out = s.action("com.apple.ShortcutsActions.GetOrientationAction",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.ShortcutsActions.OpenCameraAction`
+
+`native` · seen 13×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` · `dict{AppIntentIdentifier,BundleIdentifier,Name}` |
+| `cameraMode` | `dict{identifier,subtitle,symbol,title,value}` · `dict{identifier,subtitle,symbol,title}` |
+
+```python
+s.action("com.apple.ShortcutsActions.OpenCameraAction",
+        AppIntentDescriptor="...",
+        cameraMode="...")
+```
+
+### `com.apple.ShortcutsActions.ResetCellularDataStatisticsAction`
+
+`native` · seen 5×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.ShortcutsActions.ResetCellularDataStatisticsAction",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.ShortcutsActions.SetBatteryChargeLimitAction`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `setUntilTomorrow` | `bool` |
+
+```python
+s.action("com.apple.ShortcutsActions.SetBatteryChargeLimitAction",
+        AppIntentDescriptor="...",
+        setUntilTomorrow=False)
+```
+
+### `com.apple.ShortcutsActions.SetDataRoamingAction`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `plan` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.ShortcutsActions.SetDataRoamingAction",
+        AppIntentDescriptor="...",
+        plan=att(x))
+```
+
+### `com.apple.ShortcutsActions.SetDefaultCellularPlanAction`
+
+`native` · seen 8×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `allowCellularDataSwitching` | `bool` |
+| `plan` | `WFTextTokenAttachment` · `dict{identifier,subtitle,symbol,title}` |
+| `type` | `str` |
+
+```python
+s.action("com.apple.ShortcutsActions.SetDefaultCellularPlanAction",
+        AppIntentDescriptor="...",
+        allowCellularDataSwitching=False,
+        plan=att(x),
+        type="...")
+```
+
+### `com.apple.ShortcutsActions.SetSilentModeAction`
+
+`native` · seen 32×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `operation` | `str` |
+| `state` | `int` |
+
+```python
+s.action("com.apple.ShortcutsActions.SetSilentModeAction",
+        AppIntentDescriptor="...",
+        operation="...",
+        state=0)
+```
+
+### `com.apple.ShortcutsActions.SetVoiceDataModeAction`
+
+`native` · seen 6×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `ratMode` | `WFTextTokenAttachment` · `dict{subtitle,title,value}` |
+| `sim` | `WFTextTokenAttachment` · `dict{identifier,subtitle,symbol,title}` |
+
+```python
+s.action("com.apple.ShortcutsActions.SetVoiceDataModeAction",
+        AppIntentDescriptor="...",
+        ratMode=att(x),
+        sim=att(x))
+```
+
+### `com.apple.ShortcutsActions.ShowControlCenterAction`
+
+`native` · seen 37×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `operation` | `str` |
+
+```python
+s.action("com.apple.ShortcutsActions.ShowControlCenterAction",
+        AppIntentDescriptor="...",
+        operation="...")
+```
+
+### `com.apple.ShortcutsActions.ToggleCellularPlanAction`
+
+`native` · seen 12×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `plan` | `WFTextTokenAttachment` |
+| `state` | `int` |
+
+```python
+s.action("com.apple.ShortcutsActions.ToggleCellularPlanAction",
+        AppIntentDescriptor="...",
+        plan=att(x),
+        state=0)
+```
+
+### `com.apple.ShortcutsActions.TranscribeAudioAction`
+
+`native` · seen 13×
+
+Returns `Transcribe Audio`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `audioFile` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("com.apple.ShortcutsActions.TranscribeAudioAction",
+        AppIntentDescriptor="...",
+        audioFile=att(x))
+```
+
+### `com.apple.Spotlight.SearchSpotlightIntent`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `criteria` | `WFTextTokenString` |
+
+```python
+s.action("com.apple.Spotlight.SearchSpotlightIntent",
+        AppIntentDescriptor="...",
+        criteria=ts("..."))
+```
+
+### `com.apple.TVRemoteUIService.LaunchApplicationIntent`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `application` | `dict{displayString,identifier}` |
+| `device` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.TVRemoteUIService.LaunchApplicationIntent",
+        application="...",
+        device=att(x))
+```
+
+### `com.apple.TVRemoteUIService.LaunchRemoteIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `device` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.TVRemoteUIService.LaunchRemoteIntent",
+        device=att(x))
+```
+
+### `com.apple.TVRemoteUIService.LaunchScreenSaverIntent`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `device` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.TVRemoteUIService.LaunchScreenSaverIntent",
+        device=att(x))
+```
+
+### `com.apple.TVRemoteUIService.PauseContentIntent`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `device` | `WFTextTokenAttachment` |
+| `mediaCommand` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.TVRemoteUIService.PauseContentIntent",
+        device=att(x),
+        mediaCommand=att(x))
+```
+
+### `com.apple.TVRemoteUIService.SkipContentIntent`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `device` | `WFTextTokenAttachment` |
+| `skipCommand` | `WFTextTokenAttachment` |
+| `skipDuration` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.TVRemoteUIService.SkipContentIntent",
+        device=att(x),
+        skipCommand=att(x),
+        skipDuration=att(x))
+```
+
+### `com.apple.TVRemoteUIService.SleepAppleTVIntent`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `device` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.TVRemoteUIService.SleepAppleTVIntent",
+        device=att(x))
+```
+
+### `com.apple.TVRemoteUIService.WakeAppleTVIntent`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `device` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.TVRemoteUIService.WakeAppleTVIntent",
+        device=att(x))
+```
+
+### `com.apple.VoiceMemos.RecordVoiceMemoIntent`
+
+`native` · seen 11×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `name` | `WFTextTokenString` |
+
+```python
+s.action("com.apple.VoiceMemos.RecordVoiceMemoIntent",
+        AppIntentDescriptor="...",
+        name=ts("..."))
+```
+
+### `com.apple.WritingTools.WritingToolsAppIntentsExtension.AdjustToneIntent`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `text` | `WFTextTokenString` |
+| `tone` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.WritingTools.WritingToolsAppIntentsExtension.AdjustToneIntent",
+        text=ts("..."),
+        tone=att(x))
+```
+
+### `com.apple.WritingTools.WritingToolsAppIntentsExtension.FormatListIntent`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `text` | `WFTextTokenString` |
+
+```python
+s.action("com.apple.WritingTools.WritingToolsAppIntentsExtension.FormatListIntent",
+        text=ts("..."))
+```
+
+### `com.apple.WritingTools.WritingToolsAppIntentsExtension.FormatTableIntent`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `text` | `WFTextTokenString` |
+
+```python
+s.action("com.apple.WritingTools.WritingToolsAppIntentsExtension.FormatTableIntent",
+        text=ts("..."))
+```
+
+### `com.apple.WritingTools.WritingToolsAppIntentsExtension.ProofreadIntent`
+
+`native` · seen 5×
+
+Returns `Text`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `text` | `WFTextTokenString` |
+
+```python
+out = s.action("com.apple.WritingTools.WritingToolsAppIntentsExtension.ProofreadIntent",
+        text=ts("..."))
+```
+
+### `com.apple.WritingTools.WritingToolsAppIntentsExtension.RewriteTextIntent`
+
+`native` · seen 6×
+
+Returns `Text`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `text` | `WFTextTokenString` |
+
+```python
+out = s.action("com.apple.WritingTools.WritingToolsAppIntentsExtension.RewriteTextIntent",
+        text=ts("..."))
+```
+
+### `com.apple.WritingTools.WritingToolsAppIntentsExtension.SummarizeTextIntent`
+
+`native` · seen 7×
+
+Returns `Summarize Text` or `Text`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `summaryType` | `WFTextTokenAttachment` · `str` |
 | `text` | `WFTextTokenString` |
 
 ```python
 out = s.action("com.apple.WritingTools.WritingToolsAppIntentsExtension.SummarizeTextIntent",
-        summaryType="...",
+        summaryType=att(x),
         text=ts("..."))
+```
+
+### `com.apple.clock.CancelTimerIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.clock.CancelTimerIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.clock.DeleteAlarmIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `entities` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.clock.DeleteAlarmIntent",
+        AppIntentDescriptor="...",
+        entities=att(x))
+```
+
+### `com.apple.facetime.facetime`
+
+`native` · seen 12×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `IntentAppDefinition` | `dict{BundleIdentifier,ExtensionBundleIdentifier,Name,TeamIdentifier}` |
+| `WFFaceTimeContact` | `WFTextTokenAttachment` |
+| `WFFaceTimeType` | `WFTextTokenAttachment` · `str`<br>values: `Audio`, `Video` |
+
+```python
+s.action("com.apple.facetime.facetime",
+        IntentAppDefinition="...",
+        WFFaceTimeContact=att(x),
+        WFFaceTimeType="Audio")
+```
+
+### `com.apple.freeform.CRLCreateBoardIntent`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `title` | `WFTextTokenString` |
+
+```python
+s.action("com.apple.freeform.CRLCreateBoardIntent",
+        AppIntentDescriptor="...",
+        title=ts("..."))
+```
+
+### `com.apple.intelligenceplatform.IntelligencePlatform.IntelligencePlatformDataActionsAppIntentsExtension.CalculateAppUsageIntent`
+
+`native` · seen 8×
+
+Returns `Activity`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `activityType` | `str` |
+| `during` | `WFTextTokenAttachment` · `str` |
+| `selectedDevice` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("com.apple.intelligenceplatform.IntelligencePlatform.IntelligencePlatformDataActionsAppIntentsExtension.CalculateAppUsageIntent",
+        activityType="...",
+        during=att(x),
+        selectedDevice=att(x))
+```
+
+### `com.apple.journal.CreateEntryIntent`
+
+`native` · seen 6×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `OpenWhenRun` | `bool` |
+| `entryDate` | `WFTextTokenString` |
+| `location` | `dict{isCurrentLocation}` |
+| `mediaItems` | `WFTextTokenAttachment` |
+| `message` | `WFTextTokenString` |
+| `title` | `WFTextTokenString` |
+
+```python
+s.action("com.apple.journal.CreateEntryIntent",
+        AppIntentDescriptor="...",
+        OpenWhenRun=False,
+        entryDate=ts("..."),
+        location="...",
+        mediaItems=att(x),
+        message=ts("..."),
+        title=ts("..."))
+```
+
+### `com.apple.mobilemail.MailMessageEntity`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{ActionRequiresAppInstallation,AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+| `WFContentItemLimitEnabled` | `bool` |
+| `WFContentItemLimitNumber` | `real` |
+
+```python
+s.action("com.apple.mobilemail.MailMessageEntity",
+        AppIntentDescriptor="...",
+        WFContentItemFilter="...",
+        WFContentItemLimitEnabled=False,
+        WFContentItemLimitNumber=0)
+```
+
+### `com.apple.mobilemail.SearchMessagesAction`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `searchPhrase` | `WFTextTokenString` |
+
+```python
+s.action("com.apple.mobilemail.SearchMessagesAction",
+        AppIntentDescriptor="...",
+        searchPhrase=ts("..."))
+```
+
+### `com.apple.mobilenotes.CreateFolderLinkAction`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `OpenWhenRun` | `bool` |
+| `name` | `WFTextTokenString` |
+
+```python
+s.action("com.apple.mobilenotes.CreateFolderLinkAction",
+        AppIntentDescriptor="...",
+        OpenWhenRun=False,
+        name=ts("..."))
+```
+
+### `com.apple.mobilenotes.DeleteNotesLinkAction`
+
+`native` · seen 10×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `entities` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.mobilenotes.DeleteNotesLinkAction",
+        AppIntentDescriptor="...",
+        entities=att(x))
+```
+
+### `com.apple.mobilenotes.ScanDocumentLinkAction`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.mobilenotes.ScanDocumentLinkAction",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.mobilenotes.SharingExtension`
+
+`native` · seen 94×
+
+Returns `Create Note`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `OpenWhenRun` | `bool` |
+| `ShowWhenRun` | `bool` |
+| `WFCreateNoteInput` | `WFTextTokenString` · `str` |
+| `WFNoteGroup` | `dict{DisplayString,Identifier}` |
+| `folder` | `WFTextTokenAttachment` · `dict{identifier,subtitle,symbol,title}` · `dict{identifier,subtitle,title}` |
+| `name` | `WFTextTokenString` · `str` |
+
+```python
+out = s.action("com.apple.mobilenotes.SharingExtension",
+        AppIntentDescriptor="...",
+        OpenWhenRun=False,
+        ShowWhenRun=False,
+        WFCreateNoteInput="...",
+        WFNoteGroup="...",
+        folder=att(x),
+        name="...")
+```
+
+### `com.apple.mobilephone.call`
+
+`native` · seen 34×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `IntentAppDefinition` | `dict{BundleIdentifier,ExtensionBundleIdentifier,Name,TeamIdentifier}` · `dict{BundleIdentifier,ExtensionBundleIdentifier,TeamIdentifier}` · `dict{BundleIdentifier,Name,TeamIdentifier}` |
+| `IntentAppIdentifier` | `str` |
+| `WFCallContact` | `WFContactFieldValue` · `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.mobilephone.call",
+        IntentAppDefinition="...",
+        IntentAppIdentifier="...",
+        WFCallContact=att(x))
 ```
 
 ### `com.apple.mobilesafari.CloseTab`
 
-`native` · seen 1×
+`native` · seen 9×
 
 No output.
 
@@ -3009,7 +7759,7 @@ s.action("com.apple.mobilesafari.CloseTab",
 
 ### `com.apple.mobilesafari.CreateNewPrivateTab`
 
-`native` · seen 1×
+`native` · seen 4×
 
 No output.
 
@@ -3022,9 +7772,54 @@ s.action("com.apple.mobilesafari.CreateNewPrivateTab",
         AppIntentDescriptor="...")
 ```
 
-### `com.apple.mobilesafari.TabEntity`
+### `com.apple.mobilesafari.CreateNewTab`
 
 `native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.mobilesafari.CreateNewTab",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.mobilesafari.CreateTabAssistantIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.mobilesafari.CreateTabAssistantIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.mobilesafari.LoadURLInTab`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.mobilesafari.LoadURLInTab",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.mobilesafari.TabEntity`
+
+`native` · seen 7×
 
 Returns `Tab`.
 
@@ -3041,6 +7836,563 @@ out = s.action("com.apple.mobilesafari.TabEntity",
         WFContentItemFilter="...",
         WFContentItemLimitEnabled=False,
         WFContentItemLimitNumber=0)
+```
+
+### `com.apple.mobileslideshow.HideAssetsIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.mobileslideshow.HideAssetsIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.mobileslideshow.OpenAssetIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.mobileslideshow.OpenAssetIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.mobileslideshow.OpenCollectionIntent`
+
+`native` · seen 4×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `target` | `dict{identifier,image,subtitle,title}` |
+
+```python
+s.action("com.apple.mobileslideshow.OpenCollectionIntent",
+        AppIntentDescriptor="...",
+        target="...")
+```
+
+### `com.apple.mobileslideshow.StreamShareService`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `ImageInput` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.mobileslideshow.StreamShareService",
+        ImageInput=att(x))
+```
+
+### `com.apple.mobiletimer-framework.MobileTimerIntents.MTCreateAlarmIntent`
+
+`native` · seen 54×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `OpenWhenRun` | `bool` |
+| `allowsSnooze` | `bool` |
+| `dateComponents` | `WFTextTokenString` · `str` |
+| `label` | `WFTextTokenString` · `str` |
+| `name` | `WFTextTokenString` · `str` |
+| `repeatSchedule` | `WFTextTokenAttachment` · `array` · `dict{displayString,value}` |
+| `repeats` | `WFTextTokenAttachment` · `array` |
+
+```python
+s.action("com.apple.mobiletimer-framework.MobileTimerIntents.MTCreateAlarmIntent",
+        AppIntentDescriptor="...",
+        OpenWhenRun=False,
+        allowsSnooze=False,
+        dateComponents="...",
+        label="...",
+        name="...",
+        repeatSchedule=att(x),
+        repeats=att(x))
+```
+
+### `com.apple.mobiletimer-framework.MobileTimerIntents.MTGetAlarmsIntent`
+
+`native` · seen 34×
+
+Returns `Alarms`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{ActionRequiresAppInstallation,AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
+| `WFContentItemInputParameter` | `str` |
+| `WFContentItemLimitEnabled` | `bool` |
+| `WFContentItemLimitNumber` | `int` · `real` |
+| `WFContentItemSortOrder` | `str` |
+| `WFContentItemSortProperty` | `str` |
+
+```python
+out = s.action("com.apple.mobiletimer-framework.MobileTimerIntents.MTGetAlarmsIntent",
+        AppIntentDescriptor="...",
+        WFContentItemFilter="...",
+        WFContentItemInputParameter="...",
+        WFContentItemLimitEnabled=False,
+        WFContentItemLimitNumber=0,
+        WFContentItemSortOrder="...",
+        WFContentItemSortProperty="...")
+```
+
+### `com.apple.mobiletimer-framework.MobileTimerIntents.MTToggleAlarmIntent`
+
+`native` · seen 17×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `ShowWhenRun` | `bool` |
+| `alarm` | `WFTextTokenAttachment` · `dict{identifier,subtitle,symbol,title}` |
+| `operation` | `str` |
+| `state` | `int` |
+
+```python
+s.action("com.apple.mobiletimer-framework.MobileTimerIntents.MTToggleAlarmIntent",
+        AppIntentDescriptor="...",
+        ShowWhenRun=False,
+        alarm=att(x),
+        operation="...",
+        state=0)
+```
+
+### `com.apple.mobiletimer.CancelTimerIntent`
+
+`native` · seen 6×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.mobiletimer.CancelTimerIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.mobiletimer.DeleteAlarmIntent`
+
+`native` · seen 15×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `entities` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.mobiletimer.DeleteAlarmIntent",
+        AppIntentDescriptor="...",
+        entities=att(x))
+```
+
+### `com.apple.mobiletimer.EditSleepAlarmIntent`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `operation` | `str` |
+
+```python
+s.action("com.apple.mobiletimer.EditSleepAlarmIntent",
+        AppIntentDescriptor="...",
+        operation="...")
+```
+
+### `com.apple.mobiletimer.GetCurrentTimerDetailsIntent`
+
+`native` · seen 4×
+
+Returns `Get Current Timer`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+out = s.action("com.apple.mobiletimer.GetCurrentTimerDetailsIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.mobiletimer.PauseTimerIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.mobiletimer.PauseTimerIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.mobiletimer.ResumeTimerIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.mobiletimer.ResumeTimerIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.mobiletimer.StartStopwatchIntent`
+
+`native` · seen 6×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.mobiletimer.StartStopwatchIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.mobiletimer.StopStopwatchIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `OpenWhenRun` | `bool` |
+
+```python
+s.action("com.apple.mobiletimer.StopStopwatchIntent",
+        AppIntentDescriptor="...",
+        OpenWhenRun=False)
+```
+
+### `com.apple.musicrecognition.RecognizeMusicIntent`
+
+`native` · seen 37×
+
+Returns `Recognize Music`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `addToLibrary` | `bool` |
+| `errorIfNotRecognized` | `bool` |
+
+```python
+out = s.action("com.apple.musicrecognition.RecognizeMusicIntent",
+        AppIntentDescriptor="...",
+        addToLibrary=False,
+        errorIfNotRecognized=False)
+```
+
+### `com.apple.reminders.DeleteListsAppIntent`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.reminders.DeleteListsAppIntent",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.reminders.TTRCreateListAppIntent`
+
+`native` · seen 8×
+
+Returns `Create List`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `OpenWhenRun` | `bool` |
+| `group` | `WFTextTokenAttachment` |
+| `name` | `WFTextTokenString` · `str` |
+| `type` | `WFTextTokenAttachment` |
+
+```python
+out = s.action("com.apple.reminders.TTRCreateListAppIntent",
+        AppIntentDescriptor="...",
+        OpenWhenRun=False,
+        group=att(x),
+        name="...",
+        type=att(x))
+```
+
+### `com.apple.shortcuts.AddShortcutToHomeScreenAction`
+
+`native` · seen 32×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `image` | `WFTextTokenAttachment` |
+| `shortcut` | `WFTextTokenAttachment` · `dict{identifier,image,subtitle,title}` |
+| `title` | `WFTextTokenString` · `str` |
+
+```python
+s.action("com.apple.shortcuts.AddShortcutToHomeScreenAction",
+        AppIntentDescriptor="...",
+        image=att(x),
+        shortcut=att(x),
+        title="...")
+```
+
+### `com.apple.shortcuts.CreateFolderAction`
+
+`native` · seen 6×
+
+Returns `Create Folder`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `OpenWhenRun` | `bool` |
+| `name` | `WFTextTokenString` · `str` |
+
+```python
+out = s.action("com.apple.shortcuts.CreateFolderAction",
+        AppIntentDescriptor="...",
+        OpenWhenRun=False,
+        name="...")
+```
+
+### `com.apple.shortcuts.CreateShortcutiCloudLinkAction`
+
+`native` · seen 24×
+
+Returns `Create iCloud Link for Shortcut`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `CustomOutputName` | `str` |
+| `shortcut` | `WFTextTokenAttachment` · `dict{identifier,image,subtitle,title}` |
+
+```python
+out = s.action("com.apple.shortcuts.CreateShortcutiCloudLinkAction",
+        AppIntentDescriptor="...",
+        CustomOutputName="...",
+        shortcut=att(x))
+```
+
+### `com.apple.shortcuts.CreateWorkflowAction`
+
+`native` · seen 6×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `OpenWhenRun` | `bool` |
+| `name` | `WFTextTokenString` |
+
+```python
+s.action("com.apple.shortcuts.CreateWorkflowAction",
+        AppIntentDescriptor="...",
+        OpenWhenRun=False,
+        name=ts("..."))
+```
+
+### `com.apple.shortcuts.DeleteWorkflowAction`
+
+`native` · seen 27×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `entities` | `WFTextTokenAttachment` · `dict{identifier,image,subtitle,title}` |
+
+```python
+s.action("com.apple.shortcuts.DeleteWorkflowAction",
+        AppIntentDescriptor="...",
+        entities=att(x))
+```
+
+### `com.apple.shortcuts.MoveShortcutToFolderAction`
+
+`native` · seen 7×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `OpenWhenRun` | `bool` |
+| `folder` | `WFTextTokenAttachment` |
+| `shortcuts` | `WFTextTokenAttachment` |
+
+```python
+s.action("com.apple.shortcuts.MoveShortcutToFolderAction",
+        AppIntentDescriptor="...",
+        OpenWhenRun=False,
+        folder=att(x),
+        shortcuts=att(x))
+```
+
+### `com.apple.shortcuts.OpenNavigationDestinationAction`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.shortcuts.OpenNavigationDestinationAction",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.shortcuts.OpenWorkflowAction`
+
+`native` · seen 17×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `WFWorkflow` | `dict{isSelf,workflowIdentifier,workflowName}` |
+| `target` | `WFTextTokenAttachment` · `dict{identifier,image,subtitle,title}` · `dict{identifier,subtitle,title}` |
+
+```python
+s.action("com.apple.shortcuts.OpenWorkflowAction",
+        AppIntentDescriptor="...",
+        WFWorkflow="...",
+        target=att(x))
+```
+
+### `com.apple.shortcuts.RenameShortcutAction`
+
+`native` · seen 14×
+
+Returns `Rename Shortcut`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `OpenWhenRun` | `bool` |
+| `name` | `WFTextTokenString` · `str` |
+| `shortcut` | `WFTextTokenAttachment` · `dict{identifier,image,subtitle,title}` |
+
+```python
+out = s.action("com.apple.shortcuts.RenameShortcutAction",
+        AppIntentDescriptor="...",
+        OpenWhenRun=False,
+        name="...",
+        shortcut=att(x))
+```
+
+### `com.apple.shortcuts.SearchActionDrawerAction`
+
+`native` · seen 3×
+
+Returns `Search Shortcuts Actions`.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+out = s.action("com.apple.shortcuts.SearchActionDrawerAction",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.shortcuts.SearchShortcutsAction`
+
+`native` · seen 3×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+| `searchPhrase` | `WFTextTokenString` |
+
+```python
+s.action("com.apple.shortcuts.SearchShortcutsAction",
+        AppIntentDescriptor="...",
+        searchPhrase=ts("..."))
+```
+
+### `com.apple.shortcuts.SetShortcutAttributesAction`
+
+`native` · seen 2×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `AppIntentDescriptor` | `dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}` |
+
+```python
+s.action("com.apple.shortcuts.SetShortcutAttributesAction",
+        AppIntentDescriptor="...")
+```
+
+### `com.apple.weather.WeatherIntent`
+
+`native` · seen 6×
+
+No output.
+
+| Parameter | Accepts |
+| --- | --- |
+| `location` | `dict{displayString,identifier}` |
+
+```python
+s.action("com.apple.weather.WeatherIntent",
+        location="...")
 ```
 
 <sub>[back to index](#index)</sub>
@@ -3069,10 +8421,10 @@ Sampled from the corpus, except where `tools/joinspec.py` completed them from Ap
 | `WFCameraCaptureQuality` | `High`, `Low`, `Medium` |
 | `WFCellularDetail` | `Carrier Name`, `Country Code`, `Is Roaming Abroad`, `Number of Signal Bars`, `Radio Technology` |
 | `WFCloudAppPrivacyType` | `Private`, `Public` |
-| `WFCondition` | `0`, `1`, `2`, `3`, `4`, `5`, `8`, `9`, `99`, `100`, `101`, `999`, `1000`, `1001`, `1003` |
+| `WFCondition` | `0`, `1`, `2`, `3`, `4`, `5`, `8`, `9`, `99`, `100`, `101`, `999`, `1000`, `1001`, `1002`, `1003` |
 | `WFConfiguration` | `Bottom Half`, `Bottom Left Quarter`, `Bottom Right Quarter`, `Dimensions`, `Fit Screen`, `Left Half`, `Right Half`, `Top Half`, `Top Left Quarter`, `Top Right Quarter` |
 | `WFControlFlowMode` | `0`, `1`, `2` |
-| `WFCountType` | `Items`, `Lines`, `Words` |
+| `WFCountType` | `Characters`, `Items`, `Lines`, `Sentences`, `Words` |
 | `WFDateActionMode` | `Current Date`, `Specified Date` |
 | `WFDateFormatStyle` | `Custom`, `ISO 8601`, `Long`, `Medium`, `None`, `RFC 2822`, `Relative`, `Short` |
 | `WFDateSpecifier` | `Any Day`, `Specified Day`, `Today`, `Tomorrow` |
@@ -3087,16 +8439,16 @@ Sampled from the corpus, except where `tools/joinspec.py` completed them from Ap
 | `WFGetDictionaryValueType` | `All Keys`, `All Values`, `Value` |
 | `WFGetDirectionsActionMode` | `Biking`, `Direct`, `Driving`, `Transit`, `Walking` |
 | `WFGetTextFromPDFTextType` | `Rich Text`, `Text` |
-| `WFHTTPBodyType` | `File`, `Form`, `JSON` |
-| `WFHTTPMethod` | `DELETE`, `GET`, `POST` |
-| `WFHashType` | `SHA512` |
+| `WFHTTPBodyType` | `File`, `Form`, `JSON`, `JSON/Form/File`, `Json` |
+| `WFHTTPMethod` | `DELETE`, `GET`, `POST`, `PUT` |
+| `WFHashType` | `MD5`, `SHA256`, `SHA512` |
 | `WFHideAppMode` | `All Apps`, `App` |
 | `WFIPAddressSourceOption` | `External`, `Local` |
 | `WFIPAddressTypeOption` | `IPv4`, `IPv6` |
 | `WFImageCombineMode` | `Horizontally`, `In a Grid`, `Vertically` |
 | `WFImageCropPosition` | `Bottom Left`, `Bottom Right`, `Center`, `Custom`, `Top Left`, `Top Right` |
 | `WFImageFlipDirection` | `Horizontal`, `Vertical` |
-| `WFImageFormat` | `BMP`, `HEIF`, `JPEG`, `PNG` |
+| `WFImageFormat` | `BMP`, `GIF`, `HEIF`, `JPEG`, `Match Input`, `PNG` |
 | `WFImagePosition` | `Bottom Left`, `Bottom Right`, `Center`, `Custom`, `Top Left`, `Top Right` |
 | `WFImageResizeKey` | `Longest Edge`, `Percentage`, `Size` |
 | `WFImgurAlbumLayout` | `Blog`, `Grid`, `Horizontal`, `Vertical` |
@@ -3106,7 +8458,7 @@ Sampled from the corpus, except where `tools/joinspec.py` completed them from Ap
 | `WFItemSpecifier` | `First Item`, `Item At Index`, `Items in Range`, `Last Item`, `Random Item` |
 | `WFItemType` | `0`, `1`, `2`, `3`, `4`, `5` |
 | `WFMaskType` | `Custom Image`, `Ellipse`, `Icon`, `Rounded Rectangle` |
-| `WFMathOperation` | `+`, `-`, `×`, `÷` |
+| `WFMathOperation` | `+`, `-`, `×`, `÷`, `…` |
 | `WFMediaAudioFormat` | `AIFF`, `M4A` |
 | `WFMediaRouteOperation` | `Add`, `Remove`, `Set` |
 | `WFMediaSize` | `1280x720`, `1920x1080`, `3840x2160`, `640x480`, `960x540`, `HEVC 1920x1080`, `HEVC 3840x2160`, `Passthrough`, `ProRes 422` |

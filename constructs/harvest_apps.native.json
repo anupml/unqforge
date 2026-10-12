@@ -1,0 +1,2676 @@
+{
+ "actions": {
+  "AsheKube.app.a-Shell-mini.ExecuteCommandIntent": {
+   "count": 26,
+   "output_names": [
+    "output"
+   ],
+   "params": {
+    "Show-command": [
+     "bool"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "command": [
+     "WFTextTokenAttachment",
+     "WFTextTokenString",
+     "array",
+     "str"
+    ],
+    "keepGoing": [
+     "bool"
+    ],
+    "openWindow": [
+     "str"
+    ]
+   }
+  },
+  "AsheKube.app.a-Shell-mini.GetFileIntent": {
+   "count": 17,
+   "output_names": [
+    "File"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "copyFile": [
+     "bool"
+    ],
+    "fileName": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "AsheKube.app.a-Shell-mini.PutFileIntent": {
+   "count": 9,
+   "output_names": [],
+   "params": {
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "file": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "AsheKube.app.a-Shell.ExecuteCommandIntent": {
+   "count": 19,
+   "output_names": [
+    "output"
+   ],
+   "params": {
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "command": [
+     "WFTextTokenAttachment",
+     "WFTextTokenString",
+     "array",
+     "str"
+    ],
+    "keepGoing": [
+     "bool"
+    ],
+    "openWindow": [
+     "str"
+    ]
+   }
+  },
+  "AsheKube.app.a-Shell.GetFileIntent": {
+   "count": 8,
+   "output_names": [
+    "File"
+   ],
+   "params": {
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "copyFile": [
+     "bool"
+    ],
+    "fileName": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "AsheKube.app.a-Shell.PutFileIntent": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "file": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "ai.perplexity.app.AskPerplexityIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "ai.x.GrokApp.AskGrok": {
+   "count": 8,
+   "output_names": [
+    "Response"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "modelMode": [
+     "str"
+    ],
+    "newMessage": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "ai.x.GrokApp.OpenAra": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "ai.x.GrokApp.OpenGrok": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "app.locallyai.Locally.AskLocallyIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "prompt": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.SideStore.SideStore.B9F828H3T8.RefreshAllIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.alexhay.ToolboxProForShortcuts.CalculateWithSoulverIntent": {
+   "count": 2,
+   "output_names": [
+    "Calculation Result"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "text": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.alexhay.ToolboxProForShortcuts.CheckGVIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "create": [
+     "bool"
+    ],
+    "name": [
+     "str"
+    ],
+    "value": [
+     "str"
+    ]
+   }
+  },
+  "com.alexhay.ToolboxProForShortcuts.CropIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "image": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.alexhay.ToolboxProForShortcuts.DeviceStorageIntent": {
+   "count": 4,
+   "output_names": [
+    "Device Storage"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "storageTypes": [
+     "str"
+    ],
+    "unitOfMeasurement": [
+     "str"
+    ]
+   }
+  },
+  "com.alexhay.ToolboxProForShortcuts.FindMovies2Intent": {
+   "count": 2,
+   "output_names": [
+    "Movies"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "advancedSearch": [
+     "int"
+    ],
+    "afterYear": [
+     "str"
+    ],
+    "beforeYear": [
+     "str"
+    ],
+    "moreVotesThan": [
+     "str"
+    ],
+    "query": [
+     "WFTextTokenString"
+    ],
+    "scoreBetterThan": [
+     "str"
+    ]
+   }
+  },
+  "com.alexhay.ToolboxProForShortcuts.FindTvShowsIntent": {
+   "count": 3,
+   "output_names": [
+    "TV Shows"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "query": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.alexhay.ToolboxProForShortcuts.GetAudioIntent": {
+   "count": 3,
+   "output_names": [
+    "Sound"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "systemSounds": [
+     "str"
+    ]
+   }
+  },
+  "com.alexhay.ToolboxProForShortcuts.GetMovieDetails2Intent": {
+   "count": 2,
+   "output_names": [
+    "Movie Details"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "movie": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.alexhay.ToolboxProForShortcuts.GetTvShowDetailsIntent": {
+   "count": 3,
+   "output_names": [
+    "TV Show Details"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "tvShow": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.alexhay.ToolboxProForShortcuts.GlobalVariablesIntent": {
+   "count": 3,
+   "output_names": [
+    "Global Variable Result"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "getVariableKey": [
+     "str"
+    ],
+    "mode": [
+     "str"
+    ],
+    "setVariableKey": [
+     "str"
+    ],
+    "setVariableValue": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.alexhay.ToolboxProForShortcuts.QuickLookExtendedIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "body": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.amazon.echo.OpenAskAlexaAction": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "OpenWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.anthropic.claude.ClaudeAppIntentsExtension": {
+   "count": 15,
+   "output_names": [
+    "Ask Claude"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "message": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.arthurhoefer.Shortcuty.GetShortcutByUUIDIntent": {
+   "count": 9,
+   "output_names": [
+    "Get Shortcut by UUID"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "uuid": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "com.arthurhoefer.Shortcuty.GetShortcutDetailsIntent": {
+   "count": 5,
+   "output_names": [
+    "Get Shortcut Detail"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "detailType": [
+     "str"
+    ],
+    "shortcut": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.arthurhoefer.Shortcuty.ListKeysIntent": {
+   "count": 7,
+   "output_names": [
+    "Get Variable Keys"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "container": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "filter": [
+     "str"
+    ],
+    "sortOrder": [
+     "str"
+    ]
+   }
+  },
+  "com.arthurhoefer.Shortcuty.LoggingIntent": {
+   "count": 14,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "logLevel": [
+     "str"
+    ],
+    "message": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "source": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "com.arthurhoefer.Shortcuty.OpenInShortcutyIntent": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "shortcut": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.arthurhoefer.Shortcuty.SearchShortcutsIntent": {
+   "count": 3,
+   "output_names": [
+    "Search Shortcuts"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "maxResults": [
+     "str"
+    ],
+    "query": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.arthurhoefer.Shortcuty.ShortcutUpdateIntent": {
+   "count": 53,
+   "output_names": [
+    "Check Shortcut Update"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "currentVersion": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "shortcutUUID": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "com.arthurhoefer.Shortcuty.VariableManagerIntent": {
+   "count": 11,
+   "output_names": [
+    "Manage Variables"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "container": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "key": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "value": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "com.brogrammers.charty.AddMovingAverageIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "chartId": [
+     "WFTextTokenString"
+    ],
+    "lineStyle": [
+     "str"
+    ],
+    "lineWidth": [
+     "str"
+    ],
+    "movingAverageType": [
+     "str"
+    ],
+    "series": [
+     "WFTextTokenAttachment"
+    ],
+    "seriesLabels": [
+     "str"
+    ],
+    "windowSize": [
+     "str"
+    ]
+   }
+  },
+  "com.brogrammers.charty.AddSeriesToChartIntent": {
+   "count": 3,
+   "output_names": [
+    "Series Label"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "barXValues": [
+     "WFTextTokenString"
+    ],
+    "barYValues": [
+     "WFTextTokenString"
+    ],
+    "chartId": [
+     "WFTextTokenString"
+    ],
+    "label": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "lineXValues": [
+     "WFTextTokenString"
+    ],
+    "lineYValues": [
+     "WFTextTokenString"
+    ],
+    "scatterXValues": [
+     "WFTextTokenString"
+    ],
+    "scatterYValues": [
+     "WFTextTokenString"
+    ],
+    "type": [
+     "str"
+    ]
+   }
+  },
+  "com.brogrammers.charty.DeleteChartIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "id": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.brogrammers.charty.ExportChartAsImageIntent": {
+   "count": 2,
+   "output_names": [
+    "Chart Image"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "chartId": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.brogrammers.charty.GetInfoAllChartsIntent": {
+   "count": 3,
+   "output_names": [
+    "Charts data"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.brogrammers.charty.NewChartIntent": {
+   "count": 2,
+   "output_names": [
+    "Chart Id"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "automaticId": [
+     "bool"
+    ],
+    "id": [
+     "WFTextTokenString"
+    ],
+    "replaceOthers": [
+     "bool"
+    ],
+    "title": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.brogrammers.charty.StyleAxisIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "axis": [
+     "str"
+    ],
+    "chartId": [
+     "WFTextTokenString"
+    ],
+    "customDateTimeFormat": [
+     "str"
+    ],
+    "dateFormat": [
+     "str"
+    ],
+    "granularity": [
+     "str"
+    ],
+    "granularityUnit": [
+     "str"
+    ],
+    "maximum": [
+     "WFTextTokenAttachment"
+    ],
+    "minimum": [
+     "WFTextTokenAttachment"
+    ],
+    "valueFormatter": [
+     "str"
+    ]
+   }
+  },
+  "com.brogrammers.charty.StyleChartIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "chartId": [
+     "WFTextTokenString"
+    ],
+    "legend": [
+     "str"
+    ],
+    "showBorder": [
+     "bool"
+    ],
+    "showGrid": [
+     "bool"
+    ]
+   }
+  },
+  "com.brogrammers.charty.StyleLineSeriesIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "chartId": [
+     "WFTextTokenString"
+    ],
+    "color": [
+     "str"
+    ],
+    "label": [
+     "WFTextTokenString"
+    ],
+    "lineWidth": [
+     "str"
+    ],
+    "showMarkers": [
+     "bool"
+    ]
+   }
+  },
+  "com.brogrammers.charty.StyleScatterSeriesIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "chartId": [
+     "WFTextTokenString"
+    ],
+    "color": [
+     "WFTextTokenString"
+    ],
+    "label": [
+     "WFTextTokenString"
+    ],
+    "markerSize": [
+     "str"
+    ],
+    "markerStyle": [
+     "str"
+    ]
+   }
+  },
+  "com.brogrammers.charty.UpdateWidgetsIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.burbn.instagram.openin": {
+   "count": 8,
+   "output_names": [],
+   "params": {
+    "InstagramCaption": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "InstagramInput": [
+     "WFTextTokenAttachment"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.culturedcode.ThingsiPhone.TAIAddTodo2": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "title": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.ever10.ParkingBayWatch.FindParkedCarIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "latitude": [
+     "WFTextTokenAttachment"
+    ],
+    "longitude": [
+     "WFTextTokenAttachment"
+    ],
+    "scheduled": [
+     "bool"
+    ]
+   }
+  },
+  "com.google.GoogleMobile.SearchImageWithLensIntent": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "image": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.google.chrome.ios.OpenInChromeIncognitoIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "url": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.google.chrome.ios.OpenInChromeIntent": {
+   "count": 8,
+   "output_names": [],
+   "params": {
+    "Show-url": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "url": [
+     "WFTextTokenAttachment",
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.google.chrome.ios.SearchInChromeIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "searchPhrase": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.google.chrome.ios.openurl": {
+   "count": 2,
+   "output_names": [],
+   "params": {}
+  },
+  "com.google.gemini.TypeToGeminiIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.jkcoxson.LocalDevVPN.StartLocalDevVPNIntent": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.jkcoxson.LocalDevVPN.StopLocalDevVPNIntent": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.kdt.livecontainer.B9F828H3T8.RefreshAllIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.kdt.livecontainer.S47679JF8B.RefreshAllIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.lukilabs.lukiapp.AddToDocumentIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "content": [
+     "WFTextTokenString"
+    ],
+    "document": [
+     "dict{blockCount,displayString,identifier,modifiedDate,title,workspaceId}"
+    ],
+    "workspace": [
+     "dict{displayString,identifier,name,profileImageUrl,userId,workspaceLogoUrl}"
+    ]
+   }
+  },
+  "com.martechia.oscilla-app.AskOscillaIntent": {
+   "count": 2,
+   "output_names": [
+    "Ask Oscilla"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "question": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.mythofechelon.shortcuts.GetAppVersionIntent": {
+   "count": 4,
+   "output_names": [
+    "MoE Code App Version"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.mythofechelon.shortcuts.InternetConnectedIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.mythofechelon.shortcuts.MakeHTTPRequestIntent": {
+   "count": 5,
+   "output_names": [
+    "HTTP Response"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "body": [
+     "WFTextTokenString"
+    ],
+    "headers": [
+     "WFTextTokenString"
+    ],
+    "method": [
+     "str"
+    ],
+    "timeout": [
+     "str"
+    ],
+    "timeoutMessage": [
+     "str"
+    ],
+    "urlString": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "com.mythofechelon.shortcuts.MarkPHAssetV2Intent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "inputList_datetimes": [
+     "WFTextTokenAttachment"
+    ],
+    "inputList_fileNames": [
+     "WFTextTokenAttachment"
+    ],
+    "markAs": [
+     "str"
+    ]
+   }
+  },
+  "com.mythofechelon.shortcuts.MultiReplaceTextV3Intent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "inputRegex": [
+     "bool"
+    ],
+    "inputStrings": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.mythofechelon.shortcuts.SwiftJQV2Intent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "inputDicts": [
+     "WFTextTokenAttachment"
+    ],
+    "inputJqMethod": [
+     "str"
+    ],
+    "inputJqProgram": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.mythofechelon.shortcuts.SwiftSoupIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "cssQuery": [
+     "str"
+    ],
+    "input": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.omz-software.Pythonista3.PA3RunScriptIntent": {
+   "count": 3,
+   "output_names": [
+    "Script Output"
+   ],
+   "params": {
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "inlineScriptSource": [
+     "str"
+    ],
+    "inputFiles": [
+     "array"
+    ],
+    "isInlineScript": [
+     "bool"
+    ]
+   }
+  },
+  "com.openai.chat.AskChatGPTAboutImageWithPromptIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "image": [
+     "WFTextTokenAttachment"
+    ],
+    "prompt": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.openai.chat.AskIntent": {
+   "count": 75,
+   "output_names": [
+    "Ask ChatGPT"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "continuous": [
+     "bool"
+    ],
+    "model": [
+     "WFTextTokenAttachment",
+     "dict{identifier,subtitle,title}"
+    ],
+    "newChat": [
+     "bool"
+    ],
+    "prompt": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "com.openai.chat.OpenNewChatInAppShortcutIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.openai.chat.OpenVoiceModeIntent": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.raycast.ios.release.AskAIIntent": {
+   "count": 2,
+   "output_names": [
+    "Ask AI"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "followUp": [
+     "bool"
+    ],
+    "message": [
+     "WFTextTokenString"
+    ],
+    "model": [
+     "dict{identifier,subtitle,title}"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.Authenticate2": {
+   "count": 6,
+   "output_names": [
+    "Is Authenticated"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "openURL": [
+     "str"
+    ],
+    "timeout": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.Boolean": {
+   "count": 4,
+   "output_names": [
+    "Boolean"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.ColorIntent": {
+   "count": 2,
+   "output_names": [
+    "Color"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.CombineListsIntent": {
+   "count": 2,
+   "output_names": [
+    "Combined List"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "list1": [
+     "WFTextTokenAttachment"
+    ],
+    "list2": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.CreateColorImageIntent": {
+   "count": 8,
+   "output_names": [
+    "Color Image"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "color": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "height": [
+     "str"
+    ],
+    "opacity": [
+     "real"
+    ],
+    "width": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.CreateMenuItem": {
+   "count": 7,
+   "output_names": [
+    "Menu Item"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "background": [
+     "str"
+    ],
+    "backgroundShape": [
+     "str"
+    ],
+    "data": [
+     "str"
+    ],
+    "emoji": [
+     "str"
+    ],
+    "foreground": [
+     "str"
+    ],
+    "iconType": [
+     "str"
+    ],
+    "menuTitle": [
+     "str"
+    ],
+    "sfSymbolName": [
+     "str"
+    ],
+    "subtitle": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.DateToUnixTimeIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "date": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.DownloadFileIntent": {
+   "count": 2,
+   "output_names": [
+    "Downloaded File"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "url": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.EncryptFile": {
+   "count": 2,
+   "output_names": [
+    "Encrypted/Decrypted File"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "decryptedType": [
+     "str"
+    ],
+    "file": [
+     "WFTextTokenAttachment"
+    ],
+    "key": [
+     "WFTextTokenString"
+    ],
+    "shouldEncrypt": [
+     "int"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.FilterListIntent": {
+   "count": 3,
+   "output_names": [
+    "Filtered List"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "list": [
+     "WFTextTokenAttachment"
+    ],
+    "matchText": [
+     "WFTextTokenString"
+    ],
+    "shouldKeep": [
+     "int"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.GenerateUUIDIntent": {
+   "count": 3,
+   "output_names": [
+    "UUID"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.GetDeviceDetailsExtended": {
+   "count": 2,
+   "output_names": [
+    "Device Details"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.GetIndexOfListItem": {
+   "count": 3,
+   "output_names": [
+    "Index of List Item"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "item": [
+     "WFTextTokenString"
+    ],
+    "list": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.GetMapImageOfLocation": {
+   "count": 3,
+   "output_names": [
+    "Map Image of Location"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "height": [
+     "str"
+    ],
+    "location": [
+     "WFTextTokenAttachment"
+    ],
+    "mapType": [
+     "str"
+    ],
+    "radius": [
+     "WFQuantityFieldValue"
+    ],
+    "width": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.GetMusicPlaylistsIntent": {
+   "count": 2,
+   "output_names": [
+    "Music Playlists"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.GetUniformTypeIdentifierIntent": {
+   "count": 3,
+   "output_names": [
+    "Uniform Type Identifier"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "file": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.GlobalVariableGetNumber": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.GlobalVariableSetNumber": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "key": [
+     "str"
+    ],
+    "value": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.IsAudioPlayingIntent": {
+   "count": 5,
+   "output_names": [
+    "Is Audio Playing"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.IsBluetoothOnIntent": {
+   "count": 3,
+   "output_names": [
+    "Is Bluetooth On"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.IsCallActive": {
+   "count": 2,
+   "output_names": [
+    "Is Call Active"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.IsCellularDataOn": {
+   "count": 3,
+   "output_names": [
+    "Is Cellular Data On"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.IsCellularLowDataModeOn": {
+   "count": 2,
+   "output_names": [
+    "Is Cellular Low Data Mode On"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.IsLocationServicesEnabledIntent": {
+   "count": 3,
+   "output_names": [
+    "Is Location Services Enabled"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.IsLowPowerModeIntent": {
+   "count": 3,
+   "output_names": [
+    "Is Low Power Mode On"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.IsOnlineIntent": {
+   "count": 3,
+   "output_names": [
+    "Is Online"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.IsReachableIntent": {
+   "count": 2,
+   "output_names": [
+    "Is Web Server Reachable"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "host": [
+     "WFTextTokenString"
+    ],
+    "timeout": [
+     "str"
+    ],
+    "useGetMethod": [
+     "bool"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.IsSilentModeOnIntent": {
+   "count": 6,
+   "output_names": [
+    "Is Silent Mode On"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.IsTimeInRangeIntent": {
+   "count": 2,
+   "output_names": [
+    "Is Time In Range"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "endTime": [
+     "WFTextTokenString"
+    ],
+    "startTime": [
+     "WFTextTokenString"
+    ],
+    "targetTime": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.JoinWiFiIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "isHidden": [
+     "bool"
+    ],
+    "password": [
+     "WFTextTokenString"
+    ],
+    "ssid": [
+     "WFTextTokenString"
+    ],
+    "waitForConnection": [
+     "bool"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.KeychainDeleteIntent": {
+   "count": 8,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "keys": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.KeychainGetAllKeysIntent": {
+   "count": 6,
+   "output_names": [
+    "Keychain Keys"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.KeychainGetIntent": {
+   "count": 10,
+   "output_names": [
+    "Keychain Value"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "key": [
+     "WFTextTokenAttachment",
+     "dict{subtitle,title,value}"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.KeychainSetIntent": {
+   "count": 10,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "iCloud": [
+     "bool"
+    ],
+    "key": [
+     "WFTextTokenString"
+    ],
+    "value": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.MergeDictionariesIntent": {
+   "count": 3,
+   "output_names": [
+    "Merged Dictionary"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "dictionary1": [
+     "WFTextTokenAttachment"
+    ],
+    "dictionary2": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.PickColorIntent": {
+   "count": 6,
+   "output_names": [
+    "Picked Color"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "initialColor": [
+     "WFTextTokenAttachment"
+    ],
+    "referenceImage": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.PrettyPrintDictionariesIntent": {
+   "count": 3,
+   "output_names": [
+    "Pretty Printed Dictionaries"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "dictionaries": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.RandomTextIntent": {
+   "count": 2,
+   "output_names": [
+    "Random Text"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "length": [
+     "str"
+    ],
+    "lowercase": [
+     "bool"
+    ],
+    "uppercase": [
+     "bool"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.RemoveDuplicatesFromListIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "list": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.RemoveFromListIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "action": [
+     "str"
+    ],
+    "index": [
+     "WFTextTokenAttachment"
+    ],
+    "list": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.SetImageCaptureDate": {
+   "count": 3,
+   "output_names": [
+    "Images with Updated Capture Date"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "captureDate": [
+     "WFTextTokenString"
+    ],
+    "images": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.SetImageLocation": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "coordinateString": [
+     "WFTextTokenString"
+    ],
+    "images": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.SetUniformTypeIdentifier": {
+   "count": 13,
+   "output_names": [
+    "Files with Updated Uniform Type Identifier"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "file": [
+     "WFTextTokenAttachment"
+    ],
+    "typeIdentifier": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.ShowNotificationIntent": {
+   "count": 8,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "actions": [
+     "array"
+    ],
+    "body": [
+     "WFTextTokenString"
+    ],
+    "customSound": [
+     "WFTextTokenAttachment"
+    ],
+    "isTimeSensitive": [
+     "bool"
+    ],
+    "openURL": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "sound": [
+     "str"
+    ],
+    "subtitle": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "time": [
+     "WFTextTokenString"
+    ],
+    "timing": [
+     "str"
+    ],
+    "title": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.SortListIntent": {
+   "count": 3,
+   "output_names": [
+    "Sorted List"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "ascending": [
+     "int"
+    ],
+    "list": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.SymbolImageIntent": {
+   "count": 4,
+   "output_names": [
+    "SF Symbol Image"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "color": [
+     "str"
+    ],
+    "size": [
+     "str"
+    ],
+    "symbolName": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "weight": [
+     "str"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.TransformTextWithJavaScriptIntent": {
+   "count": 2,
+   "output_names": [
+    "Transformed Text"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "javaScriptCode": [
+     "str"
+    ],
+    "text": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.sindresorhus.Actions.WaitMilliseconds": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "duration": [
+     "str"
+    ]
+   }
+  },
+  "com.tijo.opener.Opener.show-options": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "OpenerURL": [
+     "WFTextTokenString"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "dev.baileytownsend.attoolbox.GetARecordIntent": {
+   "count": 2,
+   "output_names": [
+    "Get a Record"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "atIdentifier": [
+     "WFTextTokenString"
+    ],
+    "collection": [
+     "str"
+    ],
+    "recordKey": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "dk.simonbs.DataJar.CheckIfValueExistsIntent": {
+   "count": 8,
+   "output_names": [
+    "Value Exists"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "keyPath": [
+     "str"
+    ]
+   }
+  },
+  "dk.simonbs.DataJar.DeleteValueIntent": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "deleteStrategy": [
+     "str"
+    ],
+    "keyPath": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "dk.simonbs.DataJar.GetKeysIntent": {
+   "count": 11,
+   "output_names": [
+    "Keys"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "errorWhenValueNotFound": [
+     "bool"
+    ],
+    "keyPath": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "dk.simonbs.DataJar.GetValueIntent": {
+   "count": 23,
+   "output_names": [
+    "Value"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "keyPath": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "dk.simonbs.DataJar.InsertValueInArrayIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "insertionPoint": [
+     "str"
+    ],
+    "keyPath": [
+     "str"
+    ],
+    "values": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "dk.simonbs.DataJar.SetValueIntent": {
+   "count": 18,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "keyPath": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "overwriteStrategy": [
+     "str"
+    ],
+    "values": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "dk.simonbs.Jayson.ViewJSONIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "files": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "dk.simonbs.Scriptable.ParameterizedRunScriptIntent": {
+   "count": 6,
+   "output_names": [
+    "Output"
+   ],
+   "params": {
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "fileName": [
+     "str"
+    ],
+    "parameter": [
+     "WFTextTokenAttachment",
+     "array"
+    ]
+   }
+  },
+  "dk.simonbs.Scriptable.RunScriptInlineIntent": {
+   "count": 18,
+   "output_names": [
+    "Output"
+   ],
+   "params": {
+    "Show-texts": [
+     "bool"
+    ],
+    "Show-urls": [
+     "bool"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "images": [
+     "WFTextTokenAttachment"
+    ],
+    "parameter": [
+     "WFTextTokenAttachment",
+     "array"
+    ],
+    "runInApp": [
+     "bool"
+    ],
+    "script": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "texts": [
+     "array"
+    ]
+   }
+  },
+  "io.pushcut.Pushcut.ChangeWidgetContentIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "ke.bou.WidgetPack.FontIntent": {
+   "count": 2,
+   "output_names": [
+    "Font"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "design": [
+     "dict{displayString,identifier}"
+    ],
+    "kind": [
+     "str"
+    ],
+    "size": [
+     "str"
+    ],
+    "weight": [
+     "dict{displayString,identifier}"
+    ]
+   }
+  },
+  "ke.bou.WidgetPack.GaugeIntent": {
+   "count": 2,
+   "output_names": [
+    "View"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "currentValueLabel": [
+     "WFTextTokenAttachment"
+    ],
+    "kind": [
+     "str"
+    ],
+    "label": [
+     "WFTextTokenAttachment"
+    ],
+    "upperBound": [
+     "WFTextTokenAttachment"
+    ],
+    "value": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "ke.bou.WidgetPack.ModifierScaledToFitIntent": {
+   "count": 2,
+   "output_names": [
+    "View Scaled to Fit"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "view": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "ke.bou.WidgetPack.PreviewWidgetIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "view": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "ke.bou.WidgetPack.SFSymbolIntent": {
+   "count": 2,
+   "output_names": [
+    "SF Symbol"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "byName": [
+     "bool"
+    ],
+    "resizable": [
+     "bool"
+    ]
+   }
+  },
+  "ke.bou.WidgetPack.UpdateWidgetIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "name": [
+     "str"
+    ],
+    "view": [
+     "WFTextTokenAttachment"
+    ],
+    "widgetURL": [
+     "str"
+    ]
+   }
+  },
+  "ke.bou.WidgetPack.VerbatimTextIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "baselineOffset": [
+     "str"
+    ],
+    "bold": [
+     "bool"
+    ],
+    "font": [
+     "WFTextTokenAttachment"
+    ],
+    "verbatim": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "net.whatsapp.WhatsApp.openin": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "WhatsAppInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "net.whatsapp.WhatsApp.send": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WhatsAppContact": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "no.mobitroll.kahoot.controller.JoinLiveGame": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "tsubasa-technologies.Text-Message-Export.OpenAppIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "tv.plex.labs.plexamp.GetCurrentTrackIntent": {
+   "count": 5,
+   "output_names": [
+    "Get Current Track"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "tv.plex.labs.plexamp.SetCurrentRatingIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  }
+ },
+ "aggrandizements": [],
+ "enums": {},
+ "token_types": []
+}
