@@ -478,7 +478,13 @@ class SC:
                 params[key] = ts(v)
         return params
 
-    def _add(self, ident, params):
+    def _add(self, ident, params, exact=False):
+        # Every action gets a UUID, as the Shortcuts editor does. Without
+        # one, Shortcuts assigns them all before running; on iOS 27 that
+        # took long enough on a ~4,800-action shortcut to fail it.
+        # exact=True (raw) keeps decompiled parameters untouched.
+        if not exact and not params.get("UUID"):
+            params["UUID"] = U()
         params = self._autowrap(ident, params)
         self.k.check(ident, params)
         self.acts.append({"WFWorkflowActionIdentifier": ident,
@@ -513,7 +519,7 @@ class SC:
         p = dict(params)
         if uuid:
             p["UUID"] = uuid
-        self._add(ident, p)
+        self._add(ident, p, exact=True)
         return out(uuid, output) if (uuid and output) else None
 
     # --- leaves ---

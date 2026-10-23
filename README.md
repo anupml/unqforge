@@ -6,7 +6,7 @@
 
 [![python](https://img.shields.io/badge/python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![license](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)](LICENSE)
-[![actions covered](https://img.shields.io/badge/actions-153%2F402-8b5cf6?style=flat-square)](docs/actions.md)
+[![actions covered](https://img.shields.io/badge/actions-307%2F365-8b5cf6?style=flat-square)](docs/actions.md)
 [![round trip](https://img.shields.io/badge/round--trip-1290%2F1290-06b6d4?style=flat-square)](tools/roundtrip.py)
 
 [Guide](docs/guide.md) · [Action reference](docs/actions.md) · [Examples](examples/)
@@ -152,14 +152,16 @@ The corpus knows it.
 
 | | |
 | --- | --- |
-| Built-in actions covered | **153 / 402** |
+| Built-in actions covered | **307 / 365** (84%) |
+| App intent actions | **277** (Apple apps and third-party) |
 | Round-trip suite | **1290 / 1290** actions across 13 shortcuts |
 | Dependencies | none |
 
-402 is every `is.workflow.actions.*` identifier found in the Shortcuts
-binary, so coverage is measured rather than claimed. Around 80 of those
-are dead 2017-era integrations (Dropbox, Evernote, Pocket, Trello) and
-deprecated ancestors, so the live figure is nearer 320.
+365 is every `is.workflow.actions.*` identifier found in the Shortcuts
+binary, so coverage is measured rather than claimed (`tools/coverage.py`).
+Most of the 58 still missing are dead 2017-era integrations (Dropbox,
+Evernote, Pocket, Pinboard, Instapaper, Trello, Todoist, WordPress) and
+Mac-only actions (windows, disk images, screensaver, sleep, log out).
 
 The round-trip suite takes each shortcut to Python and back and compares,
 including two 500-action production shortcuts with nested menus, HTTP
