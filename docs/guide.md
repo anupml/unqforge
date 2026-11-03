@@ -218,6 +218,22 @@ with s.if_has_value(token) as got:
 
 Conditionals do **not** affect repeat depth numbering.
 
+### Menus
+
+```python
+with s.menu("What now?", ["Add", "List"]) as m:
+    with m.case("Add"):
+        s.show("adding")
+    with m.case("List"):
+        s.show("listing")
+s.show(m.result)                       # Menu Result
+```
+
+Cases come in the same order as the items, each once -- the way the
+Shortcuts editor writes them. A missing, extra, misspelled or out-of-order
+case raises at build time instead of importing as a broken menu. The
+prompt may be a `str` or `ts(...)`, and menus nest.
+
 **Comparing against a variable works.** `WFNumberValue` holds either a
 literal or a `WFTextTokenAttachment`, so both forms emit correctly:
 

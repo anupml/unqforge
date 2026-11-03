@@ -823,6 +823,42 @@ class SC:
                       {"GroupingIdentifier": g, "WFControlFlowMode": 2,
                        "UUID": close})
 
+    @contextmanager
+    def menu(self, prompt, items):
+        """Choose from Menu.
+
+            with s.menu("What now?", ["Add", "List"]) as m:
+                with m.case("Add"):
+                    ...
+                with m.case("List"):
+                    ...
+            s.show(m.result)            # Menu Result, after the block
+
+        One GroupingIdentifier ties the block together: mode 0 opens it
+        with the prompt and the item titles, mode 1 starts each case
+        (WFMenuItemTitle), mode 2 closes it. Cases must appear in the same
+        order as items and each exactly once, as the Shortcuts editor
+        writes them; a case left out or misspelled raises here instead of
+        importing as a broken menu. The prompt may be a str or ts(...).
+        """
+        items = [str(i) for i in items]
+        if not items:
+            raise ValueError("a menu needs at least one item")
+        if len(set(items)) != len(items):
+            raise ValueError("menu items must be unique: %r" % items)
+        g, close = U(), U()
+        p = {"GroupingIdentifier": g, "WFControlFlowMode": 0, "WFMenuItems": items}
+        if prompt not in (None, ""):
+            p["WFMenuPrompt"] = prompt
+        self._add("is.workflow.actions.choosefrommenu", p)
+        m = _Menu(self, g, items, out(close, "Menu Result"))
+        yield m
+        if m.done != items:
+            missing = [i for i in items if i not in m.done]
+            raise ValueError("menu cases %r were never written" % missing)
+        self._add("is.workflow.actions.choosefrommenu",
+                  {"GroupingIdentifier": g, "WFControlFlowMode": 2, "UUID": close})
+
     def vcard_picker(self, items, label, detail, subtitle=None, photo=None,
                      photo_base="", prompt="Choose", filename="items.vcf",
                      number=True):
@@ -939,6 +975,28 @@ class _Else:
     def otherwise(self):
         self.sc._add("is.workflow.actions.conditional",
                      {"GroupingIdentifier": self.g, "WFControlFlowMode": 1})
+
+
+class _Menu:
+    """The handle s.menu() yields: one case() per item, in order."""
+
+    def __init__(self, sc, g, items, result):
+        self.sc, self.g, self.items, self.result = sc, g, items, result
+        self.done = []
+
+    @contextmanager
+    def case(self, title):
+        title = str(title)
+        n = len(self.done)
+        if n >= len(self.items) or self.items[n] != title:
+            want = self.items[n] if n < len(self.items) else None
+            raise ValueError("menu case %r out of order or unknown (next expected: %r)"
+                             % (title, want))
+        self.sc._add("is.workflow.actions.choosefrommenu",
+                     {"GroupingIdentifier": self.g, "WFControlFlowMode": 1,
+                      "WFMenuItemTitle": title})
+        self.done.append(title)
+        yield
 
 
 def write_plist(pl, path):
