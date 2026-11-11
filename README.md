@@ -87,11 +87,11 @@ python3 hello.py
 **3. Get it onto your phone**
 
 The output is a plain `.plist`. To turn it into an installable shortcut,
-use [Shortcut Source Tool](https://routinehub.co/shortcut/5256/) by
-gluebyte — it converts both ways, plist to shortcut and back.
+paste your code into the [unqforge editor](https://unqx.site/sclib/): it
+builds, checks and signs it in one tap, on any device.
 
-AirDrop `hello.plist` to your phone, open Shortcut Source Tool, pick the
-file, and it hands you a shortcut you can add.
+On a Mac you can also sign locally (see
+[Installing what you built](docs/guide.md#installing-what-you-built)).
 
 **4. Build something real**
 
