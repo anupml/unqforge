@@ -207,6 +207,23 @@ def shape_of(v):
     return type(v).__name__
 
 
+def check_quantities(ident, params):
+    """A quantity field (a duration, a distance...) holds its Magnitude bare.
+
+    Real shortcuts store a variable magnitude as the token itself,
+    {"Type": "ActionOutput", ...}, never wrapped in an attachment. The
+    shape check can't see inside WFQuantityFieldValue, so att(x) there used
+    to build fine and then show as an unknown variable on device.
+    """
+    for k, v in params.items():
+        if isinstance(v, dict) and v.get("WFSerializationType") == "WFQuantityFieldValue":
+            m = v.get("Value", {}).get("Magnitude") if isinstance(v.get("Value"), dict) else None
+            if isinstance(m, dict) and "Type" not in m:
+                raise Unverified(
+                    "%s.%s: Magnitude takes the token itself (Magnitude=x), not att(x); "
+                    "a wrapped one shows as an unknown variable on device" % (ident, k))
+
+
 def check_tokens(v, token_types, path):
     """Verify every token slot holds a real token.
 
@@ -487,6 +504,8 @@ class SC:
             params["UUID"] = U()
         params = self._autowrap(ident, params)
         self.k.check(ident, params)
+        if not exact:
+            check_quantities(ident, params)
         self.acts.append({"WFWorkflowActionIdentifier": ident,
                           "WFWorkflowActionParameters": params})
 

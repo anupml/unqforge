@@ -160,6 +160,18 @@ ts("hi ", token, "!")   # text field: literal parts and tokens interleaved
 they are UTF-16 code units, so any emoji or mathematical alphanumeric in
 the literal text shifts everything after it.
 
+Quantity fields (a duration, a distance) are the exception: their
+`Magnitude` takes a number or the token itself, **not** `att()`:
+
+```python
+s.action(A + "timer.start", WFDuration={
+    "Value": {"Magnitude": var("mins"), "Unit": "min"},   # not att(var("mins"))
+    "WFSerializationType": "WFQuantityFieldValue"})
+```
+
+The library rejects a wrapped magnitude, because Shortcuts shows it as
+an unknown variable.
+
 ---
 
 ## Expressions
