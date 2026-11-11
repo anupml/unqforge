@@ -1,0 +1,1911 @@
+{
+ "actions": {
+  "com.apple.AccessibilityUIServer.AccessibilityAutoBrightnessEnabledEntity-UpdatableEntity": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFTableTemplate": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "value": [
+     "dict{WFOperator,WFSubject,WFValue}",
+     "dict{WFOperator,WFSubject}"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUIServer.AccessibilityBoldTextEnabledEntity-UpdatableEntity": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFTableTemplate": [
+     "WFContentPredicateTableTemplate"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXSetBackgroundSoundIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "backgroundSound": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXSetBackgroundSoundVolumeIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "volumeType": [
+     "str"
+    ],
+    "volumeValue": [
+     "real"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXSetLargeTextIntent": {
+   "count": 12,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "textSize": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXStartGuidedAccessIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXStartSpeakScreenIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleAssistiveTouchIntent": {
+   "count": 7,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleAutoAnswerCallsIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleBackgroundSoundsIntent": {
+   "count": 7,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "duration": [
+     "WFQuantityFieldValue"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleClassicInvertIntent": {
+   "count": 18,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "int"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleColorFiltersIntent": {
+   "count": 8,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "int"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleContrastIntent": {
+   "count": 10,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "int"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleLEDFlashIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleLiveCaptionsIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleMonoAudioIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleReduceMotionIntent": {
+   "count": 27,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "WFTextTokenAttachment",
+     "int"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleSmartInvertIntent": {
+   "count": 9,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "int"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleSoundDetectionIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleSwitchControlIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleTransparencyIntent": {
+   "count": 12,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "int"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleVoiceControlIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "int"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleVoiceOverIntent": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleWhitePointIntent": {
+   "count": 23,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "int"
+    ]
+   }
+  },
+  "com.apple.AccessibilityUtilities.AXSettingsShortcuts.AXToggleZoomIntent": {
+   "count": 7,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "int"
+    ]
+   }
+  },
+  "com.apple.AppStore.PageNavigationIntent": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "target": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.DocumentsApp.SearchFile": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "searchPhrase": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.GenerativePlaygroundApp.GenerateImageIntent": {
+   "count": 12,
+   "output_names": [
+    "Image"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "image": [
+     "dict{displayName,fileLocation,filename}"
+    ],
+    "prompt": [
+     "WFTextTokenString"
+    ],
+    "saveToLibrary": [
+     "str"
+    ],
+    "saveToPlayground": [
+     "str"
+    ],
+    "style": [
+     "WFTextTokenAttachment",
+     "dict{identifier,image,subtitle,title}"
+    ]
+   }
+  },
+  "com.apple.Health.OpenViewIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "target": [
+     "dict{identifier,subtitle,symbol,title}"
+    ]
+   }
+  },
+  "com.apple.Magnifier.ReaderModeIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.MobileAddressBook.CreateContactIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.MobileAddressBook.DeleteContactIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ]
+   }
+  },
+  "com.apple.MobileSMS.MessageEntity": {
+   "count": 4,
+   "output_names": [
+    "Message"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{ActionRequiresAppInstallation,AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "real"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.MobileSMS.OpenConversationIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.NanoSettings.NPRFPingMyPhoneIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "state": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.NanoSettings.NPRFSetAlwaysOnIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.NanoSettings.NPRFSetSchoolTimeIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.NanoSettings.NPRFSetSilentModeIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.NanoSettings.NPRFSetTheaterModeIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.NanoSettings.NPRFSetWaterLockIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.Numbers.TNiOSAddValuesToSpreadsheetIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "position": [
+     "str"
+    ],
+    "sheetName": [
+     "str"
+    ],
+    "spreadsheet": [
+     "dict{displayName,fileLocation,filename}"
+    ],
+    "tableName": [
+     "str"
+    ],
+    "values": [
+     "array"
+    ]
+   }
+  },
+  "com.apple.PBBridgeSupport.BridgeIntents.COSSetGizmoFaceIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "face": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.Passbook.OpenPassIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.Preferences.AirDropReceivingModeEntity-UpdatableEntity": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFTableTemplate": [
+     "WFContentPredicateTableTemplate"
+    ]
+   }
+  },
+  "com.apple.Preferences.MPSilenceUnknownCallersToggleEntity-UpdatableEntity": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFTableTemplate": [
+     "WFContentPredicateTableTemplate"
+    ]
+   }
+  },
+  "com.apple.ShortcutsActions.CellularPlanEntity": {
+   "count": 14,
+   "output_names": [
+    "Cellular Plan"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{BundleIdentifier}"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemInputParameter": [
+     "WFTextTokenAttachment"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "real"
+    ]
+   }
+  },
+  "com.apple.ShortcutsActions.GetOrientationAction": {
+   "count": 41,
+   "output_names": [
+    "Get Orientation"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.ShortcutsActions.OpenCameraAction": {
+   "count": 13,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}",
+     "dict{AppIntentIdentifier,BundleIdentifier,Name}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "cameraMode": [
+     "dict{identifier,subtitle,symbol,title,value}",
+     "dict{identifier,subtitle,symbol,title}"
+    ]
+   }
+  },
+  "com.apple.ShortcutsActions.ResetCellularDataStatisticsAction": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.ShortcutsActions.SetBatteryChargeLimitAction": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "setUntilTomorrow": [
+     "bool"
+    ]
+   }
+  },
+  "com.apple.ShortcutsActions.SetDataRoamingAction": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "plan": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.ShortcutsActions.SetDefaultCellularPlanAction": {
+   "count": 8,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "allowCellularDataSwitching": [
+     "bool"
+    ],
+    "plan": [
+     "WFTextTokenAttachment",
+     "dict{identifier,subtitle,symbol,title}"
+    ],
+    "type": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.ShortcutsActions.SetSilentModeAction": {
+   "count": 32,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "int"
+    ]
+   }
+  },
+  "com.apple.ShortcutsActions.SetVoiceDataModeAction": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "ratMode": [
+     "WFTextTokenAttachment",
+     "dict{subtitle,title,value}"
+    ],
+    "sim": [
+     "WFTextTokenAttachment",
+     "dict{identifier,subtitle,symbol,title}"
+    ]
+   }
+  },
+  "com.apple.ShortcutsActions.ShowControlCenterAction": {
+   "count": 37,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.ShortcutsActions.ToggleCellularPlanAction": {
+   "count": 12,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "plan": [
+     "WFTextTokenAttachment"
+    ],
+    "state": [
+     "int"
+    ]
+   }
+  },
+  "com.apple.ShortcutsActions.TranscribeAudioAction": {
+   "count": 13,
+   "output_names": [
+    "Transcribe Audio"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "audioFile": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.Spotlight.SearchSpotlightIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "criteria": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.TVRemoteUIService.LaunchApplicationIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "application": [
+     "dict{displayString,identifier}"
+    ],
+    "device": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.TVRemoteUIService.LaunchRemoteIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "device": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.TVRemoteUIService.LaunchScreenSaverIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "device": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.TVRemoteUIService.PauseContentIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "device": [
+     "WFTextTokenAttachment"
+    ],
+    "mediaCommand": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.TVRemoteUIService.SkipContentIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "device": [
+     "WFTextTokenAttachment"
+    ],
+    "skipCommand": [
+     "WFTextTokenAttachment"
+    ],
+    "skipDuration": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.TVRemoteUIService.SleepAppleTVIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "device": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.TVRemoteUIService.WakeAppleTVIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "device": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.VoiceMemos.RecordVoiceMemoIntent": {
+   "count": 11,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "name": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.WritingTools.WritingToolsAppIntentsExtension.AdjustToneIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "text": [
+     "WFTextTokenString"
+    ],
+    "tone": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.WritingTools.WritingToolsAppIntentsExtension.FormatListIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "text": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.WritingTools.WritingToolsAppIntentsExtension.FormatTableIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "text": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.WritingTools.WritingToolsAppIntentsExtension.ProofreadIntent": {
+   "count": 5,
+   "output_names": [
+    "Text"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "text": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.WritingTools.WritingToolsAppIntentsExtension.RewriteTextIntent": {
+   "count": 6,
+   "output_names": [
+    "Text"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "text": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.WritingTools.WritingToolsAppIntentsExtension.SummarizeTextIntent": {
+   "count": 6,
+   "output_names": [
+    "Text"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "summaryType": [
+     "WFTextTokenAttachment"
+    ],
+    "text": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.clock.CancelTimerIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.clock.DeleteAlarmIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "entities": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.facetime.facetime": {
+   "count": 12,
+   "output_names": [],
+   "params": {
+    "IntentAppDefinition": [
+     "dict{BundleIdentifier,ExtensionBundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFFaceTimeContact": [
+     "WFTextTokenAttachment"
+    ],
+    "WFFaceTimeType": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "com.apple.freeform.CRLCreateBoardIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "title": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.intelligenceplatform.IntelligencePlatform.IntelligencePlatformDataActionsAppIntentsExtension.CalculateAppUsageIntent": {
+   "count": 8,
+   "output_names": [
+    "Activity"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "activityType": [
+     "str"
+    ],
+    "during": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "selectedDevice": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.journal.CreateEntryIntent": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "OpenWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "entryDate": [
+     "WFTextTokenString"
+    ],
+    "location": [
+     "dict{isCurrentLocation}"
+    ],
+    "mediaItems": [
+     "WFTextTokenAttachment"
+    ],
+    "message": [
+     "WFTextTokenString"
+    ],
+    "title": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.mobilemail.MailMessageEntity": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{ActionRequiresAppInstallation,AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "real"
+    ]
+   }
+  },
+  "com.apple.mobilemail.SearchMessagesAction": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "searchPhrase": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.mobilenotes.CreateFolderLinkAction": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "OpenWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "name": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.mobilenotes.DeleteNotesLinkAction": {
+   "count": 10,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "entities": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.mobilenotes.ScanDocumentLinkAction": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobilenotes.SharingExtension": {
+   "count": 94,
+   "output_names": [
+    "Create Note"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "OpenWhenRun": [
+     "bool"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFCreateNoteInput": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFNoteGroup": [
+     "dict{DisplayString,Identifier}"
+    ],
+    "folder": [
+     "WFTextTokenAttachment",
+     "dict{identifier,subtitle,symbol,title}",
+     "dict{identifier,subtitle,title}"
+    ],
+    "name": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobilephone.call": {
+   "count": 34,
+   "output_names": [],
+   "params": {
+    "IntentAppDefinition": [
+     "dict{BundleIdentifier,ExtensionBundleIdentifier,Name,TeamIdentifier}",
+     "dict{BundleIdentifier,ExtensionBundleIdentifier,TeamIdentifier}",
+     "dict{BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "IntentAppIdentifier": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFCallContact": [
+     "WFContactFieldValue",
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.mobilesafari.CloseTab": {
+   "count": 8,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "target": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.mobilesafari.CreateNewPrivateTab": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobilesafari.CreateNewTab": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobilesafari.CreateTabAssistantIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobilesafari.LoadURLInTab": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ]
+   }
+  },
+  "com.apple.mobilesafari.TabEntity": {
+   "count": 5,
+   "output_names": [
+    "Tab"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{ActionRequiresAppInstallation,AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ]
+   }
+  },
+  "com.apple.mobileslideshow.HideAssetsIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ]
+   }
+  },
+  "com.apple.mobileslideshow.OpenAssetIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ]
+   }
+  },
+  "com.apple.mobileslideshow.OpenCollectionIntent": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "target": [
+     "dict{identifier,image,subtitle,title}"
+    ]
+   }
+  },
+  "com.apple.mobileslideshow.StreamShareService": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "ImageInput": [
+     "WFTextTokenAttachment"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobiletimer-framework.MobileTimerIntents.MTCreateAlarmIntent": {
+   "count": 54,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "OpenWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "allowsSnooze": [
+     "bool"
+    ],
+    "dateComponents": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "label": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "name": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "repeatSchedule": [
+     "WFTextTokenAttachment",
+     "array",
+     "dict{displayString,value}"
+    ],
+    "repeats": [
+     "WFTextTokenAttachment",
+     "array"
+    ]
+   }
+  },
+  "com.apple.mobiletimer-framework.MobileTimerIntents.MTGetAlarmsIntent": {
+   "count": 34,
+   "output_names": [
+    "Alarms"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{ActionRequiresAppInstallation,AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemInputParameter": [
+     "str"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "int",
+     "real"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobiletimer-framework.MobileTimerIntents.MTToggleAlarmIntent": {
+   "count": 17,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "alarm": [
+     "WFTextTokenAttachment",
+     "dict{identifier,subtitle,symbol,title}"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "int"
+    ]
+   }
+  },
+  "com.apple.mobiletimer.CancelTimerIntent": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobiletimer.DeleteAlarmIntent": {
+   "count": 15,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "entities": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.mobiletimer.EditSleepAlarmIntent": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobiletimer.GetCurrentTimerDetailsIntent": {
+   "count": 4,
+   "output_names": [
+    "Get Current Timer"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobiletimer.PauseTimerIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobiletimer.ResumeTimerIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobiletimer.StartStopwatchIntent": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.mobiletimer.StopStopwatchIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "OpenWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.musicrecognition.RecognizeMusicIntent": {
+   "count": 37,
+   "output_names": [
+    "Recognize Music"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "addToLibrary": [
+     "bool"
+    ],
+    "errorIfNotRecognized": [
+     "bool"
+    ]
+   }
+  },
+  "com.apple.reminders.DeleteListsAppIntent": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ]
+   }
+  },
+  "com.apple.reminders.TTRCreateListAppIntent": {
+   "count": 8,
+   "output_names": [
+    "Create List"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "OpenWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "group": [
+     "WFTextTokenAttachment"
+    ],
+    "name": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "type": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.shortcuts.AddShortcutToHomeScreenAction": {
+   "count": 32,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "image": [
+     "WFTextTokenAttachment"
+    ],
+    "shortcut": [
+     "WFTextTokenAttachment",
+     "dict{identifier,image,subtitle,title}"
+    ],
+    "title": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "com.apple.shortcuts.CreateFolderAction": {
+   "count": 6,
+   "output_names": [
+    "Create Folder"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "OpenWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "name": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "com.apple.shortcuts.CreateShortcutiCloudLinkAction": {
+   "count": 24,
+   "output_names": [
+    "Create iCloud Link for Shortcut"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "shortcut": [
+     "WFTextTokenAttachment",
+     "dict{identifier,image,subtitle,title}"
+    ]
+   }
+  },
+  "com.apple.shortcuts.CreateWorkflowAction": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "OpenWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "name": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.shortcuts.DeleteWorkflowAction": {
+   "count": 27,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "entities": [
+     "WFTextTokenAttachment",
+     "dict{identifier,image,subtitle,title}"
+    ]
+   }
+  },
+  "com.apple.shortcuts.MoveShortcutToFolderAction": {
+   "count": 7,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "OpenWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "folder": [
+     "WFTextTokenAttachment"
+    ],
+    "shortcuts": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "com.apple.shortcuts.OpenNavigationDestinationAction": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.shortcuts.OpenWorkflowAction": {
+   "count": 17,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFWorkflow": [
+     "dict{isSelf,workflowIdentifier,workflowName}"
+    ],
+    "target": [
+     "WFTextTokenAttachment",
+     "dict{identifier,image,subtitle,title}",
+     "dict{identifier,subtitle,title}"
+    ]
+   }
+  },
+  "com.apple.shortcuts.RenameShortcutAction": {
+   "count": 14,
+   "output_names": [
+    "Rename Shortcut"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "OpenWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "name": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "shortcut": [
+     "WFTextTokenAttachment",
+     "dict{identifier,image,subtitle,title}"
+    ]
+   }
+  },
+  "com.apple.shortcuts.SearchActionDrawerAction": {
+   "count": 3,
+   "output_names": [
+    "Search Shortcuts Actions"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "com.apple.shortcuts.SearchShortcutsAction": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "searchPhrase": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "com.apple.shortcuts.SetShortcutAttributesAction": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ]
+   }
+  },
+  "com.apple.weather.WeatherIntent": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "location": [
+     "dict{displayString,identifier}"
+    ]
+   }
+  }
+ },
+ "aggrandizements": [],
+ "enums": {},
+ "token_types": []
+}

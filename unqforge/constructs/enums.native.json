@@ -1,0 +1,124 @@
+{
+  "actions": {
+    "is.workflow.actions.adjustdate": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFAdjustOperation": [
+          "str"
+        ],
+        "WFDate": [
+          "WFTextTokenString"
+        ],
+        "WFDuration": [
+          "WFQuantityFieldValue"
+        ]
+      },
+      "output_names": [
+        "Adjusted Date"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.date": {
+      "params": {
+        "UUID": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Date"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.format.date": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFDate": [
+          "WFTextTokenString"
+        ],
+        "WFDateFormat": [
+          "str"
+        ],
+        "WFDateFormatStyle": [
+          "str"
+        ]
+      },
+      "output_names": [
+        "Formatted Date"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.image.convert": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFImageFormat": [
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "Converted Image"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.round": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "Rounded Number"
+      ],
+      "count": 1
+    },
+    "is.workflow.actions.savetocameraroll": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFInput": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [],
+      "count": 1
+    },
+    "is.workflow.actions.text.changecase": {
+      "params": {
+        "UUID": [
+          "str"
+        ],
+        "WFCaseType": [
+          "str"
+        ],
+        "text": [
+          "WFTextTokenAttachment"
+        ]
+      },
+      "output_names": [
+        "Updated Text"
+      ],
+      "count": 1
+    }
+  },
+  "enums": {
+    "WFImageFormat": [
+      "PNG"
+    ]
+  },
+  "token_types": [
+    "ActionOutput"
+  ],
+  "aggrandizements": []
+}

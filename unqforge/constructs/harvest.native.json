@@ -1,0 +1,6607 @@
+{
+ "actions": {
+  "is.workflow.actions.additemtolist": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFListVariable": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.addmusictoupnext": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFMusic": [
+     "WFTextTokenAttachment"
+    ],
+    "WFWhenToPlay": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.addnewcalendar": {
+   "count": 7,
+   "output_names": [],
+   "params": {
+    "CalendarName": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.addnewcontact": {
+   "count": 11,
+   "output_names": [],
+   "params": {
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContactCompany": [
+     "str"
+    ],
+    "WFContactEmails": [
+     "WFTextTokenAttachment"
+    ],
+    "WFContactFirstName": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFContactLastName": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFContactNotes": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFContactPhoneNumbers": [
+     "WFContactFieldValue",
+     "WFTextTokenAttachment"
+    ],
+    "WFContactPhoto": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.addnewevent": {
+   "count": 52,
+   "output_names": [
+    "New Event"
+   ],
+   "params": {
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFAlertCustomTime": [
+     "WFTextTokenString"
+    ],
+    "WFAlertTime": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFCalendarDescriptor": [
+     "WFTextTokenAttachment",
+     "dict{Identifier,IsAllCalendar,RGBAValue,Title}"
+    ],
+    "WFCalendarItemAllDay": [
+     "WFTextTokenAttachment",
+     "bool"
+    ],
+    "WFCalendarItemCalendar": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFCalendarItemDates": [
+     "bool"
+    ],
+    "WFCalendarItemEndDate": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFCalendarItemLocation": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFCalendarItemNotes": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFCalendarItemStartDate": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFCalendarItemTitle": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.addnewreminder": {
+   "count": 59,
+   "output_names": [
+    "New Reminder"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFAlertCondition": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFAlertCustomTime": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFAlertEnabled": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFAlertLocation": [
+     "WFTextTokenAttachment"
+    ],
+    "WFAlertTrigger": [
+     "str"
+    ],
+    "WFCalendarDescriptor": [
+     "WFTextTokenAttachment",
+     "dict{Identifier,IsAllCalendar,Title}"
+    ],
+    "WFCalendarItemAlert": [
+     "bool"
+    ],
+    "WFCalendarItemCalendar": [
+     "str"
+    ],
+    "WFCalendarItemNotes": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFCalendarItemTitle": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFFlag": [
+     "bool"
+    ],
+    "WFImages": [
+     "WFTextTokenAttachment"
+    ],
+    "WFPriority": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFTags": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFURL": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFUrgent": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.addquickreminder": {
+   "count": 2,
+   "output_names": [],
+   "params": {}
+  },
+  "is.workflow.actions.address": {
+   "count": 13,
+   "output_names": [
+    "Street Address"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFAddressLine1": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFAddressLine2": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFCity": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFCountry": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFPostalCode": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFState": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.addtoplaylist": {
+   "count": 12,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFPlaylistName": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.adjustdate": {
+   "count": 186,
+   "output_names": [
+    "Adjusted Date"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFAdjustOffsetPicker": [
+     "WFTimeOffsetValue"
+    ],
+    "WFAdjustOperation": [
+     "str"
+    ],
+    "WFDate": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFDuration": [
+     "WFQuantityFieldValue"
+    ]
+   }
+  },
+  "is.workflow.actions.airdropdocument": {
+   "count": 16,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.airplanemode.set": {
+   "count": 115,
+   "output_names": [],
+   "params": {
+    "OnValue": [
+     "WFTextTokenAttachment",
+     "bool",
+     "int"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.alert": {
+   "count": 1266,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFAlertActionCancelButtonShown": [
+     "bool"
+    ],
+    "WFAlertActionMessage": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFAlertActionTitle": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.appearance": {
+   "count": 48,
+   "output_names": [],
+   "params": {
+    "operation": [
+     "str"
+    ],
+    "style": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.appendnote": {
+   "count": 29,
+   "output_names": [
+    "Appended Note"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFNote": [
+     "WFTextTokenAttachment",
+     "dict{identifier,image,subtitle,title}",
+     "dict{identifier,subtitle,title}"
+    ],
+    "ignoreWhitespace": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.appendvariable": {
+   "count": 453,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFVariableName": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.ask": {
+   "count": 1075,
+   "output_names": [
+    "Ask for Input"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFAllowsMultilineText": [
+     "WFTextTokenAttachment",
+     "bool"
+    ],
+    "WFAskActionAllowsDecimalNumbers": [
+     "WFTextTokenAttachment",
+     "bool"
+    ],
+    "WFAskActionAllowsNegativeNumbers": [
+     "bool"
+    ],
+    "WFAskActionDateGranularity": [
+     "str"
+    ],
+    "WFAskActionDefaultAnswer": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFAskActionDefaultAnswerDate": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFAskActionDefaultAnswerDateAndTime": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFAskActionDefaultAnswerNumber": [
+     "WFTextTokenAttachment",
+     "int",
+     "str"
+    ],
+    "WFAskActionDefaultAnswerTime": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFAskActionDefaultAnswerURL": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFAskActionPrompt": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFInputType": [
+     "str"
+    ],
+    "WFShowWorkflow": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.askllm": {
+   "count": 126,
+   "output_names": [
+    "Response"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "FollowUp": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFAllowWebSearch": [
+     "bool"
+    ],
+    "WFGenerativeResultType": [
+     "str"
+    ],
+    "WFLLMModel": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFLLMPrompt": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.avairyeditphoto": {
+   "count": 18,
+   "output_names": [
+    "Markup Result"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFDocument": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.base64encode": {
+   "count": 432,
+   "output_names": [
+    "Base64 Encoded"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFBase64LineBreakMode": [
+     "str"
+    ],
+    "WFEncodeMode": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFShowWorkflow": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.bluetooth.set": {
+   "count": 70,
+   "output_names": [],
+   "params": {
+    "OnValue": [
+     "WFTextTokenAttachment",
+     "bool",
+     "int"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.calculateexpression": {
+   "count": 142,
+   "output_names": [
+    "Calculation Result"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "Input": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.cellulardata.set": {
+   "count": 87,
+   "output_names": [],
+   "params": {
+    "OnValue": [
+     "WFTextTokenAttachment",
+     "bool",
+     "int"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.choosefromlist": {
+   "count": 856,
+   "output_names": [
+    "Selected Item"
+   ],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFChooseFromListActionPrompt": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFChooseFromListActionSelectAll": [
+     "WFTextTokenAttachment",
+     "bool"
+    ],
+    "WFChooseFromListActionSelectMultiple": [
+     "WFTextTokenAttachment",
+     "bool"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.choosefrommenu": {
+   "count": 1245,
+   "output_names": [],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "GroupingIdentifier": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFControlFlowMode": [
+     "int"
+    ],
+    "WFMenuItemAttributedTitle": [
+     "dict{attachmentsByRange,string}"
+    ],
+    "WFMenuItemTitle": [
+     "str"
+    ],
+    "WFMenuItems": [
+     "array"
+    ],
+    "WFMenuLegacyCancelBehavior": [
+     "bool"
+    ],
+    "WFMenuPrompt": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.clearupnext": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.comment": {
+   "count": 1240,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFCommentActionText": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.compresspdf": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.conditional": {
+   "count": 1659,
+   "output_names": [],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "GroupingIdentifier": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFAnotherDate": [
+     "WFTextTokenAttachment",
+     "datetime"
+    ],
+    "WFAnotherMeasurement": [
+     "WFQuantityFieldValue"
+    ],
+    "WFAnotherNumber": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFApp": [
+     "dict{BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "WFCondition": [
+     "int"
+    ],
+    "WFConditionalActionBoolean": [
+     "int"
+    ],
+    "WFConditionalActionString": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFConditionalLegacyComparisonBehavior": [
+     "bool"
+    ],
+    "WFConditions": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFControlFlowMode": [
+     "int"
+    ],
+    "WFDate": [
+     "WFTextTokenAttachment",
+     "datetime"
+    ],
+    "WFDuration": [
+     "WFQuantityFieldValue"
+    ],
+    "WFEnumeration": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFInput": [
+     "ConditionalInputWrapper"
+    ],
+    "WFLinkEnumeration": [
+     "str"
+    ],
+    "WFMeasurement": [
+     "WFQuantityFieldValue"
+    ],
+    "WFNumberValue": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ],
+    "WFShowWorkflow": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.contacts": {
+   "count": 13,
+   "output_names": [
+    "Contacts"
+   ],
+   "params": {
+    "Show-WFContact": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContact": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.converttimezone": {
+   "count": 7,
+   "output_names": [
+    "Converted Date"
+   ],
+   "params": {
+    "Date": [
+     "WFTextTokenString"
+    ],
+    "DestinationTimeZone": [
+     "WFTextTokenAttachment",
+     "dict{alCityIdentifier,localizedCityName,timeZone}"
+    ],
+    "SourceTimeZone": [
+     "WFTextTokenAttachment",
+     "dict{alCityIdentifier,localizedCityName,timeZone}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.correctspelling": {
+   "count": 19,
+   "output_names": [
+    "Corrected Spelling"
+   ],
+   "params": {
+    "Show-text": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "text": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.count": {
+   "count": 589,
+   "output_names": [
+    "Count"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "Input": [
+     "WFTextTokenAttachment"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFCountType": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.createplaylist": {
+   "count": 10,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFPlaylistAuthor": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFPlaylistDescription": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFPlaylistItems": [
+     "WFTextTokenAttachment"
+    ],
+    "WFPlaylistName": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.date": {
+   "count": 336,
+   "output_names": [
+    "Date"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFDateActionDate": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFDateActionMode": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.delay": {
+   "count": 465,
+   "output_names": [],
+   "params": {
+    "WFDelayTime": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ]
+   }
+  },
+  "is.workflow.actions.deletephotos": {
+   "count": 41,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "photos": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.deletestoredcontent": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "WFStoredContentGlobalValue": [
+     "bool"
+    ],
+    "WFStoredContentKey": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.detect.address": {
+   "count": 20,
+   "output_names": [
+    "Addresses"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.detect.contacts": {
+   "count": 87,
+   "output_names": [
+    "Contacts"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.detect.date": {
+   "count": 121,
+   "output_names": [
+    "Dates"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.detect.dictionary": {
+   "count": 482,
+   "output_names": [
+    "Dictionary"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.detect.emailaddress": {
+   "count": 11,
+   "output_names": [
+    "Email Addresses"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.detect.images": {
+   "count": 119,
+   "output_names": [
+    "Images"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.detect.link": {
+   "count": 158,
+   "output_names": [
+    "URLs"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.detect.number": {
+   "count": 95,
+   "output_names": [
+    "Numbers"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.detect.phonenumber": {
+   "count": 27,
+   "output_names": [
+    "Phone Numbers"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.detect.text": {
+   "count": 334,
+   "output_names": [
+    "Text"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFShowWorkflow": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.detectlanguage": {
+   "count": 9,
+   "output_names": [
+    "Language"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.dictatetext": {
+   "count": 76,
+   "output_names": [
+    "Dictated Text"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFDictateTextStopListening": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFSpeechLanguage": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.dictionary": {
+   "count": 926,
+   "output_names": [
+    "Dictionary"
+   ],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFItems": [
+     "WFDictionaryFieldValue",
+     "dict{Value}"
+    ],
+    "WFShowWorkflow": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.dismisssiri": {
+   "count": 25,
+   "output_names": [],
+   "params": {}
+  },
+  "is.workflow.actions.display.always-on.set": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "OnValue": [
+     "int"
+    ]
+   }
+  },
+  "is.workflow.actions.dnd.getfocus": {
+   "count": 32,
+   "output_names": [
+    "Current Focus"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.dnd.set": {
+   "count": 66,
+   "output_names": [],
+   "params": {
+    "AssertionType": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "Enabled": [
+     "WFTextTokenAttachment",
+     "bool",
+     "int"
+    ],
+    "Event": [
+     "WFTextTokenAttachment"
+    ],
+    "FocusModes": [
+     "WFTextTokenAttachment",
+     "dict{DisplayString,Identifier}"
+    ],
+    "Operation": [
+     "str"
+    ],
+    "Time": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.documentpicker.open": {
+   "count": 555,
+   "output_names": [
+    "File"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "SelectMultiple": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFFile": [
+     "WFTextTokenAttachment",
+     "dict{displayName,fileLocation,filename}"
+    ],
+    "WFFileErrorIfNotFound": [
+     "bool"
+    ],
+    "WFFileStorageService": [
+     "str"
+    ],
+    "WFGetFilePath": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFGetFolderContents": [
+     "bool"
+    ],
+    "WFShowFilePicker": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.documentpicker.save": {
+   "count": 737,
+   "output_names": [
+    "Saved File"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFAskWhereToSave": [
+     "bool"
+    ],
+    "WFFileDestinationPath": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFFileStorageService": [
+     "str"
+    ],
+    "WFFolder": [
+     "WFTextTokenAttachment",
+     "dict{displayName,fileLocation,filename}"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment",
+     "dict{displayName,fileLocation,filename}"
+    ],
+    "WFSaveFileOverwrite": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.downloadurl": {
+   "count": 995,
+   "output_names": [
+    "Contents of URL"
+   ],
+   "params": {
+    "Advanced": [
+     "bool"
+    ],
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "ShowHeaders": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFFormValues": [
+     "WFDictionaryFieldValue"
+    ],
+    "WFHTTPBodyType": [
+     "str"
+    ],
+    "WFHTTPHeaders": [
+     "WFDictionaryFieldValue",
+     "dict{Value}"
+    ],
+    "WFHTTPMethod": [
+     "str"
+    ],
+    "WFJSONValues": [
+     "WFDictionaryFieldValue",
+     "dict{Value}"
+    ],
+    "WFRequestVariable": [
+     "WFTextTokenAttachment",
+     "dict{}",
+     "str"
+    ],
+    "WFURL": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.dropbox.savefile": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFAskWhereToSave": [
+     "bool"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.email": {
+   "count": 16,
+   "output_names": [
+    "Email Address"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFEmailAddress": [
+     "WFContactFieldValue",
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.encodemedia": {
+   "count": 66,
+   "output_names": [
+    "Encoded Media"
+   ],
+   "params": {
+    "Metadata": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFMedia": [
+     "WFTextTokenAttachment"
+    ],
+    "WFMediaAudioFormat": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFMediaAudioOnly": [
+     "WFTextTokenAttachment",
+     "bool"
+    ],
+    "WFMediaBitrate": [
+     "str"
+    ],
+    "WFMediaCustomSpeed": [
+     "WFTextTokenAttachment"
+    ],
+    "WFMediaSize": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFMediaSpeed": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFMetadataAlbum": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFMetadataArtist": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFMetadataArtwork": [
+     "WFTextTokenAttachment"
+    ],
+    "WFMetadataGenre": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFMetadataTitle": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFMetadataYear": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.evernote.get": {
+   "count": 2,
+   "output_names": [
+    "Notes"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFEvernoteNotesCount": [
+     "real"
+    ]
+   }
+  },
+  "is.workflow.actions.evernote.getlink": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.evernote.new": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFEvernoteNoteTitle": [
+     "WFTextTokenString"
+    ],
+    "WFEvernoteNotebook": [
+     "WFTextTokenAttachment"
+    ],
+    "WFEvernoteTags": [
+     "WFTextTokenAttachment"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.exit": {
+   "count": 1142,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFResult": [
+     "WFTextTokenAttachment",
+     "dict{}"
+    ]
+   }
+  },
+  "is.workflow.actions.exportsong": {
+   "count": 8,
+   "output_names": [
+    "Music"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFExportSongActionSelectMultiple": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.extracttextfromimage": {
+   "count": 72,
+   "output_names": [
+    "Text from Image"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFImage": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.file": {
+   "count": 157,
+   "output_names": [
+    "File"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFFile": [
+     "WFTextTokenAttachment",
+     "dict{displayName,fileLocation,filename}"
+    ]
+   }
+  },
+  "is.workflow.actions.file.append": {
+   "count": 87,
+   "output_names": [
+    "Appended File"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFAppendFileWriteMode": [
+     "str"
+    ],
+    "WFAppendOnNewLine": [
+     "bool"
+    ],
+    "WFFile": [
+     "WFTextTokenAttachment",
+     "dict{displayName,fileLocation,filename}"
+    ],
+    "WFFilePath": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFFileStorageService": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.file.createfolder": {
+   "count": 384,
+   "output_names": [
+    "Created Folder"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFFilePath": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFFileStorageService": [
+     "str"
+    ],
+    "WFFolder": [
+     "WFTextTokenAttachment",
+     "dict{displayName,fileLocation,filename}"
+    ]
+   }
+  },
+  "is.workflow.actions.file.delete": {
+   "count": 274,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFDeleteFileConfirmDeletion": [
+     "bool"
+    ],
+    "WFDeleteImmediatelyDelete": [
+     "bool"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment",
+     "dict{displayName,fileLocation,filename}"
+    ]
+   }
+  },
+  "is.workflow.actions.file.getfoldercontents": {
+   "count": 174,
+   "output_names": [
+    "Folder Contents"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "Recursive": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFFolder": [
+     "WFTextTokenAttachment",
+     "dict{displayName,fileLocation,filename}"
+    ]
+   }
+  },
+  "is.workflow.actions.file.getlink": {
+   "count": 26,
+   "output_names": [
+    "Link to File"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFFile": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.file.move": {
+   "count": 27,
+   "output_names": [
+    "File"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFFile": [
+     "WFTextTokenAttachment"
+    ],
+    "WFFolder": [
+     "WFTextTokenAttachment",
+     "dict{displayName,fileLocation,filename}"
+    ],
+    "WFReplaceExisting": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.file.rename": {
+   "count": 71,
+   "output_names": [
+    "File"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFFile": [
+     "WFTextTokenAttachment"
+    ],
+    "WFNewFilename": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.file.reveal": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFFile": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.file.select": {
+   "count": 167,
+   "output_names": [
+    "File"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "SelectMultiple": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFFile": [
+     "WFTextTokenAttachment"
+    ],
+    "WFGetFolderContents": [
+     "bool"
+    ],
+    "WFPickingMode": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFShowFilePicker": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.filter.apps": {
+   "count": 3,
+   "output_names": [
+    "Apps"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ]
+   }
+  },
+  "is.workflow.actions.filter.articles": {
+   "count": 7,
+   "output_names": [
+    "Articles"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemInputParameter": [
+     "WFTextTokenAttachment"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "real"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.filter.calendarevents": {
+   "count": 57,
+   "output_names": [
+    "Calendar Events"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemInputParameter": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "int",
+     "real"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.filter.contacts": {
+   "count": 43,
+   "output_names": [
+    "Contacts"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemInputParameter": [
+     "WFTextTokenAttachment"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "int",
+     "real"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.filter.files": {
+   "count": 316,
+   "output_names": [
+    "Files"
+   ],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemInputParameter": [
+     "WFTextTokenAttachment"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.filter.health.quantity": {
+   "count": 14,
+   "output_names": [
+    "Health Samples"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "real"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ],
+    "WFHKSampleFilteringFillMissing": [
+     "bool"
+    ],
+    "WFHKSampleFilteringGroupBy": [
+     "str"
+    ],
+    "WFHKSampleFilteringUnit": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.filter.images": {
+   "count": 5,
+   "output_names": [
+    "Images"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemInputParameter": [
+     "WFTextTokenAttachment"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.filter.locations": {
+   "count": 4,
+   "output_names": [
+    "Locations"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemInputParameter": [
+     "WFTextTokenAttachment"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.filter.music": {
+   "count": 17,
+   "output_names": [
+    "Music"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemInputParameter": [
+     "WFTextTokenAttachment"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.filter.notes": {
+   "count": 33,
+   "output_names": [
+    "Note"
+   ],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{ActionRequiresAppInstallation,AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemInputParameter": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.filter.photos": {
+   "count": 68,
+   "output_names": [
+    "Photos"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemInputParameter": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.filter.reminders": {
+   "count": 39,
+   "output_names": [
+    "Reminders"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemFilter": [
+     "WFContentPredicateTableTemplate"
+    ],
+    "WFContentItemInputParameter": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFContentItemLimitEnabled": [
+     "bool"
+    ],
+    "WFContentItemLimitNumber": [
+     "real"
+    ],
+    "WFContentItemSortOrder": [
+     "str"
+    ],
+    "WFContentItemSortProperty": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.flashlight": {
+   "count": 64,
+   "output_names": [],
+   "params": {
+    "WFFlashlightLevel": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ],
+    "WFFlashlightSetting": [
+     "str"
+    ],
+    "operation": [
+     "str"
+    ],
+    "state": [
+     "WFTextTokenAttachment",
+     "bool",
+     "int"
+    ]
+   }
+  },
+  "is.workflow.actions.format.date": {
+   "count": 233,
+   "output_names": [
+    "Formatted Date"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFDate": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFDateFormat": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFDateFormatStyle": [
+     "str"
+    ],
+    "WFISO8601IncludeTime": [
+     "bool"
+    ],
+    "WFLocale": [
+     "str"
+    ],
+    "WFTimeFormatStyle": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.format.filesize": {
+   "count": 14,
+   "output_names": [
+    "Formatted File Size"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFFileSize": [
+     "WFTextTokenAttachment"
+    ],
+    "WFFileSizeFormat": [
+     "str"
+    ],
+    "WFFileSizeIncludeUnits": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.format.number": {
+   "count": 51,
+   "output_names": [
+    "Formatted Number"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFMathOperand": [
+     "WFTextTokenAttachment"
+    ],
+    "WFNumber": [
+     "WFTextTokenAttachment"
+    ],
+    "WFNumberFormatDecimalPlaces": [
+     "int",
+     "real"
+    ]
+   }
+  },
+  "is.workflow.actions.generatebarcode": {
+   "count": 61,
+   "output_names": [
+    "QR Code"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFQRErrorCorrectionLevel": [
+     "str"
+    ],
+    "WFQRForegroundColor": [
+     "dict{WFColorRepresentationType,alphaComponent,blueComponent,greenComponent,redComponent}"
+    ],
+    "WFQRRounded": [
+     "bool"
+    ],
+    "WFText": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.get.playlist": {
+   "count": 12,
+   "output_names": [
+    "Playlist"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFPlaylistName": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getarticle": {
+   "count": 13,
+   "output_names": [
+    "Article"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFWebPage": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.getbatterylevel": {
+   "count": 102,
+   "output_names": [
+    "Battery State"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "Subject": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getclipboard": {
+   "count": 201,
+   "output_names": [
+    "Clipboard"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getcurrentapp": {
+   "count": 63,
+   "output_names": [
+    "Current App"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFVisibleAppScope": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getcurrentlocation": {
+   "count": 100,
+   "output_names": [
+    "Current Location"
+   ],
+   "params": {
+    "Accuracy": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getcurrentsong": {
+   "count": 16,
+   "output_names": [
+    "Current Song"
+   ],
+   "params": {
+    "Subject": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getdevicedetails": {
+   "count": 368,
+   "output_names": [
+    "Device Model"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFDeviceDetail": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getdirections": {
+   "count": 27,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFDestination": [
+     "WFTextTokenAttachment"
+    ],
+    "WFGetDirectionsActionApp": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFGetDirectionsActionMode": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFLocation": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.getdistance": {
+   "count": 11,
+   "output_names": [
+    "Distance"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFDistanceUnit": [
+     "str"
+    ],
+    "WFGetDirectionsActionMode": [
+     "str"
+    ],
+    "WFGetDirectionsCustomLocation": [
+     "WFTextTokenAttachment"
+    ],
+    "WFGetDistanceDestination": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.getepisodesforpodcast": {
+   "count": 2,
+   "output_names": [
+    "Episodes"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getframesfromimage": {
+   "count": 6,
+   "output_names": [
+    "Frames from Image"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFImage": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.gethalfwaypoint": {
+   "count": 4,
+   "output_names": [
+    "Halfway Point"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFGetHalfwayPointFirstLocation": [
+     "WFTextTokenAttachment"
+    ],
+    "WFGetHalfwayPointSecondLocation": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.gethomeaccessorystate": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFHMCharacteristic": [
+     "dict{HomeIdentifier}"
+    ],
+    "WFHMService": [
+     "dict{HomeIdentifier,HomeService}"
+    ]
+   }
+  },
+  "is.workflow.actions.gethtmlfromrichtext": {
+   "count": 107,
+   "output_names": [
+    "HTML from Rich Text"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFMakeFullDocument": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.getipaddress": {
+   "count": 289,
+   "output_names": [
+    "Current IP Address"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFIPAddressSourceOption": [
+     "str"
+    ],
+    "WFIPAddressTypeOption": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getitemfromlist": {
+   "count": 702,
+   "output_names": [
+    "Item from List"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFItemIndex": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ],
+    "WFItemRangeEnd": [
+     "WFTextTokenAttachment",
+     "int",
+     "str"
+    ],
+    "WFItemRangeStart": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ],
+    "WFItemSpecifier": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getitemname": {
+   "count": 103,
+   "output_names": [
+    "Name"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "GetWebPageTitle": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.getitemtype": {
+   "count": 129,
+   "output_names": [
+    "Type"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.getlastphoto": {
+   "count": 16,
+   "output_names": [
+    "Latest Photos"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFGetLatestPhotoCount": [
+     "int",
+     "real"
+    ],
+    "WFGetLatestPhotosActionIncludeScreenshots": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.getlastscreenshot": {
+   "count": 7,
+   "output_names": [
+    "Latest Screenshots"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getlastvideo": {
+   "count": 6,
+   "output_names": [
+    "Latest Videos"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFGetLatestPhotoCount": [
+     "real"
+    ]
+   }
+  },
+  "is.workflow.actions.getlatestbursts": {
+   "count": 2,
+   "output_names": [],
+   "params": {}
+  },
+  "is.workflow.actions.getlatestlivephotos": {
+   "count": 2,
+   "output_names": [],
+   "params": {}
+  },
+  "is.workflow.actions.getmapslink": {
+   "count": 22,
+   "output_names": [
+    "Maps URL"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.getmarkdownfromrichtext": {
+   "count": 13,
+   "output_names": [
+    "Markdown from Rich Text"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.getmyworkflows": {
+   "count": 283,
+   "output_names": [
+    "My Shortcuts"
+   ],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "Folder": [
+     "WFTextTokenAttachment",
+     "dict{DisplayString,Identifier}"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getnameofemoji": {
+   "count": 19,
+   "output_names": [
+    "Name of Emoji"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.getonscreencontent": {
+   "count": 6,
+   "output_names": [
+    "Get What’s On Screen"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getonscreencontext": {
+   "count": 3,
+   "output_names": [
+    "On-Screen Text"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFOnScreenContextResultType": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getparentdirectory": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.getparkedcarlocation": {
+   "count": 5,
+   "output_names": [
+    "Car Location"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getrichtextfromhtml": {
+   "count": 147,
+   "output_names": [
+    "Rich Text from HTML"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFHTML": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.getrichtextfrommarkdown": {
+   "count": 47,
+   "output_names": [
+    "Rich Text from Markdown"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.getstoredcontent": {
+   "count": 26,
+   "output_names": [
+    "Stored Content"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFStoredContentGlobalValue": [
+     "bool"
+    ],
+    "WFStoredContentKey": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.gettext": {
+   "count": 1661,
+   "output_names": [
+    "Text"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFShowWorkflow": [
+     "bool"
+    ],
+    "WFTextActionText": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.gettextfrompdf": {
+   "count": 20,
+   "output_names": [
+    "Text"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFCombinePages": [
+     "bool"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.gettimebetweendates": {
+   "count": 204,
+   "output_names": [
+    "Time Between Dates"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString"
+    ],
+    "WFTimeUntilCustomDate": [
+     "WFTextTokenString"
+    ],
+    "WFTimeUntilFromDate": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFTimeUntilReferenceDate": [
+     "str"
+    ],
+    "WFTimeUntilUnit": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.gettraveltime": {
+   "count": 31,
+   "output_names": [
+    "Travel Time"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFDestination": [
+     "WFTextTokenAttachment"
+    ],
+    "WFGetDirectionsActionMode": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFGetDirectionsCustomLocation": [
+     "WFTextTokenAttachment",
+     "dict{isCurrentLocation,placemark}",
+     "dict{isCurrentLocation}"
+    ]
+   }
+  },
+  "is.workflow.actions.gettypeaction": {
+   "count": 64,
+   "output_names": [
+    "File of Type"
+   ],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFFileType": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.getupcomingevents": {
+   "count": 30,
+   "output_names": [
+    "Upcoming Events"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFDateSpecifier": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFGetUpcomingItemCalendar": [
+     "dict{Identifier,IsAllCalendar,RGBAValue,Title}",
+     "dict{IsAllCalendar}"
+    ],
+    "WFGetUpcomingItemCount": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ]
+   }
+  },
+  "is.workflow.actions.getupcomingreminders": {
+   "count": 11,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFGetUpcomingItemCalendar": [
+     "dict{Identifier,IsAllCalendar,Title}"
+    ],
+    "WFGetUpcomingItemCount": [
+     "real"
+    ]
+   }
+  },
+  "is.workflow.actions.geturlcomponent": {
+   "count": 35,
+   "output_names": [
+    "Component of URL"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFURL": [
+     "WFTextTokenString"
+    ],
+    "WFURLComponent": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getvalueforkey": {
+   "count": 943,
+   "output_names": [
+    "Dictionary Value"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFDictionaryKey": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFGetDictionaryValueType": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.getvariable": {
+   "count": 269,
+   "output_names": [],
+   "params": {
+    "WFVariable": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.getwebpagecontents": {
+   "count": 182,
+   "output_names": [
+    "Contents of Web Page"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.getwifi": {
+   "count": 163,
+   "output_names": [
+    "Network Details"
+   ],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFCellularDetail": [
+     "str"
+    ],
+    "WFNetworkDetailsNetwork": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFWiFiDetail": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.giphy": {
+   "count": 8,
+   "output_names": [
+    "GIFs"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFGiphyQuery": [
+     "WFTextTokenString"
+    ],
+    "WFGiphySelectMultiple": [
+     "bool"
+    ],
+    "WFGiphyShowPicker": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.handoff": {
+   "count": 47,
+   "output_names": [],
+   "params": {}
+  },
+  "is.workflow.actions.handoffplayback": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "WFDestinationMediaRoute": [
+     "WFTextTokenAttachment"
+    ],
+    "WFSourceMediaRoute": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.hash": {
+   "count": 34,
+   "output_names": [
+    "Hash"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFHashType": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.health.quantity.log": {
+   "count": 16,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFCategorySampleEnumeration": [
+     "str"
+    ],
+    "WFQuantitySampleAdditionalQuantity": [
+     "WFQuantityFieldValue"
+    ],
+    "WFQuantitySampleDate": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFQuantitySampleQuantity": [
+     "WFQuantityFieldValue"
+    ],
+    "WFQuantitySampleType": [
+     "str"
+    ],
+    "WFSampleEndDate": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.homeaccessory": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFHomeTriggerActionSets": [
+     "dict{WFHFTriggerActionSetsBuilderParameterStateActionSets,WFHFTriggerActionSetsBuilderParameterStateHome}"
+    ]
+   }
+  },
+  "is.workflow.actions.image.combine": {
+   "count": 37,
+   "output_names": [
+    "Combined Image"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFImageCombineDirection": [
+     "str"
+    ],
+    "WFImageCombineMode": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFImageCombineSpacing": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.image.convert": {
+   "count": 102,
+   "output_names": [
+    "Converted Image"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFImageCompressionQuality": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ],
+    "WFImageFormat": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFImagePreserveMetadata": [
+     "bool"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.image.crop": {
+   "count": 74,
+   "output_names": [
+    "Cropped Image"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFImageCropHeight": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ],
+    "WFImageCropPosition": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFImageCropWidth": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ],
+    "WFImageCropX": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ],
+    "WFImageCropY": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.image.flip": {
+   "count": 14,
+   "output_names": [
+    "Flipped Image"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFImageFlipDirection": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.image.mask": {
+   "count": 34,
+   "output_names": [
+    "Masked Image"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFCustomMaskImage": [
+     "WFTextTokenAttachment"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFMaskCornerRadius": [
+     "WFTextTokenAttachment",
+     "real",
+     "str"
+    ],
+    "WFMaskType": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.image.removebackground": {
+   "count": 15,
+   "output_names": [
+    "Image Without Background"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFCropToBounds": [
+     "bool"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.image.resize": {
+   "count": 105,
+   "output_names": [
+    "Resized Image"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFImage": [
+     "WFTextTokenAttachment"
+    ],
+    "WFImageResizeHeight": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ],
+    "WFImageResizeKey": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFImageResizeLength": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFImageResizePercentage": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFImageResizeWidth": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.image.rotate": {
+   "count": 17,
+   "output_names": [
+    "Rotated Image/Video"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFImage": [
+     "WFTextTokenAttachment"
+    ],
+    "WFImageRotateAmount": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.imgur.upload": {
+   "count": 10,
+   "output_names": [
+    "Imgur URLs"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFImgurAnonymous": [
+     "bool"
+    ],
+    "WFImgurDescription": [
+     "WFTextTokenString"
+    ],
+    "WFImgurDirectLink": [
+     "bool"
+    ],
+    "WFImgurTitle": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.intercom": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFHome": [
+     "WFTextTokenAttachment"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.list": {
+   "count": 489,
+   "output_names": [
+    "List"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFItems": [
+     "array"
+    ]
+   }
+  },
+  "is.workflow.actions.listeningmode.set": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "WFListeningMode": [
+     "str"
+    ],
+    "WFRoute": [
+     "dict{isLocalDevice,routeName,routeUID}"
+    ]
+   }
+  },
+  "is.workflow.actions.location": {
+   "count": 28,
+   "output_names": [
+    "Location"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFLocation": [
+     "WFTextTokenAttachment",
+     "dict{isCurrentLocation}"
+    ]
+   }
+  },
+  "is.workflow.actions.lock.app": {
+   "count": 3,
+   "output_names": [],
+   "params": {}
+  },
+  "is.workflow.actions.lockscreen": {
+   "count": 29,
+   "output_names": [],
+   "params": {}
+  },
+  "is.workflow.actions.lowpowermode.set": {
+   "count": 62,
+   "output_names": [],
+   "params": {
+    "OnValue": [
+     "WFTextTokenAttachment",
+     "bool",
+     "int"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.makegif": {
+   "count": 37,
+   "output_names": [
+    "GIF"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFMakeGIFActionAutoSize": [
+     "bool"
+    ],
+    "WFMakeGIFActionDelayTime": [
+     "WFTextTokenAttachment",
+     "real",
+     "str"
+    ],
+    "WFMakeGIFActionLoopEnabled": [
+     "WFTextTokenAttachment",
+     "bool"
+    ],
+    "WFMakeGIFActionManualSizeHeight": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFMakeGIFActionManualSizeWidth": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.makeimagefrompdfpage": {
+   "count": 13,
+   "output_names": [
+    "Image"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFMakeImageFromPDFPageImageFormat": [
+     "str"
+    ],
+    "WFMakeImageFromPDFPageResolution": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.makeimagefromrichtext": {
+   "count": 14,
+   "output_names": [
+    "Image"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFHeight": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFWidth": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.makepdf": {
+   "count": 78,
+   "output_names": [
+    "PDF"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFPDFDocumentMergeBehavior": [
+     "str"
+    ],
+    "WFPDFIncludeMargin": [
+     "WFTextTokenAttachment",
+     "bool"
+    ],
+    "WFPDFIncludedPages": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.makespokenaudiofromtext": {
+   "count": 13,
+   "output_names": [
+    "Spoken Audio"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString"
+    ],
+    "WFSpeakTextLanguage": [
+     "str"
+    ],
+    "WFSpeakTextRate": [
+     "real"
+    ],
+    "WFSpeakTextVoice": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.makevideofromgif": {
+   "count": 6,
+   "output_names": [
+    "Video"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInputGIF": [
+     "WFTextTokenAttachment"
+    ],
+    "WFMakeVideoFromGIFActionLoopCount": [
+     "real"
+    ]
+   }
+  },
+  "is.workflow.actions.makezip": {
+   "count": 53,
+   "output_names": [
+    "Archive"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFArchiveFormat": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFZIPName": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.math": {
+   "count": 508,
+   "output_names": [
+    "Calculation Result"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFMathOperand": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ],
+    "WFMathOperation": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFScientificMathOperand": [
+     "WFTextTokenAttachment",
+     "real",
+     "str"
+    ],
+    "WFScientificMathOperation": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.measurement.convert": {
+   "count": 13,
+   "output_names": [
+    "Converted Measurement"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFMeasurementUnit": [
+     "WFTextTokenAttachment",
+     "dict{WFNSUnitSymbol,WFNSUnitType}"
+    ],
+    "WFMeasurementUnitType": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.measurement.create": {
+   "count": 12,
+   "output_names": [
+    "Measurement"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFMeasurementUnit": [
+     "WFQuantityFieldValue"
+    ],
+    "WFMeasurementUnitType": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.nightshift.set": {
+   "count": 10,
+   "output_names": [],
+   "params": {
+    "OnValue": [
+     "int"
+    ],
+    "operation": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.nothing": {
+   "count": 443,
+   "output_names": [
+    "Nothing"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.notification": {
+   "count": 711,
+   "output_names": [],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFNotificationActionBody": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFNotificationActionSound": [
+     "bool"
+    ],
+    "WFNotificationActionTitle": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.number": {
+   "count": 544,
+   "output_names": [
+    "Number"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFNumberActionNumber": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.number.random": {
+   "count": 190,
+   "output_names": [
+    "Random Number"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFRandomNumberMaximum": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ],
+    "WFRandomNumberMinimum": [
+     "WFTextTokenAttachment",
+     "int",
+     "real",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.openapp": {
+   "count": 297,
+   "output_names": [
+    "App"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFAppIdentifier": [
+     "str"
+    ],
+    "WFOpenInSlideOver": [
+     "bool"
+    ],
+    "WFSelectedApp": [
+     "WFTextTokenAttachment",
+     "dict{BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "WFWindowingFormat": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.openin": {
+   "count": 100,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment",
+     "dict{displayName,fileLocation,filename}"
+    ],
+    "WFOpenInAppIdentifier": [
+     "str"
+    ],
+    "WFOpenInAskWhenRun": [
+     "bool"
+    ],
+    "WFSelectedApp": [
+     "WFTextTokenAttachment",
+     "dict{BundleIdentifier,Name,TeamIdentifier}"
+    ]
+   }
+  },
+  "is.workflow.actions.openpasswords": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFShowPasswordsSearchTerm": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.openurl": {
+   "count": 1064,
+   "output_names": [],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "Show-WFInput": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment",
+     "WFTextTokenString",
+     "array",
+     "str"
+    ],
+    "WFShowWorkflow": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.openxcallbackurl": {
+   "count": 10,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFXCallbackCustomCallbackEnabled": [
+     "bool"
+    ],
+    "WFXCallbackCustomSuccessURLEnabled": [
+     "bool"
+    ],
+    "WFXCallbackURL": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.orientationlock.set": {
+   "count": 16,
+   "output_names": [],
+   "params": {
+    "OnValue": [
+     "int"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.output": {
+   "count": 167,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFNoOutputSurfaceBehavior": [
+     "str"
+    ],
+    "WFOutput": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFResponse": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.overlayimageonimage": {
+   "count": 58,
+   "output_names": [
+    "Overlaid Image"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFImage": [
+     "WFTextTokenAttachment"
+    ],
+    "WFImageHeight": [
+     "WFTextTokenAttachment",
+     "real",
+     "str"
+    ],
+    "WFImagePosition": [
+     "str"
+    ],
+    "WFImageWidth": [
+     "WFTextTokenAttachment",
+     "real",
+     "str"
+    ],
+    "WFImageX": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFImageY": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFOverlayImageOpacity": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFRotation": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFShouldShowImageEditor": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.overlaytext": {
+   "count": 29,
+   "output_names": [
+    "Image with Text"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFFont": [
+     "dict{WFFontDescriptorName}"
+    ],
+    "WFFontSize": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFImage": [
+     "WFTextTokenAttachment"
+    ],
+    "WFPercentageFontSize": [
+     "WFTextTokenAttachment",
+     "real"
+    ],
+    "WFPercentageTextBoxWidth": [
+     "int",
+     "real"
+    ],
+    "WFPercentageTextOffset": [
+     "real"
+    ],
+    "WFPercentageTextStrokeWidth": [
+     "real"
+    ],
+    "WFPercentageTextX": [
+     "real"
+    ],
+    "WFSizingMethod": [
+     "str"
+    ],
+    "WFText": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFTextAlignment": [
+     "str"
+    ],
+    "WFTextBoxWidth": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFTextColor": [
+     "dict{WFColorRepresentationType,alphaComponent,blueComponent,greenComponent,redComponent}"
+    ],
+    "WFTextOffset": [
+     "str"
+    ],
+    "WFTextOutlineEnabled": [
+     "bool"
+    ],
+    "WFTextPosition": [
+     "str"
+    ],
+    "WFTextRotation": [
+     "str"
+    ],
+    "WFTextStrokeColor": [
+     "dict{WFColorRepresentationType,alphaComponent,blueComponent,greenComponent,redComponent}"
+    ],
+    "WFTextStrokeWidth": [
+     "str"
+    ],
+    "WFTextX": [
+     "str"
+    ],
+    "WFTextY": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.pausemusic": {
+   "count": 27,
+   "output_names": [],
+   "params": {
+    "WFMediaRoute": [
+     "dict{isLocalDevice,routeUID}"
+    ],
+    "WFPlayPauseBehavior": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.personalhotspot.password.get": {
+   "count": 9,
+   "output_names": [
+    "Personal Hotspot Password"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.personalhotspot.password.set": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.personalhotspot.set": {
+   "count": 20,
+   "output_names": [],
+   "params": {
+    "OnValue": [
+     "int"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.phonenumber": {
+   "count": 6,
+   "output_names": [
+    "Phone Number"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFPhoneNumber": [
+     "WFContactFieldValue",
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.photos.createalbum": {
+   "count": 20,
+   "output_names": [],
+   "params": {
+    "AlbumName": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.playmusic": {
+   "count": 30,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFMediaItems": [
+     "WFTextTokenAttachment",
+     "dict{itemName,playbackArchiveData,type}"
+    ],
+    "WFPlayMusicActionRepeat": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFPlayMusicActionShuffle": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.playpodcast": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFPodcastPlaybackOrder": [
+     "str"
+    ],
+    "WFPodcastShow": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.playsound": {
+   "count": 121,
+   "output_names": [],
+   "params": {
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.posters.get": {
+   "count": 17,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFPosterType": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.posters.switch": {
+   "count": 8,
+   "output_names": [],
+   "params": {
+    "WFPoster": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.postonfacebook": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "FacebookContent": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.previewdocument": {
+   "count": 431,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFQuickLookActionFullScreen": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.print": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.appearance": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.appstore": {
+   "count": 27,
+   "output_names": [],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.articles": {
+   "count": 15,
+   "output_names": [
+    "Body"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.calendarevents": {
+   "count": 27,
+   "output_names": [
+    "Start Date"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.contacts": {
+   "count": 44,
+   "output_names": [
+    "Name"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.files": {
+   "count": 93,
+   "output_names": [
+    "Name"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.health.quantity": {
+   "count": 3,
+   "output_names": [
+    "Value"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.images": {
+   "count": 73,
+   "output_names": [
+    "Width"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.itunesstore": {
+   "count": 8,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.locations": {
+   "count": 31,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.music": {
+   "count": 9,
+   "output_names": [
+    "Artist"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.reminders": {
+   "count": 10,
+   "output_names": [
+    "Due Date"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.ridestatus": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.safariwebpage": {
+   "count": 11,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.shazam": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.weather.conditions": {
+   "count": 38,
+   "output_names": [
+    "Condition"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.properties.workflow": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.readinglist": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "WFURL": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.reboot": {
+   "count": 33,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFShutdownMode": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.recordaudio": {
+   "count": 23,
+   "output_names": [
+    "Recorded Audio"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFRecordingCompression": [
+     "str"
+    ],
+    "WFRecordingEnd": [
+     "str"
+    ],
+    "WFRecordingStart": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.reminders.showlist": {
+   "count": 7,
+   "output_names": [],
+   "params": {
+    "WFList": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.removeevents": {
+   "count": 6,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFCalendarIncludeFutureEvents": [
+     "bool"
+    ],
+    "WFInputEvents": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.removefromalbum": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFRemoveAlbumSelectedGroup": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.removereminders": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInputReminders": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.repeat.count": {
+   "count": 520,
+   "output_names": [],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "GroupingIdentifier": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFControlFlowMode": [
+     "int"
+    ],
+    "WFRepeatCount": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ]
+   }
+  },
+  "is.workflow.actions.repeat.each": {
+   "count": 736,
+   "output_names": [],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "GroupingIdentifier": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFControlFlowMode": [
+     "int"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.returntohomescreen": {
+   "count": 57,
+   "output_names": [],
+   "params": {}
+  },
+  "is.workflow.actions.ride.requestride": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "DropOffLocation": [
+     "WFTextTokenAttachment"
+    ],
+    "PartySize": [
+     "WFTextTokenAttachment"
+    ],
+    "PickupLocation": [
+     "WFTextTokenAttachment"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.round": {
+   "count": 184,
+   "output_names": [
+    "Rounded Number"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFRoundDecimalPlaces": [
+     "int",
+     "real"
+    ],
+    "WFRoundMode": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFRoundTo": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFRoundType": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.rss": {
+   "count": 42,
+   "output_names": [
+    "RSS Items"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFRSSFeedURL": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFRSSItemQuantity": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ]
+   }
+  },
+  "is.workflow.actions.runapplescript": {
+   "count": 12,
+   "output_names": [
+    "AppleScript Result"
+   ],
+   "params": {
+    "Input": [
+     "WFTextTokenAttachment"
+    ],
+    "Script": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.runextension": {
+   "count": 7,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFApp": [
+     "dict{BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "WFAppIdentifier": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.runjavascriptforautomation": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "Script": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.runjavascriptonwebpage": {
+   "count": 59,
+   "output_names": [
+    "JavaScript Result"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFJavaScript": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.runshellscript": {
+   "count": 20,
+   "output_names": [
+    "Shell Script Result"
+   ],
+   "params": {
+    "Input": [
+     "WFTextTokenAttachment"
+    ],
+    "InputMode": [
+     "str"
+    ],
+    "RunAsRoot": [
+     "bool"
+    ],
+    "Script": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "Shell": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.runsshscript": {
+   "count": 14,
+   "output_names": [
+    "Shell Script Result"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFSSHAuthenticationType": [
+     "str"
+    ],
+    "WFSSHHost": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFSSHPassword": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFSSHPort": [
+     "str"
+    ],
+    "WFSSHScript": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFSSHUser": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.runworkflow": {
+   "count": 776,
+   "output_names": [
+    "Shortcut Result"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFShowWorkflow": [
+     "WFTextTokenAttachment",
+     "bool"
+    ],
+    "WFWorkflow": [
+     "WFTextTokenAttachment",
+     "dict{isSelf,workflowIdentifier,workflowName}",
+     "dict{isSelf,workflowName}",
+     "dict{isSelf}"
+    ],
+    "WFWorkflowName": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.savetocameraroll": {
+   "count": 256,
+   "output_names": [
+    "Saved Photo Media"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFCameraRollSelectedGroup": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.scanbarcode": {
+   "count": 31,
+   "output_names": [
+    "QR/Barcode"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.searchappstore": {
+   "count": 52,
+   "output_names": [
+    "App Store Apps"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFAttribute": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFCountry": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFEntity": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFItemLimit": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ],
+    "WFSearchTerm": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.searchitunes": {
+   "count": 20,
+   "output_names": [
+    "iTunes Products"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFAttribute": [
+     "str"
+    ],
+    "WFCountry": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFEntity": [
+     "str"
+    ],
+    "WFItemLimit": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ],
+    "WFMediaType": [
+     "str"
+    ],
+    "WFSearchTerm": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.searchlocalbusinesses": {
+   "count": 17,
+   "output_names": [
+    "Local Businesses"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFSearchQuery": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFSearchRadius": [
+     "WFQuantityFieldValue"
+    ]
+   }
+  },
+  "is.workflow.actions.searchmaps": {
+   "count": 23,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFSearchMapsActionApp": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.searchpodcasts": {
+   "count": 6,
+   "output_names": [
+    "Podcasts"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFCountry": [
+     "str"
+    ],
+    "WFEntity": [
+     "str"
+    ],
+    "WFItemLimit": [
+     "int",
+     "real"
+    ],
+    "WFSearchTerm": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.searchweb": {
+   "count": 34,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInputText": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFSearchWebDestination": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.seek": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "WFMediaRoute": [
+     "dict{isLocalDevice,routeUID}"
+    ],
+    "WFSeekBehavior": [
+     "str"
+    ],
+    "WFTimeInterval": [
+     "WFQuantityFieldValue"
+    ]
+   }
+  },
+  "is.workflow.actions.selectcontacts": {
+   "count": 53,
+   "output_names": [
+    "Contacts"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFSelectMultiple": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.selectphone": {
+   "count": 4,
+   "output_names": [
+    "Phone Numbers"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.selectphoto": {
+   "count": 241,
+   "output_names": [
+    "Photos"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFPhotoPickerTypes": [
+     "WFTextTokenAttachment",
+     "array",
+     "str"
+    ],
+    "WFSelectMultiplePhotos": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.sendemail": {
+   "count": 110,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFEmailAccountActionSelectedAccount": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFSendEmailActionBccRecipients": [
+     "WFTextTokenAttachment"
+    ],
+    "WFSendEmailActionFrom": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFSendEmailActionInputAttachments": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFSendEmailActionShowComposeSheet": [
+     "bool"
+    ],
+    "WFSendEmailActionSubject": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFSendEmailActionToRecipients": [
+     "WFContactFieldValue",
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.sendmessage": {
+   "count": 134,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "IntentAppDefinition": [
+     "dict{BundleIdentifier,IntentClassName,Name,TeamIdentifier}",
+     "dict{BundleIdentifier,Name,TeamIdentifier}",
+     "dict{BundleIdentifier}"
+    ],
+    "IntentAppIdentifier": [
+     "str"
+    ],
+    "ShowWhenRun": [
+     "WFTextTokenAttachment",
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFSendMessageActionRecipients": [
+     "WFContactFieldValue",
+     "WFTextTokenAttachment"
+    ],
+    "WFSendMessageContent": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.setairdropreceiving": {
+   "count": 24,
+   "output_names": [],
+   "params": {
+    "WFAirDropState": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.setbrightness": {
+   "count": 88,
+   "output_names": [],
+   "params": {
+    "WFBrightness": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ]
+   }
+  },
+  "is.workflow.actions.setclipboard": {
+   "count": 472,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFExpirationDate": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFLocalOnly": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.setitemname": {
+   "count": 637,
+   "output_names": [
+    "Renamed Item"
+   ],
+   "params": {
+    "Advanced": [
+     "bool"
+    ],
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFDontIncludeFileExtension": [
+     "bool"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFName": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.setparkedcar": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFImage": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.setplaybackdestination": {
+   "count": 15,
+   "output_names": [],
+   "params": {
+    "WFMediaRoute": [
+     "WFTextTokenAttachment",
+     "dict{isLocalDevice,routeName,routeUID}"
+    ],
+    "WFMediaRouteOperation": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.setstoredcontent": {
+   "count": 25,
+   "output_names": [],
+   "params": {
+    "WFInput": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFStoredContentGlobalValue": [
+     "bool"
+    ],
+    "WFStoredContentKey": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.setters.calendarevents": {
+   "count": 12,
+   "output_names": [
+    "Edited Calendar event"
+   ],
+   "params": {
+    "Mode": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFCalendarEventContentItemAttachments": [
+     "WFTextTokenAttachment"
+    ],
+    "WFCalendarEventContentItemNotes": [
+     "WFTextTokenString"
+    ],
+    "WFCalendarEventContentItemStartDate": [
+     "WFTextTokenString"
+    ],
+    "WFCalendarEventContentItemURL": [
+     "WFTextTokenString"
+    ],
+    "WFContentItemPropertyName": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.setters.contacts": {
+   "count": 7,
+   "output_names": [
+    "Edited Contact"
+   ],
+   "params": {
+    "Mode": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "ValueLabel": [
+     "str"
+    ],
+    "WFContactContentItemPhoneNumbers": [
+     "WFTextTokenString"
+    ],
+    "WFContentItemPropertyName": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.setters.reminders": {
+   "count": 11,
+   "output_names": [],
+   "params": {
+    "Mode": [
+     "str"
+    ],
+    "RemoveSpecifiedValue": [
+     "WFTextTokenAttachment"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFContentItemPropertyName": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFReminderContentItemDueDate": [
+     "WFTextTokenString"
+    ],
+    "WFReminderContentItemIsCompleted": [
+     "int"
+    ],
+    "WFReminderContentItemNotes": [
+     "WFTextTokenString"
+    ],
+    "WFReminderContentItemTags": [
+     "WFTextTokenAttachment"
+    ],
+    "WFReminderContentItemTitle": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.setvalueforkey": {
+   "count": 256,
+   "output_names": [
+    "Dictionary"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFDictionary": [
+     "WFTextTokenAttachment"
+    ],
+    "WFDictionaryKey": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFDictionaryValue": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.setvariable": {
+   "count": 1340,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFSerializationType": [
+     "str"
+    ],
+    "WFShowWorkflow": [
+     "bool"
+    ],
+    "WFVariable": [
+     "WFTextTokenAttachment"
+    ],
+    "WFVariableName": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.setvolume": {
+   "count": 123,
+   "output_names": [],
+   "params": {
+    "WFVolume": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ],
+    "WFVolumeSetting": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.share": {
+   "count": 229,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.shazamMedia": {
+   "count": 5,
+   "output_names": [
+    "Shazam Media"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFShazamMediaActionErrorIfNotRecognized": [
+     "bool"
+    ],
+    "WFShazamMediaActionShowWhenRun": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.showdefinition": {
+   "count": 12,
+   "output_names": [],
+   "params": {
+    "Word": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.showincalendar": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "WFEvent": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.showinstore": {
+   "count": 4,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFProduct": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.shownote": {
+   "count": 22,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment",
+     "dict{identifier,image,subtitle,title}"
+    ]
+   }
+  },
+  "is.workflow.actions.showresult": {
+   "count": 501,
+   "output_names": [],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "Text": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.showwebpage": {
+   "count": 311,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFEnterSafariReader": [
+     "bool"
+    ],
+    "WFURL": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.silenceunknowncallers.set": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "OnValue": [
+     "int"
+    ]
+   }
+  },
+  "is.workflow.actions.sirikit.donation.handle": {
+   "count": 7,
+   "output_names": [],
+   "params": {
+    "ForceExecutionOnPhone": [
+     "bool"
+    ],
+    "IntentData": [
+     "bytes"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.skipback": {
+   "count": 11,
+   "output_names": [],
+   "params": {
+    "WFMediaRoute": [
+     "dict{isLocalDevice,routeUID}"
+    ],
+    "WFSkipBackBehavior": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.skipforward": {
+   "count": 13,
+   "output_names": [],
+   "params": {
+    "WFMediaRoute": [
+     "dict{isLocalDevice,routeUID}"
+    ]
+   }
+  },
+  "is.workflow.actions.speaktext": {
+   "count": 166,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFSpeakTextLanguage": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFSpeakTextPitch": [
+     "WFTextTokenAttachment",
+     "real"
+    ],
+    "WFSpeakTextRate": [
+     "WFTextTokenAttachment",
+     "real"
+    ],
+    "WFSpeakTextVoice": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFSpeakTextWait": [
+     "bool"
+    ],
+    "WFText": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.splitpdf": {
+   "count": 8,
+   "output_names": [
+    "PDF Pages"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.splitscreen": {
+   "count": 2,
+   "output_names": [],
+   "params": {}
+  },
+  "is.workflow.actions.spotlightsearch": {
+   "count": 3,
+   "output_names": [
+    "Results"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInputText": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.stagemanager.set": {
+   "count": 4,
+   "output_names": [],
+   "params": {}
+  },
+  "is.workflow.actions.statistics": {
+   "count": 76,
+   "output_names": [
+    "Sum"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "Input": [
+     "WFTextTokenAttachment"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFStatisticsOperation": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.takephoto": {
+   "count": 88,
+   "output_names": [
+    "Photo"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFCameraCaptureDevice": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFCameraCaptureShowPreview": [
+     "bool"
+    ],
+    "WFPhotoCount": [
+     "WFTextTokenAttachment",
+     "int",
+     "real"
+    ]
+   }
+  },
+  "is.workflow.actions.takescreenshot": {
+   "count": 77,
+   "output_names": [
+    "Screenshot"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFTakeScreenshotMainMonitorOnly": [
+     "bool"
+    ],
+    "WFTakeScreenshotScreenshotType": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.takevideo": {
+   "count": 19,
+   "output_names": [
+    "Video"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFCameraCaptureDevice": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFCameraCaptureQuality": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFRecordingStart": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.text.changecase": {
+   "count": 210,
+   "output_names": [
+    "Updated Text"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "Show-text": [
+     "bool"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFCaseType": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "text": [
+     "WFTextTokenAttachment",
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.text.combine": {
+   "count": 379,
+   "output_names": [
+    "Combined Text"
+   ],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "Show-text": [
+     "bool"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFTextCustomSeparator": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFTextSeparator": [
+     "str"
+    ],
+    "text": [
+     "WFTextTokenAttachment",
+     "WFTextTokenString",
+     "array"
+    ]
+   }
+  },
+  "is.workflow.actions.text.match": {
+   "count": 441,
+   "output_names": [
+    "Matches"
+   ],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFMatchTextCaseSensitive": [
+     "bool"
+    ],
+    "WFMatchTextPattern": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "text": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.text.match.getgroup": {
+   "count": 138,
+   "output_names": [
+    "Text"
+   ],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFGetGroupType": [
+     "str"
+    ],
+    "WFGroupIndex": [
+     "int",
+     "str"
+    ],
+    "matches": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.text.replace": {
+   "count": 676,
+   "output_names": [
+    "Updated Text"
+   ],
+   "params": {
+    "Credit": [
+     "str"
+    ],
+    "CustomOutputName": [
+     "str"
+    ],
+    "RoutineHub": [
+     "int"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFReplaceTextCaseSensitive": [
+     "bool"
+    ],
+    "WFReplaceTextFind": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFReplaceTextRegularExpression": [
+     "bool"
+    ],
+    "WFReplaceTextReplace": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFShowWorkflow": [
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.text.split": {
+   "count": 580,
+   "output_names": [
+    "Split Text"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "Show-text": [
+     "bool"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFTextCustomSeparator": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFTextSeparator": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "text": [
+     "WFTextTokenAttachment",
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.text.translate": {
+   "count": 47,
+   "output_names": [
+    "Translated Text"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInputText": [
+     "WFTextTokenString"
+    ],
+    "WFSelectedFromLanguage": [
+     "WFTextTokenAttachment",
+     "str"
+    ],
+    "WFSelectedLanguage": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.text.trimwhitespace": {
+   "count": 72,
+   "output_names": [
+    "Updated Text"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.timer.start": {
+   "count": 45,
+   "output_names": [],
+   "params": {
+    "AppIntentDescriptor": [
+     "dict{AppIntentIdentifier,BundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "IntentAppDefinition": [
+     "dict{BundleIdentifier,ExtensionBundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFDuration": [
+     "WFQuantityFieldValue"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.trimvideo": {
+   "count": 10,
+   "output_names": [
+    "Trimmed Media"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInputMedia": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.truetone.set": {
+   "count": 13,
+   "output_names": [],
+   "params": {
+    "OnValue": [
+     "int"
+    ],
+    "operation": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.tumblr.post": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.tweet": {
+   "count": 5,
+   "output_names": [],
+   "params": {
+    "TweetInput": [
+     "WFTextTokenString"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.unzip": {
+   "count": 52,
+   "output_names": [
+    "Files"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFArchive": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.url": {
+   "count": 668,
+   "output_names": [
+    "URL"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "Show-WFURLActionURL": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFShowWorkflow": [
+     "bool"
+    ],
+    "WFURLActionURL": [
+     "WFTextTokenAttachment",
+     "WFTextTokenString",
+     "array",
+     "str"
+    ],
+    "WFVariable": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.url.expand": {
+   "count": 119,
+   "output_names": [
+    "Expanded URL"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "URL": [
+     "WFTextTokenString"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.url.getheaders": {
+   "count": 12,
+   "output_names": [
+    "Headers of URL"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString"
+    ]
+   }
+  },
+  "is.workflow.actions.urlencode": {
+   "count": 219,
+   "output_names": [
+    "URL Encoded Text"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFEncodeMode": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenString",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.useractivity.open": {
+   "count": 17,
+   "output_names": [],
+   "params": {
+    "AppBundleIdentifier": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "UserActivityData": [
+     "bytes"
+    ],
+    "UserActivityDescriptor": [
+     "dict{BundleIdentifier,Name,TeamIdentifier,UserActivityType}"
+    ],
+    "UserActivitySubtitle": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.venmo.pay": {
+   "count": 8,
+   "output_names": [],
+   "params": {
+    "IntentAppDefinition": [
+     "dict{BundleIdentifier,ExtensionBundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "IntentAppIdentifier": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFVenmoActionAmount": [
+     "WFQuantityFieldValue"
+    ],
+    "WFVenmoActionAppSwitch": [
+     "bool"
+    ],
+    "WFVenmoActionNote": [
+     "WFTextTokenString",
+     "str"
+    ],
+    "WFVenmoActionRecipients": [
+     "WFContactFieldValue",
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.venmo.request": {
+   "count": 7,
+   "output_names": [],
+   "params": {
+    "IntentAppDefinition": [
+     "dict{BundleIdentifier,ExtensionBundleIdentifier,Name,TeamIdentifier}"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFVenmoActionAmount": [
+     "WFQuantityFieldValue",
+     "WFTextTokenAttachment"
+    ],
+    "WFVenmoActionAppSwitch": [
+     "bool"
+    ],
+    "WFVenmoActionNote": [
+     "WFTextTokenString"
+    ],
+    "WFVenmoActionRecipients": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.vibrate": {
+   "count": 111,
+   "output_names": [],
+   "params": {}
+  },
+  "is.workflow.actions.viewresult": {
+   "count": 10,
+   "output_names": [],
+   "params": {
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  },
+  "is.workflow.actions.vpn.get": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.vpn.set": {
+   "count": 16,
+   "output_names": [],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFVPN": [
+     "WFTextTokenAttachment",
+     "dict{appDescriptor,connected,identifier,onDemandEnabled,title}",
+     "dict{appDescriptor,identifier,title}"
+    ],
+    "WFVPNOperation": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.waittoreturn": {
+   "count": 96,
+   "output_names": [],
+   "params": {}
+  },
+  "is.workflow.actions.wallpaper.set": {
+   "count": 39,
+   "output_names": [
+    "Wallpaper"
+   ],
+   "params": {
+    "UUID": [
+     "str"
+    ],
+    "WFInput": [
+     "WFTextTokenAttachment"
+    ],
+    "WFSelectedPoster": [
+     "WFTextTokenAttachment",
+     "dict{UUID,name,providerBundleIdentifier}"
+    ],
+    "WFWallpaperLegibilityBlur": [
+     "bool"
+    ],
+    "WFWallpaperLocation": [
+     "WFTextTokenAttachment",
+     "array",
+     "str"
+    ],
+    "WFWallpaperShowPreview": [
+     "bool"
+    ],
+    "WFWallpaperSmartCrop": [
+     "WFTextTokenAttachment",
+     "bool"
+    ]
+   }
+  },
+  "is.workflow.actions.weather.currentconditions": {
+   "count": 98,
+   "output_names": [
+    "Weather Conditions"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFWeatherCustomLocation": [
+     "WFTextTokenAttachment",
+     "dict{isCurrentLocation}"
+    ]
+   }
+  },
+  "is.workflow.actions.weather.forecast": {
+   "count": 42,
+   "output_names": [
+    "Weather Conditions"
+   ],
+   "params": {
+    "CustomOutputName": [
+     "str"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WFWeatherCustomLocation": [
+     "WFTextTokenAttachment",
+     "dict{isCurrentLocation}",
+     "dict{placemark}"
+    ],
+    "WFWeatherForecastType": [
+     "WFTextTokenAttachment",
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.wifi.set": {
+   "count": 122,
+   "output_names": [],
+   "params": {
+    "OnValue": [
+     "WFTextTokenAttachment",
+     "bool",
+     "int"
+    ],
+    "ShowWhenRun": [
+     "bool"
+    ],
+    "operation": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.workout.end": {
+   "count": 2,
+   "output_names": [],
+   "params": {
+    "IntentAppDefinition": [
+     "dict{BundleIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ]
+   }
+  },
+  "is.workflow.actions.workout.start": {
+   "count": 3,
+   "output_names": [],
+   "params": {
+    "IntentAppDefinition": [
+     "dict{BundleIdentifier}"
+    ],
+    "UUID": [
+     "str"
+    ],
+    "WorkoutGoal": [
+     "WFQuantityFieldValue"
+    ],
+    "isOpenEnded": [
+     "int"
+    ],
+    "workoutName": [
+     "WFTextTokenAttachment"
+    ]
+   }
+  }
+ },
+ "aggrandizements": [
+  "WFCoercionVariableAggrandizement",
+  "WFDateFormatVariableAggrandizement",
+  "WFDictionaryValueVariableAggrandizement",
+  "WFPropertyVariableAggrandizement",
+  "WFUnitVariableAggrandizement"
+ ],
+ "enums": {
+  "WFCondition": [
+   0,
+   1,
+   100,
+   1000,
+   1001,
+   1002,
+   1003,
+   101,
+   2,
+   3,
+   4,
+   5,
+   8,
+   9,
+   99,
+   999
+  ],
+  "WFControlFlowMode": [
+   0,
+   1,
+   2
+  ],
+  "WFCountType": [
+   "Characters",
+   "Items",
+   "Lines",
+   "Sentences",
+   "Words"
+  ],
+  "WFEncodeMode": [
+   "Decode",
+   "Encode"
+  ],
+  "WFGetDictionaryValueType": [
+   "All Keys",
+   "All Values",
+   "Value"
+  ],
+  "WFHTTPBodyType": [
+   "File",
+   "Form",
+   "JSON",
+   "JSON/Form/File",
+   "Json"
+  ],
+  "WFHTTPMethod": [
+   "DELETE",
+   "GET",
+   "POST",
+   "PUT"
+  ],
+  "WFHashType": [
+   "MD5",
+   "SHA256",
+   "SHA512"
+  ],
+  "WFImageFormat": [
+   "BMP",
+   "GIF",
+   "HEIF",
+   "JPEG",
+   "Match Input",
+   "PNG"
+  ],
+  "WFInputType": [
+   "Date",
+   "Date and Time",
+   "Number",
+   "Text",
+   "Time",
+   "URL"
+  ],
+  "WFItemSpecifier": [
+   "First Item",
+   "Item At Index",
+   "Items in Range",
+   "Last Item",
+   "Random Item"
+  ],
+  "WFItemType": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "WFMathOperation": [
+   "+",
+   "-",
+   "×",
+   "÷",
+   "…"
+  ],
+  "WFTextSeparator": [
+   "Custom",
+   "Every Character",
+   "New Lines",
+   "Spaces"
+  ]
+ },
+ "token_types": [
+  "ActionOutput",
+  "Ask",
+  "Clipboard",
+  "CurrentDate",
+  "DeviceDetails",
+  "ExtensionInput",
+  "Variable"
+ ]
+}

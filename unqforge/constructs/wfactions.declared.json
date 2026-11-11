@@ -1,0 +1,608 @@
+{
+ "_device": "iPhone10,5 (8 Plus)",
+ "_harvested": "2026-09-11",
+ "_ios": "16.7",
+ "_note": "declared enum values only -- NOT observed serialized. Keys already present in .native/.ranok are skipped.",
+ "_source": "WorkflowKit WFActions.plist",
+ "enums": {
+  "AssertionType": [
+   "Event Ends",
+   "I Leave",
+   "Time",
+   "Turned Off"
+  ],
+  "InputMode": [
+   "as arguments",
+   "to stdin"
+  ],
+  "Subject": [
+   "Battery Level",
+   "Current Playback Time",
+   "Current Song",
+   "Is Charging",
+   "Is Connected to Charger"
+  ],
+  "TransmitSaveTo": [
+   "Local",
+   "Remote"
+  ],
+  "WFAdjustOperation": [
+   "Add",
+   "Get Start of Day",
+   "Get Start of Hour",
+   "Get Start of Minute",
+   "Get Start of Month",
+   "Get Start of Week",
+   "Get Start of Year",
+   "Subtract"
+  ],
+  "WFAlertCondition": [
+   "At Time",
+   "When I Arrive",
+   "When I Leave",
+   "When Messaging"
+  ],
+  "WFAlertEnabled": [
+   "Alert",
+   "No Alert"
+  ],
+  "WFAlertTime": [
+   "1 day before",
+   "1 hour before",
+   "1 week before",
+   "15 minutes before",
+   "2 days before",
+   "2 hours before",
+   "30 minutes before",
+   "5 minutes before",
+   "At time of event",
+   "Custom"
+  ],
+  "WFAppRatio": [
+   "\u00bd + \u00bd",
+   "\u2153 + \u2154"
+  ],
+  "WFAppendFileWriteMode": [
+   "Append",
+   "Prepend"
+  ],
+  "WFAskForType": [
+   "Contacts",
+   "Date",
+   "Email Address",
+   "Files",
+   "Music",
+   "Phone Number",
+   "Photos",
+   "Text"
+  ],
+  "WFBase64LineBreakMode": [
+   "Every 64 Characters",
+   "Every 76 Characters",
+   "None"
+  ],
+  "WFCameraCaptureDevice": [
+   "Back",
+   "Front"
+  ],
+  "WFCameraCaptureQuality": [
+   "High",
+   "Low",
+   "Medium"
+  ],
+  "WFCellularDetail": [
+   "Carrier Name",
+   "Country Code",
+   "Is Roaming Abroad",
+   "Number of Signal Bars",
+   "Radio Technology"
+  ],
+  "WFCloudAppPrivacyType": [
+   "Private",
+   "Public"
+  ],
+  "WFConfiguration": [
+   "Bottom Half",
+   "Bottom Left Quarter",
+   "Bottom Right Quarter",
+   "Dimensions",
+   "Fit Screen",
+   "Left Half",
+   "Right Half",
+   "Top Half",
+   "Top Left Quarter",
+   "Top Right Quarter"
+  ],
+  "WFDateActionMode": [
+   "Current Date",
+   "Specified Date"
+  ],
+  "WFDateFormatStyle": [
+   "Custom",
+   "ISO 8601",
+   "Long",
+   "Medium",
+   "None",
+   "RFC 2822",
+   "Relative",
+   "Short"
+  ],
+  "WFDateSpecifier": [
+   "Any Day",
+   "Specified Day",
+   "Today",
+   "Tomorrow"
+  ],
+  "WFDeviceDetail": [
+   "Current Appearance",
+   "Current Brightness",
+   "Current Volume",
+   "Device Hostname",
+   "Device Is Watch",
+   "Device Model",
+   "Device Name",
+   "Screen Height",
+   "Screen Width",
+   "System Build Number",
+   "System Version"
+  ],
+  "WFDictateTextStopListening": [
+   "After Pause",
+   "After Short Pause",
+   "On Tap"
+  ],
+  "WFDistanceUnit": [
+   "Kilometers",
+   "Miles"
+  ],
+  "WFEvernoteWriteMode": [
+   "Append",
+   "Prepend"
+  ],
+  "WFFaceTimeType": [
+   "Audio",
+   "Video"
+  ],
+  "WFFileFormat": [
+   "HEIF",
+   "JPEG",
+   "PNG"
+  ],
+  "WFFileSizeFormat": [
+   "Automatic",
+   "Bytes",
+   "EB",
+   "GB",
+   "KB",
+   "MB",
+   "PB",
+   "TB",
+   "YB or Higher",
+   "ZB"
+  ],
+  "WFGetDirectionsActionMode": [
+   "Biking",
+   "Direct",
+   "Driving",
+   "Transit",
+   "Walking"
+  ],
+  "WFGetTextFromPDFTextType": [
+   "Rich Text",
+   "Text"
+  ],
+  "WFHideAppMode": [
+   "All Apps",
+   "App"
+  ],
+  "WFIPAddressSourceOption": [
+   "External",
+   "Local"
+  ],
+  "WFIPAddressTypeOption": [
+   "IPv4",
+   "IPv6"
+  ],
+  "WFImageCombineMode": [
+   "Horizontally",
+   "In a Grid",
+   "Vertically"
+  ],
+  "WFImageCropPosition": [
+   "Bottom Left",
+   "Bottom Right",
+   "Center",
+   "Custom",
+   "Top Left",
+   "Top Right"
+  ],
+  "WFImageFlipDirection": [
+   "Horizontal",
+   "Vertical"
+  ],
+  "WFImagePosition": [
+   "Bottom Left",
+   "Bottom Right",
+   "Center",
+   "Custom",
+   "Top Left",
+   "Top Right"
+  ],
+  "WFImageResizeKey": [
+   "Longest Edge",
+   "Percentage",
+   "Size"
+  ],
+  "WFImgurAlbumLayout": [
+   "Blog",
+   "Grid",
+   "Horizontal",
+   "Vertical"
+  ],
+  "WFImgurAlbumPrivacy": [
+   "Hidden",
+   "Public",
+   "Secret"
+  ],
+  "WFImportAudioFilesEncoder": [
+   "AAC",
+   "AIFF",
+   "Default",
+   "Lossless",
+   "MP3",
+   "WAV"
+  ],
+  "WFMaskType": [
+   "Custom Image",
+   "Ellipse",
+   "Icon",
+   "Rounded Rectangle"
+  ],
+  "WFMediaAudioFormat": [
+   "AIFF",
+   "M4A"
+  ],
+  "WFMediaRouteOperation": [
+   "Add",
+   "Remove",
+   "Set"
+  ],
+  "WFMediaSize": [
+   "1280x720",
+   "1920x1080",
+   "3840x2160",
+   "640x480",
+   "960x540",
+   "HEVC 1920x1080",
+   "HEVC 3840x2160",
+   "Passthrough",
+   "ProRes 422"
+  ],
+  "WFMediaSpeed": [
+   "0.5X",
+   "2X",
+   "Custom",
+   "Normal"
+  ],
+  "WFNoInputBehavior": [
+   "Ask For",
+   "Continue",
+   "Get Clipboard",
+   "Stop and Respond"
+  ],
+  "WFNoOutputSurfaceBehavior": [
+   "Copy to Clipboard",
+   "Do Nothing",
+   "Respond"
+  ],
+  "WFPDFDocumentMergeBehavior": [
+   "Append",
+   "Shuffle"
+  ],
+  "WFPDFIncludedPages": [
+   "All Pages",
+   "Page Range",
+   "Single Page"
+  ],
+  "WFPhotoPickerTypes": [
+   "Images",
+   "Live Photos",
+   "Videos"
+  ],
+  "WFPickingMode": [
+   "Files",
+   "Folders"
+  ],
+  "WFPlayMusicActionRepeat": [
+   "All",
+   "None",
+   "One"
+  ],
+  "WFPlayMusicActionShuffle": [
+   "Off",
+   "Songs"
+  ],
+  "WFPlayPauseBehavior": [
+   "Pause",
+   "Play",
+   "Play/Pause"
+  ],
+  "WFPocketItemState": [
+   "All",
+   "Archived",
+   "Unread"
+  ],
+  "WFPosition": [
+   "Bottom Center",
+   "Bottom Left",
+   "Bottom Right",
+   "Center",
+   "Coordinates",
+   "Middle Left",
+   "Middle Right",
+   "Top Center",
+   "Top Left",
+   "Top Right"
+  ],
+  "WFPostState": [
+   "Add to Queue",
+   "Post Now",
+   "Post Privately",
+   "Save as Draft"
+  ],
+  "WFPostType": [
+   "Audio",
+   "Chat",
+   "Link",
+   "Photos",
+   "Quote",
+   "Text",
+   "Video"
+  ],
+  "WFPosterType": [
+   "All",
+   "Current"
+  ],
+  "WFPriority": [
+   "High",
+   "Low",
+   "Medium",
+   "None"
+  ],
+  "WFQRErrorCorrectionLevel": [
+   "High",
+   "Low",
+   "Medium",
+   "Quartile"
+  ],
+  "WFQuitAppMode": [
+   "All Apps",
+   "App"
+  ],
+  "WFRecordingCompression": [
+   "Normal",
+   "Very High"
+  ],
+  "WFRecordingEnd": [
+   "After Time",
+   "On Tap"
+  ],
+  "WFRecordingStart": [
+   "Immediately",
+   "On Tap"
+  ],
+  "WFRelativeDateFormatStyle": [
+   "Long",
+   "Medium",
+   "Short"
+  ],
+  "WFRoundMode": [
+   "Always Round Down",
+   "Always Round Up",
+   "Normal"
+  ],
+  "WFRoundTo": [
+   "10 ^",
+   "Billionths",
+   "Hundred Millionths",
+   "Hundred Thousands",
+   "Hundred Thousandths",
+   "Hundreds Place",
+   "Hundredths",
+   "Millions",
+   "Millionths",
+   "Ones Place",
+   "Ten Millionths",
+   "Ten Thousands",
+   "Ten Thousandths",
+   "Tens Place",
+   "Tenths",
+   "Thousands",
+   "Thousandths"
+  ],
+  "WFSSHAuthenticationType": [
+   "Password",
+   "SSH Key"
+  ],
+  "WFScientificMathOperation": [
+   "10^x",
+   "Modulus",
+   "abs(x)",
+   "cos(x)",
+   "e^x",
+   "ln(x)",
+   "log(x)",
+   "sin(x)",
+   "tan(x)",
+   "x!",
+   "x^2",
+   "x^3",
+   "x^y",
+   "\u221ax",
+   "\u221bx"
+  ],
+  "WFSearchWebDestination": [
+   "Amazon",
+   "Bing",
+   "DuckDuckGo",
+   "Google",
+   "Reddit",
+   "Twitter",
+   "Yahoo!",
+   "YouTube",
+   "eBay"
+  ],
+  "WFSeekBehavior": [
+   "Backward By",
+   "Forward By",
+   "To Time"
+  ],
+  "WFShutdownMode": [
+   "Restart",
+   "Shut Down"
+  ],
+  "WFSize": [
+   "Large",
+   "Medium",
+   "Original",
+   "Small"
+  ],
+  "WFSizingMethod": [
+   "Absolute",
+   "Proportional"
+  ],
+  "WFSkipBackBehavior": [
+   "Beginning",
+   "Previous Song"
+  ],
+  "WFStatisticsOperation": [
+   "Average",
+   "Maximum",
+   "Median",
+   "Minimum",
+   "Mode",
+   "Range",
+   "Standard Deviation",
+   "Sum"
+  ],
+  "WFTakeScreenshotActionInteractiveSelectionType": [
+   "Custom",
+   "Window"
+  ],
+  "WFTakeScreenshotScreenshotType": [
+   "Full Screen",
+   "Interactive"
+  ],
+  "WFTextAlignment": [
+   "Center",
+   "Left",
+   "Right"
+  ],
+  "WFTextPosition": [
+   "Bottom Center",
+   "Bottom Left",
+   "Bottom Right",
+   "Center",
+   "Custom Position",
+   "Middle Left",
+   "Middle Right",
+   "Top Center",
+   "Top Left",
+   "Top Right"
+  ],
+  "WFTimeFormatStyle": [
+   "Long",
+   "Medium",
+   "None",
+   "Relative",
+   "Short"
+  ],
+  "WFTimeUntilUnit": [
+   "Days",
+   "Hours",
+   "Minutes",
+   "Months",
+   "Seconds",
+   "Total Time",
+   "Weeks",
+   "Years"
+  ],
+  "WFTodoistPriority": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "WFTodoistReminderType": [
+   "Email",
+   "Push Notification",
+   "Text Message"
+  ],
+  "WFTrelloCardPosition": [
+   "Bottom",
+   "Top"
+  ],
+  "WFTrelloItemType": [
+   "Boards",
+   "Cards",
+   "Lists"
+  ],
+  "WFTrelloPosition": [
+   "Bottom",
+   "Top"
+  ],
+  "WFURLComponent": [
+   "Fragment",
+   "Host",
+   "Password",
+   "Path",
+   "Port",
+   "Query",
+   "Scheme",
+   "User"
+  ],
+  "WFVPNOperation": [
+   "Connect",
+   "Disconnect",
+   "Set On Demand",
+   "Toggle",
+   "Toggle On Demand"
+  ],
+  "WFVibrateHapticType": [
+   "Click",
+   "Default",
+   "Down Direction",
+   "Failure",
+   "Retry",
+   "Start",
+   "Stop",
+   "Success",
+   "Up Direction"
+  ],
+  "WFWallpaperLocation": [
+   "Home Screen",
+   "Lock Screen"
+  ],
+  "WFWeatherForecastType": [
+   "Daily",
+   "Hourly"
+  ],
+  "WFWhenToPlay": [
+   "Later",
+   "Next"
+  ],
+  "WFWiFiDetail": [
+   "BSSID",
+   "Network Name"
+  ],
+  "presetGroup": [
+   "B&W",
+   "Color",
+   "Creative",
+   "Curve",
+   "Grain",
+   "Sharpening",
+   "Vignetting"
+  ]
+ }
+}
