@@ -2,18 +2,23 @@
 
 # ⚒️ unqforge
 
-**Build iOS Shortcuts from Python — from evidence, not guesswork.**
+**Write iOS Shortcuts in Python. Get a real, runnable shortcut.**
 
 [![python](https://img.shields.io/badge/python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![license](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)](LICENSE)
 [![actions covered](https://img.shields.io/badge/actions-307%2F365-8b5cf6?style=flat-square)](docs/actions.md)
-[![round trip](https://img.shields.io/badge/round--trip-1290%2F1290-06b6d4?style=flat-square)](tools/roundtrip.py)
+[![round trip](https://img.shields.io/badge/round--trip-805%2F805-06b6d4?style=flat-square)](tools/roundtrip.py)
+[![dependencies](https://img.shields.io/badge/dependencies-none-f59e0b?style=flat-square)](pyproject.toml)
 
-[Website](https://unqx.site/sclib/) · [Showcase](https://unqx.site/sclib/showcase.html) · [Guide](docs/guide.md) · [Action reference](docs/actions.md) · [Examples](examples/)
+[🌐 Website](https://unqx.site/sclib/) · [✨ Showcase](https://unqx.site/sclib/showcase.html) · [📖 Guide](docs/guide.md) · [📚 Actions](docs/actions.md) · [🧪 Examples](examples/)
 
 </div>
 
 ---
+
+**unqforge** turns short, readable Python into a [Shortcuts](https://apps.apple.com/app/shortcuts/id915249334) file you can install and run.
+It only allows actions and parameters seen in shortcuts made on real iPhones, so a mistake is an error
+on your screen, not a shortcut that imports and quietly does nothing.
 
 ```python
 from unqforge import *
@@ -21,19 +26,36 @@ from unqforge import *
 A = "is.workflow.actions."
 s = SC()
 
-q = s.action(A + "ask", WFAskActionPrompt="Search term?")
-r = s.action(A + "downloadurl",
-             WFURL=ts("https://api.example.com/search?q=", q))
-items = s.action(A + "getvalueforkey", WFDictionaryKey="data.results",
-                 WFInput=r)
-s.action(A + "setclipboard", WFInput=items)
+name = s.action(A + "ask", WFAskActionPrompt="What's your name?")
+s.show("Hello ", name, " 👋")
 
-s.dump("search.plist")
+s.dump("hello.plist")
 ```
 
-Import the result into the Shortcuts app and it runs.
+## 🌟 Features
 
-## Your first shortcut
+- 🐍 **Plain Python**: variables, functions and loops to build shortcuts of any size
+- ✅ **Checked against real devices**: every action, parameter and value shape is backed by evidence
+- 🧭 **Helpful errors**: a wrong key tells you the right ones (`Count` takes `Input`, not `WFInput`)
+- 🔁 **Control flow**: `with s.if_(...)`, `s.foreach(...)`, `s.repeat(...)`, `s.menu(...)`
+- 🔄 **Works both ways**: decompile any shortcut into editable Python and rebuild it
+- 🤖 **AI-friendly**: give the docs to ChatGPT or Claude and describe what you want
+- 📱 **Runs anywhere Python runs**: Mac, Linux, or iPhone with a-Shell
+- 🔏 **One-tap signing** in the [web editor](https://unqx.site/sclib/), or locally on a Mac
+- 📦 **No dependencies**: standard library only
+
+## ✨ Built with unqforge
+
+| Shortcut | Actions | What it is |
+| --- | ---: | --- |
+| [ShortSQL](https://routinehub.co/shortcut/26893/) | 4,824 | A SQL database inside Shortcuts: joins, subqueries, transactions |
+| [UNQ Clipforge](https://unqx.site/sclib/showcase.html) | 1,654 | Clipboard history, link cleaning, text tools |
+| [ShortVM](https://unqx.site/sclib/showcase.html) | 788 | A tiny virtual CPU that runs small programs |
+| [ML Classifier](https://unqx.site/sclib/showcase.html) | 574 | Trains a machine-learning classifier on-device |
+
+More on the [showcase](https://unqx.site/sclib/showcase.html).
+
+## 🚀 Quick start
 
 **1. Install**
 
@@ -43,11 +65,10 @@ cd unqforge
 pip install -e .
 ```
 
-Python 3.8+, standard library only, no dependencies.
+<details>
+<summary><b>On iPhone or iPad (a-Shell)</b></summary>
 
-**On iPhone or iPad** — no Mac needed. Install
-[a-Shell](https://apps.apple.com/app/a-shell/id1473805438), which has no
-`git` or working `pip`, so grab the zip instead:
+[a-Shell](https://apps.apple.com/app/a-shell/id1473805438) has no `git` or working `pip`, so grab the zip:
 
 ```bash
 curl -L -o uf.zip https://github.com/anupml/unqforge/archive/refs/heads/main.zip
@@ -62,42 +83,25 @@ import sys; sys.path.insert(0, ".")
 from unqforge import *
 ```
 
-The full test suite runs there too — `python3 tools/roundtrip.py shortcuts/*`
-rebuilds 1246 actions on-device, UNQ MUSIC included.
+The test suite runs there too: `python3 tools/roundtrip.py shortcuts/*`.
 
-**2. Write it**
+</details>
 
-```python
-# hello.py
-from unqforge import *
-
-A = "is.workflow.actions."
-s = SC()
-
-name = s.action(A + "ask", WFAskActionPrompt="What's your name?")
-s.show("Hello ", name, " 👋")
-
-s.dump("hello.plist")
-```
+**2. Write and run it**
 
 ```bash
-python3 hello.py
+python3 hello.py        # -> hello.plist
 ```
 
-**3. Get it onto your phone**
+**3. Put it on your phone**
 
-The output is a plain `.plist`. To turn it into an installable shortcut,
-paste your code into the [unqforge editor](https://unqx.site/sclib/): it
-builds, checks and signs it in one tap, on any device.
-
-On a Mac you can also sign locally (see
-[Installing what you built](docs/guide.md#installing-what-you-built)).
+Paste your code into the [unqforge editor](https://unqx.site/sclib/): it builds, checks and signs it
+in one tap, on any device. On a Mac you can also sign locally
+([how](docs/guide.md#installing-what-you-built)).
 
 **4. Build something real**
 
-Every action's parameters are in [docs/actions.md](docs/actions.md), with
-a copy-pasteable snippet for each. `s.action()` returns that action's
-output, so you chain them by passing the value along:
+`s.action()` returns that action's output, so you chain actions by passing values along:
 
 ```python
 q = s.action(A + "ask", WFAskActionPrompt="City?")
@@ -105,36 +109,31 @@ r = s.action(A + "downloadurl",
              WFURL=ts("https://api.open-meteo.com/v1/forecast?...", q))
 temp = s.action(A + "getvalueforkey",
                 WFDictionaryKey="current.temperature_2m", WFInput=r)
-s.show("", temp)
+s.show("It's ", temp, "°")
 ```
 
-`ts(...)` builds a text field out of literal text and values mixed
-together. Loops, conditions and the rest are in
-[docs/guide.md](docs/guide.md).
+`ts(...)` mixes text and values in one field. Every action, with a copy-paste snippet, is in
+[docs/actions.md](docs/actions.md); loops, conditions and menus are in [docs/guide.md](docs/guide.md).
 
-### Letting an AI write it
+## 🤖 Let an AI write it
 
-The reference is structured for this. Paste
-[docs/guide.md](docs/guide.md) and [docs/actions.md](docs/actions.md)
-into ChatGPT or Claude, then describe what you want:
+Paste [docs/guide.md](docs/guide.md) and [docs/actions.md](docs/actions.md) into ChatGPT or Claude, then describe
+what you want:
 
 > Here are the docs for a Python library that generates iOS Shortcuts.
 > Write me one that asks for a city and shows the current temperature.
 
-Run what comes back. If it uses something unsupported you get a clear
-error naming the correct parameters, which the model can usually fix in
-one turn — rather than a shortcut that imports and quietly does nothing.
+If it uses something that doesn't exist, the error names the correct parameters, and the model can
+usually fix it in one turn. The [website](https://unqx.site/sclib/) and its companion shortcut can help with this too.
 
-## Why this exists
+## 🔍 Why another Shortcuts tool?
 
-Other libraries hand-write a wrapper per action: read the format,
-transcribe a definition, repeat a few hundred times. It works, it is
-slow, and it rots whenever Apple changes something.
+Most libraries hand-write a definition for every action. It's slow, and it breaks when Apple changes
+something.
 
-Here the definitions are **harvested**. Point `decompile.py` at any
-shortcut and it extracts the action identifiers, parameter keys and
-serialization shapes that shortcut actually uses. The emitter then
-refuses to produce anything not backed by that evidence:
+unqforge **harvests** them instead. `decompile.py` reads any shortcut and records the action ids,
+parameter keys and value shapes it really uses, and the builder refuses anything without that
+evidence:
 
 ```
 >>> s.action("is.workflow.actions.count", WFInput=x)
@@ -142,65 +141,17 @@ Unverified: is.workflow.actions.count: parameter 'WFInput'
             never observed (known: ['Input', 'WFCountType'])
 ```
 
-Count really does take `Input`, not `WFInput`. Nobody would guess that.
-The corpus knows it.
-
-> **Adding support for an action means decompiling a shortcut that uses
-> it.** No code change, no pull request.
-
-## Status
+> **Adding an action means decompiling a shortcut that uses it.** No code change.
 
 | | |
 | --- | --- |
-| Built-in actions covered | **307 / 365** (84%) |
+| Built-in actions | **307 / 365** (84%), measured against the Shortcuts binary |
 | App intent actions | **277** (Apple apps and third-party) |
-| Round-trip suite | **1290 / 1290** actions across 13 shortcuts |
-| Dependencies | none |
+| Round-trip suite | **805 / 805** actions across 12 shortcuts |
 
-365 is every `is.workflow.actions.*` identifier found in the Shortcuts
-binary, so coverage is measured rather than claimed (`tools/coverage.py`).
-Most of the 58 still missing are dead 2017-era integrations (Dropbox,
-Evernote, Pocket, Pinboard, Instapaper, Trello, Todoist, WordPress) and
-Mac-only actions (windows, disk images, screensaver, sleep, log out).
+Most of the 58 missing are retired integrations (Dropbox, Evernote, Pocket…) and Mac-only actions.
 
-The round-trip suite takes each shortcut to Python and back and compares,
-including two 500-action production shortcuts with nested menus, HTTP
-calls and embedded AppleScript.
-
-<details>
-<summary><b>What's covered</b></summary>
-
-Text · dictionaries · lists · control flow · HTTP · files · clipboard ·
-prompts · menus · contacts · base64 · images · dates · device details ·
-`askllm` (Apple Intelligence)
-
-Full list with parameters and shapes: **[docs/actions.md](docs/actions.md)**
-
-</details>
-
-## A real example
-
-A movie search with poster thumbnails — [`examples/tmdb_picker.py`](examples/tmdb_picker.py):
-
-```python
-chosen = s.vcard_picker(
-    results,
-    label=lambda m: field(m.item, "title"),
-    subtitle=lambda m: [field(m.item, "release_date"), "     ",
-                        field(m.item, "vote_average"), " / 10"],
-    photo=lambda m: field(m.item, "poster_path"),
-    photo_base="https://image.tmdb.org/t/p/w342",
-    detail=lambda m: [field(m.item, "title"), "\n\n",
-                      field(m.item, "overview")],
-    prompt="Pick a movie")
-
-s.show("", chosen)
-```
-
-Shortcuts has no image-list UI, so `vcard_picker` builds one vCard per
-result with the artwork base64'd into the PHOTO field, names the blob
-`.vcf`, and runs it through Get Contacts from Input — which Choose from
-List renders with photos.
+## 🧪 Examples
 
 | Example | What it does | Needs a key |
 | --- | --- | --- |
@@ -209,9 +160,28 @@ List renders with photos.
 | [`model2.py`](examples/model2.py) | Linear regression by gradient descent, in Shortcuts actions | no |
 | [`apidemo.py`](examples/apidemo.py) | Minimal ask → HTTP → clipboard | no |
 
-## Harvesting your whole library at once
+## 🛠️ Tools
 
-**macOS only.** The Shortcuts app keeps its library in a Core Data store
+| | |
+| --- | --- |
+| `tools/decompile.py` | shortcut → evidence + readable listing |
+| `tools/topython.py` | shortcut → editable Python |
+| `tools/harvestdb.py` | harvest your whole library at once (macOS) |
+| `tools/roundtrip.py` | shortcut → Python → shortcut, compared (the test suite) |
+| `tools/coverage.py` | what's covered, and what to harvest next |
+| `tools/gendocs.py` | regenerate `docs/actions.md` |
+
+```bash
+python3 tools/topython.py downloaded.plist -o edit.py   # edit a shortcut as code
+python3 edit.py rebuilt.plist
+```
+
+## 📂 More
+
+<details>
+<summary><b>Harvesting your whole library at once (macOS)</b></summary>
+
+The Shortcuts app keeps its library in a Core Data store
 at `~/Library/Shortcuts/Shortcuts.sqlite`, with each shortcut's actions
 stored as a blob. So instead of exporting shortcuts one at a time, the
 whole library can be read in a single pass:
@@ -242,33 +212,7 @@ There is no equivalent on iOS — the library there isn't reachable from
 a-Shell — so on iPhone you still harvest by exporting individual
 shortcuts and running `decompile.py`.
 
-## Tools
-
-| | |
-| --- | --- |
-| `tools/decompile.py` | plist → constructs database + readable listing |
-| `tools/harvestdb.py` | harvest every shortcut in your library at once (macOS) |
-| `tools/topython.py` | plist → runnable Python |
-| `tools/roundtrip.py` | plist → Python → plist, compared; the test suite |
-| `tools/coverage.py` | what is covered, and what to harvest next |
-| `tools/gendocs.py` | regenerate `docs/actions.md` from `constructs/` |
-| `tools/scanspec.py` | scan Apple's `.intentdefinition` files for enums |
-| `tools/joinspec.py` | complete sampled enums using that scan |
-
-```bash
-python3 tools/roundtrip.py shortcuts/*
-python3 tools/coverage.py --rank
-```
-
-## Reading and editing an existing shortcut
-
-```bash
-python3 tools/decompile.py downloaded.plist            # what does this do?
-python3 tools/topython.py downloaded.plist -o edit.py  # editable Python
-python3 edit.py rebuilt.plist
-```
-
-Useful for shortcuts too large to comfortably edit on a phone.
+</details>
 
 <details>
 <summary><b>Project layout</b></summary>
@@ -350,10 +294,10 @@ A few minutes; the cache is tens of GB.
 
 </details>
 
-## Licence
+## 📜 Licence
 
-MIT. The evidence in `constructs/` was extracted from shortcuts built in
-the Shortcuts app; no Apple resources are redistributed here.
+MIT. The evidence in `constructs/` was extracted from shortcuts built in the Shortcuts app; no Apple
+resources are redistributed here.
 
 Built with help from Claude.
 
