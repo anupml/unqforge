@@ -9,7 +9,7 @@
 [![actions covered](https://img.shields.io/badge/actions-307%2F365-8b5cf6?style=flat-square)](docs/actions.md)
 [![round trip](https://img.shields.io/badge/round--trip-1290%2F1290-06b6d4?style=flat-square)](tools/roundtrip.py)
 
-[Guide](docs/guide.md) · [Action reference](docs/actions.md) · [Examples](examples/)
+[Website](https://unqx.site/sclib/) · [Showcase](https://unqx.site/sclib/showcase.html) · [Guide](docs/guide.md) · [Action reference](docs/actions.md) · [Examples](examples/)
 
 </div>
 
