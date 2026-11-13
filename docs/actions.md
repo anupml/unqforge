@@ -147,9 +147,7 @@ Returns `Combined Text`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `Show-text` | `bool` |
 | `ShowWhenRun` | `bool` |
 | `WFTextCustomSeparator` | `WFTextTokenString` · `str` |
@@ -158,9 +156,7 @@ Returns `Combined Text`.
 
 ```python
 out = s.action("is.workflow.actions.text.combine",
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         Show-text=False,
         ShowWhenRun=False,
         WFTextCustomSeparator="...",
@@ -176,9 +172,7 @@ Returns `Matches` or `一致`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `ShowWhenRun` | `bool` |
 | `WFMatchTextCaseSensitive` | `bool` |
 | `WFMatchTextPattern` | `WFTextTokenString` · `str` |
@@ -186,9 +180,7 @@ Returns `Matches` or `一致`.
 
 ```python
 out = s.action("is.workflow.actions.text.match",
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         ShowWhenRun=False,
         WFMatchTextCaseSensitive=False,
         WFMatchTextPattern="...",
@@ -203,9 +195,7 @@ Returns `Text`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `ShowWhenRun` | `bool` |
 | `WFGetGroupType` | `str` |
 | `WFGroupIndex` | `int` · `str` |
@@ -213,9 +203,7 @@ Returns `Text`.
 
 ```python
 out = s.action("is.workflow.actions.text.match.getgroup",
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         ShowWhenRun=False,
         WFGetGroupType="...",
         WFGroupIndex=0,
@@ -230,9 +218,7 @@ Returns `Updated Text` or `アップデートされたテキスト`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `WFInput` | `WFTextTokenString` · `str` |
 | `WFReplaceTextCaseSensitive` | `bool` |
 | `WFReplaceTextFind` | `WFTextTokenString` · `str` |
@@ -242,9 +228,7 @@ Returns `Updated Text` or `アップデートされたテキスト`.
 
 ```python
 out = s.action("is.workflow.actions.text.replace",
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         WFInput="...",
         WFReplaceTextCaseSensitive=False,
         WFReplaceTextFind="...",
@@ -515,17 +499,13 @@ Returns `Dictionary` or `辞書`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `WFItems` | `WFDictionaryFieldValue` · `dict{Value}` |
 | `WFShowWorkflow` | `bool` |
 
 ```python
 out = s.action("is.workflow.actions.dictionary",
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         WFItems="...",
         WFShowWorkflow=False)
 ```
@@ -699,9 +679,7 @@ Returns `Files` or `ファイル`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `WFContentItemFilter` | `WFContentPredicateTableTemplate` |
 | `WFContentItemInputParameter` | `WFTextTokenAttachment` |
 | `WFContentItemLimitEnabled` | `bool` |
@@ -711,9 +689,7 @@ Returns `Files` or `ファイル`.
 
 ```python
 out = s.action("is.workflow.actions.filter.files",
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         WFContentItemFilter="...",
         WFContentItemInputParameter=att(x),
         WFContentItemLimitEnabled=False,
@@ -961,9 +937,7 @@ Returns `Menu Result`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `WFControlFlowMode` | `int`<br>values: `0`, `1`, `2` |
 | `WFMenuItemAttributedTitle` | `dict{attachmentsByRange,string}` |
 | `WFMenuItemTitle` | `str` |
@@ -973,9 +947,7 @@ Returns `Menu Result`.
 
 ```python
 out = s.action("is.workflow.actions.choosefrommenu",
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         WFControlFlowMode=0,
         WFMenuItemAttributedTitle="...",
         WFMenuItemTitle="...",
@@ -1107,17 +1079,13 @@ Returns `Repeat Results`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `WFControlFlowMode` | `int`<br>values: `0`, `1`, `2` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.repeat.each",
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         WFControlFlowMode=0,
         WFInput=att(x))
 ```
@@ -1344,9 +1312,7 @@ Returns `Contents of URL`.
 | Parameter | Accepts |
 | --- | --- |
 | `Advanced` | `bool` |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `ShowHeaders` | `bool` |
 | `WFFormValues` | `WFDictionaryFieldValue` |
 | `WFHTTPBodyType` | `str`<br>values: `File`, `Form`, `JSON`, `JSON/Form/File`, `Json` |
@@ -1359,9 +1325,7 @@ Returns `Contents of URL`.
 ```python
 out = s.action("is.workflow.actions.downloadurl",
         Advanced=False,
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         ShowHeaders=False,
         WFFormValues="...",
         WFHTTPBodyType="File",
@@ -1399,16 +1363,12 @@ No output.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
-| `RoutineHub` | `int` |
 | `Show-WFInput` | `bool` |
 | `WFInput` | `WFTextTokenAttachment` · `WFTextTokenString` · `array` · `str` |
 | `WFShowWorkflow` | `bool` |
 
 ```python
 s.action("is.workflow.actions.openurl",
-        Credit="...",
-        RoutineHub=0,
         Show-WFInput=False,
         WFInput=att(x),
         WFShowWorkflow=False)
@@ -1790,17 +1750,13 @@ Returns `File of Type`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `WFFileType` | `WFTextTokenString` · `str` |
 | `WFInput` | `WFTextTokenAttachment` |
 
 ```python
 out = s.action("is.workflow.actions.gettypeaction",
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         WFFileType="...",
         WFInput=att(x))
 ```
@@ -1873,9 +1829,7 @@ Returns `Renamed Item` or `Set Name` or `Ítem renombrado` or `名称変更さ�
 | Parameter | Accepts |
 | --- | --- |
 | `Advanced` | `bool` |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `WFDontIncludeFileExtension` | `bool` |
 | `WFInput` | `WFTextTokenAttachment` |
 | `WFName` | `WFTextTokenString` · `str` |
@@ -1883,9 +1837,7 @@ Returns `Renamed Item` or `Set Name` or `Ítem renombrado` or `名称変更さ�
 ```python
 out = s.action("is.workflow.actions.setitemname",
         Advanced=False,
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         WFDontIncludeFileExtension=False,
         WFInput=att(x),
         WFName="...")
@@ -1986,9 +1938,7 @@ Returns `Chosen Item` or `Selected Item` or `選択した項目`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `WFChooseFromListActionPrompt` | `WFTextTokenString` · `str` |
 | `WFChooseFromListActionSelectAll` | `WFTextTokenAttachment` · `bool` |
 | `WFChooseFromListActionSelectMultiple` | `WFTextTokenAttachment` · `bool` |
@@ -1996,9 +1946,7 @@ Returns `Chosen Item` or `Selected Item` or `選択した項目`.
 
 ```python
 out = s.action("is.workflow.actions.choosefromlist",
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         WFChooseFromListActionPrompt="...",
         WFChooseFromListActionSelectAll=att(x),
         WFChooseFromListActionSelectMultiple=att(x),
@@ -2028,17 +1976,13 @@ Returns `My Shortcuts`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
 | `Folder` | `WFTextTokenAttachment` · `dict{DisplayString,Identifier}` |
-| `RoutineHub` | `int` |
 
 ```python
 out = s.action("is.workflow.actions.getmyworkflows",
-        Credit="...",
         CustomOutputName="...",
-        Folder=att(x),
-        RoutineHub=0)
+        Folder=att(x))
 ```
 
 ### `is.workflow.actions.notification`
@@ -4433,18 +4377,14 @@ Returns `Network Details`.
 
 | Parameter | Accepts |
 | --- | --- |
-| `Credit` | `str` |
 | `CustomOutputName` | `str` |
-| `RoutineHub` | `int` |
 | `WFCellularDetail` | `str`<br>values: `Carrier Name`, `Country Code`, `Is Roaming Abroad`, `Number of Signal Bars`, `Radio Technology` |
 | `WFNetworkDetailsNetwork` | `WFTextTokenAttachment` · `str` |
 | `WFWiFiDetail` | `str`<br>values: `BSSID`, `Network Name` |
 
 ```python
 out = s.action("is.workflow.actions.getwifi",
-        Credit="...",
         CustomOutputName="...",
-        RoutineHub=0,
         WFCellularDetail="Carrier Name",
         WFNetworkDetailsNetwork=att(x),
         WFWiFiDetail="BSSID")

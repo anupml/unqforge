@@ -584,14 +584,8 @@
     "Selected Item"
    ],
    "params": {
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "UUID": [
      "str"
@@ -617,17 +611,11 @@
    "count": 1245,
    "output_names": [],
    "params": {
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
     ],
     "GroupingIdentifier": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "UUID": [
      "str"
@@ -1136,14 +1124,8 @@
     "Dictionary"
    ],
    "params": {
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "UUID": [
      "str"
@@ -1292,14 +1274,8 @@
     "Advanced": [
      "bool"
     ],
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "ShowHeaders": [
      "bool"
@@ -1835,14 +1811,8 @@
     "Files"
    ],
    "params": {
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "UUID": [
      "str"
@@ -2652,18 +2622,12 @@
     "My Shortcuts"
    ],
    "params": {
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
     ],
     "Folder": [
      "WFTextTokenAttachment",
      "dict{DisplayString,Identifier}"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "UUID": [
      "str"
@@ -2891,14 +2855,8 @@
     "File of Type"
    ],
    "params": {
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "UUID": [
      "str"
@@ -3027,14 +2985,8 @@
     "Network Details"
    ],
    "params": {
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "UUID": [
      "str"
@@ -3895,12 +3847,6 @@
    "count": 1064,
    "output_names": [],
    "params": {
-    "Credit": [
-     "str"
-    ],
-    "RoutineHub": [
-     "int"
-    ],
     "Show-WFInput": [
      "bool"
     ],
@@ -4667,17 +4613,11 @@
    "count": 736,
    "output_names": [],
    "params": {
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
     ],
     "GroupingIdentifier": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "UUID": [
      "str"
@@ -5289,14 +5229,8 @@
     "Advanced": [
      "bool"
     ],
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "UUID": [
      "str"
@@ -5860,14 +5794,8 @@
     "Combined Text"
    ],
    "params": {
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "Show-text": [
      "bool"
@@ -5898,14 +5826,8 @@
     "Matches"
    ],
    "params": {
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "ShowWhenRun": [
      "bool"
@@ -5931,14 +5853,8 @@
     "Text"
    ],
    "params": {
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "ShowWhenRun": [
      "bool"
@@ -5964,14 +5880,8 @@
     "Updated Text"
    ],
    "params": {
-    "Credit": [
-     "str"
-    ],
     "CustomOutputName": [
      "str"
-    ],
-    "RoutineHub": [
-     "int"
     ],
     "UUID": [
      "str"
